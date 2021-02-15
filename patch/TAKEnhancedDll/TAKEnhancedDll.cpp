@@ -10,7 +10,10 @@ BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 {
 	if (dwReason == DLL_PROCESS_ATTACH) {
 		initializeContext();
-		launcher();
+
+		Launcher launcher;
+		launcher.execute();
+
 		applyChanges();
 
 		std::thread helperThread(initializeHelper);
