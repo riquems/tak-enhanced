@@ -1,0 +1,105 @@
+[UNITINFO]
+{
+	acceleration = 0.31;
+	bankscale = 1.75;
+	bmcode = 1;
+	bodytype = wood;
+	brakerate = 0.062;
+	buildcost = 2619;
+	buildtime = 338;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	cantransport = 1;
+	category = ARA BOAT ATTACK BALLISTIC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = arawar_dead;
+	damagecategory = naval;
+	defaultmissiontype = Standby;
+	description = Aramon;
+	experiencepoints = 37;
+	floater = 1;
+	healtime = 1.408333333;
+	immunetoparalyzer = 1;
+	maneuverleashlength = 500;
+	maxdamage = 6527;
+	maxvelocity = 2.9;
+	movementclass = WATER4;
+	name = War Galley;
+	objectname = ARAWAR;
+	pitchscale = 1.5;
+	radardistance = 720;
+	shadowart = shadow01;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ARA;
+	sightdistance = 302;
+	soundcategory = ARAWAR;
+	soundclass = ARAWAR;
+	standingunitorder = 2;
+	tedclass = Aramon;
+	transportcapacity = 18;
+	transportdistance = 300;
+	transportsize = 16;
+	transportsizecapacity = 72;
+	turnrate = 186;
+	unitname = ARAWAR;
+	unitnumber = 43;
+	version = 1;
+	waterline = 1;
+	wind = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 60;
+	damagetype = explosion;
+	explosionclass = medium explosion;
+	name = cannon;
+	noairweapon = 1;
+	range = 550;
+	reloadtime = 3.7;
+	shadowart = weaponshad01;
+	shadowgaf = shadows;
+	soundhitclass = cannon;
+	type = Ballistic;
+	waterexplosionclass = medium water explosion;
+	weaponart = cannbsm;
+	weaponvelocity = 760;
+
+	[DAMAGE]
+	{
+		default = 1088;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 1024;
+	model = araarrow;
+	name = anti-air arrows;
+	range = 380;
+	reloadtime = 3.1;
+	soundhitclass = arrow;
+	type = Ballistic;
+	waterexplosionclass = small water explosion;
+	weaponvelocity = 420;
+
+	[DAMAGE]
+	{
+		default = 252;
+		fort = 0.25;
+		factory = 0.25;
+		stalwart = 0.25;
+		mechanical = 0.5;
+		naval = 0.5;
+	}
+}
+

@@ -1,0 +1,151 @@
+[UNITINFO]
+{
+	acceleration = 0.2;
+	bankscale = 0.4;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = scale;
+	brakerate = 0.15;
+	buildcost = 32114;
+	buildtime = 9355;
+	canattack = 1;
+	canfly = 1;
+	canguard = 1;
+	canload = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = ZON FLY MAGIC ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	cruisealt = 200;
+	damagecategory = Dragon;
+	defaultmissiontype = VTOL_standby;
+	description = Zhon;
+	experiencepoints = 300;
+	footprintx = 4;
+	footprintz = 4;
+	healtime = 10.3944;
+	hoverattack = 1;
+	hoverattackdistance = 200;
+	immunetoparalyzer = 1;
+	manarechargerate = 30;
+	maneuverleashlength = 500;
+	maxdamage = 23759;
+	maxmana = 1000;
+	maxvelocity = 8;
+	maxwaterdepth = 0;
+	moverate1 = 1;
+	moverate2 = 4;
+	name = Ancient Dragon;
+	objectname = ZONDRAG;
+	radardistance = 2000;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ZON;
+	sightdistance = 180;
+	soundcategory = ZONDRAG;
+	soundclass = ZONDRAG;
+	standingunitorder = 2;
+	stone = zondrag_stone;
+	tedclass = Zhon;
+	totalallowed = 1;
+	turninplacerate = 800;
+	turnrate = 400;
+	unitname = ZONDRAG;
+	unitnumber = 161;
+	upright = 1;
+	version = 1;
+	weaponswitching = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 45;
+	buttonimagedisabled = FireBreathPU;
+	buttonimagedown = FireBreathPU;
+	buttonimageselected = FireBreathSBh;
+	buttonimageup = FireBreathSB;
+	damagetype = fire;
+	emittime = 50;
+	firestarter = 1;
+	hweffect = fire;
+	name = Fire Breath;
+	range = 600;
+	reloadtime = 3;
+	soundhitclass = fire;
+	subtype = fire;
+	type = Line of Sight;
+	weaponvelocity = 230;
+
+	[DAMAGE]
+	{
+		default = 851;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 1024;
+	areaofeffect = 100;
+	buttonimagedisabled = LightningBallGPU;
+	buttonimagedown = LightningBallGPU;
+	buttonimageselected = LightningBallGSBh;
+	buttonimageup = LightningBallGSB;
+	explosionclass = blue_shockring;
+	lightmap = small;
+	manapershot = 300;
+	name = Lightning Ball;
+	range = 750;
+	reloadtime = 3;
+	soundhitclass = lightning;
+	turnrate = 180;
+	type = Guided;
+	weaponart = LtngBall_1a;
+	weaponvelocity = 400;
+
+	[DAMAGE]
+	{
+		default = 1274;
+		dragon = 2;
+	}
+}
+
+[WEAPON3]
+{
+	aimtolerance = 1024;
+	areaofeffect = 230;
+	builduptime = 0.25;
+	buttonimagedisabled = WindWavetPU;
+	buttonimagedown = WindWavetPU;
+	buttonimageselected = WindWavetSBh;
+	buttonimageup = WindWavetSB;
+	decaytime = 1;
+	edgeeffectiveness = 0.55;
+	manapershot = 1300;
+	name = Shockring;
+	nimbus = 1;
+	radiusart0 = ring_fx_whiteA;
+	radiusart1 = ring_fx_whiteB;
+	radiusart2 = ring_fx_whiteC;
+	range = 450;
+	reloadtime = 5;
+	ringcount = 3;
+	ringdelay = 0.45;
+	ringduration = 1.2;
+	soundhit = arrow08;
+	spritecount = 25;
+	type = Remote Effect;
+	weaponvelocity = 1000;
+
+	[DAMAGE]
+	{
+		default = 2400;
+	}
+}

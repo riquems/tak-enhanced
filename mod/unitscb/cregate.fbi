@@ -1,0 +1,43 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 0;
+	buildcost = 425;
+	buildtime = 300;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = CRE;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = CREGATE_dead;
+	damagecategory = fort;
+	description = Creon;
+	experiencepoints = 5;
+	footprintx = 8;
+	footprintz = 8;
+	gate = 1;
+	healtime = 0.3575;
+	immunetoparalyzer = 1;
+	maxdamage = 18531;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	name = Gate;
+	noshadow = 1;
+	objectname = CREGATE;
+	onoffable = 1;
+	radardistance = 500;
+	shootme = 1;
+	shadowgaf = shadows;
+	side = CRE;
+	sightdistance = 300;
+	soundcategory = CREGATE;
+	soundclass = CREGATE;
+	tedclass = Creon;
+	unitname = CREGATE;
+	unitnumber = 21;
+	unitstandorders = 0;
+	version = 1;
+	wind = 1;
+	yardmap = ooccccoo occcccco cccccccc cccccccc cccccccc cccccccc occcccco ooccccoo;
+}

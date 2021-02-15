@@ -1,0 +1,130 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 977;
+	buildtime = 170;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = ARA BALLISTIC ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = arabow_dead;
+	damagecategory = HUMAN;
+	defaultmissiontype = Standby;
+	description = Aramon;
+	experiencepoints = 15;
+	fireatwillrandom = 1;
+	frozen = arabow_frozen;
+	healtime = 0.708333333;
+	manarechargerate = 10;
+	maneuverleashlength = 500;
+	maxdamage = 1350;
+	maxmana = 1000;
+	maxvelocity = 1.4;
+	movementclass = GROUND2;
+	name = Mage Archer;
+	objectname = ARABOW;
+	roadmultiplier = 1.21;
+	shadowart = shadow06;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ARA;
+	sightdistance = 250;
+	soundcategory = ARABOW;
+	soundclass = ARABOW;
+	standingunitorder = 1;
+	stone = arabow_stone;
+	tedclass = Aramon;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = ARABOW;
+	unitnumber = 3;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+	weaponswitching = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	buttonimagedisabled = ArrowStandardPU;
+	buttonimagedown = ArrowStandardPU;
+	buttonimageselected = ArrowStandardSBh;
+	buttonimageup = ArrowStandardSB;
+	explosionclass = teeny explosion;
+	model = araarrow;
+	name = Magic Arrow;
+	range = 550;
+	reloadtime = 2.65;
+	soundhitclass = arrow;
+	type = ballistic;
+	waterexplosionclass = small water explosion;
+	weaponvelocity = 530;
+
+	[DAMAGE]
+	{
+		default = 476;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 1024;
+	buttonimagedisabled = ArrowTrackingPU;
+	buttonimagedown = ArrowTrackingPU;
+	buttonimageselected = ArrowTrackingSBh;
+	buttonimageup = ArrowTrackingSB;
+	explosionclass = teeny explosion;
+	manapershot = 100;
+	model = araarrow2;
+	name = Tracking Arrow;
+	nimbus = 1;
+	range = 550;
+	reloadtime = 3.65;
+	soundhitclass = arrow;
+	turnrate = 180;
+	type = Guided;
+	waterexplosionclass = small water explosion;
+	weaponvelocity = 750;
+
+	[DAMAGE]
+	{
+		default = 576;
+	}
+}
+
+[WEAPON3]
+{
+	aimtolerance = 1024;
+	areaofeffect = 200;
+	edgeeffectiveness = 1;
+	buttonimagedisabled = ArrowParalyzePU;
+	buttonimagedown = ArrowParalyzePU;
+	buttonimageselected = ArrowParalyzeSBh;
+	buttonimageup = ArrowParalyzeSB;
+	damagetype = paralyzer;
+	explosionclass = green_shockring;
+	manapershot = 500;
+	model = araarrow3;
+	name = Paralyze Arrow;
+	nimbus = 1;
+	range = 550;
+	reloadtime = 3.65;
+	soundhit = arrow08;
+	type = ballistic;
+	weaponvelocity = 530;
+
+	[DAMAGE]
+	{
+		default = 57; // ~2s
+	}
+}

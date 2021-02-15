@@ -1,0 +1,94 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 100000;
+	buildtime = 30000;
+	canattack = 1;
+	canhover = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = TAR MELEE ATTACK MAGIC GOD;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	damagecategory = God;
+	defaultmissiontype = Standby;
+	description = Taros;
+	experiencepoints = 989;
+	healtime = 50;
+	immunetoparalyzer = 1;
+	maneuverleashlength = 500;
+	maxdamage = 29999;
+	maxvelocity = 1.8;
+	movementclass = HOVER2;
+	name = Spawn of Belial;
+	noveteran = 1;
+	objectname = TARGOD;
+	radardistance = 2000;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = TAR;
+	sightdistance = 294;
+	soundcategory = TARGOD;
+	soundclass = TARGOD;
+	standingunitorder = 2;
+	tedclass = Taros;
+	totalallowed = 1;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = TARGOD;
+	unitnumber = 1000;
+	upright = 1;
+	version = 1;
+	waterline = 1;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 100;
+	edgeeffectiveness = 0.7;
+	name = Claws of Belial;
+	range = 40;
+	reloadtime = 2.6;
+	soundhitclass = sword;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 5500;
+		monarch = 0.01;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 1024;
+	areaofeffect = 30;
+	builduptime = 2.25;
+	decaytime = 1;
+	duration = 9;
+	maxvariation = 5;
+	name = Fire Vortex;
+	nimbus = 1;
+	range = 200;
+	reloadtime = 1.5;
+	soundhit = arrow08;
+	type = wandering;
+	variationtime = 2;
+	wanderendart = flamevortexend;
+	wanderloopart = flamevortexloop;
+	wanderstartart = flamevortexstart;
+	weaponvelocity = 45;
+
+	[DAMAGE]
+	{
+		default = 2321;
+		monarch = 0.01;
+	}
+}

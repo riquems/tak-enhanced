@@ -1,0 +1,153 @@
+[UNITINFO]
+{
+	acceleration = 0.2;
+	attackrunlength = 150;
+	bankscale = 0.4;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = scale;
+	brakerate = 0.15;
+	buildcost = 28944;
+	buildtime = 8755;
+	canattack = 1;
+	canfly = 1;
+	canguard = 1;
+	canload = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbefrozen = 1;
+	cantbecaptured = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = ARA FLY MAGIC ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	cruisealt = 150;
+	damagecategory = Dragon;
+	defaultmissiontype = VTOL_standby;
+	description = Aramon;
+	experiencepoints = 300;
+	footprintx = 4;
+	footprintz = 4;
+	healtime = 9.7278;
+	hoverattack = 1;
+	hoverattackdistance = 150;
+	immunetoparalyzer = 1;
+	manarechargerate = 30;
+	maneuverleashlength = 500;
+	maxdamage = 23999;
+	maxmana = 1000;
+	maxvelocity = 7;
+	maxwaterdepth = 0;
+	name = Gold Dragon;
+	objectname = ARADRAG;
+	radardistance = 2000;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ARA;
+	sightdistance = 230;
+	soundcategory = ARADRAG;
+	soundclass = ARADRAG;
+	standingunitorder = 2;
+	stone = aradrag_stone;
+	tedclass = Aramon;
+	totalallowed = 1;
+	turnrate = 500;
+	unitname = ARADRAG;
+	unitnumber = 9;
+	upright = 1;
+	version = 1;
+	weaponswitching = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 50;
+	buttonimagedisabled = FireBreathPU;
+	buttonimagedown = FireBreathPU;
+	buttonimageselected = FireBreathSBh;
+	buttonimageup = FireBreathSB;
+	damagetype = fire;
+	emittime = 45;
+	firestarter = 1;
+	hweffect = fire;
+	name = Fire Breath;
+	range = 600;
+	reloadtime = 3;
+	soundhitclass = fire;
+	subtype = fire;
+	type = Line of Sight;
+	weaponvelocity = 230;
+
+	[DAMAGE]
+	{
+		default = 845;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 1024;
+	areaofeffect = 100;
+	buttonimagedisabled = FireBallGPU;
+	buttonimagedown = FireBallGPU;
+	buttonimageselected = FireBallGSBh;
+	buttonimageup = FireBallGSB;
+	explosionclass = fireball explosion;
+	firestarter = 1;
+	lightmap = small;
+	manapershot = 300;
+	name = Fire Ball;
+	range = 700;
+	reloadtime = 2.5;
+	soundhitclass = fire;
+	turnrate = 180;
+	type = guided;
+	weaponart = fireballB;
+	weaponvelocity = 350;
+
+	[DAMAGE]
+	{
+		default = 1245;
+		dragon = 2;
+	}
+}
+
+[WEAPON3]
+{
+	areaofeffect = 500;
+	builduptime = 0.5;
+	buttonimagedisabled = EarthquakePU;
+	buttonimagedown = EarthquakePU;
+	buttonimageselected = EarthquakeSBh;
+	buttonimageup = EarthquakeSB;
+	decaytime = 3;
+	edgeeffectiveness = 1;
+	manapershot = 1300;
+	name = Earthquake;
+	nimbus = 1;
+	radiusart0 = ring_fx_redA;
+	radiusart1 = ring_fx_redB;
+	radiusart2 = ring_fx_redC;
+	range = 450;
+	reloadtime = 5;
+	ringcount = 3;
+	ringdelay = 0.45;
+	ringduration = 1.2;
+	shakeduration = 2;
+	shakemagnitude = 3;
+	showeffect = 0;
+	soundhit = Explode6;
+	spritecount = 35;
+	subtype = Earthquake;
+	type = Remote Effect;
+	weaponvelocity = 1000;
+
+	[DAMAGE]
+	{
+		default = 1500;
+	}
+}

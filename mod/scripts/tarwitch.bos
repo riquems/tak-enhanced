@@ -1,0 +1,3604 @@
+#define TAK			// This is a TAK script
+
+#include "sfxtype.h"
+#include "exptype.h"
+
+piece  hip, emitwpn1, emitbloodl1, emitbloodl2, emitbloodr1, emitbloodr2, rleg, Rdress,
+       lleg, torso, Cdress1, Cdress2, head, ruparm, luparm, larm,
+       lhand, rarm, rhand, hair1, hair2L, hair2R, hair3, hair4L,
+       hair4R, hair5, ldress, emitwakel1, emitwakel2, emitwakel3, emitwaker1, emitwaker2,
+       emitwaker3, emitwakeC1, emitwpn2, lband_5, rband_5, wand_10;
+
+static-var  moving, aiming, firing, busy_dying, kill_attack,
+            restored, legs_restored, Static_Var_8, Static_Var_9, direction,
+            vetlevel, Static_Var_12, restore_delay;
+
+// Signal definitions
+#define SIG_AIM				2
+#define SIG_MOVE			4
+#define SIG_RESTORE			8
+
+
+def_walk()
+{
+	if( moving AND ( !aiming ) )
+	{
+		move rleg to y-axis [0.000000] speed [0.000000];
+		move Rdress to y-axis [0.000000] speed [0.000006];
+		turn hip to y-axis <4.500000> speed <23.686813>;
+		turn rleg to x-axis <-6.192308> speed <32.609890>;
+		turn rleg to y-axis <6.082418> speed <32.010989>;
+		turn lleg to x-axis <16.000000> speed <84.230769>;
+		turn lleg to y-axis <3.000000> speed <15.791209>;
+		turn torso to y-axis <-15.000000> speed <78.961538>;
+		turn Cdress1 to y-axis <-1.917582> speed <10.104396>;
+		turn Cdress2 to y-axis <-9.120879> speed <48.010989>;
+		turn head to y-axis <12.445055> speed <65.521978>;
+		turn ruparm to x-axis <30.005495> speed <157.928571>;
+		turn luparm to x-axis <-30.005495> speed <157.928571>;
+		turn larm to x-axis <-33.005495> speed <173.725275>;
+		turn lhand to x-axis <-9.730769> speed <51.219780>;
+		turn rarm to x-axis <-20.500000> speed <107.917582>;
+		turn rhand to x-axis <30.214286> speed <159.043956>;
+		turn hair1 to x-axis <-14.840659> speed <78.126374>;
+		turn hair2L to x-axis <-32.076923> speed <168.851648>;
+		turn hair2R to x-axis <-21.065934> speed <110.884615>;
+		turn hair3 to x-axis <-65.516484> speed <344.835165>;
+		turn hair4L to x-axis <-50.752747> speed <267.137363>;
+		turn hair4R to x-axis <-42.615385> speed <224.296703>;
+		turn hair5 to x-axis <-46.010989> speed <242.159341>;
+		turn ldress to x-axis <-25.445055> speed <133.923077>;
+		turn ldress to y-axis <-16.802198> speed <88.439560>;
+		turn Rdress to x-axis <16.719780> speed <88.021978>;
+		turn Rdress to y-axis <1.439560> speed <7.576923>;
+		sleep 190;
+	}
+	sleep 6;
+	return;
+}
+
+walk()
+{
+	if( moving AND ( !aiming ) )
+	{
+		move rleg to y-axis [0.000000] now;
+		move Rdress to y-axis [0.000000] now;
+		turn hip to y-axis <4.500000> now;
+		turn rleg to x-axis <-6.192308> now;
+		turn rleg to y-axis <6.082418> now;
+		turn lleg to x-axis <16.000000> now;
+		turn lleg to y-axis <3.000000> now;
+		turn torso to y-axis <-15.000000> now;
+		turn Cdress1 to y-axis <-1.917582> now;
+		turn Cdress2 to y-axis <-9.120879> now;
+		turn head to y-axis <12.445055> now;
+		turn ruparm to x-axis <30.005495> now;
+		turn luparm to x-axis <-30.005495> now;
+		turn larm to x-axis <-33.005495> now;
+		turn lhand to x-axis <-9.730769> now;
+		turn rarm to x-axis <-20.500000> now;
+		turn rhand to x-axis <30.214286> now;
+		turn hair1 to x-axis <-14.840659> now;
+		turn hair2L to x-axis <-32.076923> now;
+		turn hair2R to x-axis <-21.065934> now;
+		turn hair3 to x-axis <-65.516484> now;
+		turn hair4L to x-axis <-50.752747> now;
+		turn hair4R to x-axis <-42.615385> now;
+		turn hair5 to x-axis <-46.010989> now;
+		turn ldress to x-axis <-25.445055> now;
+		turn ldress to y-axis <-16.802198> now;
+		turn Rdress to x-axis <16.719780> now;
+		turn Rdress to y-axis <1.439560> now;
+		sleep 126;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move Rdress to y-axis [0.000000] now;
+		turn hip to y-axis <2.247253> now;
+		turn rleg to x-axis <-4.318681> now;
+		turn rleg to y-axis <3.038462> now;
+		turn lleg to x-axis <10.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn torso to y-axis <-7.500000> now;
+		turn Cdress1 to y-axis <0.000000> now;
+		turn Cdress2 to y-axis <-0.478022> now;
+		turn head to y-axis <9.615385> now;
+		turn head to z-axis <-4.000000> now;
+		turn ruparm to x-axis <15.000000> now;
+		turn luparm to x-axis <-15.000000> now;
+		turn larm to x-axis <-35.005495> now;
+		turn lhand to x-axis <-27.032967> now;
+		turn rarm to x-axis <-8.549451> now;
+		turn rhand to x-axis <33.032967> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-31.120879> now;
+		turn hair2R to x-axis <-20.587912> now;
+		turn hair3 to x-axis <-70.752747> now;
+		turn hair4L to x-axis <-53.626374> now;
+		turn hair4R to x-axis <-48.362637> now;
+		turn hair5 to x-axis <-50.747253> now;
+		turn ldress to x-axis <-11.521978> now;
+		turn ldress to y-axis <-8.637363> now;
+		turn Rdress to x-axis <11.038462> now;
+		turn Rdress to y-axis <2.879121> now;
+		sleep 132;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move rleg to y-axis [0.000000] now;
+		turn hip to y-axis <0.000000> now;
+		turn rleg to x-axis <3.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn lleg to x-axis <2.000000> now;
+		turn lleg to y-axis <0.000000> now;
+		turn torso to y-axis <0.000000> now;
+		turn Cdress1 to y-axis <3.840659> now;
+		turn Cdress2 to y-axis <3.357143> now;
+		turn head to y-axis <0.000000> now;
+		turn head to z-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <-37.005495> now;
+		turn lhand to x-axis <-23.450549> now;
+		turn rarm to x-axis <0.000000> now;
+		turn rhand to x-axis <0.956044> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-31.120879> now;
+		turn hair2R to x-axis <-21.543956> now;
+		turn hair3 to x-axis <-69.835165> now;
+		turn hair4L to x-axis <-50.274725> now;
+		turn hair4R to x-axis <-49.318681> now;
+		turn hair5 to x-axis <-49.796703> now;
+		turn ldress to x-axis <-4.796703> now;
+		turn ldress to y-axis <-3.357143> now;
+		turn Rdress to x-axis <-9.120879> now;
+		turn Rdress to y-axis <4.318681> now;
+		turn Rdress to z-axis <-0.956044> now;
+		sleep 132;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move lleg to y-axis [0.000000] now;
+		turn hip to y-axis <-2.247253> now;
+		turn rleg to x-axis <9.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn lleg to x-axis <0.000000> now;
+		turn torso to y-axis <7.500000> now;
+		turn Cdress1 to y-axis <4.318681> now;
+		turn Cdress2 to y-axis <7.197802> now;
+		turn head to y-axis <-4.307692> now;
+		turn ruparm to x-axis <-15.000000> now;
+		turn luparm to x-axis <15.000000> now;
+		turn larm to x-axis <-28.505495> now;
+		turn lhand to x-axis <0.906593> now;
+		turn rarm to x-axis <-26.554945> now;
+		turn rhand to x-axis <13.989011> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-30.164835> now;
+		turn hair2R to x-axis <-20.109890> now;
+		turn hair3 to x-axis <-64.818681> now;
+		turn hair4L to x-axis <-47.401099> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-46.417582> now;
+		turn ldress to x-axis <0.000000> now;
+		turn ldress to y-axis <0.000000> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <8.637363> now;
+		turn Rdress to z-axis <8.637363> now;
+		sleep 132;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move lleg to y-axis [0.000000] now;
+		turn hip to y-axis <-4.500000> now;
+		turn rleg to x-axis <16.000000> now;
+		turn rleg to y-axis <-3.000000> now;
+		turn lleg to x-axis <-6.153846> now;
+		turn torso to y-axis <15.000000> now;
+		turn Cdress1 to y-axis <2.879121> now;
+		turn Cdress2 to y-axis <5.280220> now;
+		turn head to y-axis <-11.010989> now;
+		turn ruparm to x-axis <-30.005495> now;
+		turn luparm to x-axis <30.005495> now;
+		turn larm to x-axis <-20.500000> now;
+		turn lhand to x-axis <-1.406593> now;
+		turn rarm to x-axis <-33.005495> now;
+		turn rhand to x-axis <-0.604396> now;
+		turn hair1 to x-axis <-10.054945> now;
+		turn hair2L to x-axis <-26.813187> now;
+		turn hair2R to x-axis <-20.109890> now;
+		turn hair3 to x-axis <-64.401099> now;
+		turn hair4L to x-axis <-44.527473> now;
+		turn hair4R to x-axis <-45.967033> now;
+		turn hair5 to x-axis <-44.170330> now;
+		turn ldress to x-axis <16.802198> now;
+		turn ldress to y-axis <-1.439560> now;
+		turn Rdress to x-axis <-27.846154> now;
+		turn Rdress to y-axis <16.318681> now;
+		turn Rdress to z-axis <-2.395604> now;
+		sleep 132;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <-2.247253> now;
+		turn rleg to x-axis <10.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn lleg to x-axis <-4.576923> now;
+		turn torso to y-axis <7.500000> now;
+		turn Cdress1 to y-axis <-2.395604> now;
+		turn Cdress2 to y-axis <1.917582> now;
+		turn head to y-axis <-4.263736> now;
+		turn head to z-axis <4.000000> now;
+		turn ruparm to x-axis <-15.000000> now;
+		turn luparm to x-axis <15.000000> now;
+		turn larm to x-axis <-8.549451> now;
+		turn lhand to x-axis <19.043956> now;
+		turn rarm to x-axis <-35.005495> now;
+		turn rhand to x-axis <-20.950549> now;
+		turn hair1 to x-axis <-10.054945> now;
+		turn hair2L to x-axis <-26.335165> now;
+		turn hair2R to x-axis <-18.192308> now;
+		turn hair3 to x-axis <-58.967033> now;
+		turn hair4L to x-axis <-41.175824> now;
+		turn hair4R to x-axis <-38.302198> now;
+		turn hair5 to x-axis <-39.346154> now;
+		turn ldress to x-axis <11.038462> now;
+		turn ldress to y-axis <-6.236264> now;
+		turn Rdress to x-axis <-28.802198> now;
+		turn Rdress to y-axis <8.159341> now;
+		turn Rdress to z-axis <-1.917582> now;
+		sleep 138;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <0.000000> now;
+		turn rleg to x-axis <2.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn lleg to x-axis <3.000000> now;
+		turn torso to y-axis <0.000000> now;
+		turn Cdress1 to y-axis <-3.840659> now;
+		turn Cdress2 to y-axis <-3.840659> now;
+		turn head to x-axis <0.000000> now;
+		turn head to y-axis <0.000000> now;
+		turn head to z-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <0.000000> now;
+		turn lhand to x-axis <0.956044> now;
+		turn rarm to x-axis <-37.005495> now;
+		turn rhand to x-axis <-12.500000> now;
+		turn hair1 to x-axis <-11.489011> now;
+		turn hair2L to x-axis <-27.769231> now;
+		turn hair2R to x-axis <-18.192308> now;
+		turn hair3 to x-axis <-59.615385> now;
+		turn hair4L to x-axis <-44.049451> now;
+		turn hair4R to x-axis <-39.741758> now;
+		turn hair5 to x-axis <-41.494505> now;
+		turn ldress to x-axis <-9.120879> now;
+		turn ldress to y-axis <-11.038462> now;
+		turn ldress to z-axis <0.956044> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <3.840659> now;
+		turn Rdress to z-axis <7.197802> now;
+		sleep 132;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <2.247253> now;
+		turn rleg to x-axis <0.000000> now;
+		turn lleg to x-axis <9.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn torso to y-axis <-7.500000> now;
+		turn Cdress1 to y-axis <-3.357143> now;
+		turn Cdress2 to y-axis <-7.197802> now;
+		turn head to x-axis <0.000000> now;
+		turn head to y-axis <6.219780> now;
+		turn ruparm to x-axis <15.000000> now;
+		turn luparm to x-axis <-15.000000> now;
+		turn larm to x-axis <-26.554945> now;
+		turn lhand to x-axis <0.000000> now;
+		turn rarm to x-axis <-28.505495> now;
+		turn rhand to x-axis <0.906593> now;
+		turn hair1 to x-axis <-12.445055> now;
+		turn hair2L to x-axis <-31.598901> now;
+		turn hair2R to x-axis <-22.021978> now;
+		turn hair3 to x-axis <-64.208791> now;
+		turn hair4L to x-axis <-49.796703> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-46.153846> now;
+		turn ldress to x-axis <-15.362637> now;
+		turn ldress to y-axis <-17.763736> now;
+		turn ldress to z-axis <-8.637363> now;
+		turn Rdress to x-axis <2.395604> now;
+		turn Rdress to y-axis <0.000000> now;
+		turn Rdress to z-axis <0.956044> now;
+		sleep 132;
+	}
+	return;
+}
+
+walk_road()
+{
+	if( moving AND ( !aiming ) )
+	{
+		move rleg to y-axis [0.000000] now;
+		move Rdress to y-axis [0.000000] now;
+		turn hip to y-axis <4.500000> now;
+		turn rleg to x-axis <-6.192308> now;
+		turn rleg to y-axis <6.082418> now;
+		turn lleg to x-axis <16.000000> now;
+		turn lleg to y-axis <3.000000> now;
+		turn torso to y-axis <-15.000000> now;
+		turn Cdress1 to y-axis <-1.917582> now;
+		turn Cdress2 to y-axis <-9.120879> now;
+		turn head to y-axis <12.445055> now;
+		turn ruparm to x-axis <30.005495> now;
+		turn luparm to x-axis <-30.005495> now;
+		turn larm to x-axis <-33.005495> now;
+		turn lhand to x-axis <-9.730769> now;
+		turn rarm to x-axis <-20.500000> now;
+		turn rhand to x-axis <30.214286> now;
+		turn hair1 to x-axis <-14.840659> now;
+		turn hair2L to x-axis <-32.076923> now;
+		turn hair2R to x-axis <-21.065934> now;
+		turn hair3 to x-axis <-65.516484> now;
+		turn hair4L to x-axis <-50.752747> now;
+		turn hair4R to x-axis <-42.615385> now;
+		turn hair5 to x-axis <-46.010989> now;
+		turn ldress to x-axis <-25.445055> now;
+		turn ldress to y-axis <-16.802198> now;
+		turn Rdress to x-axis <16.719780> now;
+		turn Rdress to y-axis <1.439560> now;
+		sleep 103;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move Rdress to y-axis [0.000000] now;
+		turn hip to y-axis <2.247253> now;
+		turn rleg to x-axis <-4.318681> now;
+		turn rleg to y-axis <3.038462> now;
+		turn lleg to x-axis <10.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn torso to y-axis <-7.500000> now;
+		turn Cdress1 to y-axis <0.000000> now;
+		turn Cdress2 to y-axis <-0.478022> now;
+		turn head to y-axis <9.615385> now;
+		turn head to z-axis <-4.000000> now;
+		turn ruparm to x-axis <15.000000> now;
+		turn luparm to x-axis <-15.000000> now;
+		turn larm to x-axis <-35.005495> now;
+		turn lhand to x-axis <-27.032967> now;
+		turn rarm to x-axis <-8.549451> now;
+		turn rhand to x-axis <33.032967> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-31.120879> now;
+		turn hair2R to x-axis <-20.587912> now;
+		turn hair3 to x-axis <-70.752747> now;
+		turn hair4L to x-axis <-53.626374> now;
+		turn hair4R to x-axis <-48.362637> now;
+		turn hair5 to x-axis <-50.747253> now;
+		turn ldress to x-axis <-11.521978> now;
+		turn ldress to y-axis <-8.637363> now;
+		turn Rdress to x-axis <11.038462> now;
+		turn Rdress to y-axis <2.879121> now;
+		sleep 109;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move rleg to y-axis [0.000000] now;
+		turn hip to y-axis <0.000000> now;
+		turn rleg to x-axis <3.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn lleg to x-axis <2.000000> now;
+		turn lleg to y-axis <0.000000> now;
+		turn torso to y-axis <0.000000> now;
+		turn Cdress1 to y-axis <3.840659> now;
+		turn Cdress2 to y-axis <3.357143> now;
+		turn head to y-axis <0.000000> now;
+		turn head to z-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <-37.005495> now;
+		turn lhand to x-axis <-23.450549> now;
+		turn rarm to x-axis <0.000000> now;
+		turn rhand to x-axis <0.956044> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-31.120879> now;
+		turn hair2R to x-axis <-21.543956> now;
+		turn hair3 to x-axis <-69.835165> now;
+		turn hair4L to x-axis <-50.274725> now;
+		turn hair4R to x-axis <-49.318681> now;
+		turn hair5 to x-axis <-49.796703> now;
+		turn ldress to x-axis <-4.796703> now;
+		turn ldress to y-axis <-3.357143> now;
+		turn Rdress to x-axis <-9.120879> now;
+		turn Rdress to y-axis <4.318681> now;
+		turn Rdress to z-axis <-0.956044> now;
+		sleep 109;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move lleg to y-axis [0.000000] now;
+		turn hip to y-axis <-2.247253> now;
+		turn rleg to x-axis <9.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn lleg to x-axis <0.000000> now;
+		turn torso to y-axis <7.500000> now;
+		turn Cdress1 to y-axis <4.318681> now;
+		turn Cdress2 to y-axis <7.197802> now;
+		turn head to y-axis <-4.307692> now;
+		turn ruparm to x-axis <-15.000000> now;
+		turn luparm to x-axis <15.000000> now;
+		turn larm to x-axis <-28.505495> now;
+		turn lhand to x-axis <0.906593> now;
+		turn rarm to x-axis <-26.554945> now;
+		turn rhand to x-axis <13.989011> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-30.164835> now;
+		turn hair2R to x-axis <-20.109890> now;
+		turn hair3 to x-axis <-64.818681> now;
+		turn hair4L to x-axis <-47.401099> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-46.417582> now;
+		turn ldress to x-axis <0.000000> now;
+		turn ldress to y-axis <0.000000> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <8.637363> now;
+		turn Rdress to z-axis <8.637363> now;
+		sleep 109;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		move lleg to y-axis [0.000000] now;
+		turn hip to y-axis <-4.500000> now;
+		turn rleg to x-axis <16.000000> now;
+		turn rleg to y-axis <-3.000000> now;
+		turn lleg to x-axis <-6.153846> now;
+		turn torso to y-axis <15.000000> now;
+		turn Cdress1 to y-axis <2.879121> now;
+		turn Cdress2 to y-axis <5.280220> now;
+		turn head to y-axis <-11.010989> now;
+		turn ruparm to x-axis <-30.005495> now;
+		turn luparm to x-axis <30.005495> now;
+		turn larm to x-axis <-20.500000> now;
+		turn lhand to x-axis <-1.406593> now;
+		turn rarm to x-axis <-33.005495> now;
+		turn rhand to x-axis <-0.604396> now;
+		turn hair1 to x-axis <-10.054945> now;
+		turn hair2L to x-axis <-26.813187> now;
+		turn hair2R to x-axis <-20.109890> now;
+		turn hair3 to x-axis <-64.401099> now;
+		turn hair4L to x-axis <-44.527473> now;
+		turn hair4R to x-axis <-45.967033> now;
+		turn hair5 to x-axis <-44.170330> now;
+		turn ldress to x-axis <16.802198> now;
+		turn ldress to y-axis <-1.439560> now;
+		turn Rdress to x-axis <-27.846154> now;
+		turn Rdress to y-axis <16.318681> now;
+		turn Rdress to z-axis <-2.395604> now;
+		sleep 110;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <-2.247253> now;
+		turn rleg to x-axis <10.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn lleg to x-axis <-4.576923> now;
+		turn torso to y-axis <7.500000> now;
+		turn Cdress1 to y-axis <-2.395604> now;
+		turn Cdress2 to y-axis <1.917582> now;
+		turn head to y-axis <-4.263736> now;
+		turn head to z-axis <4.000000> now;
+		turn ruparm to x-axis <-15.000000> now;
+		turn luparm to x-axis <15.000000> now;
+		turn larm to x-axis <-8.549451> now;
+		turn lhand to x-axis <19.043956> now;
+		turn rarm to x-axis <-35.005495> now;
+		turn rhand to x-axis <-20.950549> now;
+		turn hair1 to x-axis <-10.054945> now;
+		turn hair2L to x-axis <-26.335165> now;
+		turn hair2R to x-axis <-18.192308> now;
+		turn hair3 to x-axis <-58.967033> now;
+		turn hair4L to x-axis <-41.175824> now;
+		turn hair4R to x-axis <-38.302198> now;
+		turn hair5 to x-axis <-39.346154> now;
+		turn ldress to x-axis <11.038462> now;
+		turn ldress to y-axis <-6.236264> now;
+		turn Rdress to x-axis <-28.802198> now;
+		turn Rdress to y-axis <8.159341> now;
+		turn Rdress to z-axis <-1.917582> now;
+		sleep 114;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <0.000000> now;
+		turn rleg to x-axis <2.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn lleg to x-axis <3.000000> now;
+		turn torso to y-axis <0.000000> now;
+		turn Cdress1 to y-axis <-3.840659> now;
+		turn Cdress2 to y-axis <-3.840659> now;
+		turn head to x-axis <0.000000> now;
+		turn head to y-axis <0.000000> now;
+		turn head to z-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <0.000000> now;
+		turn lhand to x-axis <0.956044> now;
+		turn rarm to x-axis <-37.005495> now;
+		turn rhand to x-axis <-12.500000> now;
+		turn hair1 to x-axis <-11.489011> now;
+		turn hair2L to x-axis <-27.769231> now;
+		turn hair2R to x-axis <-18.192308> now;
+		turn hair3 to x-axis <-59.615385> now;
+		turn hair4L to x-axis <-44.049451> now;
+		turn hair4R to x-axis <-39.741758> now;
+		turn hair5 to x-axis <-41.494505> now;
+		turn ldress to x-axis <-9.120879> now;
+		turn ldress to y-axis <-11.038462> now;
+		turn ldress to z-axis <0.956044> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <3.840659> now;
+		turn Rdress to z-axis <7.197802> now;
+		sleep 109;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <2.247253> now;
+		turn rleg to x-axis <0.000000> now;
+		turn lleg to x-axis <9.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn torso to y-axis <-7.500000> now;
+		turn Cdress1 to y-axis <-3.357143> now;
+		turn Cdress2 to y-axis <-7.197802> now;
+		turn head to x-axis <0.000000> now;
+		turn head to y-axis <6.219780> now;
+		turn ruparm to x-axis <15.000000> now;
+		turn luparm to x-axis <-15.000000> now;
+		turn larm to x-axis <-26.554945> now;
+		turn lhand to x-axis <0.000000> now;
+		turn rarm to x-axis <-28.505495> now;
+		turn rhand to x-axis <0.906593> now;
+		turn hair1 to x-axis <-12.445055> now;
+		turn hair2L to x-axis <-31.598901> now;
+		turn hair2R to x-axis <-22.021978> now;
+		turn hair3 to x-axis <-64.208791> now;
+		turn hair4L to x-axis <-49.796703> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-46.153846> now;
+		turn ldress to x-axis <-15.362637> now;
+		turn ldress to y-axis <-17.763736> now;
+		turn ldress to z-axis <-8.637363> now;
+		turn Rdress to x-axis <2.395604> now;
+		turn Rdress to y-axis <0.000000> now;
+		turn Rdress to z-axis <0.956044> now;
+		sleep 109;
+	}
+	return;
+}
+
+walk_water()
+{
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <4.500000> now;
+		turn Cdress1 to y-axis <-1.917582> now;
+		turn Cdress2 to y-axis <-9.120879> now;
+		turn lleg to x-axis <16.000000> now;
+		turn lleg to y-axis <3.000000> now;
+		turn rleg to x-axis <-6.192308> now;
+		turn rleg to y-axis <6.082418> now;
+		turn torso to y-axis <-15.000000> now;
+		turn head to y-axis <12.445055> now;
+		turn ruparm to x-axis <30.005495> now;
+		turn luparm to x-axis <-30.005495> now;
+		turn larm to x-axis <-33.005495> now;
+		turn lhand to x-axis <-9.730769> now;
+		turn rarm to x-axis <-20.500000> now;
+		turn rhand to x-axis <30.214286> now;
+		turn hair1 to x-axis <-14.840659> now;
+		turn hair2L to x-axis <-32.076923> now;
+		turn hair2R to x-axis <-21.065934> now;
+		turn hair3 to x-axis <-65.516484> now;
+		turn hair4L to x-axis <-50.752747> now;
+		turn hair4R to x-axis <-42.615385> now;
+		turn hair5 to x-axis <-46.010989> now;
+		turn Rdress to x-axis <16.719780> now;
+		turn Rdress to y-axis <1.439560> now;
+		turn ldress to x-axis <-25.445055> now;
+		turn ldress to y-axis <-16.802198> now;
+		emit-sfx 2 from emitwakel1;
+		emit-sfx 2 from emitwakel2;
+		emit-sfx 2 from emitwakel3;
+		sleep 151;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <2.247253> now;
+		turn Cdress1 to y-axis <0.000000> now;
+		turn Cdress2 to y-axis <-0.478022> now;
+		turn lleg to x-axis <10.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn rleg to x-axis <-4.318681> now;
+		turn rleg to y-axis <3.038462> now;
+		turn torso to y-axis <-7.500000> now;
+		turn head to y-axis <9.615385> now;
+		turn head to z-axis <-4.000000> now;
+		turn ruparm to x-axis <15.000000> now;
+		turn luparm to x-axis <-15.000000> now;
+		turn larm to x-axis <-35.005495> now;
+		turn lhand to x-axis <-27.032967> now;
+		turn rarm to x-axis <-8.549451> now;
+		turn rhand to x-axis <33.032967> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-31.120879> now;
+		turn hair2R to x-axis <-20.587912> now;
+		turn hair3 to x-axis <-70.752747> now;
+		turn hair4L to x-axis <-53.626374> now;
+		turn hair4R to x-axis <-48.362637> now;
+		turn hair5 to x-axis <-50.747253> now;
+		turn Rdress to x-axis <11.038462> now;
+		turn Rdress to y-axis <2.879121> now;
+		turn ldress to x-axis <-11.521978> now;
+		turn ldress to y-axis <-8.637363> now;
+		emit-sfx 2 from emitwakel1;
+		emit-sfx 2 from emitwakel2;
+		emit-sfx 2 from emitwakel3;
+		sleep 160;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <0.000000> now;
+		turn Cdress1 to y-axis <3.840659> now;
+		turn Cdress2 to y-axis <3.357143> now;
+		turn lleg to x-axis <2.000000> now;
+		turn lleg to y-axis <0.000000> now;
+		turn rleg to x-axis <3.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn torso to y-axis <0.000000> now;
+		turn head to y-axis <0.000000> now;
+		turn head to z-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <-37.005495> now;
+		turn lhand to x-axis <-23.450549> now;
+		turn rarm to x-axis <0.000000> now;
+		turn rhand to x-axis <0.956044> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-31.120879> now;
+		turn hair2R to x-axis <-21.543956> now;
+		turn hair3 to x-axis <-69.835165> now;
+		turn hair4L to x-axis <-50.274725> now;
+		turn hair4R to x-axis <-49.318681> now;
+		turn hair5 to x-axis <-49.796703> now;
+		turn Rdress to x-axis <-9.120879> now;
+		turn Rdress to y-axis <4.318681> now;
+		turn Rdress to z-axis <-0.956044> now;
+		turn ldress to x-axis <-4.796703> now;
+		turn ldress to y-axis <-3.357143> now;
+		emit-sfx 2 from emitwakel1;
+		emit-sfx 2 from emitwakel2;
+		emit-sfx 2 from emitwakel3;
+		emit-sfx 2 from emitwaker1;
+		emit-sfx 2 from emitwaker2;
+		emit-sfx 2 from emitwaker3;
+		sleep 160;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <-2.247253> now;
+		turn Cdress1 to y-axis <4.318681> now;
+		turn Cdress2 to y-axis <7.197802> now;
+		turn lleg to x-axis <0.000000> now;
+		turn rleg to x-axis <9.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn torso to y-axis <7.500000> now;
+		turn head to y-axis <-4.307692> now;
+		turn ruparm to x-axis <-15.000000> now;
+		turn luparm to x-axis <15.000000> now;
+		turn larm to x-axis <-28.505495> now;
+		turn lhand to x-axis <0.906593> now;
+		turn rarm to x-axis <-26.554945> now;
+		turn rhand to x-axis <13.989011> now;
+		turn hair1 to x-axis <-12.928571> now;
+		turn hair2L to x-axis <-30.164835> now;
+		turn hair2R to x-axis <-20.109890> now;
+		turn hair3 to x-axis <-64.818681> now;
+		turn hair4L to x-axis <-47.401099> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-46.417582> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <8.637363> now;
+		turn Rdress to z-axis <8.637363> now;
+		turn ldress to x-axis <0.000000> now;
+		turn ldress to y-axis <0.000000> now;
+		emit-sfx 2 from emitwaker1;
+		emit-sfx 2 from emitwaker2;
+		emit-sfx 2 from emitwaker3;
+		sleep 160;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <-4.500000> now;
+		turn Cdress1 to y-axis <2.879121> now;
+		turn Cdress2 to y-axis <5.280220> now;
+		turn lleg to x-axis <-6.153846> now;
+		turn rleg to x-axis <16.000000> now;
+		turn rleg to y-axis <-3.000000> now;
+		turn torso to y-axis <15.000000> now;
+		turn head to y-axis <-11.010989> now;
+		turn ruparm to x-axis <-30.005495> now;
+		turn luparm to x-axis <30.005495> now;
+		turn larm to x-axis <-20.500000> now;
+		turn lhand to x-axis <-1.406593> now;
+		turn rarm to x-axis <-33.005495> now;
+		turn rhand to x-axis <-0.604396> now;
+		turn hair1 to x-axis <-10.054945> now;
+		turn hair2L to x-axis <-26.813187> now;
+		turn hair2R to x-axis <-20.109890> now;
+		turn hair3 to x-axis <-64.401099> now;
+		turn hair4L to x-axis <-44.527473> now;
+		turn hair4R to x-axis <-45.967033> now;
+		turn hair5 to x-axis <-44.170330> now;
+		turn Rdress to x-axis <-27.846154> now;
+		turn Rdress to y-axis <16.318681> now;
+		turn Rdress to z-axis <-2.395604> now;
+		turn ldress to x-axis <16.802198> now;
+		turn ldress to y-axis <-1.439560> now;
+		emit-sfx 2 from emitwaker1;
+		emit-sfx 2 from emitwaker2;
+		emit-sfx 2 from emitwaker3;
+		sleep 159;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <-2.247253> now;
+		turn Cdress1 to y-axis <-2.395604> now;
+		turn Cdress2 to y-axis <1.917582> now;
+		turn lleg to x-axis <-4.576923> now;
+		turn rleg to x-axis <10.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn torso to y-axis <7.500000> now;
+		turn head to y-axis <-4.263736> now;
+		turn head to z-axis <4.000000> now;
+		turn ruparm to x-axis <-15.000000> now;
+		turn luparm to x-axis <15.000000> now;
+		turn larm to x-axis <-8.549451> now;
+		turn lhand to x-axis <19.043956> now;
+		turn rarm to x-axis <-35.005495> now;
+		turn rhand to x-axis <-20.950549> now;
+		turn hair1 to x-axis <-10.054945> now;
+		turn hair2L to x-axis <-26.335165> now;
+		turn hair2R to x-axis <-18.192308> now;
+		turn hair3 to x-axis <-58.967033> now;
+		turn hair4L to x-axis <-41.175824> now;
+		turn hair4R to x-axis <-38.302198> now;
+		turn hair5 to x-axis <-39.346154> now;
+		turn Rdress to x-axis <-28.802198> now;
+		turn Rdress to y-axis <8.159341> now;
+		turn Rdress to z-axis <-1.917582> now;
+		turn ldress to x-axis <11.038462> now;
+		turn ldress to y-axis <-6.236264> now;
+		emit-sfx 2 from emitwaker1;
+		emit-sfx 2 from emitwaker2;
+		emit-sfx 2 from emitwaker3;
+		sleep 168;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <0.000000> now;
+		turn Cdress1 to y-axis <-3.840659> now;
+		turn Cdress2 to y-axis <-3.840659> now;
+		turn lleg to x-axis <3.000000> now;
+		turn rleg to x-axis <2.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn torso to y-axis <0.000000> now;
+		turn head to x-axis <0.000000> now;
+		turn head to y-axis <0.000000> now;
+		turn head to z-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <0.000000> now;
+		turn lhand to x-axis <0.956044> now;
+		turn rarm to x-axis <-37.005495> now;
+		turn rhand to x-axis <-12.500000> now;
+		turn hair1 to x-axis <-11.489011> now;
+		turn hair2L to x-axis <-27.769231> now;
+		turn hair2R to x-axis <-18.192308> now;
+		turn hair3 to x-axis <-59.615385> now;
+		turn hair4L to x-axis <-44.049451> now;
+		turn hair4R to x-axis <-39.741758> now;
+		turn hair5 to x-axis <-41.494505> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <3.840659> now;
+		turn Rdress to z-axis <7.197802> now;
+		turn ldress to x-axis <-9.120879> now;
+		turn ldress to y-axis <-11.038462> now;
+		turn ldress to z-axis <0.956044> now;
+		emit-sfx 2 from emitwaker1;
+		emit-sfx 2 from emitwaker2;
+		emit-sfx 2 from emitwaker3;
+		emit-sfx 2 from emitwakel1;
+		emit-sfx 2 from emitwakel2;
+		emit-sfx 2 from emitwakel3;
+		sleep 159;
+	}
+	if( moving AND ( !aiming ) )
+	{
+		turn hip to y-axis <2.247253> now;
+		turn Cdress1 to y-axis <-3.357143> now;
+		turn Cdress2 to y-axis <-7.197802> now;
+		turn lleg to x-axis <9.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn rleg to x-axis <0.000000> now;
+		turn torso to y-axis <-7.500000> now;
+		turn head to x-axis <0.000000> now;
+		turn head to y-axis <6.219780> now;
+		turn ruparm to x-axis <15.000000> now;
+		turn luparm to x-axis <-15.000000> now;
+		turn larm to x-axis <-26.554945> now;
+		turn lhand to x-axis <0.000000> now;
+		turn rarm to x-axis <-28.505495> now;
+		turn rhand to x-axis <0.906593> now;
+		turn hair1 to x-axis <-12.445055> now;
+		turn hair2L to x-axis <-31.598901> now;
+		turn hair2R to x-axis <-22.021978> now;
+		turn hair3 to x-axis <-64.208791> now;
+		turn hair4L to x-axis <-49.796703> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-46.153846> now;
+		turn Rdress to x-axis <2.395604> now;
+		turn Rdress to y-axis <0.000000> now;
+		turn Rdress to z-axis <0.956044> now;
+		turn ldress to x-axis <-15.362637> now;
+		turn ldress to y-axis <-17.763736> now;
+		turn ldress to z-axis <-8.637363> now;
+		emit-sfx 2 from emitwakel1;
+		emit-sfx 2 from emitwakel2;
+		emit-sfx 2 from emitwakel3;
+		sleep 160;
+	}
+	return;
+}
+
+walk_legs()
+{
+	if( moving )
+	{
+		move rleg to y-axis [0.000000] now;
+		move Rdress to y-axis [0.000000] now;
+		turn rleg to x-axis <-6.192308> now;
+		turn rleg to y-axis <6.082418> now;
+		turn lleg to x-axis <16.000000> now;
+		turn lleg to y-axis <3.000000> now;
+		turn Cdress1 to y-axis <-1.917582> now;
+		turn Cdress2 to y-axis <-9.120879> now;
+		turn ldress to x-axis <-25.445055> now;
+		turn ldress to y-axis <-16.802198> now;
+		turn Rdress to x-axis <16.719780> now;
+		turn Rdress to y-axis <1.439560> now;
+		sleep 126;
+	}
+	if( moving )
+	{
+		move Rdress to y-axis [0.000000] now;
+		turn rleg to x-axis <-4.318681> now;
+		turn rleg to y-axis <3.038462> now;
+		turn lleg to x-axis <10.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn Cdress1 to y-axis <0.000000> now;
+		turn Cdress2 to y-axis <-0.478022> now;
+		turn ldress to x-axis <-11.521978> now;
+		turn ldress to y-axis <-8.637363> now;
+		turn Rdress to x-axis <11.038462> now;
+		turn Rdress to y-axis <2.879121> now;
+		sleep 132;
+	}
+	if( moving )
+	{
+		move rleg to y-axis [0.000000] now;
+		turn rleg to x-axis <3.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn lleg to x-axis <2.000000> now;
+		turn lleg to y-axis <0.000000> now;
+		turn Cdress1 to y-axis <3.840659> now;
+		turn Cdress2 to y-axis <3.357143> now;
+		turn ldress to x-axis <-4.796703> now;
+		turn ldress to y-axis <-3.357143> now;
+		turn Rdress to x-axis <-9.120879> now;
+		turn Rdress to y-axis <4.318681> now;
+		turn Rdress to z-axis <-0.956044> now;
+		sleep 132;
+	}
+	if( moving )
+	{
+		move lleg to y-axis [0.000000] now;
+		turn rleg to x-axis <9.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn lleg to x-axis <0.000000> now;
+		turn Cdress1 to y-axis <4.318681> now;
+		turn Cdress2 to y-axis <7.197802> now;
+		turn ldress to x-axis <0.000000> now;
+		turn ldress to y-axis <0.000000> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <8.637363> now;
+		turn Rdress to z-axis <8.637363> now;
+		sleep 132;
+	}
+	if( moving )
+	{
+		move lleg to y-axis [0.000000] now;
+		turn rleg to x-axis <16.000000> now;
+		turn rleg to y-axis <-3.000000> now;
+		turn lleg to x-axis <-6.153846> now;
+		turn Cdress1 to y-axis <2.879121> now;
+		turn Cdress2 to y-axis <5.280220> now;
+		turn ldress to x-axis <16.802198> now;
+		turn ldress to y-axis <-1.439560> now;
+		turn Rdress to x-axis <-27.846154> now;
+		turn Rdress to y-axis <16.318681> now;
+		turn Rdress to z-axis <-2.395604> now;
+		sleep 132;
+	}
+	if( moving )
+	{
+		turn rleg to x-axis <10.000000> now;
+		turn rleg to y-axis <-1.500000> now;
+		turn lleg to x-axis <-4.576923> now;
+		turn Cdress1 to y-axis <-2.395604> now;
+		turn Cdress2 to y-axis <1.917582> now;
+		turn ldress to x-axis <11.038462> now;
+		turn ldress to y-axis <-6.236264> now;
+		turn Rdress to x-axis <-28.802198> now;
+		turn Rdress to y-axis <8.159341> now;
+		turn Rdress to z-axis <-1.917582> now;
+		sleep 138;
+	}
+	if( moving )
+	{
+		turn rleg to x-axis <2.000000> now;
+		turn rleg to y-axis <0.000000> now;
+		turn lleg to x-axis <3.000000> now;
+		turn Cdress1 to y-axis <-3.840659> now;
+		turn Cdress2 to y-axis <-3.840659> now;
+		turn ldress to x-axis <-9.120879> now;
+		turn ldress to y-axis <-11.038462> now;
+		turn ldress to z-axis <0.956044> now;
+		turn Rdress to x-axis <-15.840659> now;
+		turn Rdress to y-axis <3.840659> now;
+		turn Rdress to z-axis <7.197802> now;
+		sleep 132;
+	}
+	if( moving )
+	{
+		turn rleg to x-axis <0.000000> now;
+		turn lleg to x-axis <9.000000> now;
+		turn lleg to y-axis <1.500000> now;
+		turn Cdress1 to y-axis <-3.357143> now;
+		turn Cdress2 to y-axis <-7.197802> now;
+		turn ldress to x-axis <-15.362637> now;
+		turn ldress to y-axis <-17.763736> now;
+		turn ldress to z-axis <-8.637363> now;
+		turn Rdress to x-axis <2.395604> now;
+		turn Rdress to y-axis <0.000000> now;
+		turn Rdress to z-axis <0.956044> now;
+		sleep 132;
+	}
+	return;
+}
+
+attack1(weapon)
+{
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-10.642857> now;
+		turn head to x-axis <1.824176> now;
+		turn ruparm to x-axis <0.302198> now;
+		turn ruparm to z-axis <3.340659> now;
+		turn luparm to x-axis <-1.516484> now;
+		turn luparm to z-axis <-3.038462> now;
+		turn larm to x-axis <-8.208791> now;
+		turn rarm to x-axis <-9.730769> now;
+		turn hair1 to x-axis <-18.549451> now;
+		turn hair2L to x-axis <-23.719780> now;
+		turn hair2R to x-axis <-23.417582> now;
+		turn hair3 to x-axis <-30.714286> now;
+		turn hair4L to x-axis <-36.494505> now;
+		turn hair4R to x-axis <-24.021978> now;
+		turn hair5 to x-axis <-22.197802> now;
+		sleep 100;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-21.285714> now;
+		turn head to x-axis <3.648352> now;
+		turn ruparm to x-axis <0.604396> now;
+		turn ruparm to z-axis <6.686813> now;
+		turn luparm to x-axis <-3.038462> now;
+		turn luparm to z-axis <-6.082418> now;
+		turn larm to x-axis <-16.417582> now;
+		turn rarm to x-axis <-19.461538> now;
+		turn hair1 to x-axis <-37.098901> now;
+		turn hair2L to x-axis <-47.439560> now;
+		turn hair2R to x-axis <-46.835165> now;
+		turn hair3 to x-axis <-61.428571> now;
+		turn hair4L to x-axis <-72.989011> now;
+		turn hair4R to x-axis <-48.049451> now;
+		turn hair5 to x-axis <-44.401099> now;
+		sleep 87;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-2.884615> now;
+		turn head to x-axis <-7.142857> now;
+		turn ruparm to x-axis <-12.769231> now;
+		turn ruparm to z-axis <12.010989> now;
+		turn luparm to x-axis <-16.571429> now;
+		turn luparm to z-axis <-12.313187> now;
+		turn larm to x-axis <-24.329670> now;
+		turn larm to z-axis <2.126374> now;
+		turn lhand to z-axis <7.906593> now;
+		turn rarm to x-axis <-27.978022> now;
+		turn rarm to z-axis <-1.214286> now;
+		turn rhand to z-axis <-6.230769> now;
+		turn hair1 to x-axis <-35.274725> now;
+		turn hair2L to x-axis <-47.439560> now;
+		turn hair2R to x-axis <-41.054945> now;
+		turn hair3 to x-axis <-58.236264> now;
+		turn hair4L to x-axis <-67.516484> now;
+		turn hair4R to x-axis <-43.945055> now;
+		turn hair5 to x-axis <-41.510989> now;
+		sleep 88;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <15.505495> now;
+		turn head to x-axis <-17.939560> now;
+		turn ruparm to x-axis <-26.153846> now;
+		turn ruparm to z-axis <17.335165> now;
+		turn luparm to x-axis <-30.104396> now;
+		turn luparm to z-axis <-18.549451> now;
+		turn larm to x-axis <-32.236264> now;
+		turn larm to z-axis <4.252747> now;
+		turn lhand to z-axis <15.813187> now;
+		turn rarm to x-axis <-36.494505> now;
+		turn rarm to z-axis <-2.428571> now;
+		turn rhand to z-axis <-12.467033> now;
+		turn hair1 to x-axis <-33.450549> now;
+		turn hair2L to x-axis <-47.439560> now;
+		turn hair2R to x-axis <-35.274725> now;
+		turn hair3 to x-axis <-55.043956> now;
+		turn hair4L to x-axis <-62.038462> now;
+		turn hair4R to x-axis <-39.840659> now;
+		turn hair5 to x-axis <-38.620879> now;
+		sleep 87;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <33.906593> now;
+		turn head to x-axis <-28.736264> now;
+		turn ruparm to x-axis <-39.532967> now;
+		turn ruparm to z-axis <22.653846> now;
+		turn luparm to x-axis <-43.637363> now;
+		turn luparm to z-axis <-24.785714> now;
+		turn larm to x-axis <-40.142857> now;
+		turn larm to z-axis <6.384615> now;
+		turn lhand to z-axis <23.719780> now;
+		turn rarm to x-axis <-45.010989> now;
+		turn rarm to z-axis <-3.648352> now;
+		turn rhand to z-axis <-18.703297> now;
+		turn hair1 to x-axis <-31.626374> now;
+		turn hair2L to x-axis <-47.439560> now;
+		turn hair2R to x-axis <-29.500000> now;
+		turn hair3 to x-axis <-51.851648> now;
+		turn hair4L to x-axis <-56.565934> now;
+		turn hair4R to x-axis <-35.730769> now;
+		turn hair5 to x-axis <-35.730769> now;
+		sleep 88;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <52.307692> now;
+		turn head to x-axis <-39.532967> now;
+		turn ruparm to x-axis <-52.917582> now;
+		turn ruparm to z-axis <27.978022> now;
+		turn luparm to x-axis <-57.175824> now;
+		turn luparm to z-axis <-31.016484> now;
+		turn larm to x-axis <-48.049451> now;
+		turn larm to z-axis <8.510989> now;
+		turn lhand to z-axis <31.626374> now;
+		turn rarm to x-axis <-53.521978> now;
+		turn rarm to z-axis <-4.862637> now;
+		turn rhand to z-axis <-24.934066> now;
+		turn hair1 to x-axis <-29.802198> now;
+		turn hair2L to x-axis <-47.439560> now;
+		turn hair2R to x-axis <-23.719780> now;
+		turn hair3 to x-axis <-48.659341> now;
+		turn hair4L to x-axis <-51.093407> now;
+		turn hair4R to x-axis <-31.626374> now;
+		turn hair5 to x-axis <-32.840659> now;
+		sleep 60;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <14.593407> now;
+		turn head to x-axis <-13.681319> now;
+		turn ruparm to x-axis <-76.637363> now;
+		turn ruparm to z-axis <41.280220> now;
+		turn luparm to x-axis <-78.461538> now;
+		turn luparm to z-axis <-42.532967> now;
+		turn larm to x-axis <-24.329670> now;
+		turn larm to z-axis <10.642857> now;
+		turn lhand to x-axis <2.428571> now;
+		turn lhand to z-axis <17.027473> now;
+		turn rarm to x-axis <-26.153846> now;
+		turn rarm to z-axis <-4.862637> now;
+		turn rhand to x-axis <6.994505> now;
+		turn rhand to z-axis <-13.379121> now;
+		turn hair1 to x-axis <-35.274725> now;
+		turn hair2L to x-axis <-47.439560> now;
+		turn hair2R to x-axis <-35.582418> now;
+		turn hair3 to x-axis <-61.736264> now;
+		turn hair4L to x-axis <-57.780220> now;
+		turn hair4R to x-axis <-39.230769> now;
+		turn hair5 to x-axis <-42.879121> now;
+		sleep 60;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-23.109890> now;
+		turn head to x-axis <12.164835> now;
+		turn ruparm to x-axis <-100.357143> now;
+		turn ruparm to z-axis <54.582418> now;
+		turn luparm to x-axis <-99.752747> now;
+		turn luparm to z-axis <-54.043956> now;
+		turn larm to x-axis <-0.604396> now;
+		turn larm to z-axis <12.769231> now;
+		turn lhand to x-axis <4.862637> now;
+		turn lhand to z-axis <2.428571> now;
+		turn rarm to x-axis <1.214286> now;
+		turn rarm to z-axis <-4.862637> now;
+		turn rhand to x-axis <13.989011> now;
+		turn rhand to z-axis <-1.824176> now;
+		turn hair1 to x-axis <-40.752747> now;
+		turn hair2L to x-axis <-47.439560> now;
+		turn hair2R to x-axis <-47.439560> now;
+		turn hair3 to x-axis <-74.813187> now;
+		turn hair4L to x-axis <-64.472527> now;
+		turn hair4R to x-axis <-46.835165> now;
+		turn hair5 to x-axis <-52.917582> now;
+		sleep 75;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-33.148352> now;
+		turn head to x-axis <12.467033> now;
+		turn ruparm to x-axis <-105.576923> now;
+		turn ruparm to y-axis <18.549451> now;
+		turn ruparm to z-axis <75.571429> now;
+		turn luparm to x-axis <-105.109890> now;
+		turn luparm to y-axis <-18.637363> now;
+		turn luparm to z-axis <-74.593407> now;
+		turn larm to x-axis <-0.208791> now;
+		turn larm to z-axis <9.450549> now;
+		turn lhand to x-axis <4.862637> now;
+		turn lhand to z-axis <-9.120879> now;
+		turn rarm to x-axis <0.802198> now;
+		turn rarm to z-axis <-5.582418> now;
+		turn rhand to x-axis <13.989011> now;
+		turn rhand to z-axis <4.560440> now;
+		turn hair1 to x-axis <-36.494505> now;
+		turn hair2L to x-axis <-49.873626> now;
+		turn hair2R to x-axis <-48.049451> now;
+		turn hair3 to x-axis <-73.901099> now;
+		turn hair4L to x-axis <-62.950549> now;
+		turn hair4R to x-axis <-41.357143> now;
+		turn hair5 to x-axis <-51.697802> now;
+		sleep 75;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-43.181319> now;
+		turn head to x-axis <12.769231> now;
+		turn ruparm to x-axis <-110.796703> now;
+		turn ruparm to y-axis <37.098901> now;
+		turn ruparm to z-axis <96.560440> now;
+		turn luparm to x-axis <-110.461538> now;
+		turn luparm to y-axis <-37.280220> now;
+		turn luparm to z-axis <-95.142857> now;
+		turn larm to x-axis <0.181319> now;
+		turn larm to z-axis <6.131868> now;
+		turn lhand to x-axis <4.862637> now;
+		turn lhand to z-axis <-20.675824> now;
+		turn rarm to x-axis <0.390110> now;
+		turn rarm to z-axis <-6.296703> now;
+		turn rhand to x-axis <13.989011> now;
+		turn rhand to z-axis <10.945055> now;
+		turn hair1 to x-axis <-32.236264> now;
+		turn hair2L to x-axis <-52.307692> now;
+		turn hair2R to x-axis <-48.659341> now;
+		turn hair3 to x-axis <-72.989011> now;
+		turn hair4L to x-axis <-61.428571> now;
+		turn hair4R to x-axis <-35.884615> now;
+		turn hair5 to x-axis <-50.483516> now;
+		sleep 70;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-38.010989> now;
+		turn head to x-axis <-6.686813> now;
+		turn ruparm to x-axis <-95.225275> now;
+		turn ruparm to y-axis <18.549451> now;
+		turn ruparm to z-axis <71.175824> now;
+		turn luparm to x-axis <-95.087912> now;
+		turn luparm to y-axis <-18.335165> now;
+		turn luparm to z-axis <-72.659341> now;
+		turn larm to x-axis <-19.983516> now;
+		turn larm to z-axis <-0.230769> now;
+		turn lhand to x-axis <4.862637> now;
+		turn lhand to z-axis <-34.060440> now;
+		turn rarm to x-axis <-19.626374> now;
+		turn rarm to z-axis <0.252747> now;
+		turn rhand to x-axis <13.989011> now;
+		turn rhand to z-axis <28.280220> now;
+		turn hair1 to x-axis <-21.587912> now;
+		turn hair2L to x-axis <-39.532967> now;
+		turn hair2R to x-axis <-31.324176> now;
+		turn hair3 to x-axis <-56.868132> now;
+		turn hair4L to x-axis <-56.263736> now;
+		turn hair4R to x-axis <-24.021978> now;
+		turn hair5 to x-axis <-41.664835> now;
+		sleep 70;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-32.840659> now;
+		turn head to x-axis <-26.153846> now;
+		turn ruparm to x-axis <-79.659341> now;
+		turn ruparm to y-axis <0.000000> now;
+		turn ruparm to z-axis <45.791209> now;
+		turn luparm to x-axis <-79.708791> now;
+		turn luparm to y-axis <0.604396> now;
+		turn luparm to z-axis <-50.181319> now;
+		turn larm to x-axis <-40.153846> now;
+		turn larm to z-axis <-6.598901> now;
+		turn lhand to x-axis <4.862637> now;
+		turn lhand to z-axis <-47.439560> now;
+		turn rarm to x-axis <-39.648352> now;
+		turn rarm to z-axis <6.807692> now;
+		turn rhand to x-axis <13.989011> now;
+		turn rhand to z-axis <45.615385> now;
+		turn hair1 to x-axis <-10.945055> now;
+		turn hair2L to x-axis <-26.758242> now;
+		turn hair2R to x-axis <-13.989011> now;
+		turn hair3 to x-axis <-40.752747> now;
+		turn hair4L to x-axis <-51.093407> now;
+		turn hair4R to x-axis <-12.164835> now;
+		turn hair5 to x-axis <-32.840659> now;
+		sleep 55;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-4.862637> now;
+		turn head to x-axis <-4.862637> now;
+		turn ruparm to x-axis <-72.065934> now;
+		turn ruparm to z-axis <14.071429> now;
+		turn luparm to x-axis <-72.093407> now;
+		turn luparm to y-axis <0.302198> now;
+		turn luparm to z-axis <-13.532967> now;
+		turn larm to x-axis <-52.923077> now;
+		turn larm to z-axis <2.472527> now;
+		turn lhand to x-axis <2.428571> now;
+		turn lhand to z-axis <-36.796703> now;
+		turn rarm to x-axis <-49.829670> now;
+		turn rarm to z-axis <-8.450549> now;
+		turn rhand to x-axis <6.994505> now;
+		turn rhand to z-axis <35.274725> now;
+		turn hair1 to x-axis <6.384615> now;
+		turn hair2L to x-axis <-8.510989> now;
+		turn hair2R to x-axis <-4.252747> now;
+		turn hair3 to x-axis <-36.796703> now;
+		turn hair4L to x-axis <-18.549451> now;
+		turn hair5 to x-axis <3.038462> now;
+		sleep 55;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <23.109890> now;
+		turn head to x-axis <16.417582> now;
+		turn ruparm to x-axis <-64.472527> now;
+		turn ruparm to z-axis <-17.637363> now;
+		turn luparm to x-axis <-64.472527> now;
+		turn luparm to y-axis <0.000000> now;
+		turn luparm to z-axis <23.109890> now;
+		turn larm to x-axis <-65.686813> now;
+		turn larm to z-axis <11.554945> now;
+		turn lhand to x-axis <0.000000> now;
+		turn lhand to z-axis <-26.153846> now;
+		turn rarm to x-axis <-60.010989> now;
+		turn rarm to z-axis <-23.719780> now;
+		turn rhand to x-axis <0.000000> now;
+		turn rhand to z-axis <24.934066> now;
+		turn hair1 to x-axis <23.719780> now;
+		turn hair2L to x-axis <9.730769> now;
+		turn hair2R to x-axis <5.472527> now;
+		turn hair3 to x-axis <-32.840659> now;
+		turn hair4L to x-axis <13.989011> now;
+		turn hair5 to x-axis <38.923077> now;
+		if( !kill_attack )
+		{
+			set WEAPON_LAUNCH_NOW to weapon;
+			play-sound( "LIGHTNG3", PLAYSOUND_PRIORITY_BATTLE );
+		}
+		sleep 80;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <20.373626> now;
+		turn head to x-axis <13.681319> now;
+		turn ruparm to x-axis <-83.631868> now;
+		turn ruparm to z-axis <-19.461538> now;
+		turn luparm to x-axis <-86.065934> now;
+		turn luparm to z-axis <24.631868> now;
+		turn larm to x-axis <-29.192308> now;
+		turn larm to z-axis <5.774725> now;
+		turn lhand to z-axis <-23.109890> now;
+		turn rarm to x-axis <-30.005495> now;
+		turn rarm to z-axis <-11.857143> now;
+		turn rhand to z-axis <22.197802> now;
+		turn hair1 to x-axis <2.126374> now;
+		turn hair2L to x-axis <-17.027473> now;
+		turn hair2R to x-axis <-15.505495> now;
+		turn hair3 to x-axis <-49.873626> now;
+		turn hair4L to x-axis <-4.560440> now;
+		turn hair4R to x-axis <-30.412088> now;
+		turn hair5 to x-axis <15.203297> now;
+		sleep 80;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <17.637363> now;
+		turn head to x-axis <10.945055> now;
+		turn ruparm to x-axis <-102.791209> now;
+		turn ruparm to z-axis <-21.285714> now;
+		turn luparm to x-axis <-107.659341> now;
+		turn luparm to z-axis <26.153846> now;
+		turn larm to x-axis <7.296703> now;
+		turn larm to z-axis <0.000000> now;
+		turn lhand to z-axis <-20.071429> now;
+		turn rarm to x-axis <0.000000> now;
+		turn rarm to z-axis <0.000000> now;
+		turn rhand to z-axis <19.461538> now;
+		turn hair1 to x-axis <-19.461538> now;
+		turn hair2L to x-axis <-43.791209> now;
+		turn hair2R to x-axis <-36.494505> now;
+		turn hair3 to x-axis <-66.906593> now;
+		turn hair4L to x-axis <-23.109890> now;
+		turn hair4R to x-axis <-48.659341> now;
+		turn hair5 to x-axis <-8.510989> now;
+		sleep 130;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <13.681319> now;
+		turn head to x-axis <6.384615> now;
+		turn ruparm to x-axis <-84.241758> now;
+		turn ruparm to z-axis <-13.989011> now;
+		turn luparm to x-axis <-86.368132> now;
+		turn luparm to z-axis <17.637363> now;
+		turn larm to x-axis <-26.153846> now;
+		turn lhand to z-axis <-7.598901> now;
+		turn rarm to x-axis <-30.005495> now;
+		turn rhand to z-axis <2.736264> now;
+		turn hair1 to x-axis <-31.016484> now;
+		turn hair2L to x-axis <-46.835165> now;
+		turn hair2R to x-axis <-50.483516> now;
+		turn hair3 to x-axis <-70.252747> now;
+		turn hair4L to x-axis <-48.961538> now;
+		turn hair4R to x-axis <-52.307692> now;
+		turn hair5 to x-axis <-27.978022> now;
+		sleep 130;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <9.730769> now;
+		turn head to x-axis <1.824176> now;
+		turn ruparm to x-axis <-65.686813> now;
+		turn ruparm to z-axis <-6.686813> now;
+		turn luparm to x-axis <-65.082418> now;
+		turn luparm to z-axis <9.120879> now;
+		turn larm to x-axis <-59.604396> now;
+		turn lhand to z-axis <4.862637> now;
+		turn rarm to x-axis <-60.010989> now;
+		turn rhand to z-axis <-13.989011> now;
+		turn hair1 to x-axis <-42.576923> now;
+		turn hair2L to x-axis <-49.873626> now;
+		turn hair2R to x-axis <-64.472527> now;
+		turn hair3 to x-axis <-73.598901> now;
+		turn hair4L to x-axis <-74.813187> now;
+		turn hair4R to x-axis <-55.956044> now;
+		turn hair5 to x-axis <-47.439560> now;
+		sleep 100;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <5.472527> now;
+		turn head to x-axis <2.428571> now;
+		turn ruparm to x-axis <-52.917582> now;
+		turn ruparm to z-axis <-3.340659> now;
+		turn luparm to x-axis <-56.263736> now;
+		turn luparm to z-axis <4.560440> now;
+		turn larm to x-axis <-38.010989> now;
+		turn lhand to z-axis <8.741758> now;
+		turn rarm to x-axis <-39.736264> now;
+		turn rhand to z-axis <-8.395604> now;
+		turn hair1 to x-axis <-38.620879> now;
+		turn hair2L to x-axis <-51.093407> now;
+		turn hair2R to x-axis <-66.296703> now;
+		turn hair3 to x-axis <-79.681319> now;
+		turn hair4L to x-axis <-78.461538> now;
+		turn hair4R to x-axis <-61.736264> now;
+		turn hair5 to x-axis <-50.175824> now;
+		sleep 100;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <1.214286> now;
+		turn head to x-axis <3.038462> now;
+		turn ruparm to x-axis <-40.142857> now;
+		turn ruparm to z-axis <0.000000> now;
+		turn luparm to x-axis <-47.439560> now;
+		turn luparm to z-axis <0.000000> now;
+		turn larm to x-axis <-16.417582> now;
+		turn lhand to z-axis <12.615385> now;
+		turn rarm to x-axis <-19.461538> now;
+		turn rhand to z-axis <-2.802198> now;
+		turn hair1 to x-axis <-34.670330> now;
+		turn hair2L to x-axis <-52.307692> now;
+		turn hair2R to x-axis <-68.120879> now;
+		turn hair3 to x-axis <-85.763736> now;
+		turn hair4L to x-axis <-82.109890> now;
+		turn hair4R to x-axis <-67.516484> now;
+		turn hair5 to x-axis <-52.917582> now;
+		sleep 100;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <0.604396> now;
+		turn head to x-axis <1.516484> now;
+		turn ruparm to x-axis <-20.071429> now;
+		turn luparm to x-axis <-23.719780> now;
+		turn larm to x-axis <-8.208791> now;
+		turn lhand to z-axis <6.307692> now;
+		turn rarm to x-axis <-9.730769> now;
+		turn rhand to z-axis <-1.401099> now;
+		turn hair1 to x-axis <-17.335165> now;
+		turn hair2L to x-axis <-26.153846> now;
+		turn hair2R to x-axis <-34.060440> now;
+		turn hair3 to x-axis <-42.879121> now;
+		turn hair4L to x-axis <-41.054945> now;
+		turn hair4R to x-axis <-33.758242> now;
+		turn hair5 to x-axis <-26.456044> now;
+		sleep 100;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <0.000000> now;
+		turn head to x-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <0.000000> now;
+		turn lhand to z-axis <0.000000> now;
+		turn rarm to x-axis <0.000000> now;
+		turn rhand to z-axis <0.000000> now;
+		turn hair1 to x-axis <0.000000> now;
+		turn hair2L to x-axis <0.000000> now;
+		turn hair2R to x-axis <0.000000> now;
+		turn hair3 to x-axis <0.000000> now;
+		turn hair4L to x-axis <0.000000> now;
+		turn hair4R to x-axis <0.000000> now;
+		turn hair5 to x-axis <0.000000> now;
+		sleep 10;
+	}
+	return;
+}
+
+attack2(weapon)
+{
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-5.983516> now;
+		turn head to x-axis <-2.390110> now;
+		turn ruparm to x-axis <-49.554945> now;
+		turn ruparm to y-axis <0.000000> now;
+		turn ruparm to z-axis <2.868132> now;
+		turn luparm to x-axis <-58.175824> now;
+		turn luparm to y-axis <15.318681> now;
+		turn luparm to z-axis <18.434066> now;
+		turn larm to x-axis <12.686813> now;
+		turn larm to y-axis <-36.626374> now;
+		turn larm to z-axis <6.703297> now;
+		turn lhand to x-axis <1.192308> now;
+		turn lhand to z-axis <11.489011> now;
+		turn rarm to x-axis <8.379121> now;
+		turn rarm to y-axis <29.445055> now;
+		turn rarm to z-axis <-0.478022> now;
+		turn rhand to x-axis <6.461538> now;
+		turn rhand to z-axis <-12.686813> now;
+		turn hair1 to x-axis <-16.516484> now;
+		turn hair2L to x-axis <-29.923077> now;
+		turn hair2R to x-axis <-27.769231> now;
+		turn hair3 to x-axis <-36.626374> now;
+		turn hair4L to x-axis <-32.796703> now;
+		turn hair4R to x-axis <-26.093407> now;
+		turn hair5 to x-axis <-26.335165> now;
+		sleep 100;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-11.967033> now;
+		turn head to x-axis <-4.785714> now;
+		turn ruparm to x-axis <-99.115385> now;
+		turn ruparm to y-axis <0.000000> now;
+		turn ruparm to z-axis <5.741758> now;
+		turn luparm to x-axis <-116.357143> now;
+		turn luparm to y-axis <30.642857> now;
+		turn luparm to z-axis <36.868132> now;
+		turn larm to x-axis <25.373626> now;
+		turn larm to y-axis <-73.258242> now;
+		turn larm to z-axis <13.406593> now;
+		turn lhand to x-axis <2.390110> now;
+		turn lhand to z-axis <22.983516> now;
+		turn rarm to x-axis <16.758242> now;
+		turn rarm to y-axis <58.895604> now;
+		turn rarm to z-axis <-0.956044> now;
+		turn rhand to x-axis <12.928571> now;
+		turn rhand to z-axis <-25.373626> now;
+		turn hair1 to x-axis <-33.038462> now;
+		turn hair2L to x-axis <-59.851648> now;
+		turn hair2R to x-axis <-55.543956> now;
+		turn hair3 to x-axis <-73.258242> now;
+		turn hair4L to x-axis <-65.598901> now;
+		turn hair4R to x-axis <-52.192308> now;
+		turn hair5 to x-axis <-52.670330> now;
+		sleep 65;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-15.082418> now;
+		turn ruparm to x-axis <-100.912088> now;
+		turn ruparm to y-axis <-14.840659> now;
+		turn ruparm to z-axis <-4.785714> now;
+		turn luparm to x-axis <-114.681319> now;
+		turn luparm to z-axis <34.351648> now;
+		turn larm to x-axis <20.587912> now;
+		turn larm to z-axis <10.054945> now;
+		turn lhand to x-axis <-1.791209> now;
+		turn lhand to z-axis <2.868132> now;
+		turn rarm to x-axis <9.335165> now;
+		turn rarm to z-axis <-0.714286> now;
+		turn rhand to x-axis <4.428571> now;
+		turn rhand to z-axis <-14.005495> now;
+		turn hair2R to x-axis <-55.543956> now;
+		turn hair5 to x-axis <-52.670330> now;
+		sleep 65;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-18.192308> now;
+		turn ruparm to x-axis <-102.708791> now;
+		turn ruparm to y-axis <-29.686813> now;
+		turn ruparm to z-axis <-15.318681> now;
+		turn luparm to x-axis <-113.005495> now;
+		turn luparm to z-axis <31.840659> now;
+		turn larm to x-axis <15.796703> now;
+		turn larm to z-axis <6.703297> now;
+		turn lhand to x-axis <-5.983516> now;
+		turn lhand to z-axis <-17.236264> now;
+		turn rarm to x-axis <1.912088> now;
+		turn rarm to z-axis <-0.478022> now;
+		turn rhand to x-axis <-4.065934> now;
+		turn rhand to z-axis <-2.631868> now;
+		turn hair2R to x-axis <-55.543956> now;
+		sleep 65;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-21.307692> now;
+		turn ruparm to x-axis <-104.505495> now;
+		turn ruparm to y-axis <-44.527473> now;
+		turn ruparm to z-axis <-25.857143> now;
+		turn luparm to x-axis <-111.329670> now;
+		turn luparm to z-axis <29.324176> now;
+		turn larm to x-axis <11.010989> now;
+		turn larm to z-axis <3.351648> now;
+		turn lhand to x-axis <-10.170330> now;
+		turn lhand to z-axis <-37.346154> now;
+		turn rarm to x-axis <-5.505495> now;
+		turn rarm to z-axis <-0.236264> now;
+		turn rhand to x-axis <-12.565934> now;
+		turn rhand to z-axis <8.736264> now;
+		turn hair2R to x-axis <-55.543956> now;
+		sleep 65;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-24.417582> now;
+		turn ruparm to x-axis <-106.302198> now;
+		turn ruparm to y-axis <-59.373626> now;
+		turn ruparm to z-axis <-36.390110> now;
+		turn luparm to x-axis <-109.653846> now;
+		turn luparm to z-axis <26.813187> now;
+		turn larm to x-axis <6.219780> now;
+		turn larm to z-axis <0.000000> now;
+		turn lhand to x-axis <-14.362637> now;
+		turn lhand to z-axis <-57.456044> now;
+		turn rarm to x-axis <-12.928571> now;
+		turn rarm to z-axis <0.000000> now;
+		turn rhand to x-axis <-21.065934> now;
+		turn rhand to z-axis <20.109890> now;
+		turn hair2R to x-axis <-55.543956> now;
+		turn hair5 to x-axis <-52.670330> now;
+		sleep 72;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-25.258242> now;
+		turn torso to y-axis <-10.170330> now;
+		turn torso to z-axis <1.675824> now;
+		turn head to x-axis <-3.467033> now;
+		turn ruparm to x-axis <-101.631868> now;
+		turn ruparm to y-axis <-44.527473> now;
+		turn ruparm to z-axis <-21.664835> now;
+		turn luparm to x-axis <-94.686813> now;
+		turn luparm to y-axis <22.983516> now;
+		turn luparm to z-axis <8.016484> now;
+		turn larm to x-axis <4.785714> now;
+		turn larm to y-axis <-54.945055> now;
+		turn larm to z-axis <18.192308> now;
+		turn lhand to x-axis <-10.769231> now;
+		turn lhand to z-axis <-43.093407> now;
+		turn rarm to x-axis <-27.648352> now;
+		turn rarm to y-axis <44.170330> now;
+		turn rhand to x-axis <-15.796703> now;
+		turn rhand to z-axis <15.082418> now;
+		turn hair1 to x-axis <-31.719780> now;
+		turn hair2L to x-axis <-60.329670> now;
+		turn hair2R to x-axis <-57.098901> now;
+		turn hair3 to x-axis <-73.500000> now;
+		turn hair4L to x-axis <-60.571429> now;
+		turn hair4R to x-axis <-50.395604> now;
+		turn hair5 to x-axis <-52.791209> now;
+		sleep 73;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-26.093407> now;
+		turn torso to y-axis <-20.346154> now;
+		turn torso to z-axis <3.351648> now;
+		turn head to x-axis <-2.153846> now;
+		turn ruparm to x-axis <-96.961538> now;
+		turn ruparm to y-axis <-29.686813> now;
+		turn ruparm to z-axis <-6.939560> now;
+		turn luparm to x-axis <-79.725275> now;
+		turn luparm to y-axis <15.318681> now;
+		turn luparm to z-axis <-10.769231> now;
+		turn larm to x-axis <3.351648> now;
+		turn larm to y-axis <-36.626374> now;
+		turn larm to z-axis <36.390110> now;
+		turn lhand to x-axis <-7.181319> now;
+		turn lhand to z-axis <-28.725275> now;
+		turn rarm to x-axis <-42.373626> now;
+		turn rarm to y-axis <29.445055> now;
+		turn rhand to x-axis <-10.532967> now;
+		turn rhand to z-axis <10.054945> now;
+		turn hair1 to x-axis <-30.401099> now;
+		turn hair2L to x-axis <-60.807692> now;
+		turn hair2R to x-axis <-58.653846> now;
+		turn hair3 to x-axis <-73.736264> now;
+		turn hair4L to x-axis <-55.543956> now;
+		turn hair4R to x-axis <-48.598901> now;
+		turn hair5 to x-axis <-52.906593> now;
+		sleep 72;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-26.934066> now;
+		turn torso to y-axis <-30.521978> now;
+		turn torso to z-axis <5.027473> now;
+		turn head to x-axis <-0.835165> now;
+		turn ruparm to x-axis <-92.291209> now;
+		turn ruparm to y-axis <-14.840659> now;
+		turn ruparm to z-axis <7.780220> now;
+		turn luparm to x-axis <-64.758242> now;
+		turn luparm to y-axis <7.659341> now;
+		turn luparm to z-axis <-29.565934> now;
+		turn larm to x-axis <1.912088> now;
+		turn larm to y-axis <-18.313187> now;
+		turn larm to z-axis <54.582418> now;
+		turn lhand to x-axis <-3.587912> now;
+		turn lhand to z-axis <-14.362637> now;
+		turn rarm to x-axis <-57.098901> now;
+		turn rarm to y-axis <14.719780> now;
+		turn rhand to x-axis <-5.263736> now;
+		turn rhand to z-axis <5.027473> now;
+		turn hair1 to x-axis <-29.087912> now;
+		turn hair2L to x-axis <-61.291209> now;
+		turn hair2R to x-axis <-60.208791> now;
+		turn hair3 to x-axis <-73.978022> now;
+		turn hair4L to x-axis <-50.516484> now;
+		turn hair4R to x-axis <-46.802198> now;
+		turn hair5 to x-axis <-53.027473> now;
+		sleep 73;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-27.769231> now;
+		turn torso to y-axis <-40.697802> now;
+		turn torso to z-axis <6.703297> now;
+		turn head to x-axis <0.478022> now;
+		turn ruparm to x-axis <-87.626374> now;
+		turn ruparm to y-axis <0.000000> now;
+		turn ruparm to z-axis <22.505495> now;
+		turn luparm to x-axis <-49.796703> now;
+		turn luparm to y-axis <0.000000> now;
+		turn luparm to z-axis <-48.362637> now;
+		turn larm to x-axis <0.478022> now;
+		turn larm to y-axis <0.000000> now;
+		turn larm to z-axis <72.780220> now;
+		turn lhand to x-axis <0.000000> now;
+		turn lhand to z-axis <0.000000> now;
+		turn rarm to x-axis <-71.824176> now;
+		turn rarm to y-axis <0.000000> now;
+		turn rhand to x-axis <0.000000> now;
+		turn rhand to z-axis <0.000000> now;
+		turn hair1 to x-axis <-27.769231> now;
+		turn hair2L to x-axis <-61.769231> now;
+		turn hair2R to x-axis <-61.769231> now;
+		turn hair3 to x-axis <-74.219780> now;
+		turn hair4L to x-axis <-45.489011> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-53.148352> now;
+		sleep 95;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-32.560440> now;
+		turn torso to y-axis <-46.923077> now;
+		turn ruparm to x-axis <-128.565934> now;
+		turn luparm to z-axis <-35.434066> now;
+		turn rarm to x-axis <-75.175824> now;
+		sleep 95;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-37.346154> now;
+		turn torso to y-axis <-53.148352> now;
+		turn ruparm to x-axis <-169.505495> now;
+		turn luparm to z-axis <-22.505495> now;
+		turn rarm to x-axis <-78.527473> now;
+		sleep 52;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-22.983516> now;
+		turn torso to y-axis <-34.351648> now;
+		turn torso to z-axis <2.631868> now;
+		turn head to x-axis <9.456044> now;
+		turn ruparm to x-axis <-155.620879> now;
+		turn luparm to x-axis <-34.472527> now;
+		turn luparm to z-axis <-16.879121> now;
+		turn larm to x-axis <-11.967033> now;
+		turn larm to z-axis <53.989011> now;
+		turn rarm to x-axis <-58.296703> now;
+		turn rarm to z-axis <0.593407> now;
+		turn hair1 to x-axis <-23.098901> now;
+		turn hair2L to x-axis <-51.115385> now;
+		turn hair2R to x-axis <-47.879121> now;
+		turn hair3 to x-axis <-68.708791> now;
+		turn hair4L to x-axis <-42.615385> now;
+		turn hair4R to x-axis <-42.137363> now;
+		turn hair5 to x-axis <-49.439560> now;
+		sleep 53;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-8.615385> now;
+		turn torso to y-axis <-15.560440> now;
+		turn torso to z-axis <-1.434066> now;
+		turn head to x-axis <18.434066> now;
+		turn ruparm to x-axis <-141.736264> now;
+		turn luparm to x-axis <-19.148352> now;
+		turn luparm to z-axis <-11.252747> now;
+		turn larm to x-axis <-24.417582> now;
+		turn larm to z-axis <35.192308> now;
+		turn rarm to x-axis <-38.065934> now;
+		turn rarm to z-axis <1.192308> now;
+		turn hair1 to x-axis <-18.434066> now;
+		turn hair2L to x-axis <-40.461538> now;
+		turn hair2R to x-axis <-33.994505> now;
+		turn hair3 to x-axis <-63.203297> now;
+		turn hair4L to x-axis <-39.741758> now;
+		turn hair4R to x-axis <-39.263736> now;
+		turn hair5 to x-axis <-45.725275> now;
+		sleep 52;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <5.741758> now;
+		turn torso to y-axis <3.230769> now;
+		turn torso to z-axis <-5.505495> now;
+		turn head to x-axis <27.412088> now;
+		turn ruparm to x-axis <-127.846154> now;
+		turn luparm to x-axis <-3.829670> now;
+		turn luparm to z-axis <-5.626374> now;
+		turn larm to x-axis <-36.868132> now;
+		turn larm to z-axis <16.395604> now;
+		turn rarm to x-axis <-17.835165> now;
+		turn rarm to z-axis <1.791209> now;
+		turn hair1 to x-axis <-13.763736> now;
+		turn hair2L to x-axis <-29.807692> now;
+		turn hair2R to x-axis <-20.109890> now;
+		turn hair3 to x-axis <-57.697802> now;
+		turn hair4L to x-axis <-36.868132> now;
+		turn hair4R to x-axis <-36.390110> now;
+		turn hair5 to x-axis <-42.016484> now;
+		sleep 53;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <20.109890> now;
+		turn torso to y-axis <22.021978> now;
+		turn torso to z-axis <-9.571429> now;
+		turn head to x-axis <36.390110> now;
+		turn ruparm to x-axis <-113.961538> now;
+		turn ruparm to z-axis <22.505495> now;
+		turn luparm to x-axis <11.489011> now;
+		turn luparm to z-axis <0.000000> now;
+		turn larm to x-axis <-49.318681> now;
+		turn larm to z-axis <-2.390110> now;
+		turn rarm to x-axis <2.390110> now;
+		turn rarm to z-axis <2.390110> now;
+		turn hair1 to x-axis <-9.093407> now;
+		turn hair2L to x-axis <-19.148352> now;
+		turn hair2R to x-axis <-6.219780> now;
+		turn hair3 to x-axis <-52.192308> now;
+		turn hair4L to x-axis <-33.994505> now;
+		turn hair4R to x-axis <-33.516484> now;
+		turn hair5 to x-axis <-38.302198> now;
+		if( !kill_attack )
+		{
+			set WEAPON_LAUNCH_NOW to weapon;
+			play-sound( "LIGHTNG2", PLAYSOUND_PRIORITY_BATTLE );
+		}
+		sleep 55;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <32.560440> now;
+		turn torso to y-axis <11.010989> now;
+		turn torso to z-axis <-4.785714> now;
+		turn head to x-axis <33.758242> now;
+		turn ruparm to x-axis <-68.708791> now;
+		turn ruparm to z-axis <11.252747> now;
+		turn luparm to x-axis <5.741758> now;
+		turn larm to x-axis <-24.659341> now;
+		turn larm to z-axis <-1.192308> now;
+		turn rarm to x-axis <-42.373626> now;
+		turn rarm to z-axis <1.192308> now;
+		turn rhand to x-axis <-14.604396> now;
+		turn hair1 to x-axis <20.109890> now;
+		turn hair2L to x-axis <5.263736> now;
+		turn hair2R to x-axis <17.956044> now;
+		turn hair3 to x-axis <-17.714286> now;
+		turn hair4L to x-axis <-27.291209> now;
+		turn hair4R to x-axis <-27.291209> now;
+		turn hair5 to x-axis <-26.813187> now;
+		sleep 55;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <45.010989> now;
+		turn torso to y-axis <0.000000> now;
+		turn torso to z-axis <0.000000> now;
+		turn head to x-axis <31.120879> now;
+		turn ruparm to x-axis <-23.461538> now;
+		turn ruparm to z-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn larm to x-axis <0.000000> now;
+		turn larm to z-axis <0.000000> now;
+		turn rarm to x-axis <-87.148352> now;
+		turn rarm to z-axis <0.000000> now;
+		turn rhand to x-axis <-29.208791> now;
+		turn hair1 to x-axis <49.318681> now;
+		turn hair2L to x-axis <29.686813> now;
+		turn hair2R to x-axis <42.137363> now;
+		turn hair3 to x-axis <16.758242> now;
+		turn hair4L to x-axis <-20.587912> now;
+		turn hair4R to x-axis <-21.065934> now;
+		turn hair5 to x-axis <-15.318681> now;
+		sleep 55;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn head to x-axis <13.406593> now;
+		turn ruparm to x-axis <-6.939560> now;
+		turn ruparm to z-axis <6.461538> now;
+		turn luparm to x-axis <8.615385> now;
+		turn luparm to z-axis <-7.417582> now;
+		turn larm to x-axis <-7.417582> now;
+		turn lhand to x-axis <12.928571> now;
+		turn rarm to x-axis <-43.093407> now;
+		turn rhand to x-axis <-2.153846> now;
+		turn hair1 to x-axis <66.554945> now;
+		turn hair2L to x-axis <52.906593> now;
+		turn hair2R to x-axis <54.824176> now;
+		turn hair3 to x-axis <42.137363> now;
+		turn hair4L to x-axis <-0.236264> now;
+		turn hair4R to x-axis <5.263736> now;
+		turn hair5 to x-axis <27.291209> now;
+		sleep 55;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn head to x-axis <-4.307692> now;
+		turn ruparm to x-axis <9.571429> now;
+		turn ruparm to z-axis <12.928571> now;
+		turn luparm to x-axis <17.236264> now;
+		turn luparm to z-axis <-14.840659> now;
+		turn larm to x-axis <-14.840659> now;
+		turn lhand to x-axis <25.857143> now;
+		turn rarm to x-axis <0.956044> now;
+		turn rhand to x-axis <24.895604> now;
+		turn hair1 to x-axis <83.796703> now;
+		turn hair2L to x-axis <76.131868> now;
+		turn hair2R to x-axis <67.516484> now;
+		turn hair3 to x-axis <67.516484> now;
+		turn hair4L to x-axis <20.109890> now;
+		turn hair4R to x-axis <31.598901> now;
+		turn hair5 to x-axis <69.906593> now;
+		sleep 85;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <39.263736> now;
+		turn head to x-axis <-19.631868> now;
+		turn ruparm to x-axis <15.796703> now;
+		turn ruparm to z-axis <10.769231> now;
+		turn luparm to x-axis <17.472527> now;
+		turn luparm to z-axis <-9.813187> now;
+		turn larm to x-axis <-31.598901> now;
+		turn lhand to x-axis <12.928571> now;
+		turn rarm to x-axis <-24.659341> now;
+		turn rhand to x-axis <12.445055> now;
+		turn hair1 to x-axis <64.401099> now;
+		turn hair2L to x-axis <54.824176> now;
+		turn hair3 to x-axis <47.164835> now;
+		turn hair4L to x-axis <-0.714286> now;
+		turn hair5 to x-axis <50.994505> now;
+		sleep 85;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <33.516484> now;
+		turn head to x-axis <-34.950549> now;
+		turn ruparm to x-axis <22.021978> now;
+		turn ruparm to z-axis <8.615385> now;
+		turn luparm to x-axis <17.714286> now;
+		turn luparm to z-axis <-4.785714> now;
+		turn larm to x-axis <-48.362637> now;
+		turn lhand to x-axis <0.000000> now;
+		turn rarm to x-axis <-50.274725> now;
+		turn rhand to x-axis <0.000000> now;
+		turn hair1 to x-axis <45.010989> now;
+		turn hair2L to x-axis <33.516484> now;
+		turn hair3 to x-axis <26.813187> now;
+		turn hair4L to x-axis <-21.543956> now;
+		turn hair5 to x-axis <32.076923> now;
+		sleep 85;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <16.758242> now;
+		turn head to x-axis <-17.472527> now;
+		turn ruparm to x-axis <11.010989> now;
+		turn ruparm to z-axis <4.307692> now;
+		turn luparm to x-axis <8.857143> now;
+		turn luparm to z-axis <-2.390110> now;
+		turn larm to x-axis <-24.181319> now;
+		turn rarm to x-axis <-25.137363> now;
+		turn hair1 to x-axis <22.505495> now;
+		turn hair2L to x-axis <16.758242> now;
+		turn hair2R to x-axis <33.758242> now;
+		turn hair3 to x-axis <13.406593> now;
+		turn hair4L to x-axis <-10.769231> now;
+		turn hair4R to x-axis <15.796703> now;
+		turn hair5 to x-axis <16.038462> now;
+		sleep 85;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <0.000000> now;
+		turn head to x-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn ruparm to z-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn luparm to z-axis <0.000000> now;
+		turn larm to x-axis <0.000000> now;
+		turn rarm to x-axis <0.000000> now;
+		turn hair1 to x-axis <0.000000> now;
+		turn hair2L to x-axis <0.000000> now;
+		turn hair2R to x-axis <0.000000> now;
+		turn hair3 to x-axis <0.000000> now;
+		turn hair4L to x-axis <0.000000> now;
+		turn hair4R to x-axis <0.000000> now;
+		turn hair5 to x-axis <0.000000> now;
+		sleep 10;
+	}
+	return;
+}
+
+attack3(weapon)
+{
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <3.115385> now;
+		turn torso to z-axis <0.225275> now;
+		turn head to x-axis <0.456044> now;
+		turn head to z-axis <-0.456044> now;
+		turn ruparm to x-axis <-9.043956> now;
+		turn ruparm to y-axis <-0.071429> now;
+		turn ruparm to z-axis <2.428571> now;
+		turn luparm to x-axis <-0.302198> now;
+		turn luparm to y-axis <6.153846> now;
+		turn luparm to z-axis <-1.060440> now;
+		turn larm to x-axis <-15.357143> now;
+		turn larm to z-axis <3.494505> now;
+		turn lhand to z-axis <0.835165> now;
+		turn rarm to x-axis <-10.945055> now;
+		turn rarm to z-axis <-1.439560> now;
+		turn rhand to z-axis <3.038462> now;
+		turn hair1 to x-axis <-12.164835> now;
+		turn hair2L to x-axis <-20.071429> now;
+		turn hair2R to x-axis <-15.505495> now;
+		turn hair3 to x-axis <-34.060440> now;
+		turn hair4L to x-axis <-28.587912> now;
+		turn hair4R to x-axis <-24.252747> now;
+		turn hair5 to x-axis <-21.285714> now;
+		sleep 75;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <6.230769> now;
+		turn torso to z-axis <0.456044> now;
+		turn head to x-axis <0.912088> now;
+		turn head to z-axis <-0.912088> now;
+		turn ruparm to x-axis <-18.093407> now;
+		turn ruparm to y-axis <-0.148352> now;
+		turn ruparm to z-axis <4.862637> now;
+		turn luparm to x-axis <-0.604396> now;
+		turn luparm to y-axis <12.313187> now;
+		turn luparm to z-axis <-2.126374> now;
+		turn larm to x-axis <-30.714286> now;
+		turn larm to z-axis <6.994505> now;
+		turn lhand to z-axis <1.670330> now;
+		turn rarm to x-axis <-21.895604> now;
+		turn rarm to z-axis <-2.884615> now;
+		turn rhand to z-axis <6.082418> now;
+		turn hair1 to x-axis <-24.329670> now;
+		turn hair2L to x-axis <-40.142857> now;
+		turn hair2R to x-axis <-31.016484> now;
+		turn hair3 to x-axis <-68.120879> now;
+		turn hair4L to x-axis <-57.175824> now;
+		turn hair4R to x-axis <-48.505495> now;
+		turn hair5 to x-axis <-42.576923> now;
+		play-sound( "SUMMON2", PLAYSOUND_PRIORITY_BATTLE );
+		sleep 92;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <8.208791> now;
+		turn torso to z-axis <0.912088> now;
+		turn head to x-axis <1.824176> now;
+		turn head to z-axis <-1.824176> now;
+		turn ruparm to x-axis <-38.010989> now;
+		turn ruparm to y-axis <-0.302198> now;
+		turn ruparm to z-axis <9.730769> now;
+		turn luparm to x-axis <-8.510989> now;
+		turn luparm to y-axis <24.631868> now;
+		turn luparm to z-axis <-4.252747> now;
+		turn larm to x-axis <-35.884615> now;
+		turn larm to z-axis <13.989011> now;
+		turn lhand to z-axis <3.340659> now;
+		turn rarm to z-axis <-5.774725> now;
+		turn rhand to z-axis <12.164835> now;
+		turn hair3 to x-axis <-68.120879> now;
+		turn hair4R to x-axis <-47.747253> now;
+		sleep 92;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <10.186813> now;
+		turn torso to z-axis <1.368132> now;
+		turn head to x-axis <2.736264> now;
+		turn head to z-axis <-2.736264> now;
+		turn ruparm to x-axis <-57.934066> now;
+		turn ruparm to y-axis <-0.456044> now;
+		turn ruparm to z-axis <14.593407> now;
+		turn luparm to x-axis <-16.417582> now;
+		turn luparm to y-axis <36.950549> now;
+		turn luparm to z-axis <-6.384615> now;
+		turn larm to x-axis <-41.054945> now;
+		turn larm to z-axis <20.983516> now;
+		turn lhand to z-axis <5.016484> now;
+		turn rarm to z-axis <-8.664835> now;
+		turn rhand to z-axis <18.247253> now;
+		turn hair4R to x-axis <-46.983516> now;
+		sleep 93;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <12.164835> now;
+		turn torso to z-axis <1.824176> now;
+		turn head to x-axis <3.648352> now;
+		turn head to z-axis <-3.648352> now;
+		turn ruparm to x-axis <-77.851648> now;
+		turn ruparm to y-axis <-0.604396> now;
+		turn ruparm to z-axis <19.461538> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to y-axis <49.263736> now;
+		turn luparm to z-axis <-8.510989> now;
+		turn larm to x-axis <-46.225275> now;
+		turn larm to z-axis <27.978022> now;
+		turn lhand to z-axis <6.686813> now;
+		turn rarm to z-axis <-11.554945> now;
+		turn rhand to z-axis <24.329670> now;
+		turn hair3 to x-axis <-68.120879> now;
+		turn hair4R to x-axis <-46.225275> now;
+		sleep 94;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <4.560440> now;
+		turn head to x-axis <6.686813> now;
+		turn head to z-axis <-5.774725> now;
+		turn ruparm to z-axis <9.730769> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn luparm to z-axis <-9.730769> now;
+		turn larm to x-axis <-50.785714> now;
+		turn larm to z-axis <29.500000> now;
+		turn lhand to z-axis <12.769231> now;
+		turn rhand to z-axis <2.126374> now;
+		turn hair3 to x-axis <-68.428571> now;
+		turn hair4R to x-axis <-47.747253> now;
+		sleep 93;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <7.296703> now;
+		turn head to x-axis <9.730769> now;
+		turn head to z-axis <-7.906593> now;
+		turn ruparm to z-axis <0.000000> now;
+		turn luparm to x-axis <-24.934066> now;
+		turn luparm to z-axis <-10.945055> now;
+		turn larm to x-axis <-55.346154> now;
+		turn larm to z-axis <31.016484> now;
+		turn lhand to z-axis <18.851648> now;
+		turn rhand to z-axis <-20.071429> now;
+		turn hair3 to x-axis <-68.730769> now;
+		turn hair4R to x-axis <-49.263736> now;
+		sleep 114;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <7.906593> now;
+		turn head to x-axis <0.000000> now;
+		turn head to z-axis <-7.906593> now;
+		turn ruparm to z-axis <-10.335165> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to z-axis <-8.510989> now;
+		turn larm to x-axis <-56.565934> now;
+		turn larm to z-axis <31.626374> now;
+		turn lhand to z-axis <32.236264> now;
+		turn rarm to z-axis <-11.554945> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-68.120879> now;
+		turn hair4R to x-axis <-49.873626> now;
+		sleep 82;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-0.302198> now;
+		turn head to z-axis <1.824176> now;
+		turn ruparm to z-axis <2.736264> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn larm to x-axis <-43.181319> now;
+		turn larm to z-axis <29.802198> now;
+		turn lhand to z-axis <27.065934> now;
+		turn rarm to x-axis <-20.983516> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-67.516484> now;
+		turn hair4R to x-axis <-48.961538> now;
+		sleep 83;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-8.510989> now;
+		turn head to z-axis <11.554945> now;
+		turn ruparm to z-axis <15.813187> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn larm to x-axis <-29.802198> now;
+		turn larm to z-axis <27.978022> now;
+		turn lhand to z-axis <21.895604> now;
+		turn rarm to x-axis <-20.071429> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-66.906593> now;
+		turn hair4R to x-axis <-48.049451> now;
+		sleep 112;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-12.769231> now;
+		turn head to z-axis <20.983516> now;
+		turn ruparm to z-axis <24.934066> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn larm to x-axis <-22.505495> now;
+		turn larm to z-axis <27.978022> now;
+		turn lhand to z-axis <15.813187> now;
+		turn rarm to x-axis <-20.983516> now;
+		turn rarm to z-axis <-6.384615> now;
+		turn rhand to z-axis <-2.428571> now;
+		turn hair3 to x-axis <-68.428571> now;
+		turn hair4R to x-axis <-49.263736> now;
+		sleep 113;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-17.027473> now;
+		turn head to z-axis <30.412088> now;
+		turn ruparm to z-axis <34.060440> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn larm to x-axis <-15.203297> now;
+		turn larm to z-axis <27.978022> now;
+		turn lhand to z-axis <9.730769> now;
+		turn rarm to x-axis <-21.895604> now;
+		turn rarm to z-axis <-1.214286> now;
+		turn rhand to z-axis <34.060440> now;
+		turn hair3 to x-axis <-69.945055> now;
+		turn hair4R to x-axis <-50.483516> now;
+		sleep 116;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-7.598901> now;
+		turn head to x-axis <1.824176> now;
+		turn head to z-axis <13.379121> now;
+		turn ruparm to z-axis <24.934066> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn larm to x-axis <-30.104396> now;
+		turn larm to z-axis <27.670330> now;
+		turn lhand to x-axis <-5.472527> now;
+		turn lhand to z-axis <14.593407> now;
+		turn rarm to z-axis <-6.384615> now;
+		turn rhand to z-axis <29.192308> now;
+		turn hair3 to x-axis <-68.428571> now;
+		turn hair4R to x-axis <-48.049451> now;
+		sleep 116;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <1.824176> now;
+		turn head to x-axis <3.648352> now;
+		turn head to z-axis <-3.648352> now;
+		turn ruparm to z-axis <15.813187> now;
+		turn luparm to x-axis <-24.934066> now;
+		turn larm to x-axis <-45.010989> now;
+		turn larm to z-axis <27.368132> now;
+		turn lhand to x-axis <-10.945055> now;
+		turn lhand to z-axis <19.461538> now;
+		turn rarm to z-axis <-11.554945> now;
+		turn rhand to z-axis <24.329670> now;
+		turn hair3 to x-axis <-66.906593> now;
+		turn hair4R to x-axis <-45.615385> now;
+		sleep 88;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <6.994505> now;
+		turn head to x-axis <6.686813> now;
+		turn head to z-axis <-9.730769> now;
+		turn ruparm to z-axis <6.384615> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn luparm to z-axis <-9.730769> now;
+		turn larm to x-axis <-52.307692> now;
+		turn larm to z-axis <27.368132> now;
+		turn lhand to x-axis <-19.461538> now;
+		turn lhand to z-axis <25.543956> now;
+		turn rhand to z-axis <2.126374> now;
+		turn hair3 to x-axis <-69.642857> now;
+		turn hair4L to x-axis <-59.000000> now;
+		turn hair4R to x-axis <-48.049451> now;
+		turn hair5 to x-axis <-46.527473> now;
+		sleep 85;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <12.164835> now;
+		turn head to x-axis <9.730769> now;
+		turn head to z-axis <-15.813187> now;
+		turn ruparm to z-axis <-3.038462> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to z-axis <-10.945055> now;
+		turn larm to x-axis <-59.604396> now;
+		turn larm to z-axis <27.368132> now;
+		turn lhand to x-axis <-27.978022> now;
+		turn lhand to z-axis <31.626374> now;
+		turn rhand to z-axis <-20.071429> now;
+		turn hair3 to x-axis <-72.379121> now;
+		turn hair4L to x-axis <-60.824176> now;
+		turn hair4R to x-axis <-50.483516> now;
+		turn hair5 to x-axis <-50.483516> now;
+		sleep 151;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <7.906593> now;
+		turn head to x-axis <0.000000> now;
+		turn head to z-axis <-7.906593> now;
+		turn ruparm to z-axis <-17.637363> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn larm to x-axis <-54.131868> now;
+		turn larm to z-axis <27.368132> now;
+		turn lhand to x-axis <-6.082418> now;
+		turn lhand to z-axis <32.236264> now;
+		turn rarm to z-axis <-11.554945> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-70.554945> now;
+		turn hair4L to x-axis <-57.175824> now;
+		turn hair4R to x-axis <-43.791209> now;
+		turn hair5 to x-axis <-42.576923> now;
+		sleep 75;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-2.126374> now;
+		turn head to z-axis <3.950549> now;
+		turn ruparm to z-axis <8.208791> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn luparm to z-axis <-9.730769> now;
+		turn larm to x-axis <-34.060440> now;
+		turn larm to z-axis <24.934066> now;
+		turn lhand to x-axis <-8.208791> now;
+		turn lhand to z-axis <24.329670> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-69.340659> now;
+		turn hair4L to x-axis <-51.395604> now;
+		turn hair4R to x-axis <-45.010989> now;
+		turn hair5 to x-axis <-41.357143> now;
+		sleep 75;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-12.164835> now;
+		turn head to z-axis <15.813187> now;
+		turn ruparm to z-axis <34.060440> now;
+		turn luparm to x-axis <-24.934066> now;
+		turn luparm to z-axis <-8.510989> now;
+		turn larm to x-axis <-13.989011> now;
+		turn larm to z-axis <22.505495> now;
+		turn lhand to x-axis <-10.335165> now;
+		turn lhand to z-axis <16.417582> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-68.120879> now;
+		turn hair4L to x-axis <-45.615385> now;
+		turn hair4R to x-axis <-46.225275> now;
+		turn hair5 to x-axis <-40.142857> now;
+		sleep 98;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-18.247253> now;
+		turn head to z-axis <21.895604> now;
+		turn ruparm to z-axis <46.835165> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn larm to x-axis <-19.763736> now;
+		turn larm to z-axis <25.846154> now;
+		turn lhand to x-axis <-10.642857> now;
+		turn lhand to z-axis <3.340659> now;
+		turn rarm to z-axis <-6.384615> now;
+		turn rhand to z-axis <-2.428571> now;
+		turn hair3 to x-axis <-68.730769> now;
+		turn hair4L to x-axis <-51.395604> now;
+		turn hair4R to x-axis <-48.961538> now;
+		turn hair5 to x-axis <-41.357143> now;
+		sleep 97;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-24.329670> now;
+		turn head to z-axis <27.978022> now;
+		turn ruparm to z-axis <59.604396> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn larm to x-axis <-25.543956> now;
+		turn larm to z-axis <29.192308> now;
+		turn lhand to x-axis <-10.945055> now;
+		turn lhand to z-axis <-9.730769> now;
+		turn rarm to z-axis <-1.214286> now;
+		turn rhand to z-axis <34.060440> now;
+		turn hair3 to x-axis <-69.340659> now;
+		turn hair4L to x-axis <-57.175824> now;
+		turn hair4R to x-axis <-51.697802> now;
+		turn hair5 to x-axis <-42.576923> now;
+		sleep 105;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-11.252747> now;
+		turn head to x-axis <0.302198> now;
+		turn head to z-axis <13.076923> now;
+		turn ruparm to x-axis <-67.208791> now;
+		turn ruparm to z-axis <37.708791> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to y-axis <28.280220> now;
+		turn luparm to z-axis <-19.461538> now;
+		turn larm to x-axis <-44.401099> now;
+		turn larm to z-axis <14.291209> now;
+		turn lhand to x-axis <-20.373626> now;
+		turn lhand to z-axis <11.252747> now;
+		turn rarm to z-axis <-6.384615> now;
+		turn rhand to z-axis <29.192308> now;
+		turn hair3 to x-axis <-68.120879> now;
+		turn hair4R to x-axis <-50.175824> now;
+		sleep 106;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <1.824176> now;
+		turn head to x-axis <0.604396> now;
+		turn head to z-axis <-1.824176> now;
+		turn ruparm to x-axis <-56.565934> now;
+		turn ruparm to z-axis <15.813187> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to y-axis <7.296703> now;
+		turn luparm to z-axis <-30.412088> now;
+		turn larm to x-axis <-63.258242> now;
+		turn larm to z-axis <-0.604396> now;
+		turn lhand to x-axis <-29.802198> now;
+		turn lhand to z-axis <32.236264> now;
+		turn rarm to z-axis <-11.554945> now;
+		turn rhand to z-axis <24.329670> now;
+		turn hair3 to x-axis <-66.906593> now;
+		turn hair4R to x-axis <-48.659341> now;
+		sleep 83;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <10.335165> now;
+		turn head to x-axis <1.824176> now;
+		turn head to z-axis <-10.335165> now;
+		turn ruparm to x-axis <-60.214286> now;
+		turn ruparm to z-axis <-7.906593> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn luparm to y-axis <0.604396> now;
+		turn luparm to z-axis <-34.060440> now;
+		turn larm to x-axis <-66.906593> now;
+		turn larm to z-axis <-2.126374> now;
+		turn lhand to x-axis <-20.071429> now;
+		turn rhand to z-axis <1.214286> now;
+		turn hair3 to x-axis <-66.598901> now;
+		turn hair4R to x-axis <-48.659341> now;
+		sleep 82;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <18.851648> now;
+		turn head to x-axis <3.038462> now;
+		turn head to z-axis <-18.851648> now;
+		turn ruparm to x-axis <-63.862637> now;
+		turn ruparm to z-axis <-31.626374> now;
+		turn luparm to x-axis <-24.934066> now;
+		turn luparm to y-axis <-6.082418> now;
+		turn luparm to z-axis <-37.708791> now;
+		turn larm to x-axis <-70.554945> now;
+		turn larm to z-axis <-3.648352> now;
+		turn lhand to x-axis <-10.335165> now;
+		turn rhand to z-axis <-21.895604> now;
+		turn hair3 to x-axis <-66.296703> now;
+		sleep 151;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <7.906593> now;
+		turn head to x-axis <0.000000> now;
+		turn head to z-axis <-7.906593> now;
+		turn ruparm to x-axis <-77.851648> now;
+		turn ruparm to z-axis <-17.637363> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to y-axis <49.263736> now;
+		turn luparm to z-axis <-10.945055> now;
+		turn larm to x-axis <-54.131868> now;
+		turn larm to z-axis <32.236264> now;
+		turn lhand to x-axis <-15.813187> now;
+		turn lhand to z-axis <20.675824> now;
+		turn rarm to z-axis <-11.554945> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair4R to x-axis <-49.263736> now;
+		sleep 74;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-4.252747> now;
+		turn head to z-axis <3.950549> now;
+		turn ruparm to x-axis <-69.340659> now;
+		turn ruparm to z-axis <4.560440> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn luparm to z-axis <-9.730769> now;
+		turn larm to x-axis <-45.010989> now;
+		turn larm to z-axis <33.148352> now;
+		turn lhand to x-axis <-7.906593> now;
+		turn lhand to z-axis <4.862637> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-67.208791> now;
+		turn hair4R to x-axis <-50.483516> now;
+		sleep 75;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-16.417582> now;
+		turn head to z-axis <15.813187> now;
+		turn ruparm to x-axis <-60.824176> now;
+		turn ruparm to z-axis <26.758242> now;
+		turn luparm to x-axis <-24.934066> now;
+		turn luparm to z-axis <-8.510989> now;
+		turn larm to x-axis <-35.884615> now;
+		turn larm to z-axis <34.060440> now;
+		turn lhand to x-axis <0.000000> now;
+		turn lhand to z-axis <-10.945055> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair3 to x-axis <-68.120879> now;
+		turn hair4R to x-axis <-51.697802> now;
+		sleep 83;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-24.329670> now;
+		turn head to z-axis <21.895604> now;
+		turn ruparm to x-axis <-66.296703> now;
+		turn ruparm to z-axis <61.428571> now;
+		turn luparm to x-axis <-24.631868> now;
+		turn larm to x-axis <-27.368132> now;
+		turn larm to z-axis <29.802198> now;
+		turn lhand to z-axis <-16.115385> now;
+		turn rarm to x-axis <-16.115385> now;
+		turn rarm to z-axis <-6.384615> now;
+		turn rhand to z-axis <-2.428571> now;
+		turn hair1 to x-axis <-26.758242> now;
+		turn hair2R to x-axis <-36.186813> now;
+		turn hair3 to x-axis <-69.340659> now;
+		turn hair4R to x-axis <-52.917582> now;
+		turn hair5 to x-axis <-45.923077> now;
+		sleep 82;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-32.236264> now;
+		turn head to z-axis <27.978022> now;
+		turn ruparm to x-axis <-71.769231> now;
+		turn ruparm to z-axis <96.104396> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn larm to x-axis <-18.851648> now;
+		turn larm to z-axis <25.543956> now;
+		turn lhand to z-axis <-21.285714> now;
+		turn rarm to x-axis <-10.335165> now;
+		turn rarm to z-axis <-1.214286> now;
+		turn rhand to z-axis <34.060440> now;
+		turn hair1 to x-axis <-29.192308> now;
+		turn hair2R to x-axis <-41.357143> now;
+		turn hair3 to x-axis <-70.554945> now;
+		turn hair4R to x-axis <-54.131868> now;
+		turn hair5 to x-axis <-49.263736> now;
+		sleep 107;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-16.417582> now;
+		turn head to x-axis <10.032967> now;
+		turn head to z-axis <13.681319> now;
+		turn ruparm to x-axis <-83.934066> now;
+		turn ruparm to z-axis <52.609890> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to y-axis <24.934066> now;
+		turn luparm to z-axis <-20.373626> now;
+		turn larm to x-axis <-34.362637> now;
+		turn larm to z-axis <6.384615> now;
+		turn lhand to z-axis <7.598901> now;
+		turn rarm to x-axis <-16.115385> now;
+		turn rarm to z-axis <-8.818681> now;
+		turn rhand to z-axis <-2.428571> now;
+		turn hair1 to x-axis <-36.494505> now;
+		turn hair2L to x-axis <-48.659341> now;
+		turn hair2R to x-axis <-55.956044> now;
+		turn hair3 to x-axis <-73.291209> now;
+		turn hair4L to x-axis <-58.087912> now;
+		turn hair4R to x-axis <-62.950549> now;
+		turn hair5 to x-axis <-56.263736> now;
+		sleep 104;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to z-axis <-0.604396> now;
+		turn head to x-axis <20.071429> now;
+		turn head to z-axis <-0.604396> now;
+		turn ruparm to x-axis <-96.104396> now;
+		turn ruparm to z-axis <9.120879> now;
+		turn luparm to x-axis <-24.329670> now;
+		turn luparm to y-axis <0.604396> now;
+		turn luparm to z-axis <-32.236264> now;
+		turn larm to x-axis <-49.873626> now;
+		turn larm to z-axis <-12.769231> now;
+		turn lhand to z-axis <36.494505> now;
+		turn rarm to x-axis <-21.895604> now;
+		turn rarm to z-axis <-16.417582> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair1 to x-axis <-43.791209> now;
+		turn hair2L to x-axis <-57.175824> now;
+		turn hair2R to x-axis <-70.554945> now;
+		turn hair3 to x-axis <-76.027473> now;
+		turn hair4L to x-axis <-59.000000> now;
+		turn hair4R to x-axis <-71.769231> now;
+		turn hair5 to x-axis <-63.258242> now;
+		sleep 71;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <19.159341> now;
+		turn torso to z-axis <-4.252747> now;
+		turn head to x-axis <19.159341> now;
+		turn head to z-axis <3.340659> now;
+		turn ruparm to x-axis <-78.159341> now;
+		turn ruparm to z-axis <4.252747> now;
+		turn luparm to x-axis <-38.318681> now;
+		turn luparm to y-axis <12.164835> now;
+		turn luparm to z-axis <-5.472527> now;
+		turn larm to x-axis <-37.708791> now;
+		turn larm to z-axis <6.384615> now;
+		turn lhand to z-axis <34.362637> now;
+		turn rarm to z-axis <-20.071429> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair1 to x-axis <-31.928571> now;
+		turn hair2L to x-axis <-60.214286> now;
+		turn hair2R to x-axis <-60.214286> now;
+		turn hair3 to x-axis <-65.082418> now;
+		turn hair4L to x-axis <-41.967033> now;
+		turn hair4R to x-axis <-55.346154> now;
+		turn hair5 to x-axis <-52.609890> now;
+		sleep 72;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <26.153846> now;
+		turn torso to z-axis <-7.906593> now;
+		turn head to x-axis <18.247253> now;
+		turn head to z-axis <7.296703> now;
+		turn ruparm to x-axis <-60.214286> now;
+		turn ruparm to z-axis <-0.604396> now;
+		turn luparm to x-axis <-52.307692> now;
+		turn luparm to y-axis <23.719780> now;
+		turn luparm to z-axis <21.285714> now;
+		turn larm to x-axis <-25.543956> now;
+		turn larm to z-axis <25.543956> now;
+		turn lhand to z-axis <32.236264> now;
+		turn rarm to z-axis <-23.719780> now;
+		turn rhand to z-axis <-38.923077> now;
+		turn hair1 to x-axis <-20.071429> now;
+		turn hair2L to x-axis <-63.258242> now;
+		turn hair2R to x-axis <-49.873626> now;
+		turn hair3 to x-axis <-54.131868> now;
+		turn hair4L to x-axis <-24.934066> now;
+		turn hair4R to x-axis <-38.923077> now;
+		turn hair5 to x-axis <-41.967033> now;
+		if( !kill_attack )
+		{
+			set WEAPON_LAUNCH_NOW to weapon;
+			play-sound( "LIGHTNG1", PLAYSOUND_PRIORITY_BATTLE );
+		}
+		sleep 105;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <3.648352> now;
+		turn torso to z-axis <-0.604396> now;
+		turn head to x-axis <30.412088> now;
+		turn head to z-axis <0.000000> now;
+		turn ruparm to x-axis <-63.258242> now;
+		turn ruparm to y-axis <-38.923077> now;
+		turn ruparm to z-axis <-20.071429> now;
+		turn luparm to x-axis <-63.258242> now;
+		turn luparm to y-axis <0.000000> now;
+		turn luparm to z-axis <-5.472527> now;
+		turn larm to x-axis <-4.252747> now;
+		turn larm to z-axis <45.010989> now;
+		turn lhand to x-axis <-3.648352> now;
+		turn lhand to z-axis <38.923077> now;
+		turn rarm to x-axis <19.461538> now;
+		turn rarm to z-axis <-53.521978> now;
+		turn rhand to z-axis <-32.236264> now;
+		turn hair1 to x-axis <-9.120879> now;
+		turn hair2L to x-axis <-61.428571> now;
+		turn hair2R to x-axis <-61.428571> now;
+		turn hair3 to x-axis <-31.016484> now;
+		turn hair4L to x-axis <-6.082418> now;
+		turn hair4R to x-axis <-31.016484> now;
+		turn hair5 to x-axis <-42.576923> now;
+		sleep 136;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-15.203297> now;
+		turn head to x-axis <-23.109890> now;
+		turn ruparm to x-axis <-149.626374> now;
+		turn ruparm to y-axis <0.000000> now;
+		turn ruparm to z-axis <9.730769> now;
+		turn luparm to x-axis <-156.318681> now;
+		turn luparm to z-axis <-17.637363> now;
+		turn larm to x-axis <6.082418> now;
+		turn larm to z-axis <58.390110> now;
+		turn lhand to z-axis <24.329670> now;
+		turn rarm to x-axis <-12.164835> now;
+		turn rarm to z-axis <-47.439560> now;
+		turn rhand to z-axis <-23.719780> now;
+		turn hair1 to x-axis <-15.813187> now;
+		turn hair2L to x-axis <-22.505495> now;
+		turn hair2R to x-axis <-38.923077> now;
+		turn hair3 to x-axis <-46.835165> now;
+		turn hair4L to x-axis <-35.884615> now;
+		turn hair4R to x-axis <-9.730769> now;
+		turn hair5 to x-axis <-34.060440> now;
+		sleep 127;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn ruparm to x-axis <-135.032967> now;
+		turn ruparm to z-axis <41.357143> now;
+		turn luparm to x-axis <-135.032967> now;
+		turn luparm to z-axis <-41.967033> now;
+		turn larm to x-axis <-12.164835> now;
+		turn larm to z-axis <-9.120879> now;
+		turn lhand to z-axis <-13.379121> now;
+		turn rarm to z-axis <9.120879> now;
+		turn rhand to z-axis <27.978022> now;
+		turn hair1 to x-axis <-24.329670> now;
+		turn hair2L to x-axis <-40.142857> now;
+		turn hair2R to x-axis <-31.016484> now;
+		turn hair3 to x-axis <-61.428571> now;
+		turn hair4L to x-axis <-57.175824> now;
+		turn hair4R to x-axis <-46.225275> now;
+		turn hair5 to x-axis <-42.576923> now;
+		sleep 105;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-8.510989> now;
+		turn torso to z-axis <-0.302198> now;
+		turn head to x-axis <-11.554945> now;
+		turn ruparm to x-axis <-74.813187> now;
+		turn ruparm to z-axis <21.895604> now;
+		turn luparm to x-axis <-74.813187> now;
+		turn luparm to z-axis <-24.021978> now;
+		turn larm to x-axis <-18.851648> now;
+		turn larm to z-axis <14.901099> now;
+		turn lhand to x-axis <-1.824176> now;
+		turn lhand to z-axis <1.824176> now;
+		turn rarm to x-axis <-17.027473> now;
+		turn rarm to z-axis <-13.076923> now;
+		turn rhand to z-axis <4.252747> now;
+		turn hair1 to x-axis <-31.928571> now;
+		turn hair2L to x-axis <-45.010989> now;
+		turn hair2R to x-axis <-39.840659> now;
+		turn hair3 to x-axis <-66.598901> now;
+		turn hair4L to x-axis <-59.000000> now;
+		turn hair4R to x-axis <-52.609890> now;
+		turn hair5 to x-axis <-44.703297> now;
+		sleep 106;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <-1.824176> now;
+		turn torso to z-axis <0.000000> now;
+		turn head to x-axis <0.000000> now;
+		turn ruparm to x-axis <-14.593407> now;
+		turn ruparm to z-axis <2.428571> now;
+		turn luparm to x-axis <-14.593407> now;
+		turn luparm to z-axis <-6.082418> now;
+		turn larm to x-axis <-25.543956> now;
+		turn larm to z-axis <38.923077> now;
+		turn lhand to x-axis <0.000000> now;
+		turn lhand to z-axis <17.027473> now;
+		turn rarm to x-axis <-21.895604> now;
+		turn rarm to z-axis <-35.274725> now;
+		turn rhand to z-axis <-19.461538> now;
+		turn hair1 to x-axis <-39.532967> now;
+		turn hair2L to x-axis <-49.873626> now;
+		turn hair2R to x-axis <-48.659341> now;
+		turn hair3 to x-axis <-71.769231> now;
+		turn hair4L to x-axis <-60.824176> now;
+		turn hair4R to x-axis <-59.000000> now;
+		turn hair5 to x-axis <-46.835165> now;
+		sleep 64;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <1.214286> now;
+		turn ruparm to x-axis <-6.384615> now;
+		turn ruparm to z-axis <1.214286> now;
+		turn luparm to x-axis <-3.648352> now;
+		turn luparm to z-axis <-3.038462> now;
+		turn larm to z-axis <19.461538> now;
+		turn lhand to z-axis <8.510989> now;
+		turn rarm to z-axis <-17.637363> now;
+		turn rhand to z-axis <-9.730769> now;
+		turn hair1 to x-axis <-31.928571> now;
+		turn hair2L to x-axis <-45.010989> now;
+		turn hair2R to x-axis <-39.840659> now;
+		turn hair3 to x-axis <-69.945055> now;
+		turn hair4L to x-axis <-59.000000> now;
+		turn hair4R to x-axis <-54.131868> now;
+		turn hair5 to x-axis <-44.703297> now;
+		sleep 71;
+	}
+	if( ( !busy_dying ) AND ( !kill_attack ) )
+	{
+		turn torso to x-axis <0.000000> now;
+		turn ruparm to x-axis <0.000000> now;
+		turn ruparm to z-axis <0.000000> now;
+		turn luparm to x-axis <0.000000> now;
+		turn luparm to z-axis <0.000000> now;
+		turn larm to x-axis <0.000000> now;
+		turn larm to z-axis <0.000000> now;
+		turn lhand to z-axis <0.000000> now;
+		turn rarm to x-axis <0.000000> now;
+		turn rarm to z-axis <0.000000> now;
+		turn rhand to z-axis <0.000000> now;
+		turn hair1 to x-axis <0.000000> now;
+		turn hair2L to x-axis <0.000000> now;
+		turn hair2R to x-axis <0.000000> now;
+		turn hair3 to x-axis <0.000000> now;
+		turn hair4L to x-axis <0.000000> now;
+		turn hair4R to x-axis <0.000000> now;
+		turn hair5 to x-axis <0.000000> now;
+		sleep 10;
+	}
+	return;
+}
+
+restore_x()
+{
+	move hip to x-axis [0.000000] speed [500.000000];
+	turn hip to x-axis <0.000000> speed <500.120879>;
+	move hip to y-axis [0.000000] speed [500.000000];
+	turn hip to y-axis <0.000000> speed <500.120879>;
+	move hip to z-axis [0.000000] speed [500.000000];
+	turn hip to z-axis <0.000000> speed <500.120879>;
+	move rleg to x-axis [0.000000] speed [500.000000];
+	turn rleg to x-axis <0.000000> speed <500.120879>;
+	move rleg to y-axis [0.000000] speed [500.000000];
+	turn rleg to y-axis <0.000000> speed <500.120879>;
+	move rleg to z-axis [0.000000] speed [500.000000];
+	turn rleg to z-axis <0.000000> speed <500.120879>;
+	move lleg to x-axis [0.000000] speed [500.000000];
+	turn lleg to x-axis <0.000000> speed <500.120879>;
+	move lleg to y-axis [0.000000] speed [500.000000];
+	turn lleg to y-axis <0.000000> speed <500.120879>;
+	move lleg to z-axis [0.000000] speed [500.000000];
+	turn lleg to z-axis <0.000000> speed <500.120879>;
+	move torso to x-axis [0.000000] speed [500.000000];
+	turn torso to x-axis <0.000000> speed <500.120879>;
+	move torso to y-axis [0.000000] speed [500.000000];
+	turn torso to y-axis <0.000000> speed <500.120879>;
+	move torso to z-axis [0.000000] speed [500.000000];
+	turn torso to z-axis <0.000000> speed <500.120879>;
+	move Cdress1 to x-axis [0.000000] speed [500.000000];
+	turn Cdress1 to x-axis <0.000000> speed <500.120879>;
+	move Cdress1 to y-axis [0.000000] speed [500.000000];
+	turn Cdress1 to y-axis <0.000000> speed <500.120879>;
+	move Cdress1 to z-axis [0.000000] speed [500.000000];
+	turn Cdress1 to z-axis <0.000000> speed <500.120879>;
+	move Cdress2 to x-axis [0.000000] speed [500.000000];
+	turn Cdress2 to x-axis <0.000000> speed <500.120879>;
+	move Cdress2 to y-axis [0.000000] speed [500.000000];
+	turn Cdress2 to y-axis <0.000000> speed <500.120879>;
+	move Cdress2 to z-axis [0.000000] speed [500.000000];
+	turn Cdress2 to z-axis <0.000000> speed <500.120879>;
+	move emitwakeC1 to x-axis [0.000000] speed [500.000000];
+	turn emitwakeC1 to x-axis <0.000000> speed <500.120879>;
+	move emitwakeC1 to y-axis [0.000000] speed [500.000000];
+	turn emitwakeC1 to y-axis <0.000000> speed <500.120879>;
+	move emitwakeC1 to z-axis [0.000000] speed [500.000000];
+	turn emitwakeC1 to z-axis <0.000000> speed <500.120879>;
+	move head to x-axis [0.000000] speed [500.000000];
+	turn head to x-axis <0.000000> speed <500.120879>;
+	move head to y-axis [0.000000] speed [500.000000];
+	turn head to y-axis <0.000000> speed <500.120879>;
+	move head to z-axis [0.000000] speed [500.000000];
+	turn head to z-axis <0.000000> speed <500.120879>;
+	move ruparm to x-axis [0.000000] speed [500.000000];
+	turn ruparm to x-axis <0.000000> speed <500.120879>;
+	move ruparm to y-axis [0.000000] speed [500.000000];
+	turn ruparm to y-axis <0.000000> speed <500.120879>;
+	move ruparm to z-axis [0.000000] speed [500.000000];
+	turn ruparm to z-axis <0.000000> speed <500.120879>;
+	move luparm to x-axis [0.000000] speed [500.000000];
+	turn luparm to x-axis <0.000000> speed <500.120879>;
+	move luparm to y-axis [0.000000] speed [500.000000];
+	turn luparm to y-axis <0.000000> speed <500.120879>;
+	move luparm to z-axis [0.000000] speed [500.000000];
+	turn luparm to z-axis <0.000000> speed <500.120879>;
+	move emitbloodl1 to x-axis [0.000000] speed [500.000000];
+	turn emitbloodl1 to x-axis <0.000000> speed <500.120879>;
+	move emitbloodl1 to y-axis [0.000000] speed [500.000000];
+	turn emitbloodl1 to y-axis <0.000000> speed <500.120879>;
+	move emitbloodl1 to z-axis [0.000000] speed [500.000000];
+	turn emitbloodl1 to z-axis <0.000000> speed <500.120879>;
+	move emitbloodl2 to x-axis [0.000000] speed [500.000000];
+	turn emitbloodl2 to x-axis <0.000000> speed <500.120879>;
+	move emitbloodl2 to y-axis [0.000000] speed [500.000000];
+	turn emitbloodl2 to y-axis <0.000000> speed <500.120879>;
+	move emitbloodl2 to z-axis [0.000000] speed [500.000000];
+	turn emitbloodl2 to z-axis <0.000000> speed <500.120879>;
+	move emitbloodr1 to x-axis [0.000000] speed [500.000000];
+	turn emitbloodr1 to x-axis <0.000000> speed <500.120879>;
+	move emitbloodr1 to y-axis [0.000000] speed [500.000000];
+	turn emitbloodr1 to y-axis <0.000000> speed <500.120879>;
+	move emitbloodr1 to z-axis [0.000000] speed [500.000000];
+	turn emitbloodr1 to z-axis <0.000000> speed <500.120879>;
+	move emitbloodr2 to x-axis [0.000000] speed [500.000000];
+	turn emitbloodr2 to x-axis <0.000000> speed <500.120879>;
+	move emitbloodr2 to y-axis [0.000000] speed [500.000000];
+	turn emitbloodr2 to y-axis <0.000000> speed <500.120879>;
+	move emitbloodr2 to z-axis [0.000000] speed [500.000000];
+	turn emitbloodr2 to z-axis <0.000000> speed <500.120879>;
+	move larm to x-axis [0.000000] speed [500.000000];
+	turn larm to x-axis <0.000000> speed <500.120879>;
+	move larm to y-axis [0.000000] speed [500.000000];
+	turn larm to y-axis <0.000000> speed <500.120879>;
+	move larm to z-axis [0.000000] speed [500.000000];
+	turn larm to z-axis <0.000000> speed <500.120879>;
+	move lhand to x-axis [0.000000] speed [500.000000];
+	turn lhand to x-axis <0.000000> speed <500.120879>;
+	move lhand to y-axis [0.000000] speed [500.000000];
+	turn lhand to y-axis <0.000000> speed <500.120879>;
+	move lhand to z-axis [0.000000] speed [500.000000];
+	turn lhand to z-axis <0.000000> speed <500.120879>;
+	move emitwpn2 to x-axis [0.000000] speed [500.000000];
+	turn emitwpn2 to x-axis <0.000000> speed <500.120879>;
+	move emitwpn2 to y-axis [0.000000] speed [500.000000];
+	turn emitwpn2 to y-axis <0.000000> speed <500.120879>;
+	move emitwpn2 to z-axis [0.000000] speed [500.000000];
+	turn emitwpn2 to z-axis <0.000000> speed <500.120879>;
+	move rarm to x-axis [0.000000] speed [500.000000];
+	turn rarm to x-axis <0.000000> speed <500.120879>;
+	move rarm to y-axis [0.000000] speed [500.000000];
+	turn rarm to y-axis <0.000000> speed <500.120879>;
+	move rarm to z-axis [0.000000] speed [500.000000];
+	turn rarm to z-axis <0.000000> speed <500.120879>;
+	move rhand to x-axis [0.000000] speed [500.000000];
+	turn rhand to x-axis <0.000000> speed <500.120879>;
+	move rhand to y-axis [0.000000] speed [500.000000];
+	turn rhand to y-axis <0.000000> speed <500.120879>;
+	move rhand to z-axis [0.000000] speed [500.000000];
+	turn rhand to z-axis <0.000000> speed <500.120879>;
+	move emitwpn1 to x-axis [0.000000] speed [500.000000];
+	turn emitwpn1 to x-axis <0.000000> speed <500.120879>;
+	move emitwpn1 to y-axis [0.000000] speed [500.000000];
+	turn emitwpn1 to y-axis <0.000000> speed <500.120879>;
+	move emitwpn1 to z-axis [0.000000] speed [500.000000];
+	turn emitwpn1 to z-axis <0.000000> speed <500.120879>;
+	move hair1 to x-axis [0.000000] speed [500.000000];
+	turn hair1 to x-axis <0.000000> speed <500.120879>;
+	move hair1 to y-axis [0.000000] speed [500.000000];
+	turn hair1 to y-axis <0.000000> speed <500.120879>;
+	move hair1 to z-axis [0.000000] speed [500.000000];
+	turn hair1 to z-axis <0.000000> speed <500.120879>;
+	move hair2L to x-axis [0.000000] speed [500.000000];
+	turn hair2L to x-axis <0.000000> speed <500.120879>;
+	move hair2L to y-axis [0.000000] speed [500.000000];
+	turn hair2L to y-axis <0.000000> speed <500.120879>;
+	move hair2L to z-axis [0.000000] speed [500.000000];
+	turn hair2L to z-axis <0.000000> speed <500.120879>;
+	move hair2R to x-axis [0.000000] speed [500.000000];
+	turn hair2R to x-axis <0.000000> speed <500.120879>;
+	move hair2R to y-axis [0.000000] speed [500.000000];
+	turn hair2R to y-axis <0.000000> speed <500.120879>;
+	move hair2R to z-axis [0.000000] speed [500.000000];
+	turn hair2R to z-axis <0.000000> speed <500.120879>;
+	move hair3 to x-axis [0.000000] speed [500.000000];
+	turn hair3 to x-axis <0.000000> speed <500.120879>;
+	move hair3 to y-axis [0.000000] speed [500.000000];
+	turn hair3 to y-axis <0.000000> speed <500.120879>;
+	move hair3 to z-axis [0.000000] speed [500.000000];
+	turn hair3 to z-axis <0.000000> speed <500.120879>;
+	move hair4L to x-axis [0.000000] speed [500.000000];
+	turn hair4L to x-axis <0.000000> speed <500.120879>;
+	move hair4L to y-axis [0.000000] speed [500.000000];
+	turn hair4L to y-axis <0.000000> speed <500.120879>;
+	move hair4L to z-axis [0.000000] speed [500.000000];
+	turn hair4L to z-axis <0.000000> speed <500.120879>;
+	move hair4R to x-axis [0.000000] speed [500.000000];
+	turn hair4R to x-axis <0.000000> speed <500.120879>;
+	move hair4R to y-axis [0.000000] speed [500.000000];
+	turn hair4R to y-axis <0.000000> speed <500.120879>;
+	move hair4R to z-axis [0.000000] speed [500.000000];
+	turn hair4R to z-axis <0.000000> speed <500.120879>;
+	move hair5 to x-axis [0.000000] speed [500.000000];
+	turn hair5 to x-axis <0.000000> speed <500.120879>;
+	move hair5 to y-axis [0.000000] speed [500.000000];
+	turn hair5 to y-axis <0.000000> speed <500.120879>;
+	move hair5 to z-axis [0.000000] speed [500.000000];
+	turn hair5 to z-axis <0.000000> speed <500.120879>;
+	move ldress to x-axis [0.000000] speed [500.000000];
+	turn ldress to x-axis <0.000000> speed <500.120879>;
+	move ldress to y-axis [0.000000] speed [500.000000];
+	turn ldress to y-axis <0.000000> speed <500.120879>;
+	move ldress to z-axis [0.000000] speed [500.000000];
+	turn ldress to z-axis <0.000000> speed <500.120879>;
+	move emitwakel1 to x-axis [0.000000] speed [500.000000];
+	turn emitwakel1 to x-axis <0.000000> speed <500.120879>;
+	move emitwakel1 to y-axis [0.000000] speed [500.000000];
+	turn emitwakel1 to y-axis <0.000000> speed <500.120879>;
+	move emitwakel1 to z-axis [0.000000] speed [500.000000];
+	turn emitwakel1 to z-axis <0.000000> speed <500.120879>;
+	move emitwakel2 to x-axis [0.000000] speed [500.000000];
+	turn emitwakel2 to x-axis <0.000000> speed <500.120879>;
+	move emitwakel2 to y-axis [0.000000] speed [500.000000];
+	turn emitwakel2 to y-axis <0.000000> speed <500.120879>;
+	move emitwakel2 to z-axis [0.000000] speed [500.000000];
+	turn emitwakel2 to z-axis <0.000000> speed <500.120879>;
+	move emitwakel3 to x-axis [0.000000] speed [500.000000];
+	turn emitwakel3 to x-axis <0.000000> speed <500.120879>;
+	move emitwakel3 to y-axis [0.000000] speed [500.000000];
+	turn emitwakel3 to y-axis <0.000000> speed <500.120879>;
+	move emitwakel3 to z-axis [0.000000] speed [500.000000];
+	turn emitwakel3 to z-axis <0.000000> speed <500.120879>;
+	move Rdress to x-axis [0.000000] speed [500.000000];
+	turn Rdress to x-axis <0.000000> speed <500.120879>;
+	move Rdress to y-axis [0.000000] speed [500.000000];
+	turn Rdress to y-axis <0.000000> speed <500.120879>;
+	move Rdress to z-axis [0.000000] speed [500.000000];
+	turn Rdress to z-axis <0.000000> speed <500.120879>;
+	move emitwaker1 to x-axis [0.000000] speed [500.000000];
+	turn emitwaker1 to x-axis <0.000000> speed <500.120879>;
+	move emitwaker1 to y-axis [0.000000] speed [500.000000];
+	turn emitwaker1 to y-axis <0.000000> speed <500.120879>;
+	move emitwaker1 to z-axis [0.000000] speed [500.000000];
+	turn emitwaker1 to z-axis <0.000000> speed <500.120879>;
+	move emitwaker2 to x-axis [0.000000] speed [500.000000];
+	turn emitwaker2 to x-axis <0.000000> speed <500.120879>;
+	move emitwaker2 to y-axis [0.000000] speed [500.000000];
+	turn emitwaker2 to y-axis <0.000000> speed <500.120879>;
+	move emitwaker2 to z-axis [0.000000] speed [500.000000];
+	turn emitwaker2 to z-axis <0.000000> speed <500.120879>;
+	move emitwaker3 to x-axis [0.000000] speed [500.000000];
+	turn emitwaker3 to x-axis <0.000000> speed <500.120879>;
+	move emitwaker3 to y-axis [0.000000] speed [500.000000];
+	turn emitwaker3 to y-axis <0.000000> speed <500.120879>;
+	move emitwaker3 to z-axis [0.000000] speed [500.000000];
+	turn emitwaker3 to z-axis <0.000000> speed <500.120879>;
+	return;
+}
+
+restore_legs()
+{
+	move hip to x-axis [0.000000] speed [500.000000];
+	turn hip to x-axis <0.000000> speed <500.120879>;
+	move hip to y-axis [0.000000] speed [500.000000];
+	turn hip to y-axis <0.000000> speed <500.120879>;
+	move hip to z-axis [0.000000] speed [500.000000];
+	turn hip to z-axis <0.000000> speed <500.120879>;
+	move rleg to x-axis [0.000000] speed [500.000000];
+	turn rleg to x-axis <0.000000> speed <500.120879>;
+	move rleg to y-axis [0.000000] speed [500.000000];
+	turn rleg to y-axis <0.000000> speed <500.120879>;
+	move rleg to z-axis [0.000000] speed [500.000000];
+	turn rleg to z-axis <0.000000> speed <500.120879>;
+	move lleg to x-axis [0.000000] speed [500.000000];
+	turn lleg to x-axis <0.000000> speed <500.120879>;
+	move lleg to y-axis [0.000000] speed [500.000000];
+	turn lleg to y-axis <0.000000> speed <500.120879>;
+	move lleg to z-axis [0.000000] speed [500.000000];
+	turn lleg to z-axis <0.000000> speed <500.120879>;
+	move Cdress1 to x-axis [0.000000] speed [500.000000];
+	turn Cdress1 to x-axis <0.000000> speed <500.120879>;
+	move Cdress1 to y-axis [0.000000] speed [500.000000];
+	turn Cdress1 to y-axis <0.000000> speed <500.120879>;
+	move Cdress1 to z-axis [0.000000] speed [500.000000];
+	turn Cdress1 to z-axis <0.000000> speed <500.120879>;
+	move Cdress2 to x-axis [0.000000] speed [500.000000];
+	turn Cdress2 to x-axis <0.000000> speed <500.120879>;
+	move Cdress2 to y-axis [0.000000] speed [500.000000];
+	turn Cdress2 to y-axis <0.000000> speed <500.120879>;
+	move Cdress2 to z-axis [0.000000] speed [500.000000];
+	turn Cdress2 to z-axis <0.000000> speed <500.120879>;
+	move emitwakeC1 to x-axis [0.000000] speed [500.000000];
+	turn emitwakeC1 to x-axis <0.000000> speed <500.120879>;
+	move emitwakeC1 to y-axis [0.000000] speed [500.000000];
+	turn emitwakeC1 to y-axis <0.000000> speed <500.120879>;
+	move emitwakeC1 to z-axis [0.000000] speed [500.000000];
+	turn emitwakeC1 to z-axis <0.000000> speed <500.120879>;
+	move Rdress to x-axis [0.000000] speed [500.000000];
+	turn Rdress to x-axis <0.000000> speed <500.120879>;
+	move Rdress to y-axis [0.000000] speed [500.000000];
+	turn Rdress to y-axis <0.000000> speed <500.120879>;
+	move Rdress to z-axis [0.000000] speed [500.000000];
+	turn Rdress to z-axis <0.000000> speed <500.120879>;
+	move emitwaker1 to x-axis [0.000000] speed [500.000000];
+	turn emitwaker1 to x-axis <0.000000> speed <500.120879>;
+	move emitwaker1 to y-axis [0.000000] speed [500.000000];
+	turn emitwaker1 to y-axis <0.000000> speed <500.120879>;
+	move emitwaker1 to z-axis [0.000000] speed [500.000000];
+	turn emitwaker1 to z-axis <0.000000> speed <500.120879>;
+	move emitwaker2 to x-axis [0.000000] speed [500.000000];
+	turn emitwaker2 to x-axis <0.000000> speed <500.120879>;
+	move emitwaker2 to y-axis [0.000000] speed [500.000000];
+	turn emitwaker2 to y-axis <0.000000> speed <500.120879>;
+	move emitwaker2 to z-axis [0.000000] speed [500.000000];
+	turn emitwaker2 to z-axis <0.000000> speed <500.120879>;
+	move emitwaker3 to x-axis [0.000000] speed [500.000000];
+	turn emitwaker3 to x-axis <0.000000> speed <500.120879>;
+	move emitwaker3 to y-axis [0.000000] speed [500.000000];
+	turn emitwaker3 to y-axis <0.000000> speed <500.120879>;
+	move emitwaker3 to z-axis [0.000000] speed [500.000000];
+	turn emitwaker3 to z-axis <0.000000> speed <500.120879>;
+	return;
+}
+
+death()
+{
+	if( TRUE )
+	{
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		turn torso to x-axis <15.813187> now;
+		turn ruparm to x-axis <-26.153846> now;
+		turn luparm to x-axis <-21.895604> now;
+		turn larm to x-axis <-22.505495> now;
+		turn rarm to x-axis <-51.747253> now;
+		turn hair1 to x-axis <-17.637363> now;
+		turn hair2L to x-axis <-29.802198> now;
+		turn hair3 to x-axis <-48.659341> now;
+		turn hair4L to x-axis <-42.576923> now;
+		turn hair5 to x-axis <-31.016484> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		turn hip to z-axis <3.038462> now;
+		turn rleg to z-axis <0.604396> now;
+		turn lleg to z-axis <-0.604396> now;
+		turn torso to x-axis <-6.686813> now;
+		turn torso to z-axis <13.681319> now;
+		turn ruparm to x-axis <-32.840659> now;
+		turn ruparm to z-axis <20.675824> now;
+		turn luparm to x-axis <-46.835165> now;
+		turn luparm to z-axis <-13.681319> now;
+		turn larm to x-axis <-48.049451> now;
+		turn rarm to x-axis <-59.324176> now;
+		turn rarm to z-axis <-10.335165> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		turn hip to z-axis <6.082418> now;
+		turn rleg to z-axis <1.214286> now;
+		turn lleg to z-axis <-1.214286> now;
+		turn torso to x-axis <-29.192308> now;
+		turn torso to z-axis <27.368132> now;
+		turn ruparm to x-axis <-39.532967> now;
+		turn ruparm to z-axis <41.357143> now;
+		turn luparm to x-axis <-71.769231> now;
+		turn luparm to z-axis <-27.368132> now;
+		turn larm to x-axis <-73.598901> now;
+		turn rarm to x-axis <-66.906593> now;
+		turn rarm to z-axis <-20.675824> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		turn hip to x-axis <-6.994505> now;
+		turn hip to z-axis <12.467033> now;
+		turn rleg to x-axis <-8.208791> now;
+		turn rleg to z-axis <6.384615> now;
+		turn lleg to z-axis <1.824176> now;
+		turn torso to x-axis <-37.708791> now;
+		turn torso to z-axis <34.362637> now;
+		turn ruparm to x-axis <-63.060440> now;
+		turn ruparm to z-axis <53.956044> now;
+		turn luparm to x-axis <-95.494505> now;
+		turn luparm to z-axis <-23.417582> now;
+		turn larm to x-axis <-48.049451> now;
+		turn rarm to x-axis <-64.472527> now;
+		turn rarm to z-axis <-37.406593> now;
+		turn Rdress to x-axis <8.510989> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		turn hip to x-axis <-13.989011> now;
+		turn hip to z-axis <18.851648> now;
+		turn rleg to x-axis <-16.417582> now;
+		turn rleg to z-axis <11.554945> now;
+		turn lleg to z-axis <4.862637> now;
+		turn torso to x-axis <-46.225275> now;
+		turn torso to z-axis <41.357143> now;
+		turn ruparm to x-axis <-86.587912> now;
+		turn ruparm to z-axis <66.554945> now;
+		turn luparm to x-axis <-119.214286> now;
+		turn luparm to z-axis <-19.461538> now;
+		turn larm to x-axis <-22.505495> now;
+		turn rarm to x-axis <-62.038462> now;
+		turn rarm to z-axis <-54.131868> now;
+		turn Rdress to x-axis <17.027473> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		move hip to y-axis [-1.500000] now;
+		turn hip to x-axis <-0.604396> now;
+		turn hip to z-axis <36.494505> now;
+		turn rleg to x-axis <-19.159341> now;
+		turn rleg to z-axis <12.164835> now;
+		turn lleg to z-axis <9.120879> now;
+		turn ruparm to x-axis <-87.609890> now;
+		turn ruparm to z-axis <60.593407> now;
+		turn luparm to x-axis <-121.038462> now;
+		turn luparm to z-axis <-11.554945> now;
+		turn rarm to x-axis <-69.945055> now;
+		turn rarm to z-axis <-39.532967> now;
+		turn Rdress to x-axis <12.164835> now;
+		turn Rdress to z-axis <-23.417582> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		move hip to y-axis [-3.000000] now;
+		turn hip to x-axis <12.769231> now;
+		turn hip to z-axis <54.131868> now;
+		turn rleg to x-axis <-21.895604> now;
+		turn rleg to z-axis <12.769231> now;
+		turn lleg to z-axis <13.379121> now;
+		turn ruparm to x-axis <-88.637363> now;
+		turn ruparm to z-axis <54.631868> now;
+		turn luparm to x-axis <-122.862637> now;
+		turn luparm to z-axis <-3.648352> now;
+		turn rarm to x-axis <-77.851648> now;
+		turn rarm to z-axis <-24.934066> now;
+		turn Rdress to x-axis <7.296703> now;
+		turn Rdress to z-axis <-46.835165> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		move hip to y-axis [-4.800000] now;
+		turn hip to x-axis <17.335165> now;
+		turn hip to z-axis <63.862637> now;
+		turn rleg to x-axis <-22.807692> now;
+		turn rleg to z-axis <16.115385> now;
+		turn lleg to z-axis <14.593407> now;
+		turn torso to z-axis <31.016484> now;
+		turn ruparm to x-axis <-59.824176> now;
+		turn ruparm to z-axis <21.324176> now;
+		turn luparm to x-axis <-108.269231> now;
+		turn larm to x-axis <-43.489011> now;
+		turn rarm to x-axis <-44.401099> now;
+		turn rarm to y-axis <-21.285714> now;
+		turn rarm to z-axis <-37.406593> now;
+		turn Rdress to x-axis <10.032967> now;
+		turn Rdress to z-axis <-44.401099> now;
+		sleep 100;
+	}
+	if( TRUE )
+	{
+		move hip to y-axis [-6.600000] now;
+		turn hip to x-axis <21.895604> now;
+		turn hip to z-axis <73.598901> now;
+		turn rleg to x-axis <-23.719780> now;
+		turn rleg to z-axis <19.461538> now;
+		turn lleg to z-axis <15.813187> now;
+		turn torso to z-axis <20.675824> now;
+		turn ruparm to x-axis <-31.016484> now;
+		turn ruparm to z-axis <-11.972527> now;
+		turn luparm to x-axis <-93.670330> now;
+		turn larm to x-axis <-64.472527> now;
+		turn rarm to x-axis <-10.945055> now;
+		turn rarm to y-axis <-42.576923> now;
+		turn rarm to z-axis <-49.873626> now;
+		turn Rdress to x-axis <12.769231> now;
+		turn Rdress to z-axis <-41.967033> now;
+		sleep 80;
+	}
+	if( TRUE )
+	{
+		move hip to y-axis [-6.800000] now;
+		turn hip to x-axis <35.274725> now;
+		turn hip to z-axis <70.554945> now;
+		turn rleg to x-axis <-20.071429> now;
+		turn rleg to z-axis <17.027473> now;
+		turn lleg to x-axis <9.730769> now;
+		turn lleg to z-axis <18.247253> now;
+		turn torso to z-axis <24.329670> now;
+		turn ruparm to x-axis <-15.884615> now;
+		turn ruparm to z-axis <-11.120879> now;
+		turn luparm to x-axis <-114.351648> now;
+		turn luparm to z-axis <8.510989> now;
+		turn larm to x-axis <-22.505495> now;
+		turn rarm to x-axis <-51.868132> now;
+		turn rarm to y-axis <0.000000> now;
+		turn rarm to z-axis <-29.120879> now;
+		turn ldress to z-axis <-70.554945> now;
+		turn Rdress to x-axis <8.510989> now;
+		turn Rdress to z-axis <-30.412088> now;
+		sleep 10;
+	}
+	return;
+}
+
+MoveWatcher()
+{
+	set-signal-mask SIG_MOVE;
+	while( TRUE )
+	{
+		moving = (get CURRENT_SPEED) > 5 OR direction;
+		sleep 100;
+	}
+	return;
+}
+
+MeleeControl()
+{
+	while( TRUE )
+	{
+		if( moving )
+		{
+			if( aiming )
+			{
+				call-script walk_legs();
+			}
+			else if( restored )
+			{
+				call-script def_walk();
+			}
+			if( get IN_WATER )
+			{
+				call-script walk_water();
+			}
+			else if( get ON_ROAD )
+			{
+				call-script walk_road();
+			}
+			else
+			{
+				call-script walk();
+			}
+			legs_restored = FALSE;
+			restored = FALSE;
+		}
+		else if( !busy_dying )
+		{
+			if( aiming AND ( !legs_restored ) )
+			{
+				call-script restore_legs();
+				legs_restored = TRUE;
+				restored = FALSE;
+			}
+			else if( ( !aiming ) AND ( !restored ) )
+			{
+				call-script restore_x();
+				restored = TRUE;
+			}
+			else
+			{
+				sleep 100;
+			}
+		}
+		else
+		{
+			sleep 100;
+		}
+	}
+	return;
+}
+
+StatusControl()
+{
+	var Func_Var_1;
+	Func_Var_1 = 0;
+	while( Func_Var_1 < 2 )
+	{
+		vetlevel = get VETERAN_LEVEL;
+		if( Func_Var_1 == 0 )
+		{
+			if( vetlevel > 4 )
+			{
+				show lband_5;
+				show rband_5;
+				++Func_Var_1;
+			}
+		}
+		else if( Func_Var_1 == 1 )
+		{
+			if( vetlevel > 9 )
+			{
+				show wand_10;
+				++Func_Var_1;
+			}
+		}
+		sleep 1000;
+	}
+	return;
+}
+
+Create()
+{
+	hide lband_5;
+	hide rband_5;
+	hide wand_10;
+	moving = FALSE;
+	aiming = FALSE;
+	firing = FALSE;
+	busy_dying = FALSE;
+	kill_attack = FALSE;
+	restored = FALSE;
+	legs_restored = FALSE;
+	Static_Var_8 = 0;
+	Static_Var_9 = 0;
+	direction = 0;
+	vetlevel = 0;
+	Static_Var_12 = 0;
+	restore_delay = 5000;
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 100;
+	}
+	start-script MoveWatcher();
+	start-script MeleeControl();
+	start-script StatusControl();
+	return;
+}
+
+TurnDirection(dir)
+{
+	direction = dir;
+	return;
+}
+
+SetMaxReloadTime(time)
+{
+	restore_delay = time * 2;
+	return;
+}
+
+RestoreAfterDelay()
+{
+	signal SIG_RESTORE;
+	set-signal-mask SIG_RESTORE;
+	var Func_Var_1;
+	Func_Var_1 = 0;
+	while( Func_Var_1 < restore_delay )
+	{
+		if( kill_attack )
+		{
+			Func_Var_1 = restore_delay;
+		}
+		else
+		{
+			Func_Var_1 = Func_Var_1 + 100;
+		}
+		sleep 100;
+	}
+	while( firing )
+	{
+		sleep 100;
+	}
+	set WEAPON_AIM_ABORTED to Static_Var_12;
+	kill_attack = FALSE;
+	aiming = FALSE;
+	return;
+}
+
+AimWeapon(heading, pitch, weaponnum)
+{
+	aiming = TRUE;
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	while( firing )
+	{
+		sleep 100;
+	}
+	Static_Var_12 = weaponnum;
+	start-script RestoreAfterDelay();
+	set WEAPON_READY to weaponnum;
+	return;
+}
+
+FireWeapon(weaponnum)
+{
+	firing = TRUE;
+	if( weaponnum == 0 )
+	{
+		play-sound( "134SPT01", PLAYSOUND_PRIORITY_BATTLE );
+		call-script attack1(weaponnum);
+	}
+	else if( weaponnum == 1 )
+	{
+		play-sound( "134SPT02", PLAYSOUND_PRIORITY_BATTLE );
+		call-script attack2(weaponnum);
+	}
+	else
+	{
+		play-sound( "134SPT03", PLAYSOUND_PRIORITY_BATTLE );
+		call-script attack3(weaponnum);
+	}
+	firing = FALSE;
+	return;
+}
+
+TargetCleared(weaponnum)
+{
+	set WEAPON_AIM_ABORTED to weaponnum;
+	signal SIG_AIM;
+	kill_attack = TRUE;
+	return;
+}
+
+QueryWeapon(piecenum, weaponnum)
+{
+	piecenum = hip;
+	return;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hip;
+	return;
+}
+
+QueryBlood(piecenum)
+{
+	piecenum = 2 + Rand( 0, 3 );
+	return;
+}
+
+Dying(damagetype)
+{
+	set-signal-mask 0;
+	signal SIG_AIM;
+	signal SIG_MOVE;
+	signal SIG_RESTORE;
+	moving = FALSE;
+	busy_dying = TRUE;
+	if( damagetype != 3 )
+	{
+		if( Rand( 1, 4 ) == 1 )
+		{
+			play-sound( "TARWITCHDIE2", PLAYSOUND_PRIORITY_BATTLE );
+		}
+	}
+	set MAGIC_DEATH to 1;
+	return;
+}
+
+Killed(severity, corpsetype, damagetype)
+{
+	corpsetype = 0;
+	if( damagetype == 3 )
+	{
+		explode ruparm type FALL;
+		explode luparm type FALL;
+		explode head type FALL;
+		explode torso type FALL;
+		explode rleg type FALL;
+		explode lleg type FALL;
+	}
+	return;
+}

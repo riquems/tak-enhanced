@@ -1,0 +1,39 @@
+[UNITINFO]
+{
+	bodytype = wood;
+	buildangle = 10000;
+	buildcost = 3352;
+	buildtime = 560;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = CRE;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	damagecategory = lodestone;
+	description = Creon;
+	experiencepoints = 30;
+	footprintx = 3;
+	footprintz = 3;
+	healtime = 2.175;
+	immunetoparalyzer = 1;
+	maxdamage = 16681;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	mogriumincome = 20;
+	mogriumstorage = 2000;
+	name = Mana Amplifier;
+	objectname = CREMANA;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = CRE;
+	sightdistance = 125;
+	soundcategory = CREMANA;
+	soundclass = CREMANA;
+	tedclass = Creon;
+	unitname = CREMANA;
+	unitnumber = 17;
+	unitstandorders = 0;
+	version = 1;
+	wind = 1;
+	yardmap = S;
+}

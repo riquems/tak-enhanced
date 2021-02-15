@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Changes">
+      <UniqueIdentifier>{dbc5cc68-c235-4f91-b0cb-b25b707bdd4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Changes\Extensions">
+      <UniqueIdentifier>{c46ace3e-4bd5-4337-a74d-967e256891a3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TAKEnhancedDll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Changes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeleeStuckFix.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="NoCD.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="NoPauseWhenUnfocused.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFindingChanger.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingBuildings.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="HumorInteractions.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchBox.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperFeatures.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInitExtension.h">
+      <Filter>Header Files\Changes\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUpdateLoopExtension.h">
+      <Filter>Header Files\Changes\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateGuiExtension.h">
+      <Filter>Header Files\Changes\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponExtensions.h">
+      <Filter>Header Files\Changes\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponExtension.h">
+      <Filter>Header Files\Changes\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomRace.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadSideDataExtension.h">
+      <Filter>Header Files\Changes\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScreenExtensions.h">
+      <Filter>Header Files\Changes\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OffscreenFix.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxUnits.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="Launcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NewHpiVerification.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
