@@ -48,6 +48,7 @@ void applyChanges()
 	ReadSideDataExtensionPatch();
 	LoadingScreenExtensionsPatch();
 
+	// See what watcher says
 	// Archers lob weapons
 	// AutoGates in game for real
 	// MakeAurasOnOffAble
