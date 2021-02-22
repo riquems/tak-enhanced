@@ -137,7 +137,7 @@ public:
 					        <weight=30><vert buttons gap=5>                                                \
 						>                                                                                  \
 						<weight=150 vert                                                                   \
-							<vert margin=[20] maxUnits arrange=[20, 20] >                                  \
+							<vert margin=[20] maxUnits arrange=[20, 20]>                                   \
 							<vert margin=[30] pathfindingCycles arrange=[20, 20]>                          \
 							<vert margin=[40] forcedMinRangeForMelees arrange=[35, 20]>                    \
 							<>                                                                             \
@@ -184,9 +184,11 @@ public:
 		pnl_patch = std::make_unique<patch_panel>(fm_main->handle());
 
 		tabs->attach(1, *pnl_patch);
+		tabs->activated(0);
 
 		layout->field("tabs") << *tabs;
 		layout->field("content") << *pnl_patch;
+		layout->field("content") << *pnl_mods;
 
 		layout->collocate();
 	}
