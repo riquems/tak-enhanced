@@ -48,6 +48,9 @@ void applyChanges()
 	ReadSideDataExtensionPatch();
 	LoadingScreenExtensionsPatch();
 
+	// Not able to ctrl d while in combat
+	// How to draw on screen images etc
+	// Units able to run
 	// See what watcher says
 	// Archers lob weapons
 	// AutoGates in game for real
