@@ -98,11 +98,11 @@
     <ClInclude Include="MaxUnits.h">
       <Filter>Header Files\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="Launcher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NewHpiVerification.h">
       <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="main_form.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

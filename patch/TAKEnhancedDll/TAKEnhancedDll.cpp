@@ -3,7 +3,7 @@
 #include <thread>
 
 #include "Changes.h"
-#include "Launcher.h"
+#include "main_form.h"
 #include "Helper.h"
 
 BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
@@ -11,8 +11,8 @@ BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 	if (dwReason == DLL_PROCESS_ATTACH) {
 		initializeContext();
 
-		Launcher launcher;
-		launcher.execute();
+		main_form launcher;
+		launcher.show();
 
 		applyChanges();
 

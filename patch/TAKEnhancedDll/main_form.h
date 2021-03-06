@@ -5,29 +5,87 @@
 #include "nana/gui.hpp"
 #include "nana/gui/place.hpp"
 #include "nana/gui/widgets/form.hpp"
+#include "nana/gui/widgets/panel.hpp"
+#include "nana/gui/widgets/tabbar.hpp"
+
 #include "nana/gui/widgets/label.hpp"
 #include "nana/gui/widgets/textbox.hpp"
 #include "nana/gui/widgets/checkbox.hpp"
 #include "nana/gui/widgets/button.hpp"
+#include "nana/gui/widgets/listbox.hpp"
 
-#include "nana/gui/widgets/tabbar.hpp"
-#include "nana/gui/widgets/combox.hpp"
-#include "nana/gui/widgets/panel.hpp"
-
-class mods_panel : public nana::panel<false>
+class tab_page_mods : public nana::panel<false>
 {
 	std::unique_ptr<nana::place> layout;
 
+	std::unique_ptr<nana::checkbox> cb_enable_mods;
+	std::unique_ptr<nana::listbox> lb_listbox1;
+	std::unique_ptr<nana::listbox> lb_listbox2;
+
+	std::unique_ptr<nana::button> btn_moveAllRight;
+	std::unique_ptr<nana::button> btn_moveSelectedRight;
+	std::unique_ptr<nana::button> btn_moveSelectedLeft;
+	std::unique_ptr<nana::button> btn_moveAllLeft;
+
+	void initialize_checkboxes()
+	{
+		cb_enable_mods = std::make_unique<nana::checkbox>(*this, "Enable Mods");
+
+		if (settings.EnableMods) {
+			cb_enable_mods->check(true);
+		}
+
+		layout->field("checkboxes") << *cb_enable_mods;
+	}
+
+	void initialize_listbox1()
+	{
+		lb_listbox1 = std::make_unique<nana::listbox>(*this);
+
+		layout->field("listbox1") << *lb_listbox1;
+	}
+
+	void initialize_buttons()
+	{
+		btn_moveAllRight = std::make_unique<nana::button>(*this, ">>");
+		btn_moveSelectedRight = std::make_unique<nana::button>(*this, ">");
+		btn_moveSelectedLeft = std::make_unique<nana::button>(*this, "<");
+		btn_moveAllLeft = std::make_unique<nana::button>(*this, "<<");
+
+
+
+		layout->field("buttons") << *btn_moveAllRight << *btn_moveSelectedRight
+								 << *btn_moveSelectedLeft << *btn_moveAllLeft;
+	}
+
+	void initialize_listbox2()
+	{
+		lb_listbox2 = std::make_unique<nana::listbox>(*this);
+
+		layout->field("listbox2") << *lb_listbox2;
+	}
+
 public:
-	mods_panel(nana::window parent) : nana::panel<false>(parent)
+	tab_page_mods(nana::window parent) : nana::panel<false>(parent)
 	{
 		layout = std::make_unique<nana::place>(*this);
 
-		layout->div("");
+		layout->div("margin=15 vert                                           \
+			         <weight=30 checkboxes>                                   \
+			         <                                                        \
+			             <listbox1><weight=40 vert buttons><listbox2>         \
+                     >");
+
+		initialize_checkboxes();
+		initialize_listbox1();
+		initialize_buttons();
+		initialize_listbox2();
+
+		layout->collocate();
 	}
 };
 
-class patch_panel : public nana::panel<false>
+class tab_page_panel : public nana::panel<false>
 {
 	std::unique_ptr<nana::place> layout;
 
@@ -121,7 +179,7 @@ class patch_panel : public nana::panel<false>
 	}
 
 public:
-	patch_panel(nana::window parent) : nana::panel<false>(parent)
+	tab_page_panel(nana::window parent) : nana::panel<false>(parent)
 	{
 		layout = std::make_unique<nana::place>(*this);
 
@@ -152,18 +210,18 @@ public:
 	}
 };
 
-class Launcher
+class main_form
 {
 	std::unique_ptr<nana::form> fm_main;
 	std::unique_ptr<nana::place> layout;
 
-	std::unique_ptr<nana::tabbar<nana::form>> tabs;
+	std::unique_ptr<nana::tabbar<std::string>> tabs;
 
-	std::unique_ptr<mods_panel> pnl_mods;
-	std::unique_ptr<patch_panel> pnl_patch;
+	std::unique_ptr<tab_page_mods> tp_mods;
+	std::unique_ptr<tab_page_panel> tp_patch;
 
 public:
-	Launcher()
+	main_form()
 	{
 		nana::API::window_icon_default(nana::paint::image("Kingdoms.exe"));
 
@@ -175,25 +233,24 @@ public:
 		layout = std::make_unique<nana::place>(fm_main->handle());
 		layout->div("margin=[1] vert<weight=25 tabs><content>");
 
-		tabs = std::make_unique<nana::tabbar<nana::form>>(fm_main->handle());
+		tabs = std::make_unique<nana::tabbar<std::string>>(fm_main->handle());
 		tabs->bgcolor(nana::color(255, 255, 255, 1));
-		tabs->push_back("Mods");
-		tabs->push_back("Patch");
 
-		pnl_mods = std::make_unique<mods_panel>(fm_main->handle());
-		pnl_patch = std::make_unique<patch_panel>(fm_main->handle());
+		tp_mods = std::make_unique<tab_page_mods>(fm_main->handle());
+		tp_patch = std::make_unique<tab_page_panel>(fm_main->handle());
 
-		tabs->attach(1, *pnl_patch);
+		tabs->append("Mods", *tp_mods);
+		tabs->append("Patch", *tp_patch);
+
 		tabs->activated(0);
 
 		layout->field("tabs") << *tabs;
-		layout->field("content") << *pnl_patch;
-		layout->field("content") << *pnl_mods;
+		layout->field("content").fasten(*tp_mods).fasten(*tp_patch);
 
 		layout->collocate();
 	}
 
-	void execute()
+	void show()
 	{
 		fm_main->show();
 		nana::exec();

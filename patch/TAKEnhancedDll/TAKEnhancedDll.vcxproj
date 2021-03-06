@@ -30,7 +30,7 @@
     <ClInclude Include="GameUpdateLoopExtension.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="HelperFeatures.h" />
-    <ClInclude Include="Launcher.h" />
+    <ClInclude Include="main_form.h" />
     <ClInclude Include="LoadingScreenExtensions.h" />
     <ClInclude Include="NewHpiVerification.h" />
     <ClInclude Include="OffscreenFix.h" />
