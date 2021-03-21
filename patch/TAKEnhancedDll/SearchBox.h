@@ -41,7 +41,7 @@ extern "C" __declspec(dllexport) void __stdcall updateSearchBox()
 	}
 }
 
-bool strContainsStr(std::string& str1, std::string& str2)
+bool str_contains_str(std::string& str1, std::string& str2)
 {
 	return str1.find(str2) != std::string::npos;
 }
@@ -101,7 +101,7 @@ void StartSearchBox(ChooseMapMenuWrapper& chooseMapMenuWrapper)
 			it = std::find_if(mapNamesLowerCase->begin(), mapNamesLowerCase->end(),
 				[&stringToSearchFor](std::string mapName)
 				{
-					return strContainsStr(mapName, stringToSearchFor);
+					return str_contains_str(mapName, stringToSearchFor);
 				});
 
 			if (it == mapNamesLowerCase->end())

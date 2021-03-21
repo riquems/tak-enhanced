@@ -10,6 +10,7 @@
 #include "UpdateGuiExtension.h"
 #include "ReadSideDataExtension.h"
 #include "LoadingScreenExtensions.h"
+#include "NewHpiVerification.h"
 
 extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.0";
 
@@ -47,9 +48,11 @@ void applyChanges()
 	UpdateGuiExtensionPatch();
 	ReadSideDataExtensionPatch();
 	LoadingScreenExtensionsPatch();
+	NewHpiVerificationPatch();
 
 	// Not able to ctrl d while in combat
 	// How to draw on screen images etc
+	// Select buildings with numbers
 	// Units able to run
 	// See what watcher says
 	// Archers lob weapons

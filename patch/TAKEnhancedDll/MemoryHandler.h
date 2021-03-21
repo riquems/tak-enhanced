@@ -96,8 +96,10 @@ namespace MemoryHandling
 		PUSH_EBP = 0x55,
 		PUSH_ESI = 0x56,
 		PUSH_EDI = 0x57,
+		POP_EBX = 0x5B,
 		POP_EBP = 0x5D,
-		POP_ESI = 0x5E
+		POP_ESI = 0x5E,
+		POP_EDI = 0x5F
 	};
 
 	template <typename T>

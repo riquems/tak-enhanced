@@ -21,9 +21,9 @@ public:
     Weapon* weapon1;                     // 0x00C
     char padding2[24];                   // 0x010
     Weapon* weapon2;                     // 0x028
-    char padding3[24];                   // 0X02C
+    char padding3[24];                   // 0x02C
     Weapon* weapon3;                     // 0x044
-    char padding4[24];                   // 0X048
+    char padding4[24];                   // 0x048
     Mission* mission;                    // 0x060
     char padding5[4];                    // 0x064
     MapPosition xMapPosition;            // 0x068

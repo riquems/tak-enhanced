@@ -19,6 +19,9 @@
     <Filter Include="Header Files\Changes\Extensions">
       <UniqueIdentifier>{c46ace3e-4bd5-4337-a74d-967e256891a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Launcher">
+      <UniqueIdentifier>{07ca0420-0eef-4eb5-a463-4097ec3b3b34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedDll.cpp">
@@ -102,7 +105,16 @@
       <Filter>Header Files\Changes</Filter>
     </ClInclude>
     <ClInclude Include="main_form.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="tab_page_mods.h">
+      <Filter>Header Files\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="tab_page_patches.h">
+      <Filter>Header Files\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="nana_common.h">
+      <Filter>Header Files\Launcher</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

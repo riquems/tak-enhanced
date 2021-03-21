@@ -124,6 +124,23 @@ unsigned int str_to_uint(const char* str)
 	return strtoul(str, nullptr, 0);
 }
 
+bool vector_has_str(std::vector<std::string>& vector, std::string str)
+{
+	std::vector<std::string>::iterator it;
+
+	it = std::find_if(vector.begin(), vector.end(),
+		[&](std::string vector_str) {
+			return str_equals_str(str.c_str(), vector_str.c_str());
+		}
+	);
+
+	if (it != vector.end()) {
+		return true;
+	}
+
+	return false;
+}
+
 /*DWORD GetMainThreadId() {
 	const std::tr1::shared_ptr<void> hThreadSnapshot(
 		CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0), CloseHandle);

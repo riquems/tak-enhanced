@@ -87,7 +87,7 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 	strcpy(cmdLine, targetFileName.c_str());
 	strcat(cmdLine, " ");
 	strcat(cmdLine, lpCmdLine);
-	strcat(cmdLine, " -disablecavedogverification");
+	// strcat(cmdLine, " -disablecavedogverification");
 	quaxkru junkcode4;
 	logger.log("Creating process with command line params: %s", cmdLine);
 	quaxkru junkcode5;

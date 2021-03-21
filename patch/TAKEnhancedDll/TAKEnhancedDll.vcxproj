@@ -32,10 +32,13 @@
     <ClInclude Include="HelperFeatures.h" />
     <ClInclude Include="main_form.h" />
     <ClInclude Include="LoadingScreenExtensions.h" />
+    <ClInclude Include="nana_common.h" />
     <ClInclude Include="NewHpiVerification.h" />
     <ClInclude Include="OffscreenFix.h" />
     <ClInclude Include="RandomRace.h" />
     <ClInclude Include="ReadSideDataExtension.h" />
+    <ClInclude Include="tab_page_mods.h" />
+    <ClInclude Include="tab_page_patches.h" />
     <ClInclude Include="UpdateGuiExtension.h" />
     <ClInclude Include="HumorInteractions.h" />
     <ClInclude Include="SearchBox.h" />

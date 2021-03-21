@@ -13,6 +13,7 @@
 #include <algorithm>
 
 #include "Logger.h"
+#include "Info.h"
 #include "OriginalFunctionsOffsets.h"
 #include "UserInterfaceHandler.h"
 #include "GlobalPointers.h"

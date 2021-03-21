@@ -161,6 +161,7 @@
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GlobalPointers.h" />
     <ClInclude Include="GraphicsHandler.h" />
+    <ClInclude Include="HapiFile.h" />
     <ClInclude Include="ImageHandler.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="KingdomsDialog.h" />

@@ -152,5 +152,8 @@
     <ClInclude Include="Aura.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HapiFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
