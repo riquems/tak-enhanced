@@ -1,7 +1,7 @@
 #pragma once
 #include "MemoryHandler.h"
 
-void MaxUnitsPatch(uint value)
+void applyMaxUnitsPatch(uint value)
 {
 	/* Edit Max Units to the wanted value */
 	MemoryHandling::write(value, 0x1F0404);

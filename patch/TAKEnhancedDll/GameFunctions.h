@@ -15,7 +15,7 @@ namespace Game
 
 namespace GameFunctions
 {
-	DWORD (*GetMouseHoveredUnitAddress)();
+	DWORD (*getMouseHoveredUnitAddress)();
 }
 
 namespace GameFunctionsExtensions

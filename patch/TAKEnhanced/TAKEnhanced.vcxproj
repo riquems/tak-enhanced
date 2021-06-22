@@ -33,6 +33,9 @@
   <ItemGroup>
     <ResourceCompile Include="TAKEnhanced.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TAKEnhanced.cfg" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{7ECEB52D-D21F-4792-9A31-567B74D7BE33}</ProjectGuid>

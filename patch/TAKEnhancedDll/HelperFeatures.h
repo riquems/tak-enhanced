@@ -72,7 +72,7 @@ void PrintMouseHoveredUnitAddress()
 {
 	DWORD mouseHoveredUnitAddress = 0;
 
-	mouseHoveredUnitAddress = GameFunctions::GetMouseHoveredUnitAddress();
+	mouseHoveredUnitAddress = GameFunctions::getMouseHoveredUnitAddress();
 
 	std::cout << std::hex << mouseHoveredUnitAddress << std::endl;
 }

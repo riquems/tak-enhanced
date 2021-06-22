@@ -150,7 +150,7 @@ extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(Unit* unit, U
 	return true;
 }
 
-void MeleeStuckFix()
+void applyMeleeStuckFix()
 {
 	// First time you click to attack
 	MemoryHandling::writeShortJMP(Memory(0x004D12, 0x004D14), 0x004D1F);

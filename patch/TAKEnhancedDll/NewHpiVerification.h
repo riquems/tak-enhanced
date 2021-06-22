@@ -32,7 +32,7 @@ extern "C" __declspec(dllexport) bool __stdcall HpiVerificationExtension()
 	return false;
 }
 
-void NewHpiVerificationPatch()
+void applyNewHpiVerificationPatch()
 {
 	ShellCode shellcode("8BCE", Memory(0x08CD83, 0x08CD85)); // MOV ECX, ESI
 	MemoryHandling::writeShellCode(shellcode);

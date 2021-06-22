@@ -16,8 +16,8 @@ BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 
 		applyChanges();
 
-		std::thread helperThread(initializeHelper);
-		helperThread.detach();
+		std::thread takEnhancedServiceThread(TakEnhancedService);
+		takEnhancedServiceThread.detach();
 	}
 
 	return true;

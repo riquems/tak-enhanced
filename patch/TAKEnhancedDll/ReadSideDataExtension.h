@@ -27,7 +27,7 @@ extern "C" __declspec(dllexport) void __stdcall ReadSideDataExtension()
 	memcpy((void*) (randomSideAddr + 0x24), sideCommander.c_str(), sideCommander.size() + 1); */
 }
 
-void ReadSideDataExtensionPatch()
+void applyReadSideDataExtensionPatch()
 {
 	MemoryHandling::fillWithNOPs(Memory(0x0C2E7B, 0x0C2E84));
 	

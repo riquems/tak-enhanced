@@ -14,7 +14,7 @@
 
 extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.0";
 
-void ApplyTAKEnhancedVersion()
+void applyTakEnhancedVersion()
 {
 	MemoryHandling::write(TAK_Enhanced_Label, 0xA4E23);
 
@@ -23,43 +23,43 @@ void ApplyTAKEnhancedVersion()
 
 void applyChanges()
 {
-	ApplyTAKEnhancedVersion();
+	applyTakEnhancedVersion();
 
 	uint maxUnits = settings.MaxUnits;
-	MaxUnitsPatch(maxUnits);
+	applyMaxUnitsPatch(maxUnits);
 
 	uint pathFindingCycles = settings.PathfindingCycles;
-	PathfindingFix(pathFindingCycles);
+	applyPathfindingFix(pathFindingCycles);
 
 	if (settings.NoCD) {
-		NoCD();
+		applyNoCD();
 	}
 
 	if (!settings.PauseWhenUnfocused) {
-		NoPauseWhenUnfocused();
+		applyNoPauseWhenUnfocused();
 	}
 	
 	if (settings.MeleeStuckFix) {
-		MeleeStuckFix();
+		applyMeleeStuckFix();
 	}
 	
 	/* Extensions */
+	applyUpdateGuiExtensionPatch();
+	applyReadSideDataExtensionPatch();
+	applyLoadingScreenExtensionsPatch();
+	applyNewHpiVerificationPatch();
 	// ProcessCodesExtension
-	UpdateGuiExtensionPatch();
-	ReadSideDataExtensionPatch();
-	LoadingScreenExtensionsPatch();
-	NewHpiVerificationPatch();
-
+	
+	// Option to choose random race
+	// Walls have hp
 	// Not able to ctrl d while in combat
 	// How to draw on screen images etc
-	// Select buildings with numbers
 	// Units able to run
 	// See what watcher says
 	// Archers lob weapons
 	// AutoGates in game for real
 	// MakeAurasOnOffAble
 	// Pick map positions
-	// Option to choose random race
 	// Humor Interactions
 	// autodiplomacy
 	// ReclaimFeaturesGiveMana();

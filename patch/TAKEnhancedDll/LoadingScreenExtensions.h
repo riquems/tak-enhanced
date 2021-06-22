@@ -19,7 +19,7 @@ extern "C" __declspec(dllexport) void __stdcall LoadingScreenEndExtension()
 	gameHasLoaded = true;
 }
 
-void LoadingScreenExtensionsPatch()
+void applyLoadingScreenExtensionsPatch()
 {
 	MemoryHandling::insertFunctionCall((DWORD) &LoadingScreenStartExtension, 0x1258E0);
 

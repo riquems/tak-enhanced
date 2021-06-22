@@ -86,9 +86,6 @@
     <ClInclude Include="LoadingScreenExtensions.h">
       <Filter>Header Files\Changes\Extensions</Filter>
     </ClInclude>
-    <ClInclude Include="Helper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -115,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="nana_common.h">
       <Filter>Header Files\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingsShortcuts.h">
+      <Filter>Header Files\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TakEnhancedService.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

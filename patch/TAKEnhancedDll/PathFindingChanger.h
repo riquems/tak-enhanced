@@ -1,7 +1,7 @@
 #pragma once
 #include "MemoryHandler.h"
 
-void PathfindingFix(uint value)
+void applyPathfindingFix(uint value)
 {
 	MemoryHandling::write(value, 0x1617C);
 

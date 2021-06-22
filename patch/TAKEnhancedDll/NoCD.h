@@ -1,7 +1,7 @@
 #pragma once
 #include "MemoryHandler.h"
 
-void NoCD()
+void applyNoCD()
 {
 	MemoryHandling::writeShortJMP(Memory(0x0A5146, 0x0A5148), 0x0A515A);
 

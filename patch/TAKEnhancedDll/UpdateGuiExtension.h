@@ -7,7 +7,7 @@ extern "C" __declspec(dllexport) void __stdcall updateGuiExtension()
 	updateSearchBox();
 }
 
-void UpdateGuiExtensionPatch()
+void applyUpdateGuiExtensionPatch()
 {
 	MemoryHandling::fillWithNOPs(Memory(0x170165, 0x17016F));
 

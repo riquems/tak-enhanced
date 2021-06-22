@@ -49,7 +49,7 @@ void initializeContext()
 	uiHandler = (UserInterfaceHandler*) (GlobalPointers::UserInterfaceHandler + baseAddress);
 
 	// Initialize functions
-	GameFunctions::GetMouseHoveredUnitAddress = (DWORD(*)()) (FunctionsOffsets::GetMouseHoveredUnitAddress + baseAddress);
+	GameFunctions::getMouseHoveredUnitAddress = (DWORD(*)()) (FunctionsOffsets::getMouseHoveredUnitAddress + baseAddress);
 	setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
 
 	/*AllocConsole();
