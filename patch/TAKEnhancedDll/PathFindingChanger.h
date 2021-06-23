@@ -5,5 +5,5 @@ void applyPathfindingFix(uint value)
 {
 	MemoryHandling::write(value, 0x1617C);
 
-	logger.log("Pathfinding enhancement applied.");
+	logger.log("Pathfinding applied.");
 }

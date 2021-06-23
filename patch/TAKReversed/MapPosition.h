@@ -1,8 +1,6 @@
 #pragma once
 #include "common.h"
 
-
-
 struct MapPosition
 {
 	char padding[2];

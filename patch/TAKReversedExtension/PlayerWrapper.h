@@ -1,14 +1,14 @@
 #pragma once
 #include "common.h"
 
-#include "Unit.h"
+#include "UnitWrapper.h"
 #include "Player.h"
 
 class PlayerWrapper
 {
 public:
 	Player* _player;
-	std::vector<Unit*> units;
+	std::vector<UnitWrapper> units;
 
 	PlayerWrapper(Player* player)
 	{
@@ -19,7 +19,7 @@ public:
 		Unit* nextUnit = firstUnit;
 		while (nextUnit != _player->lastUnit)
 		{
-			units.push_back(nextUnit);
+			units.push_back(UnitWrapper(nextUnit));
 			nextUnit++;
 		}
 	}

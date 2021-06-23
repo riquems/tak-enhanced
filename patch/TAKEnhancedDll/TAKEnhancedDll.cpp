@@ -4,7 +4,7 @@
 
 #include "Changes.h"
 #include "main_form.h"
-#include "Helper.h"
+#include "TakEnhancedService.h"
 
 BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 {
@@ -16,7 +16,7 @@ BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 
 		applyChanges();
 
-		std::thread takEnhancedServiceThread(TakEnhancedService);
+		std::thread takEnhancedServiceThread(startTakEnhancedService);
 		takEnhancedServiceThread.detach();
 	}
 

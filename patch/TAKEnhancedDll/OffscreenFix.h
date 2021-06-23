@@ -1,49 +1,36 @@
 #pragma once
-
 #include "GameFunctions.h"
 #include "PlayerWrapper.h"
 
-bool offscreenFixThreadRunning = false;
+/******************************************************************
 
-bool playersInitialized = false;
-std::vector<PlayerWrapper> playersWrappers;
+	The Offscreen Fix is done by starting a monitor thread which
+	monitors units, ensuring every unit doesn't surpass the top
+	edge of the map.
 
-void InitializePlayersWrappers()
+*******************************************************************/
+
+bool is_offscreen_monitor_thread_running = false;
+
+void startOffscreenMonitor()
 {
-	Player* players = GameFunctionsExtensions::GetPlayers();
-
-	Player* nextPlayer = players;
-	while (nextPlayer->initialized)
-	{
-		PlayerWrapper playerWrapper(nextPlayer);
-
-		playersWrappers.push_back(playerWrapper);
-		nextPlayer++;
+	if (players_wrappers.empty()) {
+		throw std::exception("Player Wrappers array is empty.                                    \
+			                  It must be initialized in order to use the offscreen functionality!");
 	}
-}
 
-void OffscreenFixThread()
-{
-	while (true)
-	{
-		if (!playersInitialized)
-		{
-			InitializePlayersWrappers();
-			playersInitialized = true;
+	while (true) {
+		if (match_has_finished) {
+			return;
 		}
 
-		for (int i = 0; i < playersWrappers.size(); i++)
-		{
-			for (int j = 0; j < playersWrappers[i].units.size(); j++)
-			{
-				Unit* unit = playersWrappers[i].units[j];
+		for (int i = 0; i < players_wrappers.size(); i++) {
+			for (int j = 0; j < players_wrappers[i].units.size(); j++) {
+				UnitWrapper unit = players_wrappers[i].units[j];
 
-				if (unit != nullptr)
-				{
-					bool isFlying = unit->walking & 0b10;
-					if (isFlying && unit->zMapPosition.mapPosition < unit->yMapPosition.mapPosition * 0.55)
-					{
-						unit->zMapPosition.mapPosition = 50 + unit->yMapPosition.mapPosition * 0.55;
+				if (unit.isInitialized()) {
+					if (unit.isFlying() && unit.getZpos() < unit.getYpos() * 0.55) {
+						unit.setZpos(50 + unit.getYpos() * 0.55);
 					}
 				}
 			}
@@ -53,13 +40,13 @@ void OffscreenFixThread()
 	}
 }
 
-void OffscreenFix()
+void startOffscreenMonitor()
 {
-	if (!offscreenFixThreadRunning)
+	if (!is_offscreen_monitor_thread_running)
 	{
-		std::thread offscreenFixThread(OffscreenFixThread);
-		offscreenFixThread.detach();
+		std::thread offscreen_monitor_thread(startOffscreenMonitor);
+		offscreen_monitor_thread.detach();
 
-		offscreenFixThreadRunning = true;
+		is_offscreen_monitor_thread_running = true;
 	}
 }

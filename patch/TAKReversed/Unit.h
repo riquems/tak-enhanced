@@ -14,8 +14,7 @@ class MovementHandler;
 
 class Unit
 {
-    // member                            // offset
-public:
+public:                                  // offset
     char padding[8];
     MovementHandler* movementHandler;    // 0x008
     Weapon* weapon1;                     // 0x00C

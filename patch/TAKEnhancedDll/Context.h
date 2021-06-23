@@ -20,7 +20,10 @@
 #include "GameFunctions.h"
 #include "Settings.h"
 
-extern "C" __declspec(dllexport) bool gameHasLoaded = false;
+extern "C" __declspec(dllexport) bool match_has_started = false;
+
+// Is true when "VICTORY" or "DEFEAT" appears on the screen
+extern "C" __declspec(dllexport) bool match_has_finished = false;
 
 extern "C" __declspec(dllexport) DWORD setListItem_fcnAddr = 0;
 UserInterfaceHandler* uiHandler = nullptr;
@@ -29,6 +32,23 @@ Settings settings;
 Logger logger;
 DWORD baseAddress = 0;
 HANDLE hProcess = NULL;
+
+bool playersInitialized = false;
+std::vector<PlayerWrapper> players_wrappers;
+
+void InitializePlayersWrappers()
+{
+	Player* players = GameFunctionsExtensions::GetPlayers();
+
+	Player* nextPlayer = players;
+	while (nextPlayer->initialized)
+	{
+		PlayerWrapper playerWrapper(nextPlayer);
+
+		players_wrappers.push_back(playerWrapper);
+		nextPlayer++;
+	}
+}
 
 void initializeContext()
 {

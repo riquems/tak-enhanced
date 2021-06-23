@@ -5,6 +5,81 @@
 #include "SearchBox.h"
 #include "BuildingsShortcuts.h"
 
+/*********************************************************
+ 
+	The TA:K Enhanced Service is a service which will 
+	be running while the game is running, doing several
+	different tasks.
+
+**********************************************************/
+
+void startTakEnhancedService()
+{
+	while (true)
+	{
+		if (settings.OffscreenFix && match_has_started)
+		{
+			startOffscreenMonitor();
+		}
+
+		for (std::pair<int, int> keyValue : buildingKeys)
+		{
+			if (isKeyDown(keyValue.first))
+			{
+				SelectBuilding(keyValue.second);
+			}
+		}
+
+		if (isKeyDown(VK_MENU))
+		{
+			if (isKeyDown(VK_RETURN))
+			{
+				ToggleFullscreen();
+			}
+		}
+
+		if (isKeyDown(VK_CONTROL))
+		{
+			if (isKeyDown(VK_S))
+			{
+				PrintMouseHoveredUnitAddress();
+			}
+			else if (isKeyDown(VK_F))
+			{
+				TryToInitializeSearchBox();
+			}
+			else if (isKeyDown(VK_R))
+			{
+				TryToChooseRandomRace();
+			}
+			else if (isKeyDown(VK_K))
+			{
+				// ToggleSelectedUnitAura();
+			}
+		}
+
+		bool singleShotKeysStillBeingHold = [&]()->bool
+		{
+			for (int key : singleShotKeys)
+			{
+				if (isKeyDown(key))
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}();
+
+		while (singleShotKeysStillBeingHold)
+		{
+			Sleep(10);
+		}
+
+		Sleep(10);
+	}
+}
+
 #define VK_F 0x46
 #define VK_K 0x4B
 #define VK_O 0x4F
@@ -49,69 +124,3 @@ std::vector<int> singleShotKeys = { VK_RETURN,
 									VK_8,
 									VK_9 };
 
-void TakEnhancedService()
-{
-	while (true)
-	{
-		if (settings.OffscreenFix && gameHasLoaded)
-		{
-			OffscreenFix();
-		}
-		
-		for (std::pair<int, int> keyValue : buildingKeys)
-		{
-			if (isKeyDown(keyValue.first))
-			{
-				SelectBuilding(keyValue.second);
-			}
-		}
-
-		if (isKeyDown(VK_MENU))
-		{
-			if (isKeyDown(VK_RETURN))
-			{
-				ToggleFullscreen();
-			}
-		}
-
-		if (isKeyDown(VK_CONTROL))
-		{
-			if (isKeyDown(VK_S))
-			{
-				PrintMouseHoveredUnitAddress();
-			}
-			else if (isKeyDown(VK_F))
-			{
-				TryToInitializeSearchBox();
-			}
-			else if (isKeyDown(VK_R))
-			{
-				TryToChooseRandomRace();
-			}
-			else if (isKeyDown(VK_K))
-			{
-				// ToggleSelectedUnitAura();
-			}
-		}
-
-		bool singleShotKeysStillBeingHold = [&]()->bool
-		{ 
-			for (int key : singleShotKeys)
-			{
-				if (isKeyDown(key))
-				{
-					return true;
-				}
-			}
-
-			return false; 
-		}();
-
-		while (singleShotKeysStillBeingHold)
-		{
-			Sleep(10);
-		}
-
-		Sleep(10);
-	}
-}

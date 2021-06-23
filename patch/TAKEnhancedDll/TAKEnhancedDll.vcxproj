@@ -48,7 +48,6 @@
     <ClInclude Include="NoCD.h" />
     <ClInclude Include="NoPauseWhenUnfocused.h" />
     <ClInclude Include="PathFindingChanger.h" />
-    <ClInclude Include="RotatingBuildings.h" />
     <ClInclude Include="MaxUnits.h" />
     <ClInclude Include="WeaponExtension.h" />
     <ClInclude Include="WeaponExtensions.h" />

@@ -50,9 +50,6 @@
     <ClInclude Include="MemoryHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RotatingBuildings.h">
-      <Filter>Header Files\Changes</Filter>
-    </ClInclude>
     <ClInclude Include="HumorInteractions.h">
       <Filter>Header Files\Changes</Filter>
     </ClInclude>
