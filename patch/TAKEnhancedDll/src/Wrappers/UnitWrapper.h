@@ -7,6 +7,7 @@ class UnitWrapper
 public:
 	Unit* _unit = nullptr;
 
+	UnitWrapper() {}
 	UnitWrapper(Unit* unit) : _unit(unit) {}
 
 	inline bool isInitialized() {

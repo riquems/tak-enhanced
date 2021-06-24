@@ -1,6 +1,6 @@
 #pragma once
+#include "Context.h"
 #include "GameFunctions.h"
-#include "PlayerWrapper.h"
 
 /******************************************************************
 
@@ -15,18 +15,19 @@ bool is_offscreen_monitor_thread_running = false;
 void startOffscreenMonitor()
 {
 	if (players_wrappers.empty()) {
-		throw std::exception("Player Wrappers array is empty.                                    \
+		throw std::exception("Players Wrappers array is empty.                                   \
 			                  It must be initialized in order to use the offscreen functionality!");
 	}
 
 	while (true) {
-		if (match_has_finished) {
-			return;
-		}
-
 		for (int i = 0; i < players_wrappers.size(); i++) {
 			for (int j = 0; j < players_wrappers[i].units.size(); j++) {
-				UnitWrapper unit = players_wrappers[i].units[j];
+				PlayerWrapper player = players_wrappers[i];
+				
+				if (player._player->unitsCount == 0)
+					return;
+
+				UnitWrapper unit = player.units[j];
 
 				if (unit.isInitialized()) {
 					if (unit.isFlying() && unit.getZpos() < unit.getYpos() * 0.55) {
@@ -40,7 +41,7 @@ void startOffscreenMonitor()
 	}
 }
 
-void startOffscreenMonitor()
+void startOffscreenMonitorThread()
 {
 	if (!is_offscreen_monitor_thread_running)
 	{

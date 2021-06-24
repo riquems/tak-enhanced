@@ -47,7 +47,7 @@ void applyChanges()
 	applyUpdateGuiExtensionPatch();
 	applyReadSideDataExtensionPatch();
 	applyLoadingScreenExtensionsPatch();
-	applyNewHpiVerificationPatch();
+	// applyNewHpiVerificationPatch();
 	// ProcessCodesExtension
 	
 	// Option to choose random race

@@ -13,12 +13,14 @@
 #include <algorithm>
 
 #include "Logger.h"
-#include "Info.h"
+#include "./Wrappers/Info.h"
 #include "OriginalFunctionsOffsets.h"
 #include "UserInterfaceHandler.h"
 #include "GlobalPointers.h"
 #include "GameFunctions.h"
 #include "Settings.h"
+#include "./Wrappers/PlayerWrapper.h"
+#include "./Wrappers/MatchWrapper.h"
 
 extern "C" __declspec(dllexport) bool match_has_started = false;
 
@@ -32,6 +34,8 @@ Settings settings;
 Logger logger;
 DWORD baseAddress = 0;
 HANDLE hProcess = NULL;
+
+MatchWrapper match_wrapper;
 
 bool playersInitialized = false;
 std::vector<PlayerWrapper> players_wrappers;
@@ -72,10 +76,10 @@ void initializeContext()
 	GameFunctions::getMouseHoveredUnitAddress = (DWORD(*)()) (FunctionsOffsets::getMouseHoveredUnitAddress + baseAddress);
 	setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
 
-	/*AllocConsole();
-	freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
-	freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
-	std::cout.clear();
-	std::cin.clear();
-	std::cin.get();*/
+	//AllocConsole();
+	//freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
+	//freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
+	//std::cout.clear();
+	//std::cin.clear();
+	//std::cin.get();
 }
