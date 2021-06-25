@@ -16,7 +16,7 @@ extern "C" __declspec(dllexport) void __stdcall LoadingScreenStartExtension()
 
 extern "C" __declspec(dllexport) void __stdcall LoadingScreenEndExtension()
 {
-	InitializePlayersWrappers();
+	game.initializePlayersWrappers();
 }
 
 void applyLoadingScreenExtensionsPatch()

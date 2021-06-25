@@ -5,8 +5,8 @@
 #include "GadgetExtensions.h"
 #include "WindowExtensions.h"
 
-#include "ChooseMapMenuWrapper.h"
-#include "BattleMenuWrapper.h"
+#include "../Wrappers/ChooseMapMenuWrapper.h"
+#include "../Wrappers/BattleMenuWrapper.h"
 #include "BattleMenu.h"
 
 #define VK_BACKSPACE VK_BACK

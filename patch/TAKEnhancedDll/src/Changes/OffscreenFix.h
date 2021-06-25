@@ -14,18 +14,21 @@ bool is_offscreen_monitor_thread_running = false;
 
 void startOffscreenMonitor()
 {
-	if (players_wrappers.empty()) {
+	if (game.players.empty()) {
 		throw std::exception("Players Wrappers array is empty.                                   \
 			                  It must be initialized in order to use the offscreen functionality!");
 	}
 
 	while (true) {
-		for (int i = 0; i < players_wrappers.size(); i++) {
-			for (int j = 0; j < players_wrappers[i].units.size(); j++) {
-				PlayerWrapper player = players_wrappers[i];
+		for (int i = 0; i < game.players.size(); i++) {
+			for (int j = 0; j < game.players[i].units.size(); j++) {
+				PlayerWrapper player = game.players[i];
 				
-				if (player._player->unitsCount == 0)
+				if (!game.match->isRunning()) {
+					std::cout << "Stopping OffScreen Monitor..." << std::endl;
+					is_offscreen_monitor_thread_running = false;
 					return;
+				}
 
 				UnitWrapper unit = player.units[j];
 
@@ -43,11 +46,14 @@ void startOffscreenMonitor()
 
 void startOffscreenMonitorThread()
 {
-	if (!is_offscreen_monitor_thread_running)
-	{
-		std::thread offscreen_monitor_thread(startOffscreenMonitor);
-		offscreen_monitor_thread.detach();
+	if (is_offscreen_monitor_thread_running)
+		return;
 
-		is_offscreen_monitor_thread_running = true;
-	}
+	game.refreshPlayersWrappers();
+
+	std::cout << "Starting OffScreen Monitor..." << std::endl;
+	std::thread offscreen_monitor_thread(startOffscreenMonitor);
+	offscreen_monitor_thread.detach();
+
+	is_offscreen_monitor_thread_running = true;
 }

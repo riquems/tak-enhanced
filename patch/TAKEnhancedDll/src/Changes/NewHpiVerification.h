@@ -3,25 +3,26 @@
 #include "MemoryHandler.h"
 #include "GlobalPointers.h"
 #include "GameFunctions.h"
+#include "../Wrappers/Info.h"
 
 extern "C" __declspec(dllexport) bool __stdcall HpiVerificationExtension()
 {
 	HapiFile* hapiFile;
 
 	__asm {
-		mov hapiFile, ecx
+		mov hapiFile, esi
 	}
 
-	std::string std_filename(hapiFile->filename);
+	std::string filename(hapiFile->filename);
 
-	if (vector_has_str(files_loaded_by_default, std_filename)) {
+	if (vector_has_str(files_loaded_by_default, filename)) {
 		hapiFile->allowed = true;
 		hapiFile->allowed2 = true;
 		return true;
 	}
 
 	if (settings.EnableMods) {
-		if (vector_has_str(settings.selected_mods, std_filename)) {
+		if (vector_has_str(settings.selected_mods, filename)) {
 			hapiFile->allowed = true;
 			hapiFile->allowed2 = true;
 

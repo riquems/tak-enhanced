@@ -1,16 +1,16 @@
 #pragma once
 
-#include "HelperFeatures.h"
-#include "NoCD.h"
-#include "NoPauseWhenUnfocused.h"
-#include "PathFindingChanger.h"
-#include "MeleeStuckFix.h"
-#include "MaxUnits.h"
-#include "RandomRace.h"
-#include "UpdateGuiExtension.h"
-#include "ReadSideDataExtension.h"
-#include "LoadingScreenExtensions.h"
-#include "NewHpiVerification.h"
+#include "./Changes/HelperFeatures.h"
+#include "./Changes/NoCD.h"
+#include "./Changes/NoPauseWhenUnfocused.h"
+#include "./Changes/PathFindingChanger.h"
+#include "./Changes/MeleeStuckFix.h"
+#include "./Changes/MaxUnits.h"
+#include "./Changes/RandomRace.h"
+#include "./Changes/NewHpiVerification.h"
+#include "./Extensions/UpdateGuiExtension.h"
+#include "./Extensions/ReadSideDataExtension.h"
+#include "./Extensions/LoadingScreenExtensions.h"
 
 extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.0";
 
@@ -43,13 +43,13 @@ void applyChanges()
 		applyMeleeStuckFix();
 	}
 	
-	/* Extensions */
+	// Extensions
 	applyUpdateGuiExtensionPatch();
 	applyReadSideDataExtensionPatch();
 	applyLoadingScreenExtensionsPatch();
-	// applyNewHpiVerificationPatch();
+	applyNewHpiVerificationPatch();
 	// ProcessCodesExtension
-	
+
 	// Option to choose random race
 	// Walls have hp
 	// Not able to ctrl d while in combat
@@ -70,7 +70,7 @@ void applyChanges()
 	// ResolutionFix();
 	// MakePlayAnOpponentSearchForGamesSomewhereElse()
 	// Why watching in multiplayer causes so much lag
-
+	
 	logger.log("\nEndded applying changes. Enjoy!");
 	logger.end();
 }

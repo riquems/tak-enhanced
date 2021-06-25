@@ -11,47 +11,75 @@
 #include <memory>
 #include <chrono>
 #include <algorithm>
+#include "UserInterfaceHandler.h"
+
+DWORD baseAddress = 0;
+UserInterfaceHandler* uiHandler = nullptr;
 
 #include "Logger.h"
-#include "./Wrappers/Info.h"
 #include "OriginalFunctionsOffsets.h"
-#include "UserInterfaceHandler.h"
 #include "GlobalPointers.h"
 #include "GameFunctions.h"
 #include "Settings.h"
-#include "./Wrappers/PlayerWrapper.h"
+#include "Side.h"
+#include "./Wrappers/GameWrapper.h"
 #include "./Wrappers/MatchWrapper.h"
 
-extern "C" __declspec(dllexport) bool match_has_started = false;
-
-// Is true when "VICTORY" or "DEFEAT" appears on the screen
-extern "C" __declspec(dllexport) bool match_has_finished = false;
-
 extern "C" __declspec(dllexport) DWORD setListItem_fcnAddr = 0;
-UserInterfaceHandler* uiHandler = nullptr;
 
 Settings settings;
 Logger logger;
-DWORD baseAddress = 0;
 HANDLE hProcess = NULL;
 
-MatchWrapper match_wrapper;
+GameWrapper game;
 
-bool playersInitialized = false;
-std::vector<PlayerWrapper> players_wrappers;
-
-void InitializePlayersWrappers()
+Window* GetWindowCurrentWindow()
 {
-	Player* players = GameFunctionsExtensions::GetPlayers();
+	MenuHandler* menuHandler = uiHandler->menuHandler;
 
-	Player* nextPlayer = players;
-	while (nextPlayer->initialized)
+	if (menuHandler == nullptr)
 	{
-		PlayerWrapper playerWrapper(nextPlayer);
-
-		players_wrappers.push_back(playerWrapper);
-		nextPlayer++;
+		return nullptr;
 	}
+
+	Gadget* focusedGadget = menuHandler->focusedGadget;
+
+	if (focusedGadget == nullptr)
+	{
+		return nullptr;
+	}
+
+	return focusedGadget->parent;
+}
+
+Side* GetSides()
+{
+	DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
+	Side* sides = (Side*) (*gamePtr + 0x3078);
+
+	return sides;
+}
+
+int GetNumberOfSides()
+{
+	DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
+	int* numberOfSidesPtr = (int*) (*gamePtr + 0x3074);
+
+	return *numberOfSidesPtr;
+}
+
+void PrintMouseHoveredUnitAddress()
+{
+	DWORD mouseHoveredUnitAddress = 0;
+
+	mouseHoveredUnitAddress = GameFunctions::getMouseHoveredUnitAddress();
+
+	std::cout << std::hex << mouseHoveredUnitAddress << std::endl;
+}
+
+DWORD GetAbsoluteAddress(DWORD relativeAddress)
+{
+	return relativeAddress + baseAddress;
 }
 
 void initializeContext()
@@ -76,10 +104,10 @@ void initializeContext()
 	GameFunctions::getMouseHoveredUnitAddress = (DWORD(*)()) (FunctionsOffsets::getMouseHoveredUnitAddress + baseAddress);
 	setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
 
-	//AllocConsole();
-	//freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
-	//freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
-	//std::cout.clear();
-	//std::cin.clear();
-	//std::cin.get();
+	AllocConsole();
+	freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
+	freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
+	std::cout.clear();
+	std::cin.clear();
+	std::cin.get();
 }

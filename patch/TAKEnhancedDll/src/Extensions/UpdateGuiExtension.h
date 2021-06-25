@@ -1,6 +1,6 @@
 #pragma once
 #include "MemoryHandler.h"
-#include "SearchBox.h"
+#include "../Changes/SearchBox.h"
 
 extern "C" __declspec(dllexport) void __stdcall updateGuiExtension()
 {

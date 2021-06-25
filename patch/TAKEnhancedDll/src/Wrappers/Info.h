@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.h"
+#include "../common.h"
 
 std::vector<std::string> files_loaded_by_default = { "data.hpi",
 													 "missions.hpi",

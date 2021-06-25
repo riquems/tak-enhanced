@@ -1,5 +1,5 @@
 #pragma once
-#include "common.h"
+#include "../common.h"
 
 #include "UnitWrapper.h"
 #include "Player.h"
@@ -14,13 +14,17 @@ public:
 	{
 		_player = player;
 
-		Unit* firstUnit = _player->firstUnit;
+		Unit* first_unit = _player->firstUnit;
 
-		Unit* nextUnit = firstUnit;
-		while (nextUnit != _player->lastUnit)
+		Unit* next_unit = first_unit;
+		while (next_unit != _player->lastUnit)
 		{
-			units.push_back(UnitWrapper(nextUnit));
-			nextUnit++;
+			units.push_back(UnitWrapper(next_unit));
+			next_unit++;
 		}
+	}
+
+	uint16_t getUnitsCount() {
+		return _player->unitsCount;
 	}
 };

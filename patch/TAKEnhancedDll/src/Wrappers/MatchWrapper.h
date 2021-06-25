@@ -1,29 +1,31 @@
 #pragma once
 
-#include "common.h"
+#include "../common.h"
+#include "../GameFunctions.h"
+#include "GameWrapper.h"
 #include "PlayerWrapper.h"
-#include ""
 
 class MatchWrapper
 {
 public:
+	GameWrapper* _game;
+
 	MatchWrapper() {}
+	MatchWrapper(GameWrapper* game) : _game(game) {}
 
-	bool hasEnded() {
-		
-
-		return !anyPlayerHasAtLeastOneUnit();
+	bool isRunning() {
+		return anyPlayerHaveAtLeastOneUnit(); // At least one player has at least one unit
 	}
 
-	bool anyPlayerHasAtLeastOneUnit() {
-		std::vector<PlayerWrapper> players_wrappers = GameFunctionsExtensions::GetPlayersWrappers();
+	bool anyPlayerHaveAtLeastOneUnit() {
+		std::vector<PlayerWrapper>* players_wrappers = &_game->players;
 
-		std::vector<PlayerWrapper>::iterator player_iterator = players_wrappers.findif(players_wrappers.begin(),
-			players_wrappers.end(),
+		std::vector<PlayerWrapper>::iterator player_iterator = std::find_if(players_wrappers->begin(),
+			players_wrappers->end(),
 			[&](PlayerWrapper player) {
 				return player.getUnitsCount() > 0;
 			});
 
-		return player_iterator != players_wrappers.end();
+		return player_iterator != players_wrappers->end();
 	}
 };

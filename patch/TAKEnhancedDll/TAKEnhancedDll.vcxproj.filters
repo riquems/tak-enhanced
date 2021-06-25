@@ -114,6 +114,9 @@
     <ClInclude Include="src\Wrappers\WeaponWrapper.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
+    <ClInclude Include="src\Wrappers\GameWrapper.h">
+      <Filter>Wrappers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\TAKEnhancedDll.cpp" />

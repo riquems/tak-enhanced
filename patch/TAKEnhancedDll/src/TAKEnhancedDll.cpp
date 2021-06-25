@@ -3,7 +3,7 @@
 #include <thread>
 
 #include "Changes.h"
-#include "main_form.h"
+#include "./Launcher/main_form.h"
 #include "TakEnhancedService.h"
 
 BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)

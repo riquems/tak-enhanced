@@ -50,6 +50,7 @@
     <ClInclude Include="src\TakEnhancedService.h" />
     <ClInclude Include="src\Wrappers\BattleMenuWrapper.h" />
     <ClInclude Include="src\Wrappers\ChooseMapMenuWrapper.h" />
+    <ClInclude Include="src\Wrappers\GameWrapper.h" />
     <ClInclude Include="src\Wrappers\Info.h" />
     <ClInclude Include="src\Wrappers\MapPositionWrapper.h" />
     <ClInclude Include="src\Wrappers\MatchWrapper.h" />

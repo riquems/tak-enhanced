@@ -1,0 +1,11 @@
+### EXE ###
+
+[PREPARATION]
+
+Couldn't open target file Kingdoms.icd. Error Code: 2
+
+For further information, contact DeeKay with this error code:
+E-Mail: Henrique-MS@Outlook.com
+GameRanger ID: 1184157
+Discord: DeeKay#3610
+

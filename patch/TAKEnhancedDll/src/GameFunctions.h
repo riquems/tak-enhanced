@@ -1,5 +1,5 @@
 #pragma once
-#include "HelperFeatures.h"
+#include "./Context.h"
 
 #include "Windows.h"
 #include "GlobalPointers.h"
@@ -55,3 +55,4 @@ std::vector<HapiFile*> GameFunctionsExtensions::GetLoadedHapiFiles()
 
 	return hapiFiles;
 }
+

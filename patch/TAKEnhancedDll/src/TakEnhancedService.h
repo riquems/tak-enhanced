@@ -61,13 +61,7 @@ void startTakEnhancedService()
 {
 	while (true)
 	{
-		if (!players_wrappers.empty()) {
-			if (players_wrappers[0]._player->unitsCount > 0) {
-				match_has_started = true;
-			}
-		}
-
-		if (settings.OffscreenFix && match_has_started)
+		if (settings.OffscreenFix && game.match->isRunning())
 		{
 			startOffscreenMonitorThread();
 		}
