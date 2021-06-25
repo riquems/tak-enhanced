@@ -1,162 +1,155 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Models">
+      <UniqueIdentifier>{30eeb6aa-a140-4424-852d-87eb390301e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="ModelsExtensions">
+      <UniqueIdentifier>{563706ab-2a0c-4f95-ae49-898ec53a0002}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Models\UI">
+      <UniqueIdentifier>{4c6a46fe-b824-48d0-b541-48d8ce8853dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\UI">
-      <UniqueIdentifier>{124d2329-c1ba-4b74-90ac-351b6583e46b}</UniqueIdentifier>
+    <Filter Include="Functions">
+      <UniqueIdentifier>{0d459954-a50f-41fd-bd25-ddd245575be7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Extensions">
-      <UniqueIdentifier>{f28e9e0a-4306-4c6b-83c1-026d55b07058}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Extensions\UI">
-      <UniqueIdentifier>{7abe133c-3ef5-4c64-86f3-28f94836ebb9}</UniqueIdentifier>
+    <Filter Include="GlobalPointers">
+      <UniqueIdentifier>{723d8d03-a188-4e01-944e-651f0f823c37}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Unit.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="src\GlobalPointers\GlobalPointers.h">
+      <Filter>GlobalPointers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Functions\NewFunctions.h">
+      <Filter>Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelsExtensions\BattleMenuExtensions.h">
+      <Filter>ModelsExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelsExtensions\ChooseMapMenuExtensions.h">
+      <Filter>ModelsExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelsExtensions\GadgetExtensions.h">
+      <Filter>ModelsExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelsExtensions\WindowExtensions.h">
+      <Filter>ModelsExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Aura.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\GameMath.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\HapiFile.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\MapPosition.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Measurement.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Mission.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\MovementHandler.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\NavGoal.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\PathNavigator.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Player.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\PlayerViewModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Side.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\TAobjectScript.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Unit.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UnitInfo.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UnitRenderer.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Weapon.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\WeaponType.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\BattleMenu.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\BrushHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\BuildMenu.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\ChooseMapMenu.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\CursorHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\FontHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\Gadget.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\GraphicsHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\ImageHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\InputHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\KingdomsDialog.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\KingdomsPanel.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\MenuHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\PlayerInterfaceHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\SoundHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\TextHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\Window.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common.h" />
+    <ClInclude Include="src\Functions\FunctionsOffsets.h">
+      <Filter>Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\BuildButton.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Measurement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mission.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TAobjectScript.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MovementHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OriginalFunctionsOffsets.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapPosition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NavGoal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NewFunctions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PathNavigator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalPointers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInterfaceHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="TextHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="FontHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="BrushHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="CursorHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsHandler.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Gadget.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="KingdomsDialog.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ChooseMapMenu.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="KingdomsPanel.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleMenu.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="GadgetExtensions.h">
-      <Filter>Header Files\Extensions\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowExtensions.h">
-      <Filter>Header Files\Extensions\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ChooseMapMenuExtensions.h">
-      <Filter>Header Files\Extensions\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleMenuExtensions.h">
-      <Filter>Header Files\Extensions\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerViewModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Side.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Aura.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HapiFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BuildMenu.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
 </Project>

@@ -2,12 +2,12 @@
 #include <conio.h>
 
 #include "MemoryHandler.h"
-#include "GadgetExtensions.h"
-#include "WindowExtensions.h"
+#include "ModelsExtensions/GadgetExtensions.h"
+#include "ModelsExtensions/WindowExtensions.h"
 
 #include "../Wrappers/ChooseMapMenuWrapper.h"
 #include "../Wrappers/BattleMenuWrapper.h"
-#include "BattleMenu.h"
+#include "Models/UI/BattleMenu.h"
 
 #define VK_BACKSPACE VK_BACK
 

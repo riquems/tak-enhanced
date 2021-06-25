@@ -11,19 +11,20 @@
 #include <memory>
 #include <chrono>
 #include <algorithm>
-#include "UserInterfaceHandler.h"
+#include "Models/UI/PlayerInterfaceHandler.h"
 
 DWORD baseAddress = 0;
-UserInterfaceHandler* uiHandler = nullptr;
+PlayerInterfaceHandler* uiHandler = nullptr;
 
 #include "Logger.h"
-#include "OriginalFunctionsOffsets.h"
-#include "GlobalPointers.h"
+#include "Functions/FunctionsOffsets.h"
+#include "GlobalPointers/GlobalPointers.h"
 #include "GameFunctions.h"
 #include "Settings.h"
-#include "Side.h"
+#include "Models/Side.h"
 #include "./Wrappers/GameWrapper.h"
 #include "./Wrappers/MatchWrapper.h"
+#include "Models/UI/Window.h"
 
 extern "C" __declspec(dllexport) DWORD setListItem_fcnAddr = 0;
 
@@ -98,7 +99,7 @@ void initializeContext()
 	logger.section("CHANGES");
 
 	// Initialize Global Pointers
-	uiHandler = (UserInterfaceHandler*) (GlobalPointers::UserInterfaceHandler + baseAddress);
+	uiHandler = (PlayerInterfaceHandler*) (GlobalPointers::PlayerInterfaceHandler + baseAddress);
 
 	// Initialize functions
 	GameFunctions::getMouseHoveredUnitAddress = (DWORD(*)()) (FunctionsOffsets::getMouseHoveredUnitAddress + baseAddress);

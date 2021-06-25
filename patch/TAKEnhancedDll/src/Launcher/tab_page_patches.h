@@ -33,19 +33,19 @@ class tab_page_patches : public nana::panel<false>
 		cb_pauseWhenUnfocused->bgcolor(default_bgcolor);
 		cb_offscreenFix->bgcolor(default_bgcolor);
 
-		if (settings.NoCD) {
+		if (settings.no_cd) {
 			cb_noCD->check(true);
 		}
 
-		if (settings.MeleeStuckFix) {
+		if (settings.melee_stuck_fix) {
 			cb_meleeStuckFix->check(true);
 		}
 
-		if (settings.PauseWhenUnfocused) {
+		if (settings.pause_when_unfocused) {
 			cb_pauseWhenUnfocused->check(true);
 		}
 
-		if (settings.OffscreenFix) {
+		if (settings.offscreen_fix) {
 			cb_offscreenFix->check(true);
 		}
 
@@ -55,13 +55,13 @@ class tab_page_patches : public nana::panel<false>
 	void initialize_textboxes()
 	{
 		lbl_maxUnits = std::make_unique<nana::label>(*this, "Max Units:");
-		tb_maxUnits = std::make_unique<nana::textbox>(*this, std::to_string(settings.MaxUnits));
+		tb_maxUnits = std::make_unique<nana::textbox>(*this, std::to_string(settings.max_units));
 
 		lbl_pathfindingCycles = std::make_unique<nana::label>(*this, "Pathfinding Cycles:");
-		tb_pathfindingCycles = std::make_unique<nana::textbox>(*this, std::to_string(settings.PathfindingCycles));
+		tb_pathfindingCycles = std::make_unique<nana::textbox>(*this, std::to_string(settings.pathfinding_cycles));
 
 		lbl_forcedMinRangeForMelees = std::make_unique<nana::label>(*this, "Forced minrange for Melees:");
-		tb_forcedMinRangeForMelees = std::make_unique<nana::textbox>(*this, std::to_string(settings.ForcedMinRangeForMelees));
+		tb_forcedMinRangeForMelees = std::make_unique<nana::textbox>(*this, std::to_string(settings.forced_minrange_for_melees));
 
 		lbl_maxUnits->bgcolor(default_bgcolor);
 		lbl_pathfindingCycles->bgcolor(default_bgcolor);

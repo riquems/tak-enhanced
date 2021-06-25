@@ -39,7 +39,7 @@ class tab_page_mods : public nana::panel<false>
 		cb_enableMods = std::make_unique<nana::checkbox>(*this, "Enable Mods");
 		cb_enableMods->bgcolor(default_bgcolor);
 
-		if (settings.EnableMods) {
+		if (settings.enable_mods) {
 			cb_enableMods->check(true);
 		}
 

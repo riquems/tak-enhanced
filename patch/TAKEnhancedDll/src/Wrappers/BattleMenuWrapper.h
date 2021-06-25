@@ -1,7 +1,7 @@
 #pragma once
 #include "../common.h"
 
-#include "BattleMenu.h"
+#include "Models/UI/BattleMenu.h"
 
 class BattleMenuWrapper
 {

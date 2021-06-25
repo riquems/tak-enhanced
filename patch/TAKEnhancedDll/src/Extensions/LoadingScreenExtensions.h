@@ -1,7 +1,7 @@
 #pragma once
 #include "MemoryHandler.h"
-#include "Player.h"
-#include "PlayerViewModel.h"
+#include "Models/Player.h"
+#include "Models/PlayerViewModel.h"
 
 // replaces the call to this empty function: 004FABC0
 // loading start

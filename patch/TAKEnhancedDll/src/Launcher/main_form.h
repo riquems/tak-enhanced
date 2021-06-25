@@ -66,15 +66,15 @@ private:
 
 		btn_continue->events().click(
 			[&]() {
-				settings.MaxUnits                = str_to_uint(tp_patches->get_max_units().c_str());
-				settings.PathfindingCycles       = str_to_uint(tp_patches->get_pathfinding_cycles().c_str());
-				settings.ForcedMinRangeForMelees = str_to_uint(tp_patches->get_forced_minrange_for_melees().c_str());
+				settings.max_units                  = str_to_uint(tp_patches->get_max_units().c_str());
+				settings.pathfinding_cycles         = str_to_uint(tp_patches->get_pathfinding_cycles().c_str());
+				settings.forced_minrange_for_melees = str_to_uint(tp_patches->get_forced_minrange_for_melees().c_str());
 
-				settings.EnableMods         = tp_mods->get_enableMods();
-				settings.NoCD               = tp_patches->get_noCD();
-				settings.MeleeStuckFix      = tp_patches->get_meleeStuckFix();
-				settings.OffscreenFix       = tp_patches->get_offscreenFix();
-				settings.PauseWhenUnfocused = tp_patches->get_pauseWhenUnfocused();
+				settings.enable_mods          = tp_mods->get_enableMods();
+				settings.no_cd                = tp_patches->get_noCD();
+				settings.melee_stuck_fix      = tp_patches->get_meleeStuckFix();
+				settings.offscreen_fix        = tp_patches->get_offscreenFix();
+				settings.pause_when_unfocused = tp_patches->get_pauseWhenUnfocused();
 
 				settings.selected_mods.clear();
 

@@ -2,9 +2,9 @@
 #include "./Context.h"
 
 #include "Windows.h"
-#include "GlobalPointers.h"
-#include "Player.h"
-#include "HapiFile.h"
+#include "GlobalPointers/GlobalPointers.h"
+#include "Models/Player.h"
+#include "Models/HapiFile.h"
 
 DWORD GetAbsoluteAddress(DWORD);
 

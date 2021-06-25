@@ -5,14 +5,14 @@
 class Settings
 {
 public:
-	bool EnableMods = true;
-	uint MaxUnits = 5000;
-	uint PathfindingCycles = 100000;
-	uint ForcedMinRangeForMelees = 40;
-	bool NoCD = true;
-	bool MeleeStuckFix = true;
-	bool PauseWhenUnfocused = false;
-	bool OffscreenFix = true;
+	bool enable_mods = true;
+	uint max_units = 5000;
+	uint pathfinding_cycles = 100000;
+	uint forced_minrange_for_melees = 40;
+	bool no_cd = true;
+	bool melee_stuck_fix = true;
+	bool pause_when_unfocused = false;
+	bool offscreen_fix = true;
 
 	std::vector<std::string> selected_mods;
 
@@ -68,28 +68,28 @@ public:
 	void MapClassFieldToValue(const char* key, const char* value)
 	{
 		if (str_equals_str(key, "EnableMods")) {
-			EnableMods = str_to_boolean(value);
+			enable_mods = str_to_boolean(value);
 		}
 		else if (str_equals_str(key, "MaxUnits")) {
-			MaxUnits = str_to_uint(value);
+			max_units = str_to_uint(value);
 		}
 		else if (str_equals_str(key, "PathfindingCycles")) {
-			PathfindingCycles = str_to_uint(value);
+			pathfinding_cycles = str_to_uint(value);
 		}
 		else if (str_equals_str(key, "NoCD")) {
-			NoCD = str_to_boolean(value);
+			no_cd = str_to_boolean(value);
 		}
 		else if (str_equals_str(key, "MeleeStuckFix")) {
-			MeleeStuckFix = str_to_boolean(value);
+			melee_stuck_fix = str_to_boolean(value);
 		}
 		else if (str_equals_str(key, "OffscreenFix")) {
-			OffscreenFix = str_to_boolean(value);
+			offscreen_fix = str_to_boolean(value);
 		}
 		else if (str_equals_str(key, "PauseWhenUnfocused")) {
-			PauseWhenUnfocused = str_to_boolean(value);
+			pause_when_unfocused = str_to_boolean(value);
 		}
 		else if (str_equals_str(key, "ForcedMinRangeForMelees")) {
-			ForcedMinRangeForMelees = str_to_uint(value);
+			forced_minrange_for_melees = str_to_uint(value);
 		}
 		else if (str_equals_str(key, "SelectedMods")) {
 			std::string filename;
@@ -113,7 +113,7 @@ public:
 		if (cfgFile.is_open())
 		{
 			cfgFile << "[General]" << std::endl;
-			cfgFile << "EnableMods = " << boolean_to_str(EnableMods) << std::endl;
+			cfgFile << "EnableMods = " << boolean_to_str(enable_mods) << std::endl;
 			cfgFile << "SelectedMods = ";
 
 			for (std::string& mod_filename : selected_mods) {
@@ -126,17 +126,17 @@ public:
 			}
 
 			cfgFile << std::endl << std::endl;
-			cfgFile << "MaxUnits = " << MaxUnits << std::endl;
-			cfgFile << "PathfindingCycles = " << PathfindingCycles << std::endl;
+			cfgFile << "MaxUnits = " << max_units << std::endl;
+			cfgFile << "PathfindingCycles = " << pathfinding_cycles << std::endl;
 			cfgFile << std::endl;
 			cfgFile << "[Changes]" << std::endl;
-			cfgFile << "NoCD = " << boolean_to_str(NoCD) << std::endl;
-			cfgFile << "MeleeStuckFix = " << boolean_to_str(MeleeStuckFix) << std::endl;
-			cfgFile << "OffscreenFix = " << boolean_to_str(OffscreenFix) << std::endl;
-			cfgFile << "PauseWhenUnfocused = " << boolean_to_str(PauseWhenUnfocused) << std::endl;
+			cfgFile << "NoCD = " << boolean_to_str(no_cd) << std::endl;
+			cfgFile << "MeleeStuckFix = " << boolean_to_str(melee_stuck_fix) << std::endl;
+			cfgFile << "OffscreenFix = " << boolean_to_str(offscreen_fix) << std::endl;
+			cfgFile << "PauseWhenUnfocused = " << boolean_to_str(pause_when_unfocused) << std::endl;
 			cfgFile << std::endl;
 			cfgFile << "[MeleeStuckFix]" << std::endl;
-			cfgFile << "ForcedMinRangeForMelees = " << ForcedMinRangeForMelees << std::endl;
+			cfgFile << "ForcedMinRangeForMelees = " << forced_minrange_for_melees << std::endl;
 
 			cfgFile.close();
 		}

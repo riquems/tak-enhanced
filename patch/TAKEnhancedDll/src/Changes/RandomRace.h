@@ -1,6 +1,6 @@
 #pragma once
-#include "PlayerViewModel.h"
-#include "WindowExtensions.h"
+#include "Models/PlayerViewModel.h"
+#include "ModelsExtensions/WindowExtensions.h"
 
 void TryToChooseRandomRace()
 {

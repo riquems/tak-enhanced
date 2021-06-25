@@ -18,6 +18,55 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\common.h" />
+    <ClInclude Include="src\Functions\NewFunctions.h" />
+    <ClInclude Include="src\Functions\FunctionsOffsets.h" />
+    <ClInclude Include="src\GlobalPointers\GlobalPointers.h" />
+    <ClInclude Include="src\ModelsExtensions\BattleMenuExtensions.h" />
+    <ClInclude Include="src\ModelsExtensions\ChooseMapMenuExtensions.h" />
+    <ClInclude Include="src\ModelsExtensions\GadgetExtensions.h" />
+    <ClInclude Include="src\ModelsExtensions\WindowExtensions.h" />
+    <ClInclude Include="src\Models\Aura.h" />
+    <ClInclude Include="src\Models\GameMath.h" />
+    <ClInclude Include="src\Models\HapiFile.h" />
+    <ClInclude Include="src\Models\MapPosition.h" />
+    <ClInclude Include="src\Models\Measurement.h" />
+    <ClInclude Include="src\Models\Mission.h" />
+    <ClInclude Include="src\Models\MovementHandler.h" />
+    <ClInclude Include="src\Models\NavGoal.h" />
+    <ClInclude Include="src\Models\PathNavigator.h" />
+    <ClInclude Include="src\Models\Player.h" />
+    <ClInclude Include="src\Models\PlayerViewModel.h" />
+    <ClInclude Include="src\Models\Side.h" />
+    <ClInclude Include="src\Models\TAobjectScript.h" />
+    <ClInclude Include="src\Models\UI\BattleMenu.h" />
+    <ClInclude Include="src\Models\UI\BrushHandler.h" />
+    <ClInclude Include="src\Models\UI\BuildButton.h" />
+    <ClInclude Include="src\Models\UI\BuildMenu.h" />
+    <ClInclude Include="src\Models\UI\ChooseMapMenu.h" />
+    <ClInclude Include="src\Models\UI\CursorHandler.h" />
+    <ClInclude Include="src\Models\UI\FontHandler.h" />
+    <ClInclude Include="src\Models\UI\Gadget.h" />
+    <ClInclude Include="src\Models\UI\GraphicsHandler.h" />
+    <ClInclude Include="src\Models\UI\ImageHandler.h" />
+    <ClInclude Include="src\Models\UI\InputHandler.h" />
+    <ClInclude Include="src\Models\UI\KingdomsDialog.h" />
+    <ClInclude Include="src\Models\UI\KingdomsPanel.h" />
+    <ClInclude Include="src\Models\UI\MenuHandler.h" />
+    <ClInclude Include="src\Models\UI\PlayerInterfaceHandler.h" />
+    <ClInclude Include="src\Models\UI\SoundHandler.h" />
+    <ClInclude Include="src\Models\UI\TextHandler.h" />
+    <ClInclude Include="src\Models\UI\Window.h" />
+    <ClInclude Include="src\Models\Unit.h" />
+    <ClInclude Include="src\Models\UnitInfo.h" />
+    <ClInclude Include="src\Models\UnitRenderer.h" />
+    <ClInclude Include="src\Models\Weapon.h" />
+    <ClInclude Include="src\Models\WeaponType.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -75,6 +124,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -143,54 +193,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Unit.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Aura.h" />
-    <ClInclude Include="BattleMenu.h" />
-    <ClInclude Include="BattleMenuExtensions.h" />
-    <ClInclude Include="BrushHandler.h" />
-    <ClInclude Include="ChooseMapMenu.h" />
-    <ClInclude Include="ChooseMapMenuExtensions.h" />
-    <ClInclude Include="common.h" />
-    <ClInclude Include="CursorHandler.h" />
-    <ClInclude Include="FontHandler.h" />
-    <ClInclude Include="Gadget.h" />
-    <ClInclude Include="GadgetExtensions.h" />
-    <ClInclude Include="GameMath.h" />
-    <ClInclude Include="GlobalPointers.h" />
-    <ClInclude Include="GraphicsHandler.h" />
-    <ClInclude Include="HapiFile.h" />
-    <ClInclude Include="BuildMenu.h" />
-    <ClInclude Include="ImageHandler.h" />
-    <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="KingdomsDialog.h" />
-    <ClInclude Include="KingdomsPanel.h" />
-    <ClInclude Include="MapPosition.h" />
-    <ClInclude Include="Measurement.h" />
-    <ClInclude Include="MenuHandler.h" />
-    <ClInclude Include="Mission.h" />
-    <ClInclude Include="MovementHandler.h" />
-    <ClInclude Include="NavGoal.h" />
-    <ClInclude Include="NewFunctions.h" />
-    <ClInclude Include="OriginalFunctionsOffsets.h" />
-    <ClInclude Include="PathNavigator.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerViewModel.h" />
-    <ClInclude Include="Side.h" />
-    <ClInclude Include="SoundHandler.h" />
-    <ClInclude Include="TAobjectScript.h" />
-    <ClInclude Include="TextHandler.h" />
-    <ClInclude Include="UnitInfo.h" />
-    <ClInclude Include="UnitRenderer.h" />
-    <ClInclude Include="UserInterfaceHandler.h" />
-    <ClInclude Include="Weapon.h" />
-    <ClInclude Include="WeaponType.h" />
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="WindowExtensions.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

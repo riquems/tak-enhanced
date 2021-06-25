@@ -13,6 +13,9 @@
     <Filter Include="Wrappers">
       <UniqueIdentifier>{a060f0dd-21c5-4b92-9077-35e0842cd19c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{c340003a-4bf0-4a29-8b84-b451189adf27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Changes.h" />
@@ -115,6 +118,18 @@
       <Filter>Wrappers</Filter>
     </ClInclude>
     <ClInclude Include="src\Wrappers\GameWrapper.h">
+      <Filter>Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Managers\GafManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Managers\PlayerInterfaceManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Wrappers\BuildButtonWrapper.h">
+      <Filter>Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Wrappers\BuildMenuWrapper.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
   </ItemGroup>

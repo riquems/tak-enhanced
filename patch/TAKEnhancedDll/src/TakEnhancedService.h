@@ -61,16 +61,20 @@ void startTakEnhancedService()
 {
 	while (true)
 	{
-		if (settings.OffscreenFix && game.match->isRunning())
+		if (settings.offscreen_fix && game.match->isRunning())
 		{
 			startOffscreenMonitorThread();
 		}
 
-		for (std::pair<int, int> keyValue : buildingKeys)
+		if (game.isBuildMenuOpen())
 		{
-			if (isKeyDown(keyValue.first))
+			std::cout << "Build Menu is open" << std::endl;
+			for (std::pair<int, int> keyValue : buildingKeys)
 			{
-				SelectBuilding(keyValue.second);
+				if (isKeyDown(keyValue.first))
+				{
+					game.selectBuilding(keyValue.second);
+				}
 			}
 		}
 

@@ -1,12 +1,12 @@
 #pragma once
 #include "MemoryHandler.h"
-#include "OriginalFunctionsOffsets.h"
-#include "NewFunctions.h"
-#include "Mission.h"
-#include "NavGoal.h"
-#include "GameMath.h"
-#include "Weapon.h"
-#include "MovementHandler.h"
+#include "Functions/FunctionsOffsets.h"
+#include "Functions/NewFunctions.h"
+#include "Models/Mission.h"
+#include "Models/NavGoal.h"
+#include "Models/GameMath.h"
+#include "Models/Weapon.h"
+#include "Models/MovementHandler.h"
 
 extern "C" __declspec(dllexport) void __stdcall createNavGoalRectAdjusted(DWORD mission, DWORD target)
 {
@@ -40,7 +40,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(Missio
 	Weapon* weapon = *(Weapon**) (weapon1Addr + offset);
 
 	uint32_t range = weapon->range;
-	uint32_t minRange = settings.ForcedMinRangeForMelees;
+	uint32_t minRange = settings.forced_minrange_for_melees;
 	MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
 	__asm {
@@ -82,7 +82,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingM
 	if (cannotAttack && lastNavGoal == nullptr)
 	{
 		uint32_t range = weapon->range + 30;
-		uint32_t minRange = settings.ForcedMinRangeForMelees + 30;
+		uint32_t minRange = settings.forced_minrange_for_melees + 30;
 		MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
 		__asm {

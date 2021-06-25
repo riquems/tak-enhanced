@@ -1,7 +1,7 @@
 #pragma once
 #include "../common.h"
 
-#include "ChooseMapMenu.h"
+#include "Models/UI/ChooseMapMenu.h"
 
 class ChooseMapMenuWrapper
 {

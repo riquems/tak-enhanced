@@ -25,21 +25,21 @@ void applyChanges()
 {
 	applyTakEnhancedVersion();
 
-	uint maxUnits = settings.MaxUnits;
+	uint maxUnits = settings.max_units;
 	applyMaxUnitsPatch(maxUnits);
 
-	uint pathFindingCycles = settings.PathfindingCycles;
+	uint pathFindingCycles = settings.pathfinding_cycles;
 	applyPathfindingFix(pathFindingCycles);
 
-	if (settings.NoCD) {
+	if (settings.no_cd) {
 		applyNoCD();
 	}
 
-	if (!settings.PauseWhenUnfocused) {
+	if (!settings.pause_when_unfocused) {
 		applyNoPauseWhenUnfocused();
 	}
 	
-	if (settings.MeleeStuckFix) {
+	if (settings.melee_stuck_fix) {
 		applyMeleeStuckFix();
 	}
 	

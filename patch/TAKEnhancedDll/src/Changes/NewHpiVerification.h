@@ -1,7 +1,7 @@
 #pragma once
 
 #include "MemoryHandler.h"
-#include "GlobalPointers.h"
+#include "GlobalPointers/GlobalPointers.h"
 #include "GameFunctions.h"
 #include "../Wrappers/Info.h"
 
@@ -21,7 +21,7 @@ extern "C" __declspec(dllexport) bool __stdcall HpiVerificationExtension()
 		return true;
 	}
 
-	if (settings.EnableMods) {
+	if (settings.enable_mods) {
 		if (vector_has_str(settings.selected_mods, filename)) {
 			hapiFile->allowed = true;
 			hapiFile->allowed2 = true;

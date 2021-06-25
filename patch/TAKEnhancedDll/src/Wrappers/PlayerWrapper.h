@@ -2,7 +2,7 @@
 #include "../common.h"
 
 #include "UnitWrapper.h"
-#include "Player.h"
+#include "Models/Player.h"
 
 class PlayerWrapper
 {
