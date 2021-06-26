@@ -14,6 +14,7 @@
 **********************************************************/
 
 #define VK_F 0x46
+#define VK_J 0x4A
 #define VK_K 0x4B
 #define VK_O 0x4F
 #define VK_R 0x52
@@ -59,6 +60,8 @@ std::vector<int> singleShotKeys = { VK_RETURN,
 
 void startTakEnhancedService()
 {
+	int i = 0;
+
 	while (true)
 	{
 		if (settings.offscreen_fix && game.match->isRunning())
@@ -68,13 +71,20 @@ void startTakEnhancedService()
 
 		if (game.isBuildMenuOpen())
 		{
-			std::cout << "Build Menu is open" << std::endl;
 			for (std::pair<int, int> keyValue : buildingKeys)
 			{
 				if (isKeyDown(keyValue.first))
 				{
 					game.selectBuilding(keyValue.second);
 				}
+			}
+
+			if (isKeyDown(VK_J))
+			{
+				if (i > 2) i = 0;
+
+				game.switchSelectedUnitHumor(i);
+				i++;
 			}
 		}
 
@@ -106,7 +116,7 @@ void startTakEnhancedService()
 			}
 		}
 
-		bool singleShotKeysStillBeingHold = [&]()->bool
+		auto singleShotKeysStillBeingHold = [&]()->bool
 		{
 			for (int key : singleShotKeys)
 			{
@@ -117,9 +127,9 @@ void startTakEnhancedService()
 			}
 
 			return false;
-		}();
+		};
 
-		while (singleShotKeysStillBeingHold)
+		while (singleShotKeysStillBeingHold())
 		{
 			Sleep(10);
 		}

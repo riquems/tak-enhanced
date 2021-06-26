@@ -28,6 +28,8 @@ public:
 	bool isBuildMenuOpen();
 
 	void selectBuilding(int pos);
+
+	void switchSelectedUnitHumor(int humorId);
 };
 
 void GameWrapper::initializePlayersWrappers()
@@ -52,9 +54,9 @@ void GameWrapper::refreshPlayersWrappers()
 
 bool GameWrapper::isBuildMenuOpen()
 {
-	BuildMenu* build_menu = player_interface_manager.getBuildMenu();
+	std::shared_ptr<BuildMenu*> build_menu = player_interface_manager.getBuildMenu();
 
-	if (build_menu == nullptr) {
+	if (build_menu == nullptr || build_menu.get() == nullptr) {
 		return false;
 	}
 
@@ -65,10 +67,21 @@ bool GameWrapper::isBuildMenuOpen()
 
 void GameWrapper::selectBuilding(int pos)
 {
-	std::cout << "Selecting building #" << pos << std::endl;
+	std::shared_ptr<BuildMenu*> build_menu = player_interface_manager.getBuildMenu();
 
-	BuildMenuWrapper build_menu = player_interface_manager.getBuildMenu();
-	BuildButtonWrapper build_button = build_menu.buttons[pos - 1];
+	if (build_menu == nullptr || build_menu.get() == nullptr) {
+		return;
+	}
 
-	build_button.click();
+	BuildMenuWrapper build_menu_wrapper(build_menu);
+	build_menu_wrapper.reinitializeButtonsWrappers();
+
+	BuildButtonWrapper* build_button = &build_menu_wrapper.buttons[pos - 1];
+
+	build_button->click();
+}
+
+void GameWrapper::switchSelectedUnitHumor(int humorId)
+{
+	
 }

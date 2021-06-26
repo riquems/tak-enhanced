@@ -8,22 +8,25 @@
 class BuildButtonWrapper
 {
 public:
-	BuildButton* _buildButton;
-	BuildButtonWrapper(BuildButton* buildButton) : _buildButton(buildButton) {}
+	std::shared_ptr<BuildButton*> _buildButton;
+	BuildButtonWrapper(BuildButton** buildButton)
+	{
+		_buildButton = std::make_shared<BuildButton*>(*buildButton);
+	}
 
 	void click();
 };
 
 void BuildButtonWrapper::click()
 {
-	uintptr_t buildButtonAddress = *(uintptr_t*) _buildButton;
+	uintptr_t buildButtonAddress = *(uintptr_t*) (_buildButton.get());
 
 	__asm {
 		PUSH ECX
 		MOV ECX, buildButtonAddress
 	}
 
-	void (*build_button_click)(int)  = (void (*)(int)) (FunctionsOffsets::buildButtonClick + baseAddress);
+	void (__stdcall *build_button_click)(int)  = (void (__stdcall*)(int)) (FunctionsOffsets::buildButtonClick + baseAddress);
 
 	build_button_click(1);
 
