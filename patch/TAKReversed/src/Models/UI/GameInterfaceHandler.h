@@ -1,7 +1,7 @@
 #pragma once
 #include "../../common.h"
 
-#include "MenuHandler.h"
+#include "WindowHandler.h"
 #include "ImageHandler.h"
 #include "TextHandler.h"
 #include "FontHandler.h"
@@ -11,10 +11,10 @@
 #include "SoundHandler.h"
 #include "GraphicsHandler.h"
 
-class PlayerInterfaceHandler
+class GameInterfaceHandler
 {
 public:
-	MenuHandler* menuHandler;
+	WindowHandler* windowHandler;
 	ImageHandler* imageHandler;
 	TextHandler* textHandler;
 	FontHandler* fontHandler;

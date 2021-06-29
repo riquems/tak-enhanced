@@ -2,26 +2,29 @@
 
 #include <iostream>
 #include "Models/UI/BuildMenu.h"
+#include "WindowManager.h"
+#include "Models/UI/GameInterfaceHandler.h"
+#include "ModelsExtensions/WindowExtensions.h"
+#include "GameInterface.h"
 
-class PlayerInterfaceManager
+class GameInterfaceManager
 {
-	GafManager* gaf_manager;
+	WindowManager* window_manager;
 
 public:
-	PlayerInterfaceManager() {}
+	GameInterfaceManager() {}
 
 	std::shared_ptr<BuildMenu*> getBuildMenu();
 };
 
-std::shared_ptr<BuildMenu*> PlayerInterfaceManager::getBuildMenu()
+std::shared_ptr<BuildMenu*> GameInterfaceManager::getBuildMenu()
 {
-	std::shared_ptr<Window*> in_game_desktop = gaf_manager->getWindow("InGameDesktop");
+	Window* InGameDesktop = GameInterface::GetWindow("InGameDesktop", baseAddress);
 
-	if (in_game_desktop == nullptr) {
+	if (InGameDesktop == nullptr)
 		return nullptr;
-	}
 
-	std::shared_ptr<Gadget*> gadget = gaf_manager->getGadget(in_game_desktop, "BuildMenu");
+	std::shared_ptr<Gadget*> gadget = window_manager->getGadget(InGameDesktop, "BuildMenu");
 
 	std::shared_ptr<BuildMenu*> build_menu = std::reinterpret_pointer_cast<BuildMenu*>(gadget);
 

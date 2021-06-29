@@ -106,7 +106,10 @@ extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(Unit* unit, U
 	uint16_t real_target_xFootprintLength = target->xFootprintLength * 8;
 	uint16_t real_target_zFootprintLength = target->zFootprintLength * 8;
 
-	if (target->movementHandler != nullptr)
+	bool target_is_small = real_target_xFootprintLength <= 3 * 8 &&
+						   real_target_zFootprintLength <= 3 * 8;
+
+	if (target_is_small)
 	{
 		if ((distance - 15) > weaponRange)
 		{
@@ -117,7 +120,8 @@ extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(Unit* unit, U
 			return false;
 		}
 	}
-	else {
+	else
+	{
 		uint16_t real_unit_xFootprintLength = unit->xFootprintLength * 8;
 		uint16_t real_unit_zFootprintLength = unit->zFootprintLength * 8;
 

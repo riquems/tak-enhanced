@@ -11,10 +11,10 @@
 #include <memory>
 #include <chrono>
 #include <algorithm>
-#include "Models/UI/PlayerInterfaceHandler.h"
+#include "Models/UI/GameInterfaceHandler.h"
 
 DWORD baseAddress = 0;
-PlayerInterfaceHandler* uiHandler = nullptr;
+GameInterfaceHandler* uiHandler = nullptr;
 
 #include "Logger.h"
 #include "Functions/FunctionsOffsets.h"
@@ -36,14 +36,14 @@ GameWrapper game;
 
 Window* GetWindowCurrentWindow()
 {
-	MenuHandler* menuHandler = uiHandler->menuHandler;
+	WindowHandler* windowHandler = uiHandler->windowHandler;
 
-	if (menuHandler == nullptr)
+	if (windowHandler == nullptr)
 	{
 		return nullptr;
 	}
 
-	Gadget* focusedGadget = menuHandler->focusedGadget;
+	Gadget* focusedGadget = windowHandler->focusedGadget;
 
 	if (focusedGadget == nullptr)
 	{
@@ -73,7 +73,7 @@ void PrintMouseHoveredUnitAddress()
 {
 	DWORD mouseHoveredUnitAddress = 0;
 
-	mouseHoveredUnitAddress = GameFunctions::getMouseHoveredUnitAddress();
+	mouseHoveredUnitAddress = game.getSelectedUnitAddress();
 
 	std::cout << std::hex << mouseHoveredUnitAddress << std::endl;
 }
@@ -99,16 +99,8 @@ void initializeContext()
 	logger.section("CHANGES");
 
 	// Initialize Global Pointers
-	uiHandler = (PlayerInterfaceHandler*) (GlobalPointers::PlayerInterfaceHandler + baseAddress);
+	uiHandler = (GameInterfaceHandler*) (GlobalPointers::GameInterfaceHandler + baseAddress);
 
 	// Initialize functions
-	GameFunctions::getMouseHoveredUnitAddress = (DWORD(*)()) (FunctionsOffsets::getMouseHoveredUnitAddress + baseAddress);
 	setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
-
-	AllocConsole();
-	freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
-	freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
-	std::cout.clear();
-	std::cin.clear();
-	std::cin.get();
 }

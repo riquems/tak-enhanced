@@ -45,9 +45,3 @@ void BuildMenuWrapper::reinitializeButtonsWrappers()
 	buttons.clear();
 	initializeButtonsWrappers();
 }
-
-
-bool BuildMenuWrapper::isOpen()
-{
-	return (*_buildMenu.get())->visible;
-}

@@ -2,7 +2,7 @@
 
 #include "../GameFunctions.h"
 
-#include "../Managers/GafManager.h"
+#include "../Managers/WindowManager.h"
 #include "../Managers/PlayerInterfaceManager.h"
 
 #include "PlayerWrapper.h"
@@ -14,7 +14,7 @@ class MatchWrapper;
 class GameWrapper
 {
 public:
-	PlayerInterfaceManager player_interface_manager;
+	GameInterfaceManager player_interface_manager;
 	std::vector<PlayerWrapper> players;
 	std::shared_ptr<MatchWrapper> match;
 
@@ -30,6 +30,7 @@ public:
 	void selectBuilding(int pos);
 
 	void switchSelectedUnitHumor(int humorId);
+	uintptr_t getSelectedUnitAddress();
 };
 
 void GameWrapper::initializePlayersWrappers()
@@ -60,9 +61,7 @@ bool GameWrapper::isBuildMenuOpen()
 		return false;
 	}
 
-	BuildMenuWrapper build_menu_wrapper(build_menu);
-
-	return build_menu_wrapper.isOpen();
+	return (*build_menu.get())->visible;
 }
 
 void GameWrapper::selectBuilding(int pos)
@@ -84,4 +83,11 @@ void GameWrapper::selectBuilding(int pos)
 void GameWrapper::switchSelectedUnitHumor(int humorId)
 {
 	
+}
+
+uintptr_t GameWrapper::getSelectedUnitAddress()
+{
+	uintptr_t(*getMouseHoveredUnitAddress)() = (uintptr_t(*)()) (FunctionsOffsets::getMouseHoveredUnitAddress + baseAddress);
+
+	return getMouseHoveredUnitAddress();
 }

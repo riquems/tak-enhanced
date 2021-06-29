@@ -9,7 +9,7 @@ namespace FunctionsOffsets
 	const uintptr_t changeSelectedItem = 0x1F4AE0;
 	const uintptr_t getMouseHoveredUnitAddress = 0x127CB0;
 
-	const uintptr_t getWindow = 0x1755B0;
+	const uintptr_t oldGetWindow = 0x1755B0;
 	const uintptr_t getGadget = 0x172840;
 
 	const uintptr_t buildButtonClick = 0x0AF800;

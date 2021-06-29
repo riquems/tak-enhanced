@@ -16,6 +16,9 @@
     <Filter Include="GlobalPointers">
       <UniqueIdentifier>{723d8d03-a188-4e01-944e-651f0f823c37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models\UI\Windows">
+      <UniqueIdentifier>{15ddefa8-cf02-49e7-927a-1cb0d3497eea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GlobalPointers\GlobalPointers.h">
@@ -126,12 +129,6 @@
     <ClInclude Include="src\Models\UI\KingdomsPanel.h">
       <Filter>Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\Models\UI\MenuHandler.h">
-      <Filter>Models\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\UI\PlayerInterfaceHandler.h">
-      <Filter>Models\UI</Filter>
-    </ClInclude>
     <ClInclude Include="src\Models\UI\SoundHandler.h">
       <Filter>Models\UI</Filter>
     </ClInclude>
@@ -147,6 +144,18 @@
     </ClInclude>
     <ClInclude Include="src\Models\UI\BuildButton.h">
       <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\GameInterfaceHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\WindowHandler.h">
+      <Filter>Models\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\UI\Windows\InGameDesktop.h">
+      <Filter>Models\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelsExtensions\InGameDesktopExtensions.h">
+      <Filter>ModelsExtensions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -117,13 +117,13 @@ void StartSearchBox(ChooseMapMenuWrapper& chooseMapMenuWrapper)
 
 void TryToInitializeSearchBox()
 {
-	MenuHandler* menuHandler = uiHandler->menuHandler;
-	if (menuHandler == nullptr)
+	WindowHandler* windowHandler = uiHandler->windowHandler;
+	if (windowHandler == nullptr)
 	{
 		return;
 	}
 
-	Gadget* focusedGadget = menuHandler->focusedGadget;
+	Gadget* focusedGadget = windowHandler->focusedGadget;
 
 	if (focusedGadget == nullptr)
 	{

@@ -19,61 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\common.h" />
-    <ClInclude Include="src\Functions\NewFunctions.h" />
-    <ClInclude Include="src\Functions\FunctionsOffsets.h" />
-    <ClInclude Include="src\GlobalPointers\GlobalPointers.h" />
-    <ClInclude Include="src\ModelsExtensions\BattleMenuExtensions.h" />
-    <ClInclude Include="src\ModelsExtensions\ChooseMapMenuExtensions.h" />
-    <ClInclude Include="src\ModelsExtensions\GadgetExtensions.h" />
-    <ClInclude Include="src\ModelsExtensions\InGameDesktopExtensions.h" />
-    <ClInclude Include="src\ModelsExtensions\WindowExtensions.h" />
-    <ClInclude Include="src\Models\Aura.h" />
-    <ClInclude Include="src\Models\GameMath.h" />
-    <ClInclude Include="src\Models\HapiFile.h" />
-    <ClInclude Include="src\Models\MapPosition.h" />
-    <ClInclude Include="src\Models\Measurement.h" />
-    <ClInclude Include="src\Models\Mission.h" />
-    <ClInclude Include="src\Models\MovementHandler.h" />
-    <ClInclude Include="src\Models\NavGoal.h" />
-    <ClInclude Include="src\Models\PathNavigator.h" />
-    <ClInclude Include="src\Models\Player.h" />
-    <ClInclude Include="src\Models\PlayerViewModel.h" />
-    <ClInclude Include="src\Models\Side.h" />
-    <ClInclude Include="src\Models\TAobjectScript.h" />
-    <ClInclude Include="src\Models\UI\BattleMenu.h" />
-    <ClInclude Include="src\Models\UI\BrushHandler.h" />
-    <ClInclude Include="src\Models\UI\BuildButton.h" />
-    <ClInclude Include="src\Models\UI\BuildMenu.h" />
-    <ClInclude Include="src\Models\UI\ChooseMapMenu.h" />
-    <ClInclude Include="src\Models\UI\CursorHandler.h" />
-    <ClInclude Include="src\Models\UI\FontHandler.h" />
-    <ClInclude Include="src\Models\UI\Gadget.h" />
-    <ClInclude Include="src\Models\UI\GraphicsHandler.h" />
-    <ClInclude Include="src\Models\UI\ImageHandler.h" />
-    <ClInclude Include="src\Models\UI\InputHandler.h" />
-    <ClInclude Include="src\Models\UI\KingdomsDialog.h" />
-    <ClInclude Include="src\Models\UI\KingdomsPanel.h" />
-    <ClInclude Include="src\Models\UI\WindowHandler.h" />
-    <ClInclude Include="src\Models\UI\GameInterfaceHandler.h" />
-    <ClInclude Include="src\Models\UI\SoundHandler.h" />
-    <ClInclude Include="src\Models\UI\TextHandler.h" />
-    <ClInclude Include="src\Models\UI\Window.h" />
-    <ClInclude Include="src\Models\UI\Windows\InGameDesktop.h" />
-    <ClInclude Include="src\Models\Unit.h" />
-    <ClInclude Include="src\Models\UnitInfo.h" />
-    <ClInclude Include="src\Models\UnitRenderer.h" />
-    <ClInclude Include="src\Models\Weapon.h" />
-    <ClInclude Include="src\Models\WeaponType.h" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="src\GameInterface.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{86ce107f-c36b-4ae6-b001-bbe1b51860db}</ProjectGuid>
-    <RootNamespace>TAKReversed</RootNamespace>
+    <ProjectGuid>{c5b697d1-6723-4cbb-9284-744a076beb25}</ProjectGuid>
+    <RootNamespace>TAKLibrary</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -91,13 +46,13 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -126,7 +81,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -138,13 +92,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <StructMemberAlignment>1Byte</StructMemberAlignment>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -154,14 +109,16 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WINDOWS_IGNORE_PACKING_MISMATCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <StructMemberAlignment>1Byte</StructMemberAlignment>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -171,11 +128,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -185,11 +145,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>

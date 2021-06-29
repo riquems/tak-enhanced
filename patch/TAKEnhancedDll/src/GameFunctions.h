@@ -13,11 +13,6 @@ namespace Game
 	Player* players;
 }
 
-namespace GameFunctions
-{
-	DWORD (*getMouseHoveredUnitAddress)();
-}
-
 namespace GameFunctionsExtensions
 {
 	Player* GetPlayers();

@@ -120,9 +120,6 @@
     <ClInclude Include="src\Wrappers\GameWrapper.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Managers\GafManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="src\Managers\PlayerInterfaceManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
@@ -131,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="src\Wrappers\BuildMenuWrapper.h">
       <Filter>Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Managers\WindowManager.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
