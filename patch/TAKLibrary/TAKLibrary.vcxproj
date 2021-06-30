@@ -20,9 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\Game.cpp" />
+    <ClCompile Include="source\GameInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameInterface.h" />
+    <ClInclude Include="include\Game.hpp" />
+    <ClInclude Include="include\GameInterface.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -114,7 +117,8 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>

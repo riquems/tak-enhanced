@@ -10,5 +10,6 @@
 #include "nana/gui/widgets/checkbox.hpp"
 #include "nana/gui/widgets/button.hpp"
 #include "nana/gui/widgets/listbox.hpp"
+#include "nana/gui/widgets/spinbox.hpp"
 
-nana::color default_bgcolor = nana::color(255, 255, 255, 1);
+nana::color default_bgcolor = nana::color(0xF0, 0xF0, 0xF0, 1);

@@ -13,7 +13,7 @@ BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 	if (dwReason == DLL_PROCESS_ATTACH) {
 		initializeContext();
 
-		startConsole();
+		// startConsole();
 
 		main_form launcher;
 		launcher.show();

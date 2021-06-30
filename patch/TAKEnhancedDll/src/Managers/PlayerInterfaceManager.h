@@ -5,7 +5,7 @@
 #include "WindowManager.h"
 #include "Models/UI/GameInterfaceHandler.h"
 #include "ModelsExtensions/WindowExtensions.h"
-#include "GameInterface.h"
+#include "GameInterface.hpp"
 
 class GameInterfaceManager
 {

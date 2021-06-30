@@ -86,7 +86,7 @@ void startTakEnhancedService()
 				game.switchSelectedUnitHumor(i);
 				i++;
 			}
-		}
+	  	}
 
 		if (isKeyDown(VK_MENU))
 		{
@@ -131,7 +131,7 @@ void startTakEnhancedService()
 
 		while (singleShotKeysStillBeingHold())
 		{
-			Sleep(10);
+			Sleep(1);
 		}
 
 		Sleep(10);

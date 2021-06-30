@@ -66,9 +66,9 @@ private:
 
 		btn_continue->events().click(
 			[&]() {
-				settings.max_units                  = str_to_uint(tp_patches->get_max_units().c_str());
-				settings.pathfinding_cycles         = str_to_uint(tp_patches->get_pathfinding_cycles().c_str());
-				settings.forced_minrange_for_melees = str_to_uint(tp_patches->get_forced_minrange_for_melees().c_str());
+				settings.max_units                  = tp_patches->get_max_units();
+				settings.pathfinding_cycles         = tp_patches->get_pathfinding_cycles();
+				settings.forced_minrange_for_melees = tp_patches->get_forced_minrange_for_melees();
 
 				settings.enable_mods          = tp_mods->get_enableMods();
 				settings.no_cd                = tp_patches->get_noCD();

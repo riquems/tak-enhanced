@@ -178,7 +178,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKLibrary\src;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\Util;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\Util;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\src</AdditionalIncludeDirectories>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>

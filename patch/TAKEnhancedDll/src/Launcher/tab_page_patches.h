@@ -13,13 +13,13 @@ class tab_page_patches : public nana::panel<false>
 
 	// Textboxes
 	std::unique_ptr<nana::label> lbl_maxUnits;
-	std::unique_ptr<nana::textbox> tb_maxUnits;
+	std::unique_ptr<nana::spinbox> sb_maxUnits;
 
 	std::unique_ptr<nana::label> lbl_pathfindingCycles;
-	std::unique_ptr<nana::textbox> tb_pathfindingCycles;
+	std::unique_ptr<nana::spinbox> sb_pathfindingCycles;
 
 	std::unique_ptr<nana::label> lbl_forcedMinRangeForMelees;
-	std::unique_ptr<nana::textbox> tb_forcedMinRangeForMelees;
+	std::unique_ptr<nana::spinbox> sb_forcedMinRangeForMelees;
 
 	void initialize_checkboxes()
 	{
@@ -55,21 +55,27 @@ class tab_page_patches : public nana::panel<false>
 	void initialize_textboxes()
 	{
 		lbl_maxUnits = std::make_unique<nana::label>(*this, "Max Units:");
-		tb_maxUnits = std::make_unique<nana::textbox>(*this, std::to_string(settings.max_units));
+		sb_maxUnits = std::make_unique<nana::spinbox>(*this);
+		sb_maxUnits->range(0, INT_MAX, 1);
+		sb_maxUnits->value(std::to_string(settings.max_units));
 
 		lbl_pathfindingCycles = std::make_unique<nana::label>(*this, "Pathfinding Cycles:");
-		tb_pathfindingCycles = std::make_unique<nana::textbox>(*this, std::to_string(settings.pathfinding_cycles));
+		sb_pathfindingCycles = std::make_unique<nana::spinbox>(*this);
+		sb_pathfindingCycles->range(0, INT_MAX, 1);
+		sb_pathfindingCycles->value(std::to_string(settings.pathfinding_cycles));
 
 		lbl_forcedMinRangeForMelees = std::make_unique<nana::label>(*this, "Forced minrange for Melees:");
-		tb_forcedMinRangeForMelees = std::make_unique<nana::textbox>(*this, std::to_string(settings.forced_minrange_for_melees));
+		sb_forcedMinRangeForMelees = std::make_unique<nana::spinbox>(*this);
+		sb_forcedMinRangeForMelees->range(0, INT_MAX, 1);
+		sb_forcedMinRangeForMelees->value(std::to_string(settings.forced_minrange_for_melees));
 
 		lbl_maxUnits->bgcolor(default_bgcolor);
 		lbl_pathfindingCycles->bgcolor(default_bgcolor);
 		lbl_forcedMinRangeForMelees->bgcolor(default_bgcolor);
 
-		layout->field("maxUnits") << *lbl_maxUnits << *tb_maxUnits;
-		layout->field("pathfindingCycles") << *lbl_pathfindingCycles << *tb_pathfindingCycles;
-		layout->field("forcedMinRangeForMelees") << *lbl_forcedMinRangeForMelees << *tb_forcedMinRangeForMelees;
+		layout->field("maxUnits") << *lbl_maxUnits << *sb_maxUnits;
+		layout->field("pathfindingCycles") << *lbl_pathfindingCycles << *sb_pathfindingCycles;
+		layout->field("forcedMinRangeForMelees") << *lbl_forcedMinRangeForMelees << *sb_forcedMinRangeForMelees;
 	}
 
 public:
@@ -82,13 +88,12 @@ public:
 					    <weight=60                                                                         \
 						    <vert checkboxes1 arrange=[30, 30, 30, 30]><>                                  \
 						>                                                                                  \
-						<>                                                                                 \
 					>                                                                                      \
 					<weight=120 vert                                                                       \
 						<weight=150 vert                                                                   \
-							<vert maxUnits arrange=[20, 20]>                                               \
-							<vert margin=[10] pathfindingCycles arrange=[20, 20]>                          \
-							<vert margin=[20] forcedMinRangeForMelees arrange=[35, 20]>                    \
+							<vert maxUnits arrange=[20, 25]>                                               \
+							<vert margin=[20] pathfindingCycles arrange=[20, 25]>                          \
+							<vert margin=[35] forcedMinRangeForMelees arrange=[35, 25]>                    \
 							<>                                                                             \
 						>                                                                                  \
 					>");
@@ -99,19 +104,19 @@ public:
 		layout->collocate();
 	}
 
-	std::string get_max_units()
+	int get_max_units()
 	{
-		return tb_maxUnits->text();
+		return sb_maxUnits->to_int();
 	}
 
-	std::string get_pathfinding_cycles()
+	int get_pathfinding_cycles()
 	{
-		return tb_pathfindingCycles->text();
+		return sb_pathfindingCycles->to_int();
 	}
 
-	std::string get_forced_minrange_for_melees()
+	int get_forced_minrange_for_melees()
 	{
-		return tb_forcedMinRangeForMelees->text();
+		return sb_forcedMinRangeForMelees->to_int();
 	}
 
 	bool get_noCD()

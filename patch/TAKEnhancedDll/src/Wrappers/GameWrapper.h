@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../GameFunctions.h"
+#include "Game.hpp"
 
 #include "../Managers/WindowManager.h"
 #include "../Managers/PlayerInterfaceManager.h"
@@ -35,7 +35,7 @@ public:
 
 void GameWrapper::initializePlayersWrappers()
 {
-	Player* players_models = GameFunctionsExtensions::GetPlayers();
+	Player* players_models = Game::GetPlayers(baseAddress);
 
 	Player* next_player = players_models;
 	while (next_player->initialized)

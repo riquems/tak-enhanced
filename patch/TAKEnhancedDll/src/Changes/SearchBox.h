@@ -138,10 +138,10 @@ void TryToInitializeSearchBox()
 	listBoxAddr = (DWORD) focusedGadget;
 	Window* gadgetParent = focusedGadget->parent;
 
-	bool isSupportedMenus = WindowExtensions::isChooseMapMenu(gadgetParent, baseAddress) ||
-					        WindowExtensions::isBattleMenu(gadgetParent, baseAddress);
+	bool isAnyOfTheSupportedMenus = WindowExtensions::isChooseMapMenu(gadgetParent, baseAddress) ||
+					                WindowExtensions::isBattleMenu(gadgetParent, baseAddress);
 
-	if (!isSupportedMenus)
+	if (!isAnyOfTheSupportedMenus)
 	{
 		return;
 	}
@@ -165,13 +165,14 @@ void InitializeSearchBox(Window* window)
 		
 		StartSearchBox(chooseMapMenuWrapper);
 	}
-
-	/*else if (WindowExtensions::isBattleMenu(window, baseAddress))
+	else if (WindowExtensions::isBattleMenu(window, baseAddress))
 	{
 		BattleMenu* battleMenu = (BattleMenu*) window;
 
-		BattleMenuWrapper battleMenuWrapper(battleMenu);
-	}*/
+		/*BattleMenuWrapper battleMenuWrapper(battleMenu);
+
+		StartSearchBox(battleMenuWrapper);*/
+	}
 }
 
 void ConfigureConsole()
