@@ -204,7 +204,7 @@ void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
     if (borderless)
         SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_POPUPWINDOW);
 
-    SetWindowPos(consoleWindow, NULL, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_NOACTIVATE | SWP_NOOWNERZORDER);
+    SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_NOACTIVATE | SWP_NOOWNERZORDER);
 }
 
 void startConsole()
@@ -216,5 +216,5 @@ void startConsole()
     std::cout.clear();
     std::cin.clear();
 
-    /* ConfigureConsole(600, 200, HWND_BOTTOM, false); */
+    ConfigureConsole(600, 200, HWND_BOTTOM, false);
 }
