@@ -216,5 +216,5 @@ void startConsole()
     std::cout.clear();
     std::cin.clear();
 
-    ConfigureConsole(600, 200, HWND_BOTTOM, false);
+    ConfigureConsole(600, 200, HWND_NOTOPMOST, false);
 }
