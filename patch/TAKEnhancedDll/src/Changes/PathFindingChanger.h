@@ -3,7 +3,7 @@
 
 void applyPathfindingFix(uint value)
 {
-	MemoryHandling::write(value, 0x1617C);
+    MemoryHandling::write(value, 0x1617C);
 
-	logger.log("Pathfinding applied.");
+    logger.log("Pathfinding applied.");
 }

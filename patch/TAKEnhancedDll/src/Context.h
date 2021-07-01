@@ -36,71 +36,71 @@ GameWrapper game;
 
 Window* GetWindowCurrentWindow()
 {
-	WindowHandler* windowHandler = uiHandler->windowHandler;
+    WindowHandler* windowHandler = uiHandler->windowHandler;
 
-	if (windowHandler == nullptr)
-	{
-		return nullptr;
-	}
+    if (windowHandler == nullptr)
+    {
+        return nullptr;
+    }
 
-	Gadget* focusedGadget = windowHandler->focusedGadget;
+    Gadget* focusedGadget = windowHandler->focusedGadget;
 
-	if (focusedGadget == nullptr)
-	{
-		return nullptr;
-	}
+    if (focusedGadget == nullptr)
+    {
+        return nullptr;
+    }
 
-	return focusedGadget->parent;
+    return focusedGadget->parent;
 }
 
 Side* GetSides()
 {
-	DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
-	Side* sides = (Side*) (*gamePtr + 0x3078);
+    DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
+    Side* sides = (Side*) (*gamePtr + 0x3078);
 
-	return sides;
+    return sides;
 }
 
 int GetNumberOfSides()
 {
-	DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
-	int* numberOfSidesPtr = (int*) (*gamePtr + 0x3074);
+    DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
+    int* numberOfSidesPtr = (int*) (*gamePtr + 0x3074);
 
-	return *numberOfSidesPtr;
+    return *numberOfSidesPtr;
 }
 
 void PrintMouseHoveredUnitAddress()
 {
-	DWORD mouseHoveredUnitAddress = 0;
+    DWORD mouseHoveredUnitAddress = 0;
 
-	mouseHoveredUnitAddress = game.getSelectedUnitAddress();
+    mouseHoveredUnitAddress = game.getSelectedUnitAddress();
 
-	std::cout << std::hex << mouseHoveredUnitAddress << std::endl;
+    std::cout << std::hex << mouseHoveredUnitAddress << std::endl;
 }
 
 DWORD GetAbsoluteAddress(DWORD relativeAddress)
 {
-	return relativeAddress + baseAddress;
+    return relativeAddress + baseAddress;
 }
 
 void initializeContext()
 {
-	settings.LoadSettings("TAKEnhanced.cfg");
-	logger.initialize("TAKEnhancedLog.txt", "a");
+    settings.LoadSettings("TAKEnhanced.cfg");
+    logger.initialize("TAKEnhancedLog.txt", "a");
 
-	logger.context("DLL");
+    logger.context("DLL");
 
-	baseAddress = getProcessBaseAddress("Kingdoms.icd");
-	logger.log("Process base address loaded successfully.");
+    baseAddress = getProcessBaseAddress("Kingdoms.icd");
+    logger.log("Process base address loaded successfully.");
 
-	hProcess = GetCurrentProcess();
-	logger.log("Current process loaded successfully.\n");
+    hProcess = GetCurrentProcess();
+    logger.log("Current process loaded successfully.\n");
 
-	logger.section("CHANGES");
+    logger.section("CHANGES");
 
-	// Initialize Global Pointers
-	uiHandler = (GameInterfaceHandler*) (GlobalPointers::GameInterfaceHandler + baseAddress);
+    // Initialize Global Pointers
+    uiHandler = (GameInterfaceHandler*) (GlobalPointers::GameInterfaceHandler + baseAddress);
 
-	// Initialize functions
-	setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
+    // Initialize functions
+    setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
 }

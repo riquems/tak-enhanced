@@ -19,6 +19,9 @@
     <Filter Include="Models\UI\Windows">
       <UniqueIdentifier>{15ddefa8-cf02-49e7-927a-1cb0d3497eea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models\Options">
+      <UniqueIdentifier>{db76a3fc-57c9-4be0-aee9-d97592cacb55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GlobalPointers\GlobalPointers.h">
@@ -156,6 +159,30 @@
     </ClInclude>
     <ClInclude Include="src\ModelsExtensions\InGameDesktopExtensions.h">
       <Filter>ModelsExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\GameOptions.h">
+      <Filter>Models\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\ConsoleOptions.h">
+      <Filter>Models\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\DevelopmentOptions.h">
+      <Filter>Models\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\GameSetupOptions.h">
+      <Filter>Models\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\InterfaceOptions.h">
+      <Filter>Models\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\MusicOptions.h">
+      <Filter>Models\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\SoundOptions.h">
+      <Filter>Models\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Options\VisualOptions.h">
+      <Filter>Models\Options</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

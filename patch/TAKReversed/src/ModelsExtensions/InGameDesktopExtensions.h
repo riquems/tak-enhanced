@@ -2,5 +2,5 @@
 
 namespace InGameDesktopExtensions
 {
-	uintptr_t vTableFcnAddresses[] = { 0x0B4130 };
+    uintptr_t vTableFcnAddresses[] = { 0x0B4130 };
 };

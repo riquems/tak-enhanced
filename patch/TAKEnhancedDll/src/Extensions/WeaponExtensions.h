@@ -6,35 +6,35 @@
 std::map<Weapon*, WeaponExtension> weaponsMap;
 
 extern "C" __declspec(dllexport) void __stdcall WeaponOnHitPropertiesExtension()
-{	
-	std::map<Weapon*, WeaponExtension>::iterator it;
+{    
+    std::map<Weapon*, WeaponExtension>::iterator it;
 
-	DWORD weaponAddr = 0;
+    DWORD weaponAddr = 0;
 
-	it = std::find_if(weaponsMap.begin(), weaponsMap.end(), 
-		[&weaponAddr](const std::pair<Weapon*, WeaponExtension> p) { 
-			return (DWORD) p.first == weaponAddr;
-		});
+    it = std::find_if(weaponsMap.begin(), weaponsMap.end(), 
+        [&weaponAddr](const std::pair<Weapon*, WeaponExtension> p) { 
+            return (DWORD) p.first == weaponAddr;
+        });
 
-	if (it == weaponsMap.end()) {
-		return;
-	}
+    if (it == weaponsMap.end()) {
+        return;
+    }
 
-	Unit* unit;
-	int damageDealt = 0;
-	
-	unit->currentHealth += it->second.lifesteal * damageDealt;
+    Unit* unit;
+    int damageDealt = 0;
+    
+    unit->currentHealth += it->second.lifesteal * damageDealt;
 }
 
 extern "C" __declspec(dllexport) void __stdcall LoadWeaponPropertiesExtension()
 {
-	// weaponsMap...
+    // weaponsMap...
 }
 
 
 void WeaponExtensionPatch()
 {
-	// weapons = ?
+    // weapons = ?
 
-	// MemoryHandling::insertFunctionCall(&WeaponExtension, ...);
+    // MemoryHandling::insertFunctionCall(&WeaponExtension, ...);
 }

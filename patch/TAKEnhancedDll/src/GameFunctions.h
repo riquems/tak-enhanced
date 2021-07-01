@@ -10,29 +10,29 @@ DWORD GetAbsoluteAddress(DWORD);
 
 namespace GameFunctionsExtensions
 {
-	std::vector<HapiFile*> GetLoadedHapiFiles();
+    std::vector<HapiFile*> GetLoadedHapiFiles();
 }
 
 std::vector<HapiFile*> GameFunctionsExtensions::GetLoadedHapiFiles()
 {
-	std::vector<HapiFile*> hapiFiles;
+    std::vector<HapiFile*> hapiFiles;
 
-	DWORD* filesPtr = (DWORD*) GetAbsoluteAddress(GlobalPointers::ptr_241A48);
+    DWORD* filesPtr = (DWORD*) GetAbsoluteAddress(GlobalPointers::ptr_241A48);
 
-	DWORD* hpiDirectory = (DWORD*) (*filesPtr + 0x5EA);
-	DWORD* hpiFilesPtr = (DWORD*) (*hpiDirectory);
-	HapiFile** hpiFiles = (HapiFile**) *hpiFilesPtr;
+    DWORD* hpiDirectory = (DWORD*) (*filesPtr + 0x5EA);
+    DWORD* hpiFilesPtr = (DWORD*) (*hpiDirectory);
+    HapiFile** hpiFiles = (HapiFile**) *hpiFilesPtr;
 
-	HapiFile** nextHapiFile = hpiFiles;
+    HapiFile** nextHapiFile = hpiFiles;
 
-	StartConsole();
+    StartConsole();
 
-	while (*nextHapiFile != nullptr && (*nextHapiFile)->vTable != 0) {
-		hapiFiles.push_back(*nextHapiFile);
-		std::cout << (*nextHapiFile)->filename << std::endl;
-		nextHapiFile++;
-	}
+    while (*nextHapiFile != nullptr && (*nextHapiFile)->vTable != 0) {
+        hapiFiles.push_back(*nextHapiFile);
+        std::cout << (*nextHapiFile)->filename << std::endl;
+        nextHapiFile++;
+    }
 
-	return hapiFiles;
+    return hapiFiles;
 }
 

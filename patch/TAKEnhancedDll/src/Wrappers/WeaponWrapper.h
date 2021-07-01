@@ -3,5 +3,5 @@
 class WeaponExtension
 {
 public:
-	float lifesteal;
+    float lifesteal;
 };

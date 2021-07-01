@@ -3,8 +3,8 @@
 
 struct MapPosition
 {
-	char padding[2];
-	int16_t mapPosition;
+    char padding[2];
+    int16_t mapPosition;
 };
 
 

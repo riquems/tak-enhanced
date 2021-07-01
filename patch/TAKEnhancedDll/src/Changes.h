@@ -16,61 +16,61 @@ extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced
 
 void applyTakEnhancedVersion()
 {
-	MemoryHandling::write(TAK_Enhanced_Label, 0xA4E23);
+    MemoryHandling::write(TAK_Enhanced_Label, 0xA4E23);
 
-	logger.log("TA:K Enhanced Label applied.");
+    logger.log("TA:K Enhanced Label applied.");
 }
 
 void applyChanges()
 {
-	applyTakEnhancedVersion();
+    applyTakEnhancedVersion();
 
-	uint maxUnits = settings.max_units;
-	applyMaxUnitsPatch(maxUnits);
+    uint maxUnits = settings.max_units;
+    applyMaxUnitsPatch(maxUnits);
 
-	uint pathFindingCycles = settings.pathfinding_cycles;
-	applyPathfindingFix(pathFindingCycles);
+    uint pathFindingCycles = settings.pathfinding_cycles;
+    applyPathfindingFix(pathFindingCycles);
 
-	if (settings.no_cd) {
-		applyNoCD();
-	}
+    if (settings.no_cd) {
+        applyNoCD();
+    }
 
-	if (!settings.pause_when_unfocused) {
-		applyNoPauseWhenUnfocused();
-	}
-	
-	if (settings.melee_stuck_fix) {
-		applyMeleeStuckFix();
-	}
-	
-	// Extensions
-	applyUpdateGuiExtensionPatch();
-	applyReadSideDataExtensionPatch();
-	applyLoadingScreenExtensionsPatch();
-	applyNewHpiVerificationPatch();
-	// ProcessCodesExtension
+    if (!settings.pause_when_unfocused) {
+        applyNoPauseWhenUnfocused();
+    }
+    
+    if (settings.melee_stuck_fix) {
+        applyMeleeStuckFix();
+    }
+    
+    // Extensions
+    applyUpdateGuiExtensionPatch();
+    applyReadSideDataExtensionPatch();
+    applyLoadingScreenExtensionsPatch();
+    applyNewHpiVerificationPatch();
+    // ProcessCodesExtension
 
-	// Option to choose random race
-	// Walls have hp
-	// Not able to ctrl d while in combat
-	// How to draw on screen images etc
-	// Units able to run
-	// See what watcher says
-	// Archers lob weapons
-	// AutoGates in game for real
-	// MakeAurasOnOffAble
-	// Pick map positions
-	// Humor Interactions
-	// autodiplomacy
-	// ReclaimFeaturesGiveMana();
-	// Investigate why units go closer than they need to attack (can use kirenna wave to test)
-	// Find out how get unknown unit value works
-	// make discord bot show minimaps
-	// unit hp = 0 consider dead
-	// ResolutionFix();
-	// MakePlayAnOpponentSearchForGamesSomewhereElse()
-	// Why watching in multiplayer causes so much lag
-	
-	logger.log("\nEndded applying changes. Enjoy!");
-	logger.end();
+    // Option to choose random race
+    // Walls have hp
+    // Not able to ctrl d while in combat
+    // How to draw on screen images etc
+    // Units able to run
+    // See what watcher says
+    // Archers lob weapons
+    // AutoGates in game for real
+    // MakeAurasOnOffAble
+    // Pick map positions
+    // Humor Interactions
+    // autodiplomacy
+    // ReclaimFeaturesGiveMana();
+    // Investigate why units go closer than they need to attack (can use kirenna wave to test)
+    // Find out how get unknown unit value works
+    // make discord bot show minimaps
+    // unit hp = 0 consider dead
+    // ResolutionFix();
+    // MakePlayAnOpponentSearchForGamesSomewhereElse()
+    // Why watching in multiplayer causes so much lag
+    
+    logger.log("\nEndded applying changes. Enjoy!");
+    logger.end();
 }

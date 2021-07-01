@@ -14,15 +14,15 @@
 class GameInterfaceHandler
 {
 public:
-	WindowHandler* windowHandler;
-	ImageHandler* imageHandler;
-	TextHandler* textHandler;
-	FontHandler* fontHandler;
-	InputHandler* inputHandler;
-	BrushHandler* brushHandler;
-	CursorHandler* cursorHandler;
-	SoundHandler* soundHandler;
-	GraphicsHandler* graphicsHandler;
+    WindowHandler* windowHandler;
+    ImageHandler* imageHandler;
+    TextHandler* textHandler;
+    FontHandler* fontHandler;
+    InputHandler* inputHandler;
+    BrushHandler* brushHandler;
+    CursorHandler* cursorHandler;
+    SoundHandler* soundHandler;
+    GraphicsHandler* graphicsHandler;
 };
 
 

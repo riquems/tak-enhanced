@@ -4,7 +4,7 @@
 class MovementHandler
 {
 public:
-	PathNavigator* pathNavigator;
+    PathNavigator* pathNavigator;
 };
 
 

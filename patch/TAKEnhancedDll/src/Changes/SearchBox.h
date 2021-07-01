@@ -13,7 +13,7 @@
 
 void TryToInitializeSearchBox();
 void InitializeSearchBox(Window* window);
-void ConfigureConsole();
+void ConfigureConsole(uint height, uint width, HWND zOrder, bool borderless);
 
 extern "C" __declspec(dllexport) bool TAKisInitialized = false;
 
@@ -23,184 +23,198 @@ extern "C" __declspec(dllexport) DWORD listBoxAddr = 0;
 
 extern "C" __declspec(dllexport) void __stdcall updateSearchBox()
 {
-	if (!TAKisInitialized)
-	{
-		TAKisInitialized = true;
-	}
+    if (!TAKisInitialized)
+    {
+        TAKisInitialized = true;
+    }
 
-	if (listBoxAddr) {
-		if (nameMatches) {
-			__asm {
-				push itemIndex
-				mov ecx, listBoxAddr
-				call setListItem_fcnAddr
-			}
+    if (listBoxAddr) {
+        if (nameMatches) {
+            __asm {
+                push itemIndex
+                mov ecx, listBoxAddr
+                call setListItem_fcnAddr
+            }
 
-			nameMatches = false;
-		}
-	}
+            nameMatches = false;
+        }
+    }
 }
 
 bool str_contains_str(std::string& str1, std::string& str2)
 {
-	return str1.find(str2) != std::string::npos;
+    return str1.find(str2) != std::string::npos;
 }
 
 void StartSearchBox(ChooseMapMenuWrapper& chooseMapMenuWrapper)
 {
-	std::string stringToSearchFor("");
+    std::string stringToSearchFor("");
 
-	std::vector<std::string>* mapNamesLowerCase = &chooseMapMenuWrapper._mapNamesLowerCase;
+    std::vector<std::string>* mapNamesLowerCase = &chooseMapMenuWrapper._mapNamesLowerCase;
 
-	char c;
+    char c;
 
-	bool end = false;
-	while (!end)
-	{
-		if (_kbhit() == 0) {
-			Sleep(10);
-			continue;
-		}
+    bool end = false;
+    while (!end)
+    {
+        if (_kbhit() == 0) {
+            Sleep(10);
+            continue;
+        }
 
-		c = _getch();
+        c = _getch();
 
-		HWND consoleWnd;
+        HWND consoleWnd;
 
-		switch (c)
-		{
-			case VK_BACKSPACE:
-				if (!stringToSearchFor.empty()) {
-					std::cout << "\b \b";
-					stringToSearchFor.pop_back();
-				}
-				break;
-			case '\r':
-				consoleWnd = GetConsoleWindow();
-				FreeConsole();
-				PostMessage(consoleWnd, WM_CLOSE, NULL, NULL);
-				end = true;
-				break;
-			case '?':
-				srand(HelperFunctions::GetMilliseconds());
-				itemIndex = rand() % mapNamesLowerCase->size();
-				nameMatches = true;
-				break;
-			default:
-				stringToSearchFor.push_back(c);
-				std::cout << (char) c;
-				break;
-		}
+        switch (c)
+        {
+            case VK_BACKSPACE:
+                if (!stringToSearchFor.empty()) {
+                    std::cout << "\b \b";
+                    stringToSearchFor.pop_back();
+                }
+                break;
+            case '\r':
+                consoleWnd = GetConsoleWindow();
+                FreeConsole();
+                PostMessage(consoleWnd, WM_CLOSE, NULL, NULL);
+                end = true;
+                break;
+            case '?':
+                srand(HelperFunctions::GetMilliseconds());
+                itemIndex = rand() % mapNamesLowerCase->size();
+                nameMatches = true;
+                break;
+            default:
+                stringToSearchFor.push_back(c);
+                std::cout << (char) c;
+                break;
+        }
 
-		if (!stringToSearchFor.empty() && !end)
-		{
-			std::transform(stringToSearchFor.begin(), stringToSearchFor.end(), stringToSearchFor.begin(),
-				[](unsigned char c) { return std::tolower(c); });
+        if (!stringToSearchFor.empty() && !end)
+        {
+            std::transform(stringToSearchFor.begin(), stringToSearchFor.end(), stringToSearchFor.begin(),
+                [](unsigned char c) { return std::tolower(c); });
 
-			std::vector<std::string>::iterator it;
+            std::vector<std::string>::iterator it;
 
-			it = std::find_if(mapNamesLowerCase->begin(), mapNamesLowerCase->end(),
-				[&stringToSearchFor](std::string mapName)
-				{
-					return str_contains_str(mapName, stringToSearchFor);
-				});
+            it = std::find_if(mapNamesLowerCase->begin(), mapNamesLowerCase->end(),
+                [&stringToSearchFor](std::string mapName)
+                {
+                    return str_contains_str(mapName, stringToSearchFor);
+                });
 
-			if (it == mapNamesLowerCase->end())
-			{
-				continue;
-			}
+            if (it == mapNamesLowerCase->end())
+            {
+                continue;
+            }
 
-			itemIndex = std::distance(mapNamesLowerCase->begin(), it);
-			nameMatches = true;
-		}
-	}
+            itemIndex = std::distance(mapNamesLowerCase->begin(), it);
+            nameMatches = true;
+        }
+    }
 }
 
 void TryToInitializeSearchBox()
 {
-	WindowHandler* windowHandler = uiHandler->windowHandler;
-	if (windowHandler == nullptr)
-	{
-		return;
-	}
+    WindowHandler* windowHandler = uiHandler->windowHandler;
+    if (windowHandler == nullptr)
+    {
+        return;
+    }
 
-	Gadget* focusedGadget = windowHandler->focusedGadget;
+    Gadget* focusedGadget = windowHandler->focusedGadget;
 
-	if (focusedGadget == nullptr)
-	{
-		return;
-	}
+    if (focusedGadget == nullptr)
+    {
+        return;
+    }
 
-	if (!GadgetExtensions::isListBox(focusedGadget, baseAddress))
-	{
-		return;
-	}
+    if (!GadgetExtensions::isListBox(focusedGadget, baseAddress))
+    {
+        return;
+    }
 
-	listBoxAddr = (DWORD) focusedGadget;
-	Window* gadgetParent = focusedGadget->parent;
+    listBoxAddr = (DWORD) focusedGadget;
+    Window* gadgetParent = focusedGadget->parent;
 
-	bool isAnyOfTheSupportedMenus = WindowExtensions::isChooseMapMenu(gadgetParent, baseAddress) ||
-					                WindowExtensions::isBattleMenu(gadgetParent, baseAddress);
+    bool isAnyOfTheSupportedMenus = WindowExtensions::isChooseMapMenu(gadgetParent, baseAddress) ||
+                                    WindowExtensions::isBattleMenu(gadgetParent, baseAddress);
 
-	if (!isAnyOfTheSupportedMenus)
-	{
-		return;
-	}
+    if (!isAnyOfTheSupportedMenus)
+    {
+        return;
+    }
 
-	InitializeSearchBox(gadgetParent);
+    InitializeSearchBox(gadgetParent);
 }
 
 void InitializeSearchBox(Window* window)
 {
-	StartConsole();
-	ConfigureConsole();
+    StartConsole();
+    ConfigureConsole(600, 40, HWND_TOPMOST, true);
 
-	std::cout << "Type the name of the map to search for it, press enter after you're done." << std::endl;
-	std::cout << "> ";
+    std::cout << "Type the name of the map to search for it, press enter after you're done." << std::endl;
+    std::cout << "> ";
 
-	if (WindowExtensions::isChooseMapMenu(window, baseAddress))
-	{
-		ChooseMapMenu* chooseMapMenu = (ChooseMapMenu*) window;
+    if (WindowExtensions::isChooseMapMenu(window, baseAddress))
+    {
+        ChooseMapMenu* chooseMapMenu = (ChooseMapMenu*) window;
 
-		ChooseMapMenuWrapper chooseMapMenuWrapper(chooseMapMenu);
-		
-		StartSearchBox(chooseMapMenuWrapper);
-	}
-	else if (WindowExtensions::isBattleMenu(window, baseAddress))
-	{
-		BattleMenu* battleMenu = (BattleMenu*) window;
+        ChooseMapMenuWrapper chooseMapMenuWrapper(chooseMapMenu);
+        
+        StartSearchBox(chooseMapMenuWrapper);
+    }
+    else if (WindowExtensions::isBattleMenu(window, baseAddress))
+    {
+        BattleMenu* battleMenu = (BattleMenu*) window;
 
-		/*BattleMenuWrapper battleMenuWrapper(battleMenu);
+        /*BattleMenuWrapper battleMenuWrapper(battleMenu);
 
-		StartSearchBox(battleMenuWrapper);*/
-	}
+        StartSearchBox(battleMenuWrapper);*/
+    }
 }
 
-void ConfigureConsole()
+void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
 {
-	SetConsoleBufferSize(256, 2);
+    SetConsoleBufferSize(256, 2);
 
-	RECT desktopWndRect;
+    RECT desktopWndRect;
 
-	HWND desktopWnd = GetDesktopWindow();
+    HWND desktopWnd = GetDesktopWindow();
 
-	GetWindowRect(desktopWnd, &desktopWndRect);
+    GetWindowRect(desktopWnd, &desktopWndRect);
 
-	int consoleWidth = 600;
-	int consoleHeight = 40;
-	int xConsolePosition;
-	int yConsolePosition;
+    int consoleWidth = width;
+    int consoleHeight = height;
+    int xConsolePosition;
+    int yConsolePosition;
 
-	xConsolePosition = ((desktopWndRect.right - desktopWndRect.left) / 2) - (consoleWidth / 2);
+    xConsolePosition = ((desktopWndRect.right - desktopWndRect.left) / 2) - (consoleWidth / 2);
 
-	yConsolePosition = ((desktopWndRect.bottom - desktopWndRect.top) / 2) - (consoleHeight / 2);
+    yConsolePosition = ((desktopWndRect.bottom - desktopWndRect.top) / 2) - (consoleHeight / 2);
 
-	if (isFullscreen)
-	{
-		yConsolePosition = ((desktopWndRect.bottom - desktopWndRect.top) / 2) - 385;
-	}
+    if (isFullscreen)
+    {
+        yConsolePosition = ((desktopWndRect.bottom - desktopWndRect.top) / 2) - 385;
+    }
 
-	HWND consoleWindow = GetConsoleWindow();
+    HWND consoleWindow = GetConsoleWindow();
 
-	SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_POPUPWINDOW);
-	SetWindowPos(consoleWindow, HWND_TOPMOST, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_SHOWWINDOW);
+    if (borderless)
+        SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_POPUPWINDOW);
+
+    SetWindowPos(consoleWindow, NULL, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_NOACTIVATE | SWP_NOOWNERZORDER);
+}
+
+void startConsole()
+{
+    AllocConsole();
+
+    freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
+    freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
+    std::cout.clear();
+    std::cin.clear();
+
+    /* ConfigureConsole(600, 200, HWND_BOTTOM, false); */
 }

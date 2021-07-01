@@ -4,5 +4,5 @@
 
 class InGameDesktop
 {
-	uintptr_t* vTable;
+    uintptr_t* vTable;
 };

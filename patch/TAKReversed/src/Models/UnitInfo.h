@@ -7,62 +7,62 @@
 
 class UnitInfo
 {
-	char name[32];
-	char shortName[32];
+    char name[32];
+    char shortName[32];
 
-	char padding0[230];
+    char padding0[230];
 
-	uint16_t footprintX;
-	uint16_t footprintZ;
+    uint16_t footprintX;
+    uint16_t footprintZ;
 
-	char padding1[100];
+    char padding1[100];
 
-	uint16_t turnrate;
-	uint16_t turninplacerate;
+    uint16_t turnrate;
+    uint16_t turninplacerate;
 
-	char padding2[24];
+    char padding2[24];
 
-	Weapon* weapon1;
-	Weapon* weapon2;
-	Weapon* weapon3;
+    Weapon* weapon1;
+    Weapon* weapon2;
+    Weapon* weapon3;
 
-	char padding3[8];
+    char padding3[8];
 
-	uint32_t maxDamage;
-	uint16_t experiencePoints;
+    uint32_t maxDamage;
+    uint16_t experiencePoints;
 
-	char padding4[6];
+    char padding4[6];
 
-	Aura armorAura;
+    Aura armorAura;
 
-	char padding5[7];
+    char padding5[7];
 
-	Aura attackAura;
+    Aura attackAura;
 
-	char padding5[7];
+    char padding5[7];
 
-	Aura joyAura;
+    Aura joyAura;
 
-	char padding6[52];
+    char padding6[52];
 
-	float buildcost;
-	float buildtime;
+    float buildcost;
+    float buildtime;
 
-	char padding7[8];
+    char padding7[8];
 
-	float healtime;
+    float healtime;
 
-	char padding8[4];
+    char padding8[4];
 
-	uint32_t sightdistance;
+    uint32_t sightdistance;
 
-	char padding9[8];
+    char padding9[8];
 
-	uint32_t maneuverleashlength;
+    uint32_t maneuverleashlength;
 
-	char padding[68];
+    char padding[68];
 
-	char bodytype[6];
+    char bodytype[6];
 
-	char padding[38];
+    char padding[38];
 };

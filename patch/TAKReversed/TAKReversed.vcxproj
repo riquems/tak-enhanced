@@ -36,6 +36,14 @@
     <ClInclude Include="src\Models\Mission.h" />
     <ClInclude Include="src\Models\MovementHandler.h" />
     <ClInclude Include="src\Models\NavGoal.h" />
+    <ClInclude Include="src\Models\Options\ConsoleOptions.h" />
+    <ClInclude Include="src\Models\Options\DevelopmentOptions.h" />
+    <ClInclude Include="src\Models\Options\GameOptions.h" />
+    <ClInclude Include="src\Models\Options\GameSetupOptions.h" />
+    <ClInclude Include="src\Models\Options\InterfaceOptions.h" />
+    <ClInclude Include="src\Models\Options\MusicOptions.h" />
+    <ClInclude Include="src\Models\Options\SoundOptions.h" />
+    <ClInclude Include="src\Models\Options\VisualOptions.h" />
     <ClInclude Include="src\Models\PathNavigator.h" />
     <ClInclude Include="src\Models\Player.h" />
     <ClInclude Include="src\Models\PlayerViewModel.h" />

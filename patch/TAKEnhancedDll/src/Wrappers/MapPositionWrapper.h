@@ -5,11 +5,11 @@
 class MapPositionWrapper
 {
 public:
-	MapPosition _mapPosition;
+    MapPosition _mapPosition;
 
-	MapPositionWrapper(MapPosition mapPosition) : _mapPosition(mapPosition) {}
+    MapPositionWrapper(MapPosition mapPosition) : _mapPosition(mapPosition) {}
 
-	inline int16_t value() {
-		return _mapPosition.mapPosition;
-	}
+    inline int16_t value() {
+        return _mapPosition.mapPosition;
+    }
 };

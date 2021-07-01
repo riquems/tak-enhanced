@@ -4,12 +4,13 @@
 #include "./Changes/OffscreenFix.h"
 #include "./Changes/SearchBox.h"
 #include "./Changes/BuildingsShortcuts.h"
+#include <iostream>
 
 /*********************************************************
  
-	The TA:K Enhanced Service is a service which will 
-	be running while the game is running, doing several
-	different tasks.
+    The TA:K Enhanced Service is a service which will 
+    be running while the game is running, doing several
+    different tasks.
 
 **********************************************************/
 
@@ -32,108 +33,128 @@
 #define VK_9 0x39
 
 std::map<int, int> buildingKeys = { std::pair<int, int>(VK_0, 0),
-									std::pair<int, int>(VK_1, 1),
-									std::pair<int, int>(VK_2, 2),
-									std::pair<int, int>(VK_3, 3),
-									std::pair<int, int>(VK_4, 4),
-									std::pair<int, int>(VK_5, 5),
-									std::pair<int, int>(VK_6, 6),
-									std::pair<int, int>(VK_7, 7),
-									std::pair<int, int>(VK_8, 8),
-									std::pair<int, int>(VK_9, 9) };
+                                    std::pair<int, int>(VK_1, 1),
+                                    std::pair<int, int>(VK_2, 2),
+                                    std::pair<int, int>(VK_3, 3),
+                                    std::pair<int, int>(VK_4, 4),
+                                    std::pair<int, int>(VK_5, 5),
+                                    std::pair<int, int>(VK_6, 6),
+                                    std::pair<int, int>(VK_7, 7),
+                                    std::pair<int, int>(VK_8, 8),
+                                    std::pair<int, int>(VK_9, 9) };
 
 // Keys that should fire once only
 std::vector<int> singleShotKeys = { VK_RETURN,
-									VK_R,
-									VK_S,
-									VK_K,
-									VK_0,
-									VK_1,
-									VK_2,
-									VK_3,
-									VK_4,
-									VK_5,
-									VK_6,
-									VK_7,
-									VK_8,
-									VK_9 };
+                                    VK_R,
+                                    VK_S,
+                                    VK_K,
+                                    VK_0,
+                                    VK_1,
+                                    VK_2,
+                                    VK_3,
+                                    VK_4,
+                                    VK_5,
+                                    VK_6,
+                                    VK_7,
+                                    VK_8,
+                                    VK_9 };
 
 void startTakEnhancedService()
 {
-	int i = 0;
+    int i = 0;
 
-	while (true)
-	{
-		if (settings.offscreen_fix && game.match->isRunning())
-		{
-			startOffscreenMonitorThread();
-		}
+    Sleep(1000);
 
-		if (game.isBuildMenuOpen())
-		{
-			for (std::pair<int, int> keyValue : buildingKeys)
-			{
-				if (isKeyDown(keyValue.first))
-				{
-					game.selectBuilding(keyValue.second);
-				}
-			}
+    HWND nextWindow = FindWindowA(NULL, "Kingdoms");
+    HWND takWindow = nullptr;
 
-			if (isKeyDown(VK_J))
-			{
-				if (i > 2) i = 0;
+    DWORD processId;
+    while (nextWindow != NULL) {
+        GetWindowThreadProcessId(nextWindow, &processId);
 
-				game.switchSelectedUnitHumor(i);
-				i++;
-			}
-	  	}
+        if (processId == GetCurrentProcessId()) {
+            takWindow = nextWindow;
+            break;
+        }
 
-		if (isKeyDown(VK_MENU))
-		{
-			if (isKeyDown(VK_RETURN))
-			{
-				ToggleFullscreen();
-			}
-		}
+        nextWindow = FindWindowExA(NULL, nextWindow, NULL, "Kingdoms");
+    }
 
-		if (isKeyDown(VK_CONTROL))
-		{
-			if (isKeyDown(VK_S))
-			{
-				PrintMouseHoveredUnitAddress();
-			}
-			else if (isKeyDown(VK_F))
-			{
-				TryToInitializeSearchBox();
-			}
-			else if (isKeyDown(VK_R))
-			{
-				TryToChooseRandomRace();
-			}
-			else if (isKeyDown(VK_K))
-			{
-				// ToggleSelectedUnitAura();
-			}
-		}
+    SwitchToThisWindow(takWindow, true);
+    SetWindowPos(takWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
 
-		auto singleShotKeysStillBeingHold = [&]()->bool
-		{
-			for (int key : singleShotKeys)
-			{
-				if (isKeyDown(key))
-				{
-					return true;
-				}
-			}
+    while (true)
+    {
+        if (settings.offscreen_fix && game.match->isRunning())
+        {
+            startOffscreenMonitorThread();
+        }
 
-			return false;
-		};
+        if (game.isBuildMenuOpen())
+        {
+            for (std::pair<int, int> keyValue : buildingKeys)
+            {
+                if (isKeyDown(keyValue.first))
+                {
+                    game.selectBuilding(keyValue.second);
+                }
+            }
 
-		while (singleShotKeysStillBeingHold())
-		{
-			Sleep(1);
-		}
+            if (isKeyDown(VK_J))
+            {
+                if (i > 2) i = 0;
 
-		Sleep(10);
-	}
+                game.switchSelectedUnitHumor(i);
+                i++;
+            }
+          }
+
+        if (isKeyDown(VK_MENU))
+        {
+            if (isKeyDown(VK_RETURN))
+            {
+                ToggleFullscreen();
+            }
+        }
+
+        if (isKeyDown(VK_CONTROL))
+        {
+            if (isKeyDown(VK_S))
+            {
+                PrintMouseHoveredUnitAddress();
+            }
+            else if (isKeyDown(VK_F))
+            {
+                TryToInitializeSearchBox();
+            }
+            else if (isKeyDown(VK_R))
+            {
+                TryToChooseRandomRace();
+            }
+            else if (isKeyDown(VK_K))
+            {
+                // ToggleSelectedUnitAura();
+            }
+        }
+
+        auto singleShotKeysStillBeingHold = [&]()->bool
+        {
+            for (int key : singleShotKeys)
+            {
+                if (isKeyDown(key))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        while (singleShotKeysStillBeingHold())
+        {
+            Sleep(1);
+        }
+
+        Sleep(10);
+    }
 }

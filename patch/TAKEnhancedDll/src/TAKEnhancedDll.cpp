@@ -10,28 +10,21 @@ void startConsole();
 
 BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 {
-	if (dwReason == DLL_PROCESS_ATTACH) {
-		initializeContext();
+    if (dwReason == DLL_PROCESS_ATTACH) {
+        initializeContext();
 
-		// startConsole();
+        main_form launcher;
+        launcher.show();
 
-		main_form launcher;
-		launcher.show();
+        if (settings.enable_dev_mode) {
+            startConsole();
+        }
 
-		applyChanges();
+        applyChanges();
 
-		std::thread takEnhancedServiceThread(startTakEnhancedService);
-		takEnhancedServiceThread.detach();
-	}
+        std::thread takEnhancedServiceThread(startTakEnhancedService);
+        takEnhancedServiceThread.detach();
+    }
 
-	return true;
-}
-
-void startConsole()
-{
-	AllocConsole();
-	freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
-	freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
-	std::cout.clear();
-	std::cin.clear();
+    return true;
 }
