@@ -56,7 +56,7 @@ class tab_page_patches : public nana::panel<false>
     {
         lbl_maxUnits = std::make_unique<nana::label>(*this, "Max Units:");
         sb_maxUnits = std::make_unique<nana::spinbox>(*this);
-        sb_maxUnits->range(0, INT_MAX, 1);
+        sb_maxUnits->range(20, INT_MAX, 1);
         sb_maxUnits->value(std::to_string(settings.max_units));
 
         lbl_pathfindingCycles = std::make_unique<nana::label>(*this, "Pathfinding Cycles:");
