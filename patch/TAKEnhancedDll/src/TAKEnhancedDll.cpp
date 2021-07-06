@@ -16,14 +16,14 @@ BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
         main_form launcher;
         launcher.show();
 
-        if (settings.enable_dev_mode) {
+        if (settings.EnableDevMode) {
             startConsole();
         }
 
         applyChanges();
 
-        std::thread takEnhancedServiceThread(startTakEnhancedService);
-        takEnhancedServiceThread.detach();
+        std::thread TAKEnhancedServiceThread(startTAKEnhancedService);
+        TAKEnhancedServiceThread.detach();
     }
 
     return true;

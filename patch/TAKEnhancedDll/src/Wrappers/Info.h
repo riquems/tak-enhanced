@@ -16,4 +16,5 @@ std::vector<std::string> files_loaded_by_default = { "data.hpi",
                                                      "IPMissions.hpi",
                                                      "IPSections.hpi", 
                                                      "IPEnglish.hpi", 
-                                                     "IPData.hpi" };
+                                                     "IPData.hpi",
+                                                     "meta.hpi" };

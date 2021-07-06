@@ -16,22 +16,22 @@ extern "C" __declspec(dllexport) void __stdcall LoadingScreenStartExtension()
 
 extern "C" __declspec(dllexport) void __stdcall LoadingScreenEndExtension()
 {
-    if (settings.enable_dev_mode) {
+    if (settings.EnableDevMode) {
         std::cout << "Activating developer mode" << std::endl;
-        Game::ActivateDeveloperMode(baseAddress);
+        gameWrapper->activateDeveloperMode();
     }
 
-    game.initializePlayersWrappers();
+    gameWrapper->initializePlayersWrappers();
 }
 
 void applyLoadingScreenExtensionsPatch()
 {
-    MemoryHandling::insertFunctionCall((DWORD) &LoadingScreenStartExtension, 0x1258E0);
+    MemoryHandler::insertFunctionCall((DWORD) &LoadingScreenStartExtension, 0x1258E0);
 
-    MemoryHandling::fillWithNOPs(Memory(0x125AC1, 0x125AC2));
+    MemoryHandler::fillWithNOPs(Memory(0x125AC1, 0x125AC2));
 
-    MemoryHandling::insertOpCode(MemoryHandling::OpCode::RETN, 0x125AC6);
-    MemoryHandling::insertFunctionCall((DWORD) &LoadingScreenEndExtension, 0x125AC1);
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::RETN, 0x125AC6);
+    MemoryHandler::insertFunctionCall((DWORD) &LoadingScreenEndExtension, 0x125AC1);
 
     logger.log("Added Loading Screen Extension.");
 }

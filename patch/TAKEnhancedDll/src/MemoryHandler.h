@@ -84,7 +84,7 @@ public:
     }
 };
 
-namespace MemoryHandling
+namespace MemoryHandler
 {
     enum class OpCode {
         RETN = 0xC3,
@@ -191,11 +191,11 @@ namespace MemoryHandling
         writeShellCode(ShortJMP_ShellCode);
     }
 
-    void insertFunctionCall(DWORD functionAddress, DWORD startAddress)
+    void insertFunctionCall(DWORD functionAddress, DWORD startAddressOffSet)
     {
-        DWORD relativeAddress = getRelativeAddress<DWORD>(startAddress + baseAddress, functionAddress);
+        DWORD relativeAddress = getRelativeAddress<DWORD>(startAddressOffSet + baseAddress, functionAddress);
 
-        ShellCode shellCode("E8" + DWORDtoStr(relativeAddress), startAddress);
+        ShellCode shellCode("E8" + DWORDtoStr(relativeAddress), startAddressOffSet);
 
         writeShellCode(shellCode);
     }

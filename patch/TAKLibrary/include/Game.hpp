@@ -1,9 +1,23 @@
 #include <cstdint>
 #include <iostream>
 #include "Models/Player.h"
+#include "Models/Side.h"
+#include "Models/Options/GameOptions.h"
 
-namespace Game
+class Game
 {
-    void ActivateDeveloperMode(uintptr_t baseAddress);
-    Player* GetPlayers(uintptr_t baseAddress);
-}
+    uintptr_t _baseAddress;
+
+public:
+    Game();
+    Game(uintptr_t baseAddress);
+
+    GameOptions* getGameOptions();
+    Unit* getSelectedUnit();
+    Player* getPlayers();
+
+    Side* getSides();
+    int getNumberOfSides();
+
+    uintptr_t getMouseHoveredUnitAddress();
+};

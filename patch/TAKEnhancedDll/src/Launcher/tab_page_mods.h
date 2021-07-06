@@ -40,14 +40,14 @@ class tab_page_mods : public nana::panel<false>
         cb_enableDevMode = std::make_unique<nana::checkbox>(*this, "Enable Developer Mode");
         cb_enableDevMode->bgcolor(default_bgcolor);
 
-        if (settings.enable_dev_mode) {
+        if (settings.EnableDevMode) {
             cb_enableDevMode->check(true);
         }
 
         cb_enableMods = std::make_unique<nana::checkbox>(*this, "Enable Mods");
         cb_enableMods->bgcolor(default_bgcolor);
 
-        if (settings.enable_mods) {
+        if (settings.EnableMods) {
             cb_enableMods->check(true);
         }
 
@@ -128,7 +128,7 @@ class tab_page_mods : public nana::panel<false>
         std::for_each(hpi_files.begin(), hpi_files.end(),
             [&](std::string filename) {
                 if (!vector_has_str(files_loaded_by_default, filename) &&
-                    !vector_has_str(settings.selected_mods, filename)) {
+                    !vector_has_str(settings.SelectedMods, filename)) {
                     default_category.append(filename);
                 }
             }
@@ -147,7 +147,7 @@ class tab_page_mods : public nana::panel<false>
 
         nana::listbox::cat_proxy default_category = lb_listbox2->at(0);
 
-        for (std::string mod_filename : settings.selected_mods) {
+        for (std::string mod_filename : settings.SelectedMods) {
             default_category.append(mod_filename);
         }
 

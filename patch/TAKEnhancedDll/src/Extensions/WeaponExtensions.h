@@ -36,5 +36,5 @@ void WeaponExtensionPatch()
 {
     // weapons = ?
 
-    // MemoryHandling::insertFunctionCall(&WeaponExtension, ...);
+    // MemoryHandler::insertFunctionCall(&WeaponExtension, ...);
 }

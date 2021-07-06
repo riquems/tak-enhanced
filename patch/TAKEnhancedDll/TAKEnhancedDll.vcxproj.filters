@@ -23,7 +23,6 @@
     <ClInclude Include="src\Context.h" />
     <ClInclude Include="src\GameFunctions.h" />
     <ClInclude Include="src\MemoryHandler.h" />
-    <ClInclude Include="src\TakEnhancedService.h" />
     <ClInclude Include="src\Changes\BuildingsShortcuts.h">
       <Filter>Changes</Filter>
     </ClInclude>
@@ -120,9 +119,6 @@
     <ClInclude Include="src\Wrappers\GameWrapper.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Managers\PlayerInterfaceManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="src\Wrappers\BuildButtonWrapper.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
@@ -130,6 +126,19 @@
       <Filter>Wrappers</Filter>
     </ClInclude>
     <ClInclude Include="src\Managers\WindowManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Changes\ToggleUnitsAuras.h">
+      <Filter>Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Changes\ShowHPOnlyIfInjuried.h">
+      <Filter>Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Changes\ShowEnemyHealthBars.h">
+      <Filter>Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TAKEnhancedService.h" />
+    <ClInclude Include="src\Managers\GameInterfaceManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>

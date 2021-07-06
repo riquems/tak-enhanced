@@ -2,7 +2,12 @@
 #include "Models/UI/GameInterfaceHandler.h"
 #include "Models/UI/Window.h"
 
-namespace GameInterface
+class GameInterface
 {
-    Window* GetWindow(const char* name, uintptr_t baseAddress);
-}
+    uintptr_t _baseAddress;
+
+public:
+    GameInterface(uintptr_t baseAddress);
+
+    Window* getWindow(const char* name);
+};

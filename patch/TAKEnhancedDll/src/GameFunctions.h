@@ -17,7 +17,7 @@ std::vector<HapiFile*> GameFunctionsExtensions::GetLoadedHapiFiles()
 {
     std::vector<HapiFile*> hapiFiles;
 
-    DWORD* filesPtr = (DWORD*) GetAbsoluteAddress(GlobalPointers::ptr_241A48);
+    DWORD* filesPtr = (DWORD*) (GlobalPointers::ptr_241A48 + baseAddress);
 
     DWORD* hpiDirectory = (DWORD*) (*filesPtr + 0x5EA);
     DWORD* hpiFilesPtr = (DWORD*) (*hpiDirectory);

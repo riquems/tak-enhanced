@@ -66,23 +66,23 @@ private:
 
         btn_continue->events().click(
             [&]() {
-                settings.max_units                  = tp_patches->get_max_units();
-                settings.pathfinding_cycles         = tp_patches->get_pathfinding_cycles();
-                settings.forced_minrange_for_melees = tp_patches->get_forced_minrange_for_melees();
+                settings.MaxUnits                  = tp_patches->get_max_units();
+                settings.PathFindingCycles         = tp_patches->get_pathfinding_cycles();
+                settings.ForcedMinRangeForMelees = tp_patches->get_forced_minrange_for_melees();
 
-                settings.enable_dev_mode      = tp_mods->get_enableDevMode();
-                settings.enable_mods          = tp_mods->get_enableMods();
-                settings.no_cd                = tp_patches->get_noCD();
-                settings.melee_stuck_fix      = tp_patches->get_meleeStuckFix();
-                settings.offscreen_fix        = tp_patches->get_offscreenFix();
-                settings.pause_when_unfocused = tp_patches->get_pauseWhenUnfocused();
+                settings.EnableDevMode      = tp_mods->get_enableDevMode();
+                settings.EnableMods          = tp_mods->get_enableMods();
+                settings.NoCD                = tp_patches->get_noCD();
+                settings.MeleeStuckFix      = tp_patches->get_meleeStuckFix();
+                settings.OffscreenFix        = tp_patches->get_offscreenFix();
+                settings.PauseWhenUnfocused = tp_patches->get_pauseWhenUnfocused();
 
-                settings.selected_mods.clear();
+                settings.SelectedMods.clear();
 
                 std::vector<std::string> selected_mods = tp_mods->get_selected_mods();
 
                 for (std::string selected_mod : selected_mods) {
-                    settings.selected_mods.push_back(selected_mod);
+                    settings.SelectedMods.push_back(selected_mod);
                 }
 
                 settings.Save();

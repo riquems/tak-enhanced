@@ -1,18 +1,21 @@
 #pragma once
 #include "Models/PlayerViewModel.h"
 #include "ModelsExtensions/WindowExtensions.h"
+#include "../Managers/WindowManager.h"
 
 void TryToChooseRandomRace()
 {
-    Window* currentWindow = GetWindowCurrentWindow();
+    std::shared_ptr<WindowManager> windowManager = std::make_shared<WindowManager>();
+
+    Window* currentWindow = windowManager->getCurrentWindow();
 
     if (currentWindow == nullptr)
     {
         return;
     }
 
-    int numberOfSides = GetNumberOfSides();
-    Side* sides = GetSides();
+    int numberOfSides = gameWrapper->getGame()->getNumberOfSides();
+    Side* sides = gameWrapper->getGame()->getSides();
 
     std::vector<int> playableRaces;
 

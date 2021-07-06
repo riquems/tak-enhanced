@@ -29,12 +29,12 @@ extern "C" __declspec(dllexport) void __stdcall ReadSideDataExtension()
 
 void applyReadSideDataExtensionPatch()
 {
-    MemoryHandling::fillWithNOPs(Memory(0x0C2E7B, 0x0C2E84));
+    MemoryHandler::fillWithNOPs(Memory(0x0C2E7B, 0x0C2E84));
     
-    MemoryHandling::insertFunctionCall((DWORD) &ReadSideDataExtension, 0x0C2E7B);
+    MemoryHandler::insertFunctionCall((DWORD) &ReadSideDataExtension, 0x0C2E7B);
 
     ShellCode shellCode(std::string("8D4DF4"), 0x0C2E81); // LEA ECX, [EBP-0C]
-    MemoryHandling::writeShellCode(shellCode);
+    MemoryHandler::writeShellCode(shellCode);
 
     logger.log("Added Read SideData.tdf Extension.");
 }

@@ -21,8 +21,8 @@ extern "C" __declspec(dllexport) bool __stdcall HpiVerificationExtension()
         return true;
     }
 
-    if (settings.enable_mods) {
-        if (vector_has_str(settings.selected_mods, filename)) {
+    if (settings.EnableMods) {
+        if (vector_has_str(settings.SelectedMods, filename)) {
             hapiFile->allowed = true;
             hapiFile->allowed2 = true;
 
@@ -36,7 +36,7 @@ extern "C" __declspec(dllexport) bool __stdcall HpiVerificationExtension()
 void applyNewHpiVerificationPatch()
 {
     ShellCode shellcode("8BCE", Memory(0x08CD83, 0x08CD85)); // MOV ECX, ESI
-    MemoryHandling::writeShellCode(shellcode);
+    MemoryHandler::writeShellCode(shellcode);
 
-    MemoryHandling::insertFunctionCall((DWORD) &HpiVerificationExtension, 0x08CD85);
+    MemoryHandler::insertFunctionCall((DWORD) &HpiVerificationExtension, 0x08CD85);
 }

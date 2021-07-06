@@ -33,19 +33,19 @@ class tab_page_patches : public nana::panel<false>
         cb_pauseWhenUnfocused->bgcolor(default_bgcolor);
         cb_offscreenFix->bgcolor(default_bgcolor);
 
-        if (settings.no_cd) {
+        if (settings.NoCD) {
             cb_noCD->check(true);
         }
 
-        if (settings.melee_stuck_fix) {
+        if (settings.MeleeStuckFix) {
             cb_meleeStuckFix->check(true);
         }
 
-        if (settings.pause_when_unfocused) {
+        if (settings.PauseWhenUnfocused) {
             cb_pauseWhenUnfocused->check(true);
         }
 
-        if (settings.offscreen_fix) {
+        if (settings.OffscreenFix) {
             cb_offscreenFix->check(true);
         }
 
@@ -57,17 +57,17 @@ class tab_page_patches : public nana::panel<false>
         lbl_maxUnits = std::make_unique<nana::label>(*this, "Max Units:");
         sb_maxUnits = std::make_unique<nana::spinbox>(*this);
         sb_maxUnits->range(20, INT_MAX, 1);
-        sb_maxUnits->value(std::to_string(settings.max_units));
+        sb_maxUnits->value(std::to_string(settings.MaxUnits));
 
         lbl_pathfindingCycles = std::make_unique<nana::label>(*this, "Pathfinding Cycles:");
         sb_pathfindingCycles = std::make_unique<nana::spinbox>(*this);
         sb_pathfindingCycles->range(0, INT_MAX, 1);
-        sb_pathfindingCycles->value(std::to_string(settings.pathfinding_cycles));
+        sb_pathfindingCycles->value(std::to_string(settings.PathFindingCycles));
 
         lbl_forcedMinRangeForMelees = std::make_unique<nana::label>(*this, "Forced minrange for Melees:");
         sb_forcedMinRangeForMelees = std::make_unique<nana::spinbox>(*this);
         sb_forcedMinRangeForMelees->range(0, INT_MAX, 1);
-        sb_forcedMinRangeForMelees->value(std::to_string(settings.forced_minrange_for_melees));
+        sb_forcedMinRangeForMelees->value(std::to_string(settings.ForcedMinRangeForMelees));
 
         lbl_maxUnits->bgcolor(default_bgcolor);
         lbl_pathfindingCycles->bgcolor(default_bgcolor);

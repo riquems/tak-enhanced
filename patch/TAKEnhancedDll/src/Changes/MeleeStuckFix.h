@@ -40,7 +40,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(Missio
     Weapon* weapon = *(Weapon**) (weapon1Addr + offset);
 
     uint32_t range = weapon->range;
-    uint32_t minRange = settings.forced_minrange_for_melees;
+    uint32_t minRange = settings.ForcedMinRangeForMelees;
     MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
     __asm {
@@ -82,7 +82,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingM
     if (cannotAttack && lastNavGoal == nullptr)
     {
         uint32_t range = weapon->range + 30;
-        uint32_t minRange = settings.forced_minrange_for_melees + 30;
+        uint32_t minRange = settings.ForcedMinRangeForMelees + 30;
         MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
         __asm {
@@ -157,31 +157,31 @@ extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(Unit* unit, U
 void applyMeleeStuckFix()
 {
     // First time you click to attack
-    MemoryHandling::writeShortJMP(Memory(0x004D12, 0x004D14), 0x004D1F);
+    MemoryHandler::writeShortJMP(Memory(0x004D12, 0x004D14), 0x004D1F);
 
-    MemoryHandling::fillWithNOPs(0x004D29, 0x004D36);
+    MemoryHandler::fillWithNOPs(0x004D29, 0x004D36);
 
-    MemoryHandling::insertOpCode(MemoryHandling::OpCode::PUSH_ESI, 0x4D29);
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::PUSH_ESI, 0x4D29);
 
-    MemoryHandling::insertFunctionCall((DWORD) &createNavGoalRingAdjusted, 0x004D2A);
+    MemoryHandler::insertFunctionCall((DWORD) &createNavGoalRingAdjusted, 0x004D2A);
 
     // Updates the path navigator regularly
-    MemoryHandling::fillWithNOPs(0x004BA9, 0x004BB6);
+    MemoryHandler::fillWithNOPs(0x004BA9, 0x004BB6);
 
-    MemoryHandling::insertOpCode(MemoryHandling::OpCode::PUSH_ESI, 0x4BA9);
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::PUSH_ESI, 0x4BA9);
 
-    MemoryHandling::insertFunctionCall((DWORD) &createNavGoalRingAdjusted, 0x004BAA);
+    MemoryHandler::insertFunctionCall((DWORD) &createNavGoalRingAdjusted, 0x004BAA);
 
     // 3rd point
-    MemoryHandling::writeJZ(Memory(0x04A5A, 0x04A60), 0x04B46);
+    MemoryHandler::writeJZ(Memory(0x04A5A, 0x04A60), 0x04B46);
 
-    MemoryHandling::fillWithNOPs(0x004B46, 0x004B4F);
+    MemoryHandler::fillWithNOPs(0x004B46, 0x004B4F);
 
-    MemoryHandling::insertOpCode(MemoryHandling::OpCode::PUSH_ESI, 0x4B46);
-    MemoryHandling::insertFunctionCall((DWORD) &createNavGoalRingWithIncreasingMinDistance, 0x004B47);
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::PUSH_ESI, 0x4B46);
+    MemoryHandler::insertFunctionCall((DWORD) &createNavGoalRingWithIncreasingMinDistance, 0x004B47);
 
     // Replace melee can attack function
-    MemoryHandling::write((DWORD) &new_MeleeCanAttack, 0x01F3B04);
+    MemoryHandler::write((DWORD) &new_MeleeCanAttack, 0x01F3B04);
 
     logger.log("Melee Stuck fix applied.");
 }

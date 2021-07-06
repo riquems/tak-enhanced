@@ -15,6 +15,7 @@ public:
     WindowManager() {}
 
     std::shared_ptr<Gadget*> getGadget(Window* window, const char* name);
+    Window* getCurrentWindow();
 };
 
 std::shared_ptr<Gadget*> WindowManager::getGadget(Window* window, const char* name)
@@ -39,4 +40,21 @@ std::shared_ptr<Gadget*> WindowManager::getGadget(Window* window, const char* na
     Gadget* gadgetPtr = (Gadget*) gadgetAddr;
     std::shared_ptr<Gadget*> gadget = std::make_shared<Gadget*>(gadgetPtr);
     return gadget;
+}
+
+Window* WindowManager::getCurrentWindow()
+{
+    WindowHandler* windowHandler = uiHandler->windowHandler;
+
+    if (windowHandler == nullptr) {
+        return nullptr;
+    }
+
+    Gadget* focusedGadget = windowHandler->focusedGadget;
+
+    if (focusedGadget == nullptr) {
+        return nullptr;
+    }
+
+    return focusedGadget->parent;
 }

@@ -33,6 +33,9 @@
     <ClInclude Include="src\Changes\RandomRace.h" />
     <ClInclude Include="src\Changes\RotatingBuildings.h" />
     <ClInclude Include="src\Changes\SearchBox.h" />
+    <ClInclude Include="src\Changes\ShowEnemyHealthBars.h" />
+    <ClInclude Include="src\Changes\ShowHPOnlyIfInjuried.h" />
+    <ClInclude Include="src\Changes\ToggleUnitsAuras.h" />
     <ClInclude Include="src\common.h" />
     <ClInclude Include="src\Context.h" />
     <ClInclude Include="src\Extensions\GameInitExtension.h" />
@@ -47,9 +50,9 @@
     <ClInclude Include="src\Launcher\tab_page_mods.h" />
     <ClInclude Include="src\Launcher\tab_page_patches.h" />
     <ClInclude Include="src\Managers\WindowManager.h" />
-    <ClInclude Include="src\Managers\PlayerInterfaceManager.h" />
+    <ClInclude Include="src\Managers\GameInterfaceManager.h" />
     <ClInclude Include="src\MemoryHandler.h" />
-    <ClInclude Include="src\TakEnhancedService.h" />
+    <ClInclude Include="src\TAKEnhancedService.h" />
     <ClInclude Include="src\Wrappers\BattleMenuWrapper.h" />
     <ClInclude Include="src\Wrappers\BuildButtonWrapper.h" />
     <ClInclude Include="src\Wrappers\BuildMenuWrapper.h" />
@@ -120,6 +123,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>TAKEnhanced</TargetName>
+    <OutDir>C:\Cavedog\Kingdoms\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -127,6 +131,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>TAKEnhanced</TargetName>
+    <OutDir>C:\Cavedog\Kingdoms\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

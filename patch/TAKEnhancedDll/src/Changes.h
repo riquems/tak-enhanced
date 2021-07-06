@@ -8,6 +8,8 @@
 #include "./Changes/MaxUnits.h"
 #include "./Changes/RandomRace.h"
 #include "./Changes/NewHpiVerification.h"
+#include "./Changes/ShowHpOnlyIfInjuried.h"
+#include "./Changes/ShowEnemyHealthBars.h"
 #include "./Extensions/UpdateGuiExtension.h"
 #include "./Extensions/ReadSideDataExtension.h"
 #include "./Extensions/LoadingScreenExtensions.h"
@@ -16,7 +18,7 @@ extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced
 
 void applyTakEnhancedVersion()
 {
-    MemoryHandling::write(TAK_Enhanced_Label, 0xA4E23);
+    MemoryHandler::write(TAK_Enhanced_Label, 0xA4E23);
 
     logger.log("TA:K Enhanced Label applied.");
 }
@@ -25,21 +27,24 @@ void applyChanges()
 {
     applyTakEnhancedVersion();
 
-    uint maxUnits = settings.max_units;
+    showEnemyHealthBars();
+    applyShowHpOnlyIfInjuried();
+
+    uint maxUnits = settings.MaxUnits;
     applyMaxUnitsPatch(maxUnits);
 
-    uint pathFindingCycles = settings.pathfinding_cycles;
+    uint pathFindingCycles = settings.PathFindingCycles;
     applyPathfindingFix(pathFindingCycles);
 
-    if (settings.no_cd) {
+    if (settings.NoCD) {
         applyNoCD();
     }
 
-    if (!settings.pause_when_unfocused) {
+    if (!settings.PauseWhenUnfocused) {
         applyNoPauseWhenUnfocused();
     }
     
-    if (settings.melee_stuck_fix) {
+    if (settings.MeleeStuckFix) {
         applyMeleeStuckFix();
     }
     
@@ -51,7 +56,7 @@ void applyChanges()
     // ProcessCodesExtension
 
     // Option to choose random race
-    // Walls have hp
+    // Walls have hp 
     // Not able to ctrl d while in combat
     // How to draw on screen images etc
     // Units able to run

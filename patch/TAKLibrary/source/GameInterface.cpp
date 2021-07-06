@@ -1,8 +1,13 @@
 #include "GameInterface.hpp"
 
-Window* GameInterface::GetWindow(const char* name, uintptr_t baseAddress)
+GameInterface::GameInterface(uintptr_t baseAddress)
 {
-    GameInterfaceHandler* gameInterfaceHandler = (GameInterfaceHandler*) (GlobalPointers::GameInterfaceHandler + baseAddress);
+    _baseAddress = baseAddress;
+}
+
+Window* GameInterface::getWindow(const char* name)
+{
+    GameInterfaceHandler* gameInterfaceHandler = (GameInterfaceHandler*) (GlobalPointers::GameInterfaceHandler + _baseAddress);
         
     if (gameInterfaceHandler == nullptr)
         return nullptr;

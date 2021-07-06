@@ -157,7 +157,8 @@
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\TAKEnhancedDll\common.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="defs.h" />
     <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="JunkCode.h" />
     <ClInclude Include="Logger.h" />

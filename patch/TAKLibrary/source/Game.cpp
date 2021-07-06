@@ -2,20 +2,52 @@
 #include "Models/Options/GameOptions.h"
 #include "Models/Options/DevelopmentOptions.h"
 #include "GlobalPointers/GlobalPointers.h"
+#include "Functions/FunctionsOffsets.h"
 
-void Game::ActivateDeveloperMode(uintptr_t baseAddress)
+Game::Game() {}
+Game::Game(uintptr_t baseAddress)
 {
-    GameOptions* gameOptions = *(GameOptions**) (GlobalPointers::GameOptions + baseAddress);
-
-    gameOptions->developmentOptions->activatable = true;
-    gameOptions->developmentOptions->activated = true;
+    _baseAddress = baseAddress;
 }
 
-Player* Game::GetPlayers(uintptr_t baseAddress)
+GameOptions* Game::getGameOptions()
 {
-    uintptr_t* gamePtr = (uintptr_t*) (GlobalPointers::ptr_22D55C + baseAddress);
+    return *(GameOptions**) (GlobalPointers::GameOptions + _baseAddress);
+}
+
+Player* Game::getPlayers()
+{
+    uintptr_t* gamePtr = (uintptr_t*) (GlobalPointers::ptr_22D55C + _baseAddress);
 
     Player* players = (Player*) (*gamePtr + 0x2404);
 
     return players;
+}
+
+Unit* Game::getSelectedUnit()
+{
+
+}
+
+Side* Game::getSides()
+{
+    uintptr_t* gamePtr = (uintptr_t*) (GlobalPointers::ptr_22D55C + _baseAddress);
+    Side* sides = (Side*) (*gamePtr + 0x3078);
+
+    return sides;
+}
+
+int Game::getNumberOfSides()
+{
+    uintptr_t* gamePtr = (uintptr_t*) (GlobalPointers::ptr_22D55C + _baseAddress);
+    int* numberOfSidesPtr = (int*) (*gamePtr + 0x3074);
+
+    return *numberOfSidesPtr;
+}
+
+uintptr_t Game::getMouseHoveredUnitAddress()
+{
+    uintptr_t(*getMouseHoveredUnitAddress)() = (uintptr_t(*)()) (FunctionsOffsets::getMouseHoveredUnitAddress + _baseAddress);
+
+    return getMouseHoveredUnitAddress();
 }

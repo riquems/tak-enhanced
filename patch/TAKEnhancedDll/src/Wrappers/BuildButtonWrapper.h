@@ -8,7 +8,7 @@
 class BuildButtonWrapper
 {
 public:
-    std::shared_ptr<BuildButton*> _buildButton;
+    std::shared_ptr<BuildButton*> _buildButton = nullptr;
     BuildButtonWrapper(BuildButton** buildButton)
     {
         _buildButton = std::make_shared<BuildButton*>(*buildButton);

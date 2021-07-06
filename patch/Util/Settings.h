@@ -1,21 +1,33 @@
 #pragma once
 
 #include "common.h"
+#include "defs.h"
 
 class Settings
 {
 public:
-    bool enable_dev_mode = false;
-    bool enable_mods = true;
-    uint max_units = 5000;
-    uint pathfinding_cycles = 100000;
-    uint forced_minrange_for_melees = 40;
-    bool no_cd = true;
-    bool melee_stuck_fix = true;
-    bool pause_when_unfocused = false;
-    bool offscreen_fix = true;
+    bool EnableDevMode = false;
+    bool EnableMods = true;
+    uint MaxUnits = 5000;
+    uint PathFindingCycles = 100000;
+    uint ForcedMinRangeForMelees = 40;
+    bool NoCD = true;
+    bool MeleeStuckFix = true;
+    bool PauseWhenUnfocused = false;
+    bool OffscreenFix = true;
 
-    std::vector<std::string> selected_mods;
+    std::vector<std::string> SelectedMods;
+
+    std::map<int, int> buildingKeys = { std::pair<int, int>(VK_1, 1),
+                                        std::pair<int, int>(VK_2, 2),
+                                        std::pair<int, int>(VK_3, 3),
+                                        std::pair<int, int>(VK_4, 4),
+                                        std::pair<int, int>(VK_5, 5),
+                                        std::pair<int, int>(VK_6, 6),
+                                        std::pair<int, int>(VK_7, 7),
+                                        std::pair<int, int>(VK_8, 8),
+                                        std::pair<int, int>(VK_9, 9),
+                                        std::pair<int, int>(VK_0, 10) };
 
     Settings() {}
     void LoadSettings(std::string path) 
@@ -69,31 +81,31 @@ public:
     void MapClassFieldToValue(const char* key, const char* value)
     {
         if (str_equals_str(key, "EnableDevMode")) {
-            enable_dev_mode = str_to_boolean(value);
+            EnableDevMode = str_to_boolean(value);
         }
         else if (str_equals_str(key, "EnableMods")) {
-            enable_mods = str_to_boolean(value);
+            EnableMods = str_to_boolean(value);
         }
         else if (str_equals_str(key, "MaxUnits")) {
-            max_units = str_to_uint(value);
+            MaxUnits = str_to_uint(value);
         }
         else if (str_equals_str(key, "PathfindingCycles")) {
-            pathfinding_cycles = str_to_uint(value);
+            PathFindingCycles = str_to_uint(value);
         }
         else if (str_equals_str(key, "NoCD")) {
-            no_cd = str_to_boolean(value);
+            NoCD = str_to_boolean(value);
         }
         else if (str_equals_str(key, "MeleeStuckFix")) {
-            melee_stuck_fix = str_to_boolean(value);
+            MeleeStuckFix = str_to_boolean(value);
         }
         else if (str_equals_str(key, "OffscreenFix")) {
-            offscreen_fix = str_to_boolean(value);
+            OffscreenFix = str_to_boolean(value);
         }
         else if (str_equals_str(key, "PauseWhenUnfocused")) {
-            pause_when_unfocused = str_to_boolean(value);
+            PauseWhenUnfocused = str_to_boolean(value);
         }
         else if (str_equals_str(key, "ForcedMinRangeForMelees")) {
-            forced_minrange_for_melees = str_to_uint(value);
+            ForcedMinRangeForMelees = str_to_uint(value);
         }
         else if (str_equals_str(key, "SelectedMods")) {
             std::string filename;
@@ -105,7 +117,7 @@ public:
                     filename = filename.substr(1, filename.size() - 1);
                 }
 
-                selected_mods.push_back(filename);
+                SelectedMods.push_back(filename);
             }
         }
     }
@@ -117,12 +129,12 @@ public:
         if (cfgFile.is_open())
         {
             cfgFile << "[General]" << std::endl;
-            cfgFile << "EnableDevMode = " << boolean_to_str(enable_dev_mode) << std::endl;
-            cfgFile << "EnableMods = " << boolean_to_str(enable_mods) << std::endl;
+            cfgFile << "EnableDevMode = " << boolean_to_str(EnableDevMode) << std::endl;
+            cfgFile << "EnableMods = " << boolean_to_str(EnableMods) << std::endl;
             cfgFile << "SelectedMods = ";
 
-            for (std::string& mod_filename : selected_mods) {
-                if (!str_equals_str(mod_filename.c_str(), selected_mods.at(selected_mods.size() - 1).c_str())) {
+            for (std::string& mod_filename : SelectedMods) {
+                if (!str_equals_str(mod_filename.c_str(), SelectedMods.at(SelectedMods.size() - 1).c_str())) {
                     cfgFile << mod_filename << ", ";
                 }
                 else {
@@ -131,17 +143,17 @@ public:
             }
 
             cfgFile << std::endl << std::endl;
-            cfgFile << "MaxUnits = " << max_units << std::endl;
-            cfgFile << "PathfindingCycles = " << pathfinding_cycles << std::endl;
+            cfgFile << "MaxUnits = " << MaxUnits << std::endl;
+            cfgFile << "PathfindingCycles = " << PathFindingCycles << std::endl;
             cfgFile << std::endl;
             cfgFile << "[Changes]" << std::endl;
-            cfgFile << "NoCD = " << boolean_to_str(no_cd) << std::endl;
-            cfgFile << "MeleeStuckFix = " << boolean_to_str(melee_stuck_fix) << std::endl;
-            cfgFile << "OffscreenFix = " << boolean_to_str(offscreen_fix) << std::endl;
-            cfgFile << "PauseWhenUnfocused = " << boolean_to_str(pause_when_unfocused) << std::endl;
+            cfgFile << "NoCD = " << boolean_to_str(NoCD) << std::endl;
+            cfgFile << "MeleeStuckFix = " << boolean_to_str(MeleeStuckFix) << std::endl;
+            cfgFile << "OffscreenFix = " << boolean_to_str(OffscreenFix) << std::endl;
+            cfgFile << "PauseWhenUnfocused = " << boolean_to_str(PauseWhenUnfocused) << std::endl;
             cfgFile << std::endl;
             cfgFile << "[MeleeStuckFix]" << std::endl;
-            cfgFile << "ForcedMinRangeForMelees = " << forced_minrange_for_melees << std::endl;
+            cfgFile << "ForcedMinRangeForMelees = " << ForcedMinRangeForMelees << std::endl;
 
             cfgFile.close();
         }
