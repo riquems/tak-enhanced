@@ -6,7 +6,7 @@
 #include "Models/Unit.h"
 #include "Models/UnitInfo.h"
 
-std::map<Unit*, UnitInfo*> unitsWithDisabledAura;
+std::unordered_map<Unit*, UnitInfo*> unitsWithDisabledAura;
 
 void ToggleSelectedUnitAura()
 {

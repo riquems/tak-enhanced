@@ -30,3 +30,14 @@ void ToggleFullscreen()
         isFullscreen = false;
     }
 }
+
+int _mykbhit()
+{
+    for (int keyCode = 1; keyCode <= 254; keyCode++) {
+        if (GetAsyncKeyState(keyCode) & 0x8000) {
+            return keyCode;
+        }
+    }
+
+    return 0;
+}

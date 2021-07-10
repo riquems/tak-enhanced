@@ -36,6 +36,7 @@
     <ClInclude Include="src\Changes\ShowEnemyHealthBars.h" />
     <ClInclude Include="src\Changes\ShowHPOnlyIfInjuried.h" />
     <ClInclude Include="src\Changes\ToggleUnitsAuras.h" />
+    <ClInclude Include="src\CommandsFunctions.h" />
     <ClInclude Include="src\common.h" />
     <ClInclude Include="src\Context.h" />
     <ClInclude Include="src\Extensions\GameInitExtension.h" />
@@ -47,6 +48,7 @@
     <ClInclude Include="src\GameFunctions.h" />
     <ClInclude Include="src\Launcher\main_form.h" />
     <ClInclude Include="src\Launcher\nana_common.h" />
+    <ClInclude Include="src\Launcher\tab_page_keys.h" />
     <ClInclude Include="src\Launcher\tab_page_mods.h" />
     <ClInclude Include="src\Launcher\tab_page_patches.h" />
     <ClInclude Include="src\Managers\WindowManager.h" />
@@ -179,7 +181,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;WINDOWS_IGNORE_PACKING_MISMATCH;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NDEBUG;TAKENHANCEDDLL_EXPORTS;_WINDOWS;_USRDLL;WINDOWS_IGNORE_PACKING_MISMATCH</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;WINDOWS_IGNORE_PACKING_MISMATCH;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;NDEBUG;TAKENHANCEDDLL_EXPORTS;_WINDOWS;_USRDLL;WINDOWS_IGNORE_PACKING_MISMATCH</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>

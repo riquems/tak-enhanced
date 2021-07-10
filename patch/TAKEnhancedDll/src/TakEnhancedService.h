@@ -4,7 +4,11 @@
 #include "./Changes/OffscreenFix.h"
 #include "./Changes/SearchBox.h"
 #include "./Changes/BuildingsShortcuts.h"
+#include "Command.h"
+#include "CommandsFunctions.h"
+
 #include <iostream>
+#include <queue>
 #include "ddraw.h"
 
 #pragma comment(lib,"ddraw.lib") 
@@ -22,6 +26,24 @@ std::vector<int> singleShotKeys = { VK_RETURN,
                                     VK_R,
                                     VK_S,
                                     VK_K };
+
+void selectBuilding(std::vector<std::string> params)
+{
+    if (!gameWrapper->isBuildMenuOpen())
+        return;
+
+    if (params.size() != 1) {
+        logger.log("The number of given parameters is not supported by this command.\n \
+                    Command: %s                                                     \n \
+                    Number of supported params: 1                                   \n \
+                    Number of given params: %d", "Select Building", params.size());
+        return;
+    }
+
+    int buildingId = std::stoi(params[0]);
+
+    gameWrapper->selectBuilding(buildingId);
+}
 
 //typedef HRESULT(__stdcall* BltFcn)(LPRECT, LPDIRECTDRAWSURFACE, LPRECT, DWORD, LPDDBLTFX);
 //
@@ -62,6 +84,45 @@ std::vector<int> singleShotKeys = { VK_RETURN,
 //}
 
 
+void processInputSequence(std::queue<int>& sequence)
+{
+    for (std::pair<Keys, Command> keyBinding : settings.keyBindings) {
+        int i = 0;
+
+        std::queue<int> sequenceCopy = sequence;
+        while (!sequenceCopy.empty()) {
+            int key = sequenceCopy.front();
+
+            if (keyBinding.first.values[i] != key) {
+                break;
+            }
+
+            sequenceCopy.pop();
+
+            i++;
+        }
+
+        if (sequenceCopy.empty()) {
+            keyBinding.second.execute();
+        }
+    }
+
+    while (!sequence.empty()) {
+        sequence.pop();
+    }
+}
+
+auto singleShotKeysStillBeingHold = [&]()->bool {
+    for (int key : singleShotKeys) {
+        if (isKeyDown(key)) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+
 void startTAKEnhancedService()
 {
     int i = 0;
@@ -93,28 +154,58 @@ void startTAKEnhancedService()
     SwitchToThisWindow(takWindow, true);
     SetWindowPos(takWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
 
-    char c;
+    std::vector<int> specialKeys = { VK_CTRL, VK_SHIFT };
+
+    auto selectBuildingMap = std::pair<CommandCode, std::function<void(std::vector<std::string>)>>(CommandCode::SELECT_BUILDING, selectBuilding);
+
+    commandCodeToFunction.insert(selectBuildingMap);
+
+    int keyCode;
     while (true) {
         if (settings.OffscreenFix && gameWrapper->match->isRunning()) {
+            // add guard so doesnt "start" everytime
             startOffscreenMonitorThread();
         }
-       
-        if (gameWrapper->isBuildMenuOpen()) {
-            for (std::pair<int, int> keyValue : settings.buildingKeys) {
-                if (isKeyDown(keyValue.first)) {
-                    gameWrapper->selectBuilding(keyValue.second);
+        
+        // if (!game->typing_state())
+
+        std::queue<int> sequence;
+
+        auto specialKeysHit = [&]()->std::pair<bool, int> {
+            for (int specialKey : specialKeys) {
+                if (GetAsyncKeyState(specialKey) & 0x8000) {
+                    return std::pair<bool, int>(true, specialKey);
                 }
             }
+            
+            return std::pair<bool, int>(false, -1);
+        }();
 
-            /*if (isKeyDown(VK_J)) {
-                if (i > 2) {
-                    i = 0;
-                }
+        bool specialKeyWasHit = specialKeysHit.first;
 
-                gameWrapper->switchSelectedUnitHumor(i);
-                i++;
-            }*/
+        if (specialKeyWasHit) {
+            sequence.push(specialKeysHit.second);
         }
+
+        keyCode = _mykbhit();
+
+        if (!keyCode && !specialKeyWasHit) {
+            Sleep(10);
+            continue;
+        }
+
+        sequence.push(keyCode);
+
+        processInputSequence(sequence);
+
+        /*if (isKeyDown(VK_J)) {
+            if (i > 2) {
+                i = 0;
+            }
+
+            gameWrapper->switchSelectedUnitHumor(i);
+            i++;
+        }*/
 
         if (isKeyDown(VK_CONTROL)) {
             if (isKeyDown(VK_S)) {
@@ -137,16 +228,6 @@ void startTAKEnhancedService()
                 ToggleFullscreen();
             }
         }
-
-        auto singleShotKeysStillBeingHold = [&]()->bool {
-            for (int key : singleShotKeys) {
-                if (isKeyDown(key)) {
-                    return true;
-                }
-            }
-
-            return false;
-        };
 
         while (singleShotKeysStillBeingHold()) {
             Sleep(10);

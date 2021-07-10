@@ -41,11 +41,6 @@ extern "C" __declspec(dllexport) void __stdcall updateSearchBox()
     }
 }
 
-bool str_contains_str(std::string& str1, std::string& str2)
-{
-    return str1.find(str2) != std::string::npos;
-}
-
 void StartSearchBox(ChooseMapMenuWrapper& chooseMapMenuWrapper)
 {
     std::string stringToSearchFor("");

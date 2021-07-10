@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Context.h"
+#include "../Context.h"
 #include "nana_common.h"
 #include "tab_page_mods.h"
 #include "tab_page_patches.h"
+#include "tab_page_keys.h"
 
 class main_form
 {
@@ -15,6 +16,7 @@ class main_form
     // Tab Pages
     std::unique_ptr<tab_page_mods> tp_mods;
     std::unique_ptr<tab_page_patches> tp_patches;
+    std::unique_ptr<tab_page_keys> tp_keys;
 
     // Buttons
     std::unique_ptr<nana::button> btn_continue;
@@ -38,14 +40,16 @@ public:
 
         tp_mods = std::make_unique<tab_page_mods>(fm_main->handle());
         tp_patches = std::make_unique<tab_page_patches>(fm_main->handle());
+        tp_keys = std::make_unique<tab_page_keys>(fm_main->handle());
 
         tabs->append("Mods", *tp_mods);
         tabs->append("Patch", *tp_patches);
+        tabs->append("Keys", *tp_keys);
 
         tabs->activated(0);
 
         layout->field("tabs") << *tabs;
-        layout->field("content").fasten(*tp_mods).fasten(*tp_patches);
+        layout->field("content").fasten(*tp_mods).fasten(*tp_patches).fasten(*tp_keys);
 
         initialize_buttons();
 
@@ -70,12 +74,12 @@ private:
                 settings.PathFindingCycles         = tp_patches->get_pathfinding_cycles();
                 settings.ForcedMinRangeForMelees = tp_patches->get_forced_minrange_for_melees();
 
-                settings.EnableDevMode      = tp_mods->get_enableDevMode();
+                settings.EnableDevMode       = tp_mods->get_enableDevMode();
                 settings.EnableMods          = tp_mods->get_enableMods();
                 settings.NoCD                = tp_patches->get_noCD();
-                settings.MeleeStuckFix      = tp_patches->get_meleeStuckFix();
+                settings.MeleeStuckFix       = tp_patches->get_meleeStuckFix();
                 settings.OffscreenFix        = tp_patches->get_offscreenFix();
-                settings.PauseWhenUnfocused = tp_patches->get_pauseWhenUnfocused();
+                settings.PauseWhenUnfocused  = tp_patches->get_pauseWhenUnfocused();
 
                 settings.SelectedMods.clear();
 
@@ -83,6 +87,25 @@ private:
 
                 for (std::string selected_mod : selected_mods) {
                     settings.SelectedMods.push_back(selected_mod);
+                }
+
+                std::vector<KeyBindingListItem> keyBindings = tp_keys->get_keyBindings();
+
+                for (KeyBindingListItem keyBinding : keyBindings) {
+                    Command command = strToCommand(keyBinding.command);
+                    Keys keys = strToKeys(keyBinding.keyBinding);
+
+                    auto keys_iterator = std::find_if(settings.keyBindings.begin(), settings.keyBindings.end(),
+                        [&](std::pair<Keys, Command> entry) {
+                            return command == entry.second;
+                        }
+                    );
+
+                    if (keys_iterator != settings.keyBindings.end()) {
+                        settings.keyBindings.erase(keys_iterator);
+                    }
+
+                    settings.keyBindings.insert(std::pair{ keys, command });
                 }
 
                 settings.Save();

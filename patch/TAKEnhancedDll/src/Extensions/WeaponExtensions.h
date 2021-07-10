@@ -3,7 +3,7 @@
 #include "Unit.h"
 #include "WeaponExtension.h"
 
-std::map<Weapon*, WeaponExtension> weaponsMap;
+std::unordered_map<Weapon*, WeaponExtension> weaponsMap;
 
 extern "C" __declspec(dllexport) void __stdcall WeaponOnHitPropertiesExtension()
 {    

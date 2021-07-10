@@ -16,6 +16,9 @@
     <Filter Include="Managers">
       <UniqueIdentifier>{c340003a-4bf0-4a29-8b84-b451189adf27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{f00148e5-e3c4-4daf-9369-8809976b0051}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Changes.h" />
@@ -141,6 +144,10 @@
     <ClInclude Include="src\Managers\GameInterfaceManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="src\Launcher\tab_page_keys.h">
+      <Filter>Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CommandsFunctions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\TAKEnhancedDll.cpp" />

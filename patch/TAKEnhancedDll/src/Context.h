@@ -36,7 +36,10 @@ std::shared_ptr<GameWrapper> gameWrapper;
 
 void initializeContext()
 {
+    initializeKeys();
+    initializeCommands();
     settings.LoadSettings("TAKEnhanced.cfg");
+
     logger.initialize("TAKEnhancedLog.txt", "a");
 
     logger.context("DLL");

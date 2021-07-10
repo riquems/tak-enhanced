@@ -2,6 +2,10 @@
 
 #include "common.h"
 #include "defs.h"
+#include "HelperFunctions.h"
+
+#include "Keys.h"
+#include "Command.h"
 
 class Settings
 {
@@ -18,16 +22,18 @@ public:
 
     std::vector<std::string> SelectedMods;
 
-    std::map<int, int> buildingKeys = { std::pair<int, int>(VK_1, 1),
-                                        std::pair<int, int>(VK_2, 2),
-                                        std::pair<int, int>(VK_3, 3),
-                                        std::pair<int, int>(VK_4, 4),
-                                        std::pair<int, int>(VK_5, 5),
-                                        std::pair<int, int>(VK_6, 6),
-                                        std::pair<int, int>(VK_7, 7),
-                                        std::pair<int, int>(VK_8, 8),
-                                        std::pair<int, int>(VK_9, 9),
-                                        std::pair<int, int>(VK_0, 10) };
+    std::unordered_map<Keys, Command, KeysHashFunction> keyBindings = {
+        std::pair(Keys{ VK_1 }, Command(CommandCode::SELECT_BUILDING, "1")),
+        std::pair(Keys{ VK_2 }, Command(CommandCode::SELECT_BUILDING, "2")),
+        std::pair(Keys{ VK_3 }, Command(CommandCode::SELECT_BUILDING, "3")),
+        std::pair(Keys{ VK_4 }, Command(CommandCode::SELECT_BUILDING, "4")),
+        std::pair(Keys{ VK_5 }, Command(CommandCode::SELECT_BUILDING, "5")),
+        std::pair(Keys{ VK_6 }, Command(CommandCode::SELECT_BUILDING, "6")),
+        std::pair(Keys{ VK_7 }, Command(CommandCode::SELECT_BUILDING, "7")),
+        std::pair(Keys{ VK_8 }, Command(CommandCode::SELECT_BUILDING, "8")),
+        std::pair(Keys{ VK_9 }, Command(CommandCode::SELECT_BUILDING, "9")),
+        std::pair(Keys{ VK_0 }, Command(CommandCode::SELECT_BUILDING, "10"))
+    };
 
     Settings() {}
     void LoadSettings(std::string path) 
@@ -38,9 +44,6 @@ public:
         {
             while (cfgFile.good())
             {
-                // char key[64];
-                // char value[64];
-
                 std::string nextLine;
                 std::getline(cfgFile, nextLine);
 
@@ -69,9 +72,9 @@ public:
                     }
                 }
 
-                // sscanf_s(nextLine.c_str(), "%s = %s", key, 64, value, 64);
-
                 this->MapClassFieldToValue(key.c_str(), value.c_str());
+                
+                loadKeyBindings(key, value);
             }
 
             cfgFile.close();
@@ -122,6 +125,35 @@ public:
         }
     }
 
+    void loadKeyBindings(std::string& key, std::string& value)
+    {
+        for (std::pair<std::string, CommandCode> entry : strToCommandCode) {
+            std::string commandStr = entry.first;
+
+            if (str_contains_str(key, commandStr)) {
+                // handling the key part
+                Command command;
+                command.code = entry.second;
+                command.params = getParamsFromCommandStrWithParams(key, commandStr);
+
+                // handling the value part
+                Keys keys = strToKeys(value);
+                
+                auto keys_iterator = std::find_if(keyBindings.begin(), keyBindings.end(),
+                    [&](std::pair<Keys, Command> entry) {
+                        return command == entry.second;
+                    }
+                );
+
+                if (keys_iterator != keyBindings.end()) {
+                    keyBindings.erase(keys_iterator);
+                }
+
+                keyBindings.insert(std::pair { keys, command });
+            }
+        }
+    }
+
     void Save()
     {
         std::ofstream cfgFile("TAKEnhanced.cfg");
@@ -154,7 +186,17 @@ public:
             cfgFile << std::endl;
             cfgFile << "[MeleeStuckFix]" << std::endl;
             cfgFile << "ForcedMinRangeForMelees = " << ForcedMinRangeForMelees << std::endl;
+            cfgFile << std::endl;
+            cfgFile << "[Keys]" << std::endl;
 
+            for (std::pair<Keys, Command> keyBinding : keyBindings) {
+                Keys* keys = &keyBinding.first;
+                Command* command = &keyBinding.second;
+
+                cfgFile << command->to_string() << " = " << keys->to_string() << std::endl;
+            }
+            
+            cfgFile << std::endl;
             cfgFile.close();
         }
     }

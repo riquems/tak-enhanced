@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <cstdio>
 #include <chrono>
+#include <unordered_map>
 
 DWORD getProcessId(std::string processName)
 {
@@ -104,9 +105,29 @@ void toggleBoolean(bool& boolean)
     boolean = !boolean;
 }
 
+bool str_contains_str(std::string& str1, std::string& str2)
+{
+    return str1.find(str2) != std::string::npos;
+}
+
 bool str_equals_str(const char* str1, const char* str2)
 {
     return strcmp(str1, str2) == 0;
+}
+
+bool str_equals_str(std::string& str1, std::string& str2)
+{
+    return str1.compare(str2) == 0;
+}
+
+bool str_equals_str(std::string& str1, const std::string& str2)
+{
+    return str1.compare(str2) == 0;
+}
+
+bool str_equals_str(const std::string& str1, const std::string& str2)
+{
+    return str1.compare(str2) == 0;
 }
 
 const char* boolean_to_str(bool& boolean)
@@ -139,6 +160,18 @@ bool vector_has_str(std::vector<std::string>& vector, std::string str)
     }
 
     return false;
+}
+
+template <typename T1, typename T2>
+std::unordered_map<T2, T1> build_reversed_map(const std::unordered_map<T1, T2>& map1)
+{
+    std::unordered_map<T2, T1> map2;
+
+    std::for_each(map1.begin(), map1.end(), [&](std::pair<T1, T2> elem) {
+        map2.insert(std::pair<T2, T1>(elem.second, elem.first));
+    });
+
+    return map2;
 }
 
 /*DWORD GetMainThreadId() {
