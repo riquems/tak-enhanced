@@ -23,9 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Util\HelperFunctions.h">
       <Filter>Header Files\Util</Filter>
     </ClInclude>
@@ -35,18 +32,16 @@
     <ClInclude Include="Util\Logger.h">
       <Filter>Header Files\Util</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\icons\redeye.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="TAKEnhanced.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ClInclude Include="resources\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="TAKEnhanced.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\TAKEnhanced.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

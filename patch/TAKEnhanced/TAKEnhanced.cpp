@@ -2,8 +2,8 @@
 #include <fstream>
 #include <iostream>
 
-#include "Logger.h"
-#include "JunkCode.h"
+#include "Utils/Logger.h"
+#include "Utils/JunkCode.h"
 
 Logger logger("TAKEnhancedLog.txt", "w");
 std::string targetFileName("Kingdoms.icd");
@@ -214,4 +214,3 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
     return true;
 }
-

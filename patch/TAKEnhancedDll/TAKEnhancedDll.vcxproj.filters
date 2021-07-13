@@ -1,155 +1,205 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Changes">
-      <UniqueIdentifier>{bf4e061c-2e58-4db6-bc3a-9ce24cb911de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Extensions">
-      <UniqueIdentifier>{875187ea-035b-4719-ad88-681262481117}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Launcher">
-      <UniqueIdentifier>{3e9ed742-a47c-41ab-b84f-baec9fd746f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Wrappers">
-      <UniqueIdentifier>{a060f0dd-21c5-4b92-9077-35e0842cd19c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers">
-      <UniqueIdentifier>{c340003a-4bf0-4a29-8b84-b451189adf27}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources">
       <UniqueIdentifier>{f00148e5-e3c4-4daf-9369-8809976b0051}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{4bda100d-15ec-4046-ab5b-8aadbf75760e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Changes">
+      <UniqueIdentifier>{fafcb9d8-c5d9-4afb-8c6f-705f56128fc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Hooks">
+      <UniqueIdentifier>{142087a5-50ee-4c7a-8c7a-6f917471cf30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Launcher">
+      <UniqueIdentifier>{3704b1e6-7f0b-46e4-8be6-2ce94214b145}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Managers">
+      <UniqueIdentifier>{36324625-110e-4cc1-9f23-37b6fd0a2977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Wrappers">
+      <UniqueIdentifier>{a9eed7da-7a48-41ca-b857-a70efa52af5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Models">
+      <UniqueIdentifier>{a1deeed4-c304-4017-8dcb-96d7cde3fcc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Hooks">
+      <UniqueIdentifier>{0ce60683-19b6-4015-8ff1-a915906eb050}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Models">
+      <UniqueIdentifier>{84cd6c71-750f-46ea-8773-b24699797328}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Changes.h" />
-    <ClInclude Include="src\common.h" />
-    <ClInclude Include="src\Context.h" />
-    <ClInclude Include="src\GameFunctions.h" />
-    <ClInclude Include="src\MemoryHandler.h" />
-    <ClInclude Include="src\Changes\BuildingsShortcuts.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\HelperFeatures.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\HumorInteractions.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\MaxUnits.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\MeleeStuckFix.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\NewHpiVerification.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\NoCD.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\NoPauseWhenUnfocused.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\OffscreenFix.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\PathFindingChanger.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\RandomRace.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\RotatingBuildings.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\SearchBox.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Extensions\GameInitExtension.h">
-      <Filter>Extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Extensions\GameUpdateLoopExtension.h">
-      <Filter>Extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Extensions\LoadingScreenExtensions.h">
-      <Filter>Extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Extensions\ReadSideDataExtension.h">
-      <Filter>Extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Extensions\UpdateGuiExtension.h">
-      <Filter>Extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Extensions\WeaponExtensions.h">
-      <Filter>Extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Launcher\main_form.h">
-      <Filter>Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Launcher\nana_common.h">
-      <Filter>Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Launcher\tab_page_mods.h">
-      <Filter>Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Launcher\tab_page_patches.h">
-      <Filter>Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\BattleMenuWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\ChooseMapMenuWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\Info.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\MapPositionWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\MatchWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\PlayerWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\UnitWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\WeaponWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\GameWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\BuildButtonWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Wrappers\BuildMenuWrapper.h">
-      <Filter>Wrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Managers\WindowManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\ToggleUnitsAuras.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\ShowHPOnlyIfInjuried.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Changes\ShowEnemyHealthBars.h">
-      <Filter>Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TAKEnhancedService.h" />
-    <ClInclude Include="src\Managers\GameInterfaceManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Launcher\tab_page_keys.h">
-      <Filter>Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CommandsFunctions.h" />
+    <ClCompile Include="TAKEnhancedDll\source\Models\Keys.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Utils.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\TAKEnhancedDll.cpp" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\CommandsFunctions.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Context.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\GameFunctions.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\MemoryHandler.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\TAKEnhancedService.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\BuildingsShortcuts.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\HelperFeatures.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\HumorInteractions.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\MaxUnits.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\MeleeStuckFix.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\NewHpiVerification.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\NoCD.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\NoPauseWhenUnfocused.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\OffscreenFix.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\PathFindingChanger.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\RandomRace.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\RotatingBuildings.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\SearchBox.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\nana_common.h">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_keys.h">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_mods.h">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_patches.h">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.h">
+      <Filter>Sources\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Managers\WindowManager.h">
+      <Filter>Sources\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BattleMenuWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BuildButtonWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BuildMenuWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\ChooseMapMenuWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\GameWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\Info.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\MapPositionWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\MatchWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\PlayerWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\UnitWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\WeaponWrapper.h">
+      <Filter>Sources\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\GameInitHook.h">
+      <Filter>Sources\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\GameUpdateLoopHook.h">
+      <Filter>Sources\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\LoadingScreenHook.h">
+      <Filter>Sources\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\ReadSideDataHook.h">
+      <Filter>Sources\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\UpdateGuiHook.h">
+      <Filter>Sources\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\WeaponsHook.h">
+      <Filter>Sources\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ShowHpHook.h">
+      <Filter>Sources\Changes</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\ConfigFile.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp">
+      <Filter>Headers\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Command.hpp">
+      <Filter>Headers\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\KeyBinding.hpp">
+      <Filter>Headers\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Keys.hpp">
+      <Filter>Headers\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Utils.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

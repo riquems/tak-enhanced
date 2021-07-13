@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="source\Game.cpp">
+    <ClCompile Include="TAKLibrary\source\Game.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="source\GameInterface.cpp">
+    <ClCompile Include="TAKLibrary\source\GameInterface.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -18,10 +18,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Game.hpp">
+    <ClInclude Include="TAKLibrary\include\Game.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="include\GameInterface.hpp">
+    <ClInclude Include="TAKLibrary\include\GameInterface.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

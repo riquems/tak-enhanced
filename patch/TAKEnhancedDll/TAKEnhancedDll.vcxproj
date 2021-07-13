@@ -19,56 +19,69 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Changes.h" />
-    <ClInclude Include="src\Changes\BuildingsShortcuts.h" />
-    <ClInclude Include="src\Changes\HelperFeatures.h" />
-    <ClInclude Include="src\Changes\HumorInteractions.h" />
-    <ClInclude Include="src\Changes\MaxUnits.h" />
-    <ClInclude Include="src\Changes\MeleeStuckFix.h" />
-    <ClInclude Include="src\Changes\NewHpiVerification.h" />
-    <ClInclude Include="src\Changes\NoCD.h" />
-    <ClInclude Include="src\Changes\NoPauseWhenUnfocused.h" />
-    <ClInclude Include="src\Changes\OffscreenFix.h" />
-    <ClInclude Include="src\Changes\PathFindingChanger.h" />
-    <ClInclude Include="src\Changes\RandomRace.h" />
-    <ClInclude Include="src\Changes\RotatingBuildings.h" />
-    <ClInclude Include="src\Changes\SearchBox.h" />
-    <ClInclude Include="src\Changes\ShowEnemyHealthBars.h" />
-    <ClInclude Include="src\Changes\ShowHPOnlyIfInjuried.h" />
-    <ClInclude Include="src\Changes\ToggleUnitsAuras.h" />
-    <ClInclude Include="src\CommandsFunctions.h" />
-    <ClInclude Include="src\common.h" />
-    <ClInclude Include="src\Context.h" />
-    <ClInclude Include="src\Extensions\GameInitExtension.h" />
-    <ClInclude Include="src\Extensions\GameUpdateLoopExtension.h" />
-    <ClInclude Include="src\Extensions\LoadingScreenExtensions.h" />
-    <ClInclude Include="src\Extensions\ReadSideDataExtension.h" />
-    <ClInclude Include="src\Extensions\UpdateGuiExtension.h" />
-    <ClInclude Include="src\Extensions\WeaponExtensions.h" />
-    <ClInclude Include="src\GameFunctions.h" />
-    <ClInclude Include="src\Launcher\main_form.h" />
-    <ClInclude Include="src\Launcher\nana_common.h" />
-    <ClInclude Include="src\Launcher\tab_page_keys.h" />
-    <ClInclude Include="src\Launcher\tab_page_mods.h" />
-    <ClInclude Include="src\Launcher\tab_page_patches.h" />
-    <ClInclude Include="src\Managers\WindowManager.h" />
-    <ClInclude Include="src\Managers\GameInterfaceManager.h" />
-    <ClInclude Include="src\MemoryHandler.h" />
-    <ClInclude Include="src\TAKEnhancedService.h" />
-    <ClInclude Include="src\Wrappers\BattleMenuWrapper.h" />
-    <ClInclude Include="src\Wrappers\BuildButtonWrapper.h" />
-    <ClInclude Include="src\Wrappers\BuildMenuWrapper.h" />
-    <ClInclude Include="src\Wrappers\ChooseMapMenuWrapper.h" />
-    <ClInclude Include="src\Wrappers\GameWrapper.h" />
-    <ClInclude Include="src\Wrappers\Info.h" />
-    <ClInclude Include="src\Wrappers\MapPositionWrapper.h" />
-    <ClInclude Include="src\Wrappers\MatchWrapper.h" />
-    <ClInclude Include="src\Wrappers\PlayerWrapper.h" />
-    <ClInclude Include="src\Wrappers\UnitWrapper.h" />
-    <ClInclude Include="src\Wrappers\WeaponWrapper.h" />
+    <ClCompile Include="TAKEnhancedDll\source\ConfigFile.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\CommandsFunctions.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedDll.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Settings.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Models\Command.cpp" /> 
+    <ClCompile Include="TAKEnhancedDll\source\Models\Keys.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\TAKEnhancedDll.cpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\ConfigFile.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Command.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\KeyBinding.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Keys.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings.hpp" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\BuildingsShortcuts.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\HelperFeatures.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\HumorInteractions.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\MaxUnits.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\MeleeStuckFix.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\NewHpiVerification.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\NoCD.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\NoPauseWhenUnfocused.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\OffscreenFix.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\PathFindingChanger.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\RandomRace.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\RotatingBuildings.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\SearchBox.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ShowHpHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.h" />
+    <ClInclude Include="TAKEnhancedDll\source\CommandsFunctions.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp" />
+    <ClInclude Include="TAKEnhancedDll\source\Context.h" />
+    <ClInclude Include="TAKEnhancedDll\source\GameFunctions.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\GameInitHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\GameUpdateLoopHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\LoadingScreenHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\ReadSideDataHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\UpdateGuiHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\WeaponsHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\nana_common.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_keys.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_mods.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_patches.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Managers\WindowManager.h" />
+    <ClInclude Include="TAKEnhancedDll\source\MemoryHandler.h" />
+    <ClInclude Include="TAKEnhancedDll\source\TAKEnhancedService.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BattleMenuWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BuildButtonWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BuildMenuWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\ChooseMapMenuWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\GameWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\Info.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\MapPositionWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\MatchWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\PlayerWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\UnitWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Wrappers\WeaponWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Utils.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -134,6 +147,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetName>TAKEnhanced</TargetName>
     <OutDir>C:\Cavedog\Kingdoms\</OutDir>
+    <IntDir>.vs\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -185,7 +199,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\Util;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKEnhancedDll\TAKEnhancedDll\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\Utils\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\TAKReversed\include</AdditionalIncludeDirectories>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -195,8 +209,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\Release;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>nana_v142_Release_x86_Zp1.lib;TAKLibrary.lib;TAKReversed.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\bin\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nana_v142_Release_x86_Zp1.lib;Utils.lib;TAKLibrary.lib;TAKReversed.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkStatus>false</LinkStatus>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
