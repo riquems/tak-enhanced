@@ -192,7 +192,13 @@ void Settings::Save()
 
     if (cfgFile.is_open())
     {
-        cfgFile.writeSection("General");
+        cfgFile.writeSection("Launcher");
+        cfgFile.writeProperty("Width", Launcher.Width);
+        cfgFile.writeProperty("Height", Launcher.Height);
+
+        cfgFile << std::endl;
+
+        cfgFile.writeSection("Game");
         cfgFile.writeProperty("EnableDevMode", EnableDevMode);
         cfgFile.writeProperty("EnableMods", EnableMods);
         cfgFile.writeList("SelectedMods", SelectedMods);
@@ -204,7 +210,6 @@ void Settings::Save()
 
         cfgFile << std::endl;
 
-        cfgFile.writeSection("Changes");
         cfgFile.writeProperty("NoCD", NoCD);
         cfgFile.writeProperty("OffscreenFix", OffscreenFix);
 

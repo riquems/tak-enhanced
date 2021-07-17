@@ -10,6 +10,7 @@
 #include "TAKEnhancedDll/Models/Command.hpp"
 #include "TAKEnhancedDll/Models/Keys.hpp"
 #include "TAKEnhancedDll/Settings/PlayerOptions.h"
+#include "TAKEnhancedDll/Settings/LauncherSettings.hpp"
 
 extern std::unordered_map<ShowHpOption, std::string> showHpOptionToString;
 extern std::unordered_map<std::string, ShowHpOption> stringToShowHpOption;
@@ -23,6 +24,8 @@ extern std::unordered_map<std::string, HpColorMode> stringToHpColorMode;
 class Settings
 {
 public:
+    LauncherSettings Launcher;
+
     bool EnableDevMode = false;
     bool EnableMods = true;
     uint MaxUnits = 5000;
@@ -55,6 +58,8 @@ public:
     };
 
     std::map<std::string, std::any> props = {
+        std::pair("Width"                  , &Launcher.Width),
+        std::pair("Height"                 , &Launcher.Height),
         std::pair("EnableDevMode"          , &EnableDevMode),
         std::pair("EnableMods"             , &EnableMods),
         std::pair("MaxUnits"               , &MaxUnits),

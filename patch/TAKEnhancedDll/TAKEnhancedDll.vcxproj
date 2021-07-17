@@ -34,6 +34,7 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\KeyBinding.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Keys.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\LauncherSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\PlayerOptions.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\BuildingsShortcuts.h" />

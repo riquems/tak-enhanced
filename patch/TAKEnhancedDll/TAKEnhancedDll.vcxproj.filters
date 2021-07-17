@@ -223,5 +223,6 @@
       <Filter>Headers\Settings</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_customization.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\LauncherSettings.hpp" />
   </ItemGroup>
 </Project>

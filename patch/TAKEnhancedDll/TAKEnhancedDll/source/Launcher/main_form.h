@@ -29,7 +29,8 @@ public:
     {
         nana::API::window_icon_default(nana::paint::image("Kingdoms.exe"));
 
-        fm_main = std::make_unique<nana::form>(nana::API::make_center(520, 320), nana::appearance(1, 1, 1, 0, 0, 0, 1));
+        nana::rectangle fm_rect = nana::API::make_center(settings.Launcher.Width, settings.Launcher.Height);
+        fm_main = std::make_unique<nana::form>(fm_rect, nana::appearance(1, 1, 1, 0, 0, 0, 1));
 
         fm_main->caption("TA:K Enhanced Settings");
         fm_main->bgcolor(default_bgcolor);
@@ -75,6 +76,11 @@ private:
 
         btn_play->events().click(
             [&]() {
+                nana::size main_form_size = fm_main->outline_size();
+
+                settings.Launcher.Width = main_form_size.width;
+                settings.Launcher.Height = main_form_size.height;
+
                 settings.MaxUnits                  = tp_patches->get_max_units();
                 settings.PathFindingCycles         = tp_patches->get_pathfinding_cycles();
                 settings.ForcedMinRangeForMelees   = tp_patches->get_forced_minrange_for_melees();
