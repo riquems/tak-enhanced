@@ -32,7 +32,7 @@ public:
     void initialize_hp_bar_options()
     {
         // Hp Bar Options Group Box
-        lbl_hpBarOptions = std::make_shared<nana::label>(*this, nana::rectangle(13, 8, 75, 30));
+        lbl_hpBarOptions = std::make_shared<nana::label>(*this, nana::rectangle(25, 13, 75, 30));
         lbl_hpBarOptions->caption("<bold>Hp Bar Options</>");
         lbl_hpBarOptions->format(true);
 
@@ -199,7 +199,7 @@ public:
     {
         layout = std::make_unique<nana::place>(*this);
 
-        layout->div("margin=15 vert                                         <weight=30 <weight=75> topLabels arrange=[120, 130, 80]>        \
+        layout->div("margin=[25, 5, 0, 30] vert                             <weight=30 <weight=75> topLabels arrange=[120, 130, 80]>                          \
                     <weight=100 <weight=50 margin=[9] vert leftLabels gap=9><vert <margin=[5, 0, 5] myHpBarOptions    arrange=[120, 130, 80] gap=5>           \
                                                                                   <margin=[5, 0, 5] allyHpBarOptions  arrange=[120, 130, 80] gap=5>           \
                                                                                   <margin=[5, 0, 5] enemyHpBarOptions arrange=[120, 130, 80] gap=5>>>         ");

@@ -102,20 +102,13 @@ public:
     {
         layout = std::make_unique<nana::place>(*this);
 
-        layout->div("margin=15                                                                             \
-                    <vert                                                                                  \
-                        <weight=90                                                                         \
-                            <vert options arrange=[30, 30, 30]><>                                          \
-                        >                                                                                  \
-                    >                                                                                      \
-                    <weight=120 vert                                                                       \
-                        <weight=150 vert                                                                   \
-                            <vert maxUnits arrange=[20, 25]>                                               \
-                            <vert margin=[20] pathfindingCycles arrange=[20, 25]>                          \
-                            <vert margin=[35] forcedMinRangeForMelees arrange=[30, 35, 25]                 \
-                            <>                                                                             \
-                        >                                                                                  \
-                    >");
+        layout->div("margin=15                                                                                                                                                                \
+                    <vert                                                                                                                                                                     \
+                        <weight=90                                                                                                                                                            \
+                            <vert options arrange=[30, 30, 30]><vert weight=140 margin=[0, 20] <vert maxUnits arrange=[20, 25]>                                                               \
+                                                               <vert margin=[5] pathfindingCycles arrange=[20, 25]>><vert margin=[10] weight=120 forcedMinRangeForMelees arrange=[25, 35, 25] \
+                            >                                                                                                                                                                 \
+                    >                                                                                                                                                                         ");
 
         initialize_checkboxes();
         initialize_textboxes();

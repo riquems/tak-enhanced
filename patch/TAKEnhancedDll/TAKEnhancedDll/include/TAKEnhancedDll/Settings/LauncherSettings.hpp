@@ -4,6 +4,6 @@
 
 struct LauncherSettings
 {
-    uint Width = 435;
-    uint Height = 366;
+    uint Width = 451;
+    uint Height = 332;
 };
