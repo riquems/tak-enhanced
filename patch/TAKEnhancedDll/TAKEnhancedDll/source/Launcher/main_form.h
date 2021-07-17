@@ -76,7 +76,7 @@ private:
 
         btn_play->events().click(
             [&]() {
-                nana::size main_form_size = fm_main->outline_size();
+                nana::size main_form_size = fm_main->size();
 
                 settings.Launcher.Width = main_form_size.width;
                 settings.Launcher.Height = main_form_size.height;
