@@ -62,6 +62,8 @@ public:
 
     void initializePlayersWrappers();
     void refreshPlayersWrappers();
+
+    bool isInWriteMode();
     bool isBuildMenuOpen();
 
     void selectBuilding(int pos);
@@ -131,6 +133,11 @@ bool GameWrapper::isBuildMenuOpen()
     }
 
     return (*build_menu.get())->visible;
+}
+
+bool GameWrapper::isInWriteMode()
+{
+    return _gameInterfaceManager->isInWriteMode();
 }
 
 void GameWrapper::selectBuilding(int pos)

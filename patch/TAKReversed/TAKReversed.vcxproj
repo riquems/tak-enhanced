@@ -60,6 +60,7 @@
     <ClInclude Include="TAKReversed\include\Models\UI\InputHandler.h" />
     <ClInclude Include="TAKReversed\include\Models\UI\KingdomsDialog.h" />
     <ClInclude Include="TAKReversed\include\Models\UI\KingdomsPanel.h" />
+    <ClInclude Include="TAKReversed\include\Models\UI\SingleEdit.h" />
     <ClInclude Include="TAKReversed\include\Models\UI\SoundHandler.h" />
     <ClInclude Include="TAKReversed\include\Models\UI\TextHandler.h" />
     <ClInclude Include="TAKReversed\include\Models\UI\Window.h" />

@@ -32,6 +32,9 @@ void selectBuilding(std::vector<std::string> params)
     if (!gameWrapper->isBuildMenuOpen())
         return;
 
+    if (gameWrapper->isInWriteMode())
+        return;
+
     if (params.size() != 1) {
         logger.log("The number of given parameters is not supported by this command.\n \
                     Command: %s                                                     \n \

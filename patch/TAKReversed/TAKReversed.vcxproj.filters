@@ -175,6 +175,7 @@
       <Filter>Headers\Functions</Filter>
     </ClInclude>
     <ClInclude Include="TAKReversed\include\GameDefs.h" />
+    <ClInclude Include="TAKReversed\include\Models\UI\SingleEdit.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKReversed\main.cpp" />

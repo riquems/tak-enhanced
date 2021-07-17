@@ -10,4 +10,5 @@ public:
     GameInterface(uintptr_t baseAddress);
 
     Window* getWindow(const char* name);
+    Gadget* getFocusedGadget();
 };

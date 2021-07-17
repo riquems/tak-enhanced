@@ -21,6 +21,7 @@ public:
     }
 
     std::shared_ptr<BuildMenu*> getBuildMenu();
+    bool isInWriteMode();
 };
 
 std::shared_ptr<BuildMenu*> GameInterfaceManager::getBuildMenu()
@@ -35,4 +36,19 @@ std::shared_ptr<BuildMenu*> GameInterfaceManager::getBuildMenu()
     std::shared_ptr<BuildMenu*> buildMenu = std::reinterpret_pointer_cast<BuildMenu*>(gadget);
 
     return buildMenu;
+}
+
+bool GameInterfaceManager::isInWriteMode()
+{
+    Gadget* focusedGadget = _gameInterface->getFocusedGadget();
+
+    if (focusedGadget == nullptr) {
+        return false;
+    }
+
+    if (*(uintptr_t*) focusedGadget == (0x1F4B8C + baseAddress)) {
+        return true;
+    }
+
+    return false;
 }
