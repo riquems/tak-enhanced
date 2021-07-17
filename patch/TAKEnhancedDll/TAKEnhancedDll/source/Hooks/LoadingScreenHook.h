@@ -3,15 +3,15 @@
 #include "Models/Player.h"
 #include "Models/PlayerViewModel.h"
 
+extern "C" __declspec(dllexport) bool firstLoad = false;
+
 // replaces the call to this empty function: 004FABC0
 // loading start
 extern "C" __declspec(dllexport) void __stdcall LoadingScreenHook()
 {
-    /* DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
-    Player* players = (Player*) (*gamePtr + 0x2404);
-
-    srand(time(NULL));
-    players->playerViewModel->sideId = rand() % 4; */
+    if (!firstLoad) {
+        firstLoad = true;
+    }
 }
 
 extern "C" __declspec(dllexport) void __stdcall LoadingScreenEndHook()

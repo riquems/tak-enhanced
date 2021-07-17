@@ -123,6 +123,7 @@ auto singleShotKeysStillBeingHold = [&]()->bool {
 };
 
 
+
 void startTAKEnhancedService()
 {
     int i = 0;
@@ -161,11 +162,28 @@ void startTAKEnhancedService()
 
     commandCodeToFunction.insert(selectBuildingMap);
 
+    bool offscreenMonitorThreadRunning = false;
+
+    bool hasTriggeredOnFirstGameLoading = false;
+    bool hasTriggeredOnInitialize = false;
+
     int keyCode;
     while (true) {
-        if (settings.OffscreenFix && gameWrapper->match->isRunning()) {
-            // add guard so doesnt "start" everytime
-            startOffscreenMonitorThread();
+        if (!hasTriggeredOnFirstGameLoading && firstLoad) {
+            hasTriggeredOnFirstGameLoading = true;
+            gameWrapper->onFirstGameLoading();
+        }
+
+        if (!hasTriggeredOnInitialize && TAKisInitialized) {
+            hasTriggeredOnInitialize = true;
+            gameWrapper->onInitialize();
+        }
+
+        if (settings.OffscreenFix) {
+            if (!offscreenMonitorThreadRunning && gameWrapper->match->isRunning()) {
+                startOffscreenMonitorThread();
+                offscreenMonitorThreadRunning = true;
+            }
         }
         
         // if (!game->typing_state())

@@ -4,6 +4,11 @@
 
 extern "C" __declspec(dllexport) void __stdcall updateGuiHook()
 {
+    if (!TAKisInitialized)
+    {
+        TAKisInitialized = true;
+    }
+
     updateSearchBox();
 }
 

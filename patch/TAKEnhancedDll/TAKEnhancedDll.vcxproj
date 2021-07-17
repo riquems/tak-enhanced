@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedDll.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\ConfigFile.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\CommandsFunctions.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedDll.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Settings.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Models\Command.cpp" /> 
+    <ClCompile Include="TAKEnhancedDll\source\Models\Command.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Models\Keys.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Utils.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\ConfigFile.hpp" />
@@ -34,6 +34,7 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\KeyBinding.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Keys.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\PlayerOptions.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\BuildingsShortcuts.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\HelperFeatures.h" />
@@ -49,7 +50,7 @@
     <ClInclude Include="TAKEnhancedDll\source\Changes\RotatingBuildings.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\SearchBox.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.h" />
-    <ClInclude Include="TAKEnhancedDll\source\Changes\ShowHpHook.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Hooks\ShowHpHook.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.h" />
     <ClInclude Include="TAKEnhancedDll\source\CommandsFunctions.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="TAKEnhancedDll\source\Hooks\WeaponsHook.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\nana_common.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_customization.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_keys.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_mods.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_patches.h" />

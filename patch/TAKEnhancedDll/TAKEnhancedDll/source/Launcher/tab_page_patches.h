@@ -3,18 +3,13 @@
 
 class tab_page_patches : public nana::panel<false>
 {
+public:
     std::unique_ptr<nana::place> layout;
 
     // Checkboxes
     std::shared_ptr<nana::checkbox> cb_noCD;
     std::shared_ptr<nana::checkbox> cb_pauseWhenUnfocused;
     std::shared_ptr<nana::checkbox> cb_offscreenFix;
-
-    std::shared_ptr<nana::label> lbl_hpBarOptions;
-    std::shared_ptr<nana::checkbox> cb_showPlayerHpBar;
-    std::shared_ptr<nana::checkbox> cb_showAlliesHpBar;
-    std::shared_ptr<nana::checkbox> cb_showEnemiesHpBar;
-    std::shared_ptr<nana::checkbox> cb_showHpBarOnlyIfDamaged;
 
     std::shared_ptr<nana::checkbox> cb_meleeStuckFix;
 
@@ -34,21 +29,9 @@ class tab_page_patches : public nana::panel<false>
         cb_pauseWhenUnfocused = std::make_shared<nana::checkbox>(*this, "Pause when Unfocused");
         cb_offscreenFix = std::make_shared<nana::checkbox>(*this, "Offscreen Fix");
 
-        lbl_hpBarOptions    = std::make_shared<nana::label>(*this, "HP Bar Options");
-        cb_showPlayerHpBar  = std::make_shared<nana::checkbox>(*this, "Show Player");
-        cb_showAlliesHpBar  = std::make_shared<nana::checkbox>(*this, "Show Allies");
-        cb_showEnemiesHpBar = std::make_shared<nana::checkbox>(*this, "Show Enemies");
-        cb_showHpBarOnlyIfDamaged = std::make_shared<nana::checkbox>(*this, "Only if damaged");
-
         cb_noCD->bgcolor(default_bgcolor);
         cb_pauseWhenUnfocused->bgcolor(default_bgcolor);
         cb_offscreenFix->bgcolor(default_bgcolor);
-
-        lbl_hpBarOptions->bgcolor(default_bgcolor);
-        cb_showPlayerHpBar->bgcolor(default_bgcolor);
-        cb_showAlliesHpBar->bgcolor(default_bgcolor);
-        cb_showEnemiesHpBar->bgcolor(default_bgcolor);
-        cb_showHpBarOnlyIfDamaged->bgcolor(default_bgcolor);
 
         if (settings.NoCD) {
             cb_noCD->check(true);
@@ -62,30 +45,9 @@ class tab_page_patches : public nana::panel<false>
             cb_offscreenFix->check(true);
         }
 
-        if (settings.showHpOptions & SHOW_PLAYER) {
-            cb_showPlayerHpBar->check(true);
-        }
-
-        if (settings.showHpOptions & SHOW_ALLIES) {
-            cb_showAlliesHpBar->check(true);
-        }
-
-        if (settings.showHpOptions & SHOW_ENEMIES) {
-            cb_showEnemiesHpBar->check(true);
-        }
-
-        if (settings.showHpOptions & SHOW_ONLY_IF_DAMAGED) {
-            cb_showHpBarOnlyIfDamaged->check(true);
-        }
-
         layout->field("options") << *cb_noCD
                                  << *cb_offscreenFix
-                                 << *cb_pauseWhenUnfocused
-                                 << *lbl_hpBarOptions
-                                 << *cb_showPlayerHpBar
-                                 << *cb_showAlliesHpBar
-                                 << *cb_showEnemiesHpBar
-                                 << *cb_showHpBarOnlyIfDamaged;
+                                 << *cb_pauseWhenUnfocused;
         
     }
 
@@ -136,15 +98,14 @@ class tab_page_patches : public nana::panel<false>
         layout->field("forcedMinRangeForMelees") << *cb_meleeStuckFix << *lbl_forcedMinRangeForMelees << *sb_forcedMinRangeForMelees;
     }
 
-public:
     tab_page_patches(nana::window parent) : nana::panel<false>(parent)
     {
         layout = std::make_unique<nana::place>(*this);
 
         layout->div("margin=15                                                                             \
                     <vert                                                                                  \
-                        <weight=60                                                                         \
-                            <vert options arrange=[30, 30, 30, 30, 30, 30, 30, 30]><>                      \
+                        <weight=90                                                                         \
+                            <vert options arrange=[30, 30, 30]><>                                          \
                         >                                                                                  \
                     >                                                                                      \
                     <weight=120 vert                                                                       \
@@ -185,26 +146,6 @@ public:
     bool get_noCD()
     {
         return cb_noCD->checked();
-    }
-
-    bool get_showPlayerHpBar()
-    {
-        return cb_showPlayerHpBar->checked();
-    }
-
-    bool get_showAlliesHpBar()
-    {
-        return cb_showAlliesHpBar->checked();
-    }
-
-    bool get_showEnemiesHpBar()
-    {
-        return cb_showEnemiesHpBar->checked();
-    }
-
-    bool get_showHpBarOnlyIfDamaged()
-    {
-        return cb_showHpBarOnlyIfDamaged->checked();
     }
 
     bool get_pauseWhenUnfocused()

@@ -27,6 +27,7 @@ GameInterfaceHandler* uiHandler = nullptr;
 #include "TAKEnhancedDll/Settings.hpp"
 
 extern "C" __declspec(dllexport) DWORD setListItem_fcnAddr = 0;
+extern "C" __declspec(dllexport) bool TAKisInitialized = false;
 
 Settings settings;
 Logger logger;
@@ -36,6 +37,7 @@ std::shared_ptr<GameWrapper> gameWrapper;
 
 void initializeContext()
 {
+    settings.initializeSettings();
     initializeKeys();
     initializeCommands();
     settings.LoadSettings("TAKEnhanced.cfg");

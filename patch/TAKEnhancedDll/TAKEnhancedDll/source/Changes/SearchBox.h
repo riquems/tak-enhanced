@@ -15,19 +15,12 @@ void TryToInitializeSearchBox();
 void InitializeSearchBox(Window* window);
 void ConfigureConsole(uint height, uint width, HWND zOrder, bool borderless);
 
-extern "C" __declspec(dllexport) bool TAKisInitialized = false;
-
 extern "C" __declspec(dllexport) bool nameMatches = false;
 extern "C" __declspec(dllexport) int itemIndex = 0;
 extern "C" __declspec(dllexport) DWORD listBoxAddr = 0;
 
 extern "C" __declspec(dllexport) void __stdcall updateSearchBox()
 {
-    if (!TAKisInitialized)
-    {
-        TAKisInitialized = true;
-    }
-
     if (listBoxAddr) {
         if (nameMatches) {
             __asm {

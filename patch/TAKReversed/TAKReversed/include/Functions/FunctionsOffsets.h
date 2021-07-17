@@ -13,4 +13,6 @@ namespace FunctionsOffsets
     const uintptr_t getGadget = 0x172840;
 
     const uintptr_t buildButtonClick = 0x0AF800;
+
+    const uintptr_t createGraphicObjectFromJPG = 0x022060;
 }

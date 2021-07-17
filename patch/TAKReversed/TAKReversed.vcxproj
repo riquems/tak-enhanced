@@ -21,7 +21,9 @@
   <ItemGroup>
     <ClInclude Include="TAKReversed\include\common.h" />
     <ClInclude Include="TAKReversed\include\Functions\FunctionsOffsets.h" />
+    <ClInclude Include="TAKReversed\include\Functions\FunctionsSignatures.h" />
     <ClInclude Include="TAKReversed\include\Functions\NewFunctions.h" />
+    <ClInclude Include="TAKReversed\include\GameDefs.h" />
     <ClInclude Include="TAKReversed\include\GlobalPointers\GlobalPointers.h" />
     <ClInclude Include="TAKReversed\include\Models\Aura.h" />
     <ClInclude Include="TAKReversed\include\Models\GameMath.h" />

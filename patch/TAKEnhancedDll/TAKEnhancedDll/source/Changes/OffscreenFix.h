@@ -46,9 +46,6 @@ void startOffscreenMonitor()
 
 void startOffscreenMonitorThread()
 {
-    if (is_offscreen_monitor_thread_running)
-        return;
-
     gameWrapper->refreshPlayersWrappers();
 
     std::cout << "Starting OffScreen Monitor..." << std::endl;

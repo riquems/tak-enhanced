@@ -183,3 +183,26 @@ bool vector_has_str(std::vector<std::string>& vector, std::string str)
     }
     return result;
 }*/
+
+std::vector<std::string> split_str(const char* str, const char* token)
+{
+    std::vector<std::string> splitted_str;
+
+    char buffer[512];
+    strncpy(buffer, str, sizeof(buffer) - 1);
+
+    char* nextElem = strtok(buffer, token);
+
+    while (nextElem != NULL) {
+        splitted_str.push_back(std::string(nextElem));
+
+        nextElem = strtok(NULL, token);
+    }
+
+    return splitted_str;
+}
+
+std::vector<std::string> split_str(std::string str, const char* token)
+{
+    return split_str(str.c_str(), token);
+}

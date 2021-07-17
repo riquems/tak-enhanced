@@ -1,20 +1,24 @@
 #pragma once
 
 #include "TAKEnhancedDll/common.hpp"
+#include "TAKEnhancedDll/Utils.hpp"
 
+#include "GameDefs.h"
 #include "Utils/defs.h"
 #include "ConfigFile.hpp"
 
 #include "TAKEnhancedDll/Models/Command.hpp"
 #include "TAKEnhancedDll/Models/Keys.hpp"
+#include "TAKEnhancedDll/Settings/PlayerOptions.h"
 
-enum ShowHpOptions {
-    SHOW_PLAYER          = 1,
-    SHOW_ALLIES          = 2,
-    SHOW_ENEMIES         = 4,
-    SHOW_ONLY_IF_DAMAGED = 8
-};
-DEFINE_ENUM_FLAG_OPERATORS(ShowHpOptions);
+extern std::unordered_map<ShowHpOption, std::string> showHpOptionToString;
+extern std::unordered_map<std::string, ShowHpOption> stringToShowHpOption;
+
+extern std::unordered_map<Color, std::string> colorToString;
+extern std::unordered_map<std::string, Color> stringToColor;
+
+extern std::unordered_map<HpColorMode, std::string> hpColorModeToString;
+extern std::unordered_map<std::string, HpColorMode> stringToHpColorMode;
 
 class Settings
 {
@@ -28,10 +32,13 @@ public:
     bool PauseWhenUnfocused = false;
     bool OffscreenFix = true;
 
-    ShowHpOptions showHpOptions = SHOW_PLAYER | SHOW_ALLIES | SHOW_ENEMIES | SHOW_ONLY_IF_DAMAGED;
+    HpOptions myHpOptions    = { SHOW_ONLY_IF_DAMAGED, HpColorOptions { MATCH_PLAYER_COLOR, BLUE } };
+    HpOptions allyHpOptions  = { SHOW_ONLY_IF_DAMAGED, HpColorOptions { MATCH_PLAYER_COLOR, LIGHT_BLUE } };
+    HpOptions enemyHpOptions = { SHOW_ONLY_IF_DAMAGED, HpColorOptions { MATCH_PLAYER_COLOR, RED } };
 
-    bool MeleeStuckFix = true;
+    bool MeleeStuckFix = false;
 
+    std::vector<std::string> ShowHpOptions;
     std::vector<std::string> SelectedMods;
 
     std::unordered_map<Keys, Command, KeysHashFunction> keyBindings = {
@@ -48,24 +55,31 @@ public:
     };
 
     std::map<std::string, std::any> props = {
-        std::pair("EnableDevMode", &EnableDevMode),
-        std::pair("EnableMods", &EnableMods),
-        std::pair("MaxUnits", &MaxUnits),
-        std::pair("PathFindingCycles", &PathFindingCycles),
+        std::pair("EnableDevMode"          , &EnableDevMode),
+        std::pair("EnableMods"             , &EnableMods),
+        std::pair("MaxUnits"               , &MaxUnits),
+        std::pair("PathFindingCycles"      , &PathFindingCycles),
         std::pair("ForcedMinRangeForMelees", &ForcedMinRangeForMelees),
-        std::pair("NoCD", &NoCD),
-        std::pair("PauseWhenUnfocused", &PauseWhenUnfocused),
-        std::pair("OffscreenFix", &OffscreenFix),
-        std::pair("MeleeStuckFix", &MeleeStuckFix)
+        std::pair("NoCD"                   , &NoCD),
+        std::pair("PauseWhenUnfocused"     , &PauseWhenUnfocused),
+        std::pair("OffscreenFix"           , &OffscreenFix),
+        std::pair("MeleeStuckFix"          , &MeleeStuckFix)
     };
 
+    std::string sectionBeingScanned;
+
     Settings();
+    void initializeSettings();
 
     void LoadSettings(std::string path);
 
     void loadProperty(std::string propName, std::string value);
 
     void loadKeyBindings(std::string& key, std::string& value);
+    void loadHpOptions(HpOptions& hpOption, std::string propName, std::string value);
 
     void Save();
+
+    bool isSection(std::string str);
+    std::string extractSectionName(std::string str);
 };

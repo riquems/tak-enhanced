@@ -43,4 +43,7 @@ unsigned int str_to_uint(std::string str);
 
 bool vector_has_str(std::vector<std::string>& vector, std::string str);
 
+std::vector<std::string> split_str(char* str, const char* token);
+std::vector<std::string> split_str(std::string str, const char* token);
+
 /* DWORD GetMainThreadId(); */

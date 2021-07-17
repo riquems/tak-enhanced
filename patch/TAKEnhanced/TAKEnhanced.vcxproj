@@ -31,7 +31,10 @@
     <ResourceCompile Include="resources\TAKEnhanced.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TAKEnhanced.cfg" />
+    <None Include="TAKEnhanced.cfg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -95,7 +98,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetName>Kingdoms</TargetName>
     <IntDir>.vs\$(Configuration)\</IntDir>
-    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <OutDir>C:\Cavedog\Kingdoms</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

@@ -171,6 +171,10 @@
     <ClInclude Include="TAKReversed\include\Models\UI\WindowHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
+    <ClInclude Include="TAKReversed\include\Functions\FunctionsSignatures.h">
+      <Filter>Headers\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKReversed\include\GameDefs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKReversed\main.cpp" />

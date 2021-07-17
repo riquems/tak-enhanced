@@ -5,6 +5,7 @@
 #include "tab_page_mods.h"
 #include "tab_page_patches.h"
 #include "tab_page_keys.h"
+#include "tab_page_customization.h"
 
 class main_form
 {
@@ -17,6 +18,7 @@ class main_form
     std::unique_ptr<tab_page_mods> tp_mods;
     std::unique_ptr<tab_page_patches> tp_patches;
     std::unique_ptr<tab_page_keys> tp_keys;
+    std::unique_ptr<tab_page_customization> tp_customization;
 
     // Buttons
     std::unique_ptr<nana::button> btn_play;
@@ -27,7 +29,7 @@ public:
     {
         nana::API::window_icon_default(nana::paint::image("Kingdoms.exe"));
 
-        fm_main = std::make_unique<nana::form>(nana::API::make_center(450, 320), nana::appearance(1, 1, 1, 0, 0, 0, 1));
+        fm_main = std::make_unique<nana::form>(nana::API::make_center(520, 320), nana::appearance(1, 1, 1, 0, 0, 0, 1));
 
         fm_main->caption("TA:K Enhanced Settings");
         fm_main->bgcolor(default_bgcolor);
@@ -41,21 +43,24 @@ public:
         tp_mods = std::make_unique<tab_page_mods>(fm_main->handle());
         tp_patches = std::make_unique<tab_page_patches>(fm_main->handle());
         tp_keys = std::make_unique<tab_page_keys>(fm_main->handle());
+        tp_customization = std::make_unique<tab_page_customization>(fm_main->handle());
 
         tabs->append("Mods", *tp_mods);
-        tabs->append("Patch", *tp_patches);
+        tabs->append("Patches", *tp_patches);
         tabs->append("Keys", *tp_keys);
+        tabs->append("Customization", *tp_customization);
+        layout->field("content").fasten(*tp_mods).fasten(*tp_patches).fasten(*tp_keys).fasten(*tp_customization);
 
         tabs->activated(0);
 
         layout->field("tabs") << *tabs;
-        layout->field("content").fasten(*tp_mods).fasten(*tp_patches).fasten(*tp_keys);
 
         initialize_buttons();
 
         layout->collocate();
-    }
 
+        
+    }
     void show()
     {
         fm_main->show();
@@ -82,19 +87,33 @@ private:
                 settings.PauseWhenUnfocused  = tp_patches->get_pauseWhenUnfocused();
 
                 // HP Options
-                bool showPlayer        = tp_patches->get_showPlayerHpBar();
-                bool showAllies        = tp_patches->get_showAlliesHpBar();
-                bool showEnemies       = tp_patches->get_showEnemiesHpBar();
-                bool showOnlyIfDamaged = tp_patches->get_showHpBarOnlyIfDamaged();
+                
+                // My Options
+                settings.myHpOptions.showHpOption               = (ShowHpOption) tp_customization->cbb_myShowHpMode->option();
 
-                if (showPlayer)        settings.showHpOptions |= SHOW_PLAYER;
-                else                   settings.showHpOptions &= ~SHOW_PLAYER;
-                if (showAllies)        settings.showHpOptions |= SHOW_ALLIES;
-                else                   settings.showHpOptions &= ~SHOW_ALLIES;
-                if (showEnemies)       settings.showHpOptions |= SHOW_ENEMIES;
-                else                   settings.showHpOptions &= ~SHOW_ENEMIES;
-                if (showOnlyIfDamaged) settings.showHpOptions |= SHOW_ONLY_IF_DAMAGED;
-                else                   settings.showHpOptions &= ~SHOW_ONLY_IF_DAMAGED;
+                if (tp_customization->cbb_myHpBarColorMode->enabled())
+                    settings.myHpOptions.hpColorOption.mode     = (HpColorMode)  tp_customization->cbb_myHpBarColorMode->option();
+
+                if (tp_customization->cbb_myHpBarColor->enabled())
+                    settings.myHpOptions.hpColorOption.color    = (Color)        tp_customization->cbb_myHpBarColor->option();
+
+                // Ally Options
+                settings.allyHpOptions.showHpOption             = (ShowHpOption) tp_customization->cbb_allyShowHpMode->option();
+
+                if (tp_customization->cbb_allyHpBarColorMode->enabled())
+                    settings.allyHpOptions.hpColorOption.mode   = (HpColorMode)  tp_customization->cbb_allyHpBarColorMode->option();
+
+                if (tp_customization->cbb_allyHpBarColorMode->enabled())
+                settings.allyHpOptions.hpColorOption.color      = (Color)        tp_customization->cbb_allyHpBarColor->option();
+
+                // Enemy Options
+                settings.enemyHpOptions.showHpOption            = (ShowHpOption) tp_customization->cbb_enemyShowHpMode->option();
+
+                if (tp_customization->cbb_enemyHpBarColorMode->enabled())
+                    settings.enemyHpOptions.hpColorOption.mode  = (HpColorMode)  tp_customization->cbb_enemyHpBarColorMode->option();
+                
+                if (tp_customization->cbb_enemyHpBarColor->enabled())
+                    settings.enemyHpOptions.hpColorOption.color = (Color)        tp_customization->cbb_enemyHpBarColor->option();
 
                 // Selected Mods
                 settings.SelectedMods.clear();

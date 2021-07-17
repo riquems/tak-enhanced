@@ -2,7 +2,54 @@
 
 #include "TAKEnhancedDll/Settings.hpp"
 
+template <typename T1, typename T2>
+std::unordered_map<T2, T1> build_reversed_map(const std::unordered_map<T1, T2>& map1)
+{
+    std::unordered_map<T2, T1> map2;
+
+    std::for_each(map1.begin(), map1.end(), [&](std::pair<T1, T2> elem) {
+        map2.insert(std::pair<T2, T1>(elem.second, elem.first));
+        });
+
+    return map2;
+}
+
+std::unordered_map<ShowHpOption, std::string> showHpOptionToString = {
+    std::pair(ALWAYS_SHOW         , "Always"),
+    std::pair(NEVER_SHOW          , "Never"),
+    std::pair(SHOW_ONLY_IF_DAMAGED, "Only If Damaged"),
+};
+std::unordered_map<std::string, ShowHpOption> stringToShowHpOption;
+
+std::unordered_map<Color, std::string> colorToString = {
+    std::pair(LIGHT_BLUE, "Light Blue"),
+    std::pair(RED       , "Red"),
+    std::pair(WHITE     , "White"),
+    std::pair(GREEN     , "Green"),
+    std::pair(BLUE      , "Blue"),
+    std::pair(PURPLE    , "Purple"),
+    std::pair(YELLOW    , "Yellow"),
+    std::pair(BLACK     , "Black"),
+    std::pair(ORANGE    , "Orange"),
+    std::pair(BROWN     , "Brown")
+};
+std::unordered_map<std::string, Color> stringToColor;
+
+std::unordered_map<HpColorMode, std::string> hpColorModeToString = {
+    std::pair(ORIGINAL          , "Original"),
+    std::pair(MATCH_PLAYER_COLOR, "Match Player Color"),
+    std::pair(FIXED_COLOR       , "Fixed")
+};
+std::unordered_map<std::string, HpColorMode> stringToHpColorMode;
+
 Settings::Settings() {}
+
+void Settings::initializeSettings()
+{
+    stringToShowHpOption = build_reversed_map(showHpOptionToString);
+    stringToColor        = build_reversed_map(colorToString);
+    stringToHpColorMode  = build_reversed_map(hpColorModeToString);
+}
 
 void Settings::LoadSettings(std::string path)
 {
@@ -14,6 +61,10 @@ void Settings::LoadSettings(std::string path)
         {
             std::string nextLine;
             std::getline(cfgFile, nextLine);
+
+            if (isSection(nextLine)) {
+                sectionBeingScanned = extractSectionName(nextLine);
+            }
 
             std::stringstream nextLineSS(nextLine);
 
@@ -73,46 +124,35 @@ void Settings::loadProperty(std::string propName, std::string value)
         }
         catch (std::bad_any_cast& e) {}
     }
-
-    if (str_equals_str(propName, "ShowPlayer")) {
-        bool ShowPlayerHpBar = str_to_boolean(value);
-
-        if (!ShowPlayerHpBar) {
-            showHpOptions &= ~SHOW_PLAYER;
-        }
+    
+    if (str_equals_str(sectionBeingScanned, "MyHpOptions")) {
+        loadHpOptions(myHpOptions, propName, value);
     }
-    else if (str_equals_str(propName, "ShowAllies")) {
-        bool ShowAlliesHpBar = str_to_boolean(value);
-
-        if (!ShowAlliesHpBar) {
-            showHpOptions &= ~SHOW_ALLIES;
-        }
+    else if (str_equals_str(sectionBeingScanned, "AllyHpOptions")) {
+        loadHpOptions(allyHpOptions, propName, value);
     }
-    else if (str_equals_str(propName, "ShowEnemies")) {
-        bool ShowEnemiesHpBar = str_to_boolean(value);
-
-        if (!ShowEnemiesHpBar) {
-            showHpOptions &= ~SHOW_ENEMIES;
-        }
+    else if (str_equals_str(sectionBeingScanned, "EnemyHpOptions")) {
+        loadHpOptions(enemyHpOptions, propName, value);
     }
-    else if (str_equals_str(propName, "ShowOnlyIfDamaged")) {
-        bool ShowHpBarOnlyIfDamaged = str_to_boolean(value);
 
-        if (!ShowHpBarOnlyIfDamaged) {
-            showHpOptions &= ~SHOW_ONLY_IF_DAMAGED;
-        }
-    }
-    else if (str_equals_str(propName, "SelectedMods")) {
+    if (str_equals_str(propName, "SelectedMods")) {
         std::string filename;
 
         std::stringstream ss(value);
+
+        std::filesystem::path current_path = std::filesystem::current_path();
+        std::vector<std::string> hpi_files = get_files_from_path(current_path, ".hpi");
 
         while (std::getline(ss, filename, ',')) {
             if (filename.at(0) == ' ') {
                 filename = filename.substr(1, filename.size() - 1);
             }
 
-            SelectedMods.push_back(filename);
+            auto string_iterator = std::find(hpi_files.begin(), hpi_files.end(), filename);
+
+            if (string_iterator != hpi_files.end()) {
+                SelectedMods.push_back(filename);
+            }
         }
     }
 }
@@ -170,11 +210,24 @@ void Settings::Save()
 
         cfgFile << std::endl;
 
-        cfgFile.writeSection("HP Bar");
-        cfgFile.writeProperty("ShowPlayer", (showHpOptions & SHOW_PLAYER) == SHOW_PLAYER);
-        cfgFile.writeProperty("ShowAllies", (showHpOptions & SHOW_ALLIES) == SHOW_ALLIES);
-        cfgFile.writeProperty("ShowEnemies", (showHpOptions & SHOW_ENEMIES) == SHOW_ENEMIES);
-        cfgFile.writeProperty("ShowOnlyIfDamaged", (showHpOptions & SHOW_ONLY_IF_DAMAGED) == SHOW_ONLY_IF_DAMAGED);
+        cfgFile.writeSection("MyHpOptions");
+        cfgFile.writeProperty("Mode", showHpOptionToString[myHpOptions.showHpOption]);
+        cfgFile.writeProperty("HpColorMode", hpColorModeToString[myHpOptions.hpColorOption.mode]);
+        cfgFile.writeProperty("FixedColor", colorToString[myHpOptions.hpColorOption.color]);
+
+        cfgFile << std::endl;
+
+        cfgFile.writeSection("AllyHpOptions");
+        cfgFile.writeProperty("Mode", showHpOptionToString[allyHpOptions.showHpOption]);
+        cfgFile.writeProperty("HpColorMode", hpColorModeToString[allyHpOptions.hpColorOption.mode]);
+        cfgFile.writeProperty("FixedColor", colorToString[allyHpOptions.hpColorOption.color]);
+
+        cfgFile << std::endl;
+
+        cfgFile.writeSection("EnemyHpOptions");
+        cfgFile.writeProperty("Mode", showHpOptionToString[enemyHpOptions.showHpOption]);
+        cfgFile.writeProperty("HpColorMode", hpColorModeToString[enemyHpOptions.hpColorOption.mode]);
+        cfgFile.writeProperty("FixedColor", colorToString[enemyHpOptions.hpColorOption.color]);
 
         cfgFile << std::endl;
 
@@ -195,5 +248,32 @@ void Settings::Save()
             
         cfgFile << std::endl;
         cfgFile.close();
+    }
+}
+
+bool Settings::isSection(std::string str)
+{
+    if (std::regex_match(str, std::regex("\\[[A-z]*\\]"))) {
+        return true;
+    }
+
+    return false;
+}
+
+std::string Settings::extractSectionName(std::string str)
+{
+    return str.substr(1, str.size() - 2);
+}
+
+void Settings::loadHpOptions(HpOptions& hpOption, std::string propName, std::string value)
+{
+    if (str_equals_str(propName, "Mode")) {
+        hpOption.showHpOption = stringToShowHpOption[value];
+    }
+    else if (str_equals_str(propName, "HpColorMode")) {
+        hpOption.hpColorOption.mode = stringToHpColorMode[value];
+    }
+    else if (str_equals_str(propName, "FixedColor")) {
+        hpOption.hpColorOption.color = stringToColor[value];
     }
 }

@@ -1,24 +1,7 @@
 #pragma once
 #include "nana_common.h"
 #include "Wrappers/Info.h"
-
-std::vector<std::string> get_files_from_path(std::filesystem::path& path, const char* extension)
-{
-    std::vector<std::string> hpi_files;
-
-    for (std::filesystem::directory_entry dir_entry : std::filesystem::directory_iterator(path)) {
-        if (dir_entry.is_regular_file()) {
-            std::string filename = dir_entry.path().filename().string();
-            std::string file_extension = dir_entry.path().filename().extension().string();
-
-            if (str_equals_str(file_extension.c_str(), extension)) {
-                hpi_files.push_back(filename);
-            }
-        }
-    }
-
-    return hpi_files;
-}
+#include "TAKEnhancedDll/Utils.hpp"
 
 class tab_page_mods : public nana::panel<false>
 {
@@ -149,7 +132,7 @@ class tab_page_mods : public nana::panel<false>
         nana::listbox::cat_proxy default_category = lb_listbox2->at(0);
 
         for (std::string mod_filename : settings.SelectedMods) {
-            default_category.append(mod_filename);
+             default_category.append(mod_filename);
         }
 
         layout->field("listbox2") << *lbl_listbox2 << *lb_listbox2;

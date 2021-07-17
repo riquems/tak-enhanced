@@ -8,11 +8,11 @@
 #include "./Changes/MaxUnits.h"
 #include "./Changes/RandomRace.h"
 #include "./Changes/NewHpiVerification.h"
-#include "./Changes/ShowHpHook.h"
 #include "./Changes/ShowEveryoneHealthBars.h"
 #include "Hooks/UpdateGuiHook.h"
 #include "Hooks/ReadSideDataHook.h"
 #include "Hooks/LoadingScreenHook.h"
+#include "Hooks/ShowHpHook.h"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
 
 extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.0";
