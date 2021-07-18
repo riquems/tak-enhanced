@@ -116,14 +116,17 @@ void GameWrapper::onFirstGameLoading()
 
     oldCreateGraphicObjectFromJPG = (createGraphicObjectFromJPG_t) (baseAddress + FunctionsOffsets::createGraphicObjectFromJPG);
 
-    RendererDevice rendererDevice(_baseAddress);
+    uintptr_t* gamePtr = (uintptr_t*) (GlobalPointers::ptr_22D55C + baseAddress);
+    uintptr_t* hpBarPtr = (uintptr_t*) (*gamePtr + 0x17454);
 
+    originalHpBarGraphicObjAddr = *hpBarPtr;
+
+    RendererDevice rendererDevice(_baseAddress);
     TextureDisplayMode renderer = rendererDevice.getTextureDisplayMode();
 
     switch (renderer)
     {
     case TextureDisplayMode::ORIGINAL_SIZE:
-        originalHpBarGraphicObjAddr = newCreateGraphicObjectFromJPG("anims\\hpbars_original_size\\original.jpg", 0);
 
         for (int i = 0; i < hpBarsFileNames.size(); i++) {
             std::string hpBarFullPath = "anims\\hpbars_original_size\\" + hpBarsFileNames[i];
@@ -136,8 +139,6 @@ void GameWrapper::onFirstGameLoading()
         break;
 
     case TextureDisplayMode::INCREASED_SIZE:
-        originalHpBarGraphicObjAddr = newCreateGraphicObjectFromJPG("anims\\hpbars_increased_size\\original.jpg", 0);
-
         for (int i = 0; i < hpBarsFileNames.size(); i++) {
             std::string hpBarFullPath = "anims\\hpbars_increased_size\\" + hpBarsFileNames[i];
 
