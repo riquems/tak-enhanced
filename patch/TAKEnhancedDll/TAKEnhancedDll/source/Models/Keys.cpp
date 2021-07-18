@@ -2,6 +2,7 @@
 #include "TAKEnhancedDll/Models/Keys.hpp"
 
 std::unordered_map<int, std::string> keyToStr = {
+    std::pair<int, std::string>(VK_NONE, "None"),
     std::pair<int, std::string>(VK_CTRL, "CTRL"),
     std::pair<int, std::string>(VK_SHIFT, "SHIFT"),
     std::pair<int, std::string>(VK_BACKSPACE, "BACKSPACE"),
@@ -42,24 +43,6 @@ std::unordered_map<int, std::string> keyToStr = {
     std::pair<int, std::string>(VK_X, "X"),
     std::pair<int, std::string>(VK_Y, "Y"),
     std::pair<int, std::string>(VK_Z, "Z"),
-
-    std::pair<int, std::string>(VK_X, "X"),
-    std::pair<int, std::string>(VK_Y, "Y"),
-    std::pair<int, std::string>(VK_W, "W"),
-    std::pair<int, std::string>(VK_X, "X"),
-    std::pair<int, std::string>(VK_Y, "Y"),
-    std::pair<int, std::string>(VK_W, "W"),
-    std::pair<int, std::string>(VK_X, "X"),
-    std::pair<int, std::string>(VK_Y, "Y"),
-    std::pair<int, std::string>(VK_W, "W"),
-    std::pair<int, std::string>(VK_X, "X"),
-    std::pair<int, std::string>(VK_Y, "Y"),
-    std::pair<int, std::string>(VK_W, "W"),
-    std::pair<int, std::string>(VK_X, "X"),
-    std::pair<int, std::string>(VK_Y, "Y"),
-    std::pair<int, std::string>(VK_W, "W"),
-    std::pair<int, std::string>(VK_X, "X"),
-    std::pair<int, std::string>(VK_Y, "Y"),
 };
 
 std::unordered_map<std::string, int> strToKey;

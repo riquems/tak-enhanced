@@ -1,5 +1,6 @@
 #pragma once
 
+#define VK_NONE 0x00
 #define VK_LMB 0x01
 #define VK_RMB 0x02
 #define VK_CANCEL 0x03

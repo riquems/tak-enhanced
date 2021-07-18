@@ -76,6 +76,7 @@ class tab_page_keys : public nana::panel<false>
 
     std::shared_ptr<nana::button> btn_add;
     std::shared_ptr<nana::button> btn_edit;
+    std::shared_ptr<nana::button> btn_clear;
 
     void add_search_box()
     {
@@ -116,6 +117,7 @@ class tab_page_keys : public nana::panel<false>
     {
         btn_add = std::make_shared<nana::button>(*this, "Add");
         btn_edit = std::make_shared<nana::button>(*this, "Edit");
+        btn_clear = std::make_shared<nana::button>(*this, "Clear");
 
         btn_edit->events().click(
             [&]() {
@@ -147,7 +149,20 @@ class tab_page_keys : public nana::panel<false>
             }
         );
 
-        layout->field("actionButtons") << *btn_add << *btn_edit;
+        btn_clear->events().click(
+            [&]() {
+                nana::listbox::index_pairs items = lb_keyBindings->selected();
+
+                if (items.size() == 0)
+                    return;
+
+                nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
+
+                item.text(1, keyToStr[VK_NONE]);
+            }
+        );
+
+        layout->field("actionButtons") << *btn_edit << *btn_clear;
     }
 
 public:
