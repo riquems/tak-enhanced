@@ -1,0 +1,757 @@
+1 1 
+2 0 0 640 480 1 1 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+10 SelectGame 1 2 
+2 
+1 20 ConnectionScreen.gaf 10 Connection 0 9 
+1 20 ConnectionScreen.gaf 10 Connection 1 9 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 24 #Enter#Join#Esc#MainMenu 
+35 
+
+4 1 
+1 
+2 412 29 84 57 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+9 Boneyards 2 3 
+3 
+1 20 ConnectionButton.gaf 16 ConnectionButton 0 9 
+1 20 ConnectionButton.gaf 16 ConnectionButton 1 9 
+1 20 ConnectionButton.gaf 16 ConnectionButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 7 Default 
+1 14 menubutton.wav 
+1 7 Default 
+2 0 20 Connect to Boneyards 
+0 
+
+4 1 
+1 
+2 193 369 52 40 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+6 Update 1 3 
+3 
+1 20 ConnectionScreen.gaf 12 UpdateButton 0 9 
+1 20 ConnectionScreen.gaf 12 UpdateButton 1 9 
+1 20 ConnectionScreen.gaf 12 UpdateButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 9 reset.wav 
+1 0 
+2 0 11 Update List 
+0 
+
+19 1 
+1 
+2 67 24 100 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 4 Name 2 1 4 Name 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+4 1 
+1 
+2 58 407 37 51 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+8 MainMenu 2 3 
+3 
+1 20 ConnectionScreen.gaf 12 CancelButton 0 9 
+1 20 ConnectionScreen.gaf 12 CancelButton 1 9 
+1 20 ConnectionScreen.gaf 12 CancelButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 10 cancel.wav 
+1 0 
+2 0 15 Previous Screen 
+0 
+
+4 1 
+1 
+2 541 407 39 54 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+4 Join 2 3 
+3 
+1 20 ConnectionScreen.gaf 8 OKButton 0 9 
+1 20 ConnectionScreen.gaf 8 OKButton 1 9 
+1 20 ConnectionScreen.gaf 8 OKButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 6 ok.wav 
+1 0 
+2 0 18 Join Selected Game 
+0 
+
+4 1 
+1 
+2 467 406 57 57 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+8 HostGame 2 3 
+3 
+1 20 ConnectionScreen.gaf 13 NewUserButton 0 9 
+1 20 ConnectionScreen.gaf 13 NewUserButton 1 9 
+1 20 ConnectionScreen.gaf 13 NewUserButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 14 menubutton.wav 
+1 0 
+2 0 11 Host a Game 
+0 
+
+15 2 3 255 46 46 255 
+
+0 0 0 0 
+1 
+2 64 126 316 243 1 1 1 0 
+3 0 0 0 0 
+1 0 0 
+1 0 
+8 GameList 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+12 1 100 0 1 0 0 
+1 
+2 355 126 25 243 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+6 slider 0 3 
+3 
+1 14 scrollbars.gaf 13 ConnectionBar 0 9 
+1 14 scrollbars.gaf 13 ConnectionBar 1 9 
+1 14 scrollbars.gaf 13 ConnectionBar 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+3 
+
+4 1 
+1 
+2 355 126 25 21 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+9 incbutton 0 3 
+3 
+1 14 scrollbars.gaf 9 ScrollInc 0 9 
+1 14 scrollbars.gaf 9 ScrollInc 1 9 
+1 14 scrollbars.gaf 9 ScrollInc 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+4 1 
+1 
+2 357 324 22 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 sbutton 0 3 
+3 
+1 14 scrollbars.gaf 11 ScrollThumb 0 9 
+1 14 scrollbars.gaf 11 ScrollThumb 1 9 
+1 14 scrollbars.gaf 11 ScrollThumb 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+4 1 
+1 
+2 355 346 25 23 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+9 decbutton 0 3 
+3 
+1 14 scrollbars.gaf 9 ScrollDec 0 9 
+1 14 scrollbars.gaf 9 ScrollDec 1 9 
+1 14 scrollbars.gaf 9 ScrollDec 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 65 126 303 22 1 1 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+16 GameInfoTemplate 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 71 126 145 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+8 GameName 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 9 Game Name 2 1 9 Game Name 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 222 126 130 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+8 HostName 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 9 Host Name 2 1 9 Host Name 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 208 453 224 27 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 26 times new roman (100b).gaf 
+8 HelpText 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+21 3 18 15 
+0  0 0 0 0 5 16 1 1 0 0 
+3 255 192 192 192 
+3 255 128 128 128 
+
+1 
+2 69 57 194 21 1 1 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+4 Name 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 67 94 149 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 9 Game Name 2 1 9 Game Name 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 218 94 100 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 4 Host 2 1 4 Host 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 400 94 184 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 16 Game Information 2 0 16 Game Information 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+4 1 
+1 
+2 113 406 57 57 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+17 EnterTCPIPAddress 2 3 
+3 
+1 20 ConnectionScreen.gaf 8 IPButton 0 9 
+1 20 ConnectionScreen.gaf 8 IPButton 1 9 
+1 20 ConnectionScreen.gaf 8 IPButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 14 menubutton.wav 
+1 0 
+2 0 26 Find Game Using IP Address 
+0 
+
+19 1 
+1 
+2 479 126 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+4 Game 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 148 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 5 Host: 2 1 5 Host: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 170 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 4 Map: 2 1 4 Map: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 192 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+12 MonarchDeath 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 214 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 4 LoS: 2 1 4 LoS: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 236 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 8 Mapping: 2 1 8 Mapping: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 258 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 8 Players: 2 1 8 Players: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 280 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 GameStatus 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 148 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+4 Host 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 170 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 MapName 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 214 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+3 LOS 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 236 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Mapping 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 258 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 NumPlayers 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 126 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 5 Game: 2 1 5 Game: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 192 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 6 Death: 2 1 6 Death: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 280 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 7 Status: 2 1 7 Status: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 302 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+14 ScriptedStatus 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 415 302 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 9 Scripted: 2 1 9 Scripted: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+4 1 
+1 
+2 514 33 57 54 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 Mplayer 2 3 
+3 
+1 20 ConnectionButton.gaf 13 MplayerButton 0 9 
+1 20 ConnectionButton.gaf 13 MplayerButton 1 9 
+1 20 ConnectionButton.gaf 13 MplayerButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 14 menubutton.wav 
+1 0 
+2 0 11 Mplayer.com 
+0 
+
+19 1 
+1 
+2 415 324 60 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+6 Static 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 6 Creon: 2 1 6 Creon: 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 479 324 94 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+12 CreonAllowed 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+18 1 2 -1 
+1 
+2 49 471 105 8 1 0 0 0
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 Static0 1 2
+3
+1 11 version.gaf 7 version 0 9 
+1 11 version.gaf 7 version 1 9
+2 
+2 0 0 2 0 0 2
+1 0 
+1 0 
+2 0 7 Version
+0 
