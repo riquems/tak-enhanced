@@ -8,6 +8,7 @@
     <ClCompile Include="TAKLibrary\source\GameInterface.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="TAKLibrary\source\RendererDevice.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">
@@ -24,5 +25,7 @@
     <ClInclude Include="TAKLibrary\include\GameInterface.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="TAKLibrary\include\RendererDevice.hpp" />
+    <ClInclude Include="TAKLibrary\include\Common.hpp" />
   </ItemGroup>
 </Project>

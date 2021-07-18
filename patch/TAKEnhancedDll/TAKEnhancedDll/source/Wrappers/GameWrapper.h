@@ -13,6 +13,7 @@
 #include "BuildButtonWrapper.h"
 #include "Functions/FunctionsSignatures.h"
 #include "TAKEnhancedDll/Settings.hpp"
+#include "RendererDevice.hpp"
 
 class MatchWrapper;
 
@@ -26,6 +27,7 @@ extern "C" __declspec(dllexport) uintptr_t __stdcall newCreateGraphicObjectFromJ
 class GameWrapper
 {
     std::shared_ptr<Game> _game;
+    uintptr_t _baseAddress;
 
 public:
     std::shared_ptr<GameInterfaceManager> _gameInterfaceManager;
@@ -35,17 +37,17 @@ public:
     uintptr_t originalHpBarGraphicObjAddr;
     std::unordered_map<int, uintptr_t> colorIdToGraphicObjAddr;
 
-    std::vector<std::string> hpBarsPaths = {
-        "anims\\hpbars\\lightblue.jpg",
-        "anims\\hpbars\\red.jpg",
-        "anims\\hpbars\\white.jpg",
-        "anims\\hpbars\\green.jpg",
-        "anims\\hpbars\\darkblue.jpg",
-        "anims\\hpbars\\purple.jpg",
-        "anims\\hpbars\\yellow.jpg",
-        "anims\\hpbars\\black.jpg",
-        "anims\\hpbars\\orange.jpg",
-        "anims\\hpbars\\brown.jpg"
+    std::vector<std::string> hpBarsFileNames = {
+        "lightblue.jpg",
+        "red.jpg",
+        "white.jpg",
+        "green.jpg",
+        "darkblue.jpg",
+        "purple.jpg",
+        "yellow.jpg",
+        "black.jpg",
+        "orange.jpg",
+        "brown.jpg"
     };
 
     GameWrapper() {}
@@ -53,6 +55,8 @@ public:
     {
         _game = std::make_shared<Game>(baseAddress);
         _gameInterfaceManager = std::make_shared<GameInterfaceManager>(baseAddress);
+
+        _baseAddress = baseAddress;
 
         match = std::make_shared<MatchWrapper>(this);
     }
@@ -112,15 +116,37 @@ void GameWrapper::onFirstGameLoading()
 
     oldCreateGraphicObjectFromJPG = (createGraphicObjectFromJPG_t) (baseAddress + FunctionsOffsets::createGraphicObjectFromJPG);
 
-    originalHpBarGraphicObjAddr = newCreateGraphicObjectFromJPG("anims\\hpbars\\original.jpg", 0);
+    RendererDevice rendererDevice(_baseAddress);
 
-    std::cout << "originalHpBarGraphicObjAddr = " << std::hex << originalHpBarGraphicObjAddr << std::endl;
+    TextureDisplayMode renderer = rendererDevice.getTextureDisplayMode();
 
-    for (int i = 0; i < hpBarsPaths.size(); i++) {
+    switch (renderer)
+    {
+    case TextureDisplayMode::ORIGINAL_SIZE:
+        originalHpBarGraphicObjAddr = newCreateGraphicObjectFromJPG("anims\\hpbars_original_size\\original.jpg", 0);
 
-        uintptr_t hpBarAddr = newCreateGraphicObjectFromJPG(hpBarsPaths[i].c_str(), 0);
+        for (int i = 0; i < hpBarsFileNames.size(); i++) {
+            std::string hpBarFullPath = "anims\\hpbars_original_size\\" + hpBarsFileNames[i];
 
-        colorIdToGraphicObjAddr.insert(std::pair(i, hpBarAddr));
+            uintptr_t hpBarAddr = newCreateGraphicObjectFromJPG(hpBarFullPath.c_str(), 0);
+
+            colorIdToGraphicObjAddr.insert(std::pair(i, hpBarAddr));
+        }
+
+        break;
+
+    case TextureDisplayMode::INCREASED_SIZE:
+        originalHpBarGraphicObjAddr = newCreateGraphicObjectFromJPG("anims\\hpbars_increased_size\\original.jpg", 0);
+
+        for (int i = 0; i < hpBarsFileNames.size(); i++) {
+            std::string hpBarFullPath = "anims\\hpbars_increased_size\\" + hpBarsFileNames[i];
+
+            uintptr_t hpBarAddr = newCreateGraphicObjectFromJPG(hpBarFullPath.c_str(), 0);
+
+            colorIdToGraphicObjAddr.insert(std::pair(i, hpBarAddr));
+        }
+
+        break;
     }
 }
 

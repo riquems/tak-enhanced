@@ -1,5 +1,6 @@
-#include <cstdint>
-#include <iostream>
+#pragma once
+#include "Common.hpp"
+
 #include "Models/Player.h"
 #include "Models/Side.h"
 #include "Models/Options/GameOptions.h"

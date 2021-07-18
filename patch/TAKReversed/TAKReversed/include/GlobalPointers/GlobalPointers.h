@@ -5,6 +5,9 @@ namespace GlobalPointers
 {
     const uintptr_t ptr_22D55C = 0x22D55C;
 
+    // 65DF00
+    const uintptr_t RendererDevice = 0x25DF00;
+
     // 65DDB4
     const uintptr_t GameInterfaceHandler = 0x25DDB4;
 
