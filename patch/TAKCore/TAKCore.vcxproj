@@ -19,67 +19,67 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TAKReversed\include\common.h" />
-    <ClInclude Include="TAKReversed\include\Functions\FunctionsOffsets.h" />
-    <ClInclude Include="TAKReversed\include\Functions\FunctionsSignatures.h" />
-    <ClInclude Include="TAKReversed\include\Functions\NewFunctions.h" />
-    <ClInclude Include="TAKReversed\include\GameDefs.h" />
-    <ClInclude Include="TAKReversed\include\GlobalPointers\GlobalPointers.h" />
-    <ClInclude Include="TAKReversed\include\Models\Aura.h" />
-    <ClInclude Include="TAKReversed\include\Models\GameMath.h" />
-    <ClInclude Include="TAKReversed\include\Models\HapiFile.h" />
-    <ClInclude Include="TAKReversed\include\Models\MapPosition.h" />
-    <ClInclude Include="TAKReversed\include\Models\Measurement.h" />
-    <ClInclude Include="TAKReversed\include\Models\Mission.h" />
-    <ClInclude Include="TAKReversed\include\Models\MovementHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\NavGoal.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\ConsoleOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\DevelopmentOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\GameOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\GameSetupOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\InterfaceOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\MusicOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\SoundOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\Options\VisualOptions.h" />
-    <ClInclude Include="TAKReversed\include\Models\PathNavigator.h" />
-    <ClInclude Include="TAKReversed\include\Models\Player.h" />
-    <ClInclude Include="TAKReversed\include\Models\PlayerViewModel.h" />
-    <ClInclude Include="TAKReversed\include\Models\Side.h" />
-    <ClInclude Include="TAKReversed\include\Models\TAobjectScript.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\BattleMenu.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\BrushHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\BuildButton.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\BuildMenu.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\ChooseMapMenu.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\CursorHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\FontHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\Gadget.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\GameInterfaceHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\GraphicsHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\ImageHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\InputHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\KingdomsDialog.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\KingdomsPanel.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\SingleEdit.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\SoundHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\TextHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\Window.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\WindowHandler.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\Windows\InGameDesktop.h" />
-    <ClInclude Include="TAKReversed\include\Models\Unit.h" />
-    <ClInclude Include="TAKReversed\include\Models\UnitInfo.h" />
-    <ClInclude Include="TAKReversed\include\Models\UnitRenderer.h" />
-    <ClInclude Include="TAKReversed\include\Models\Weapon.h" />
-    <ClInclude Include="TAKReversed\include\Models\WeaponType.h" />
+    <ClInclude Include="TAKCore\include\common.h" />
+    <ClInclude Include="TAKCore\include\Functions\FunctionsOffsets.h" />
+    <ClInclude Include="TAKCore\include\Functions\FunctionsSignatures.h" />
+    <ClInclude Include="TAKCore\include\Functions\NewFunctions.h" />
+    <ClInclude Include="TAKCore\include\GameDefs.h" />
+    <ClInclude Include="TAKCore\include\GlobalPointers\GlobalPointers.h" />
+    <ClInclude Include="TAKCore\include\Models\Aura.h" />
+    <ClInclude Include="TAKCore\include\Models\GameMath.h" />
+    <ClInclude Include="TAKCore\include\Models\HapiFile.h" />
+    <ClInclude Include="TAKCore\include\Models\MapPosition.h" />
+    <ClInclude Include="TAKCore\include\Models\Measurement.h" />
+    <ClInclude Include="TAKCore\include\Models\Mission.h" />
+    <ClInclude Include="TAKCore\include\Models\MovementHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\NavGoal.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\ConsoleOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\DevelopmentOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\GameOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\GameSetupOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\InterfaceOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\MusicOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\SoundOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\Options\VisualOptions.h" />
+    <ClInclude Include="TAKCore\include\Models\PathNavigator.h" />
+    <ClInclude Include="TAKCore\include\Models\Player.h" />
+    <ClInclude Include="TAKCore\include\Models\PlayerViewModel.h" />
+    <ClInclude Include="TAKCore\include\Models\Side.h" />
+    <ClInclude Include="TAKCore\include\Models\TAobjectScript.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\BattleMenu.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\BrushHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\BuildButton.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\BuildMenu.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\ChooseMapMenu.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\CursorHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\FontHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\Gadget.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\GameInterfaceHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\GraphicsHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\ImageHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\InputHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\KingdomsDialog.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\KingdomsPanel.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\SingleEdit.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\SoundHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\TextHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\Window.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\WindowHandler.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\Windows\InGameDesktop.h" />
+    <ClInclude Include="TAKCore\include\Models\Unit.h" />
+    <ClInclude Include="TAKCore\include\Models\UnitInfo.h" />
+    <ClInclude Include="TAKCore\include\Models\UnitRenderer.h" />
+    <ClInclude Include="TAKCore\include\Models\Weapon.h" />
+    <ClInclude Include="TAKCore\include\Models\WeaponType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TAKReversed\main.cpp" />
+    <ClCompile Include="TAKCore\main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{86ce107f-c36b-4ae6-b001-bbe1b51860db}</ProjectGuid>
-    <RootNamespace>TAKReversed</RootNamespace>
+    <RootNamespace>TAKCore</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

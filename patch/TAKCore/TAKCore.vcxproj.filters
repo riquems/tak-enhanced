@@ -24,160 +24,160 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TAKReversed\include\common.h">
+    <ClInclude Include="TAKCore\include\common.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Functions\FunctionsOffsets.h">
+    <ClInclude Include="TAKCore\include\Functions\FunctionsOffsets.h">
       <Filter>Headers\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Functions\NewFunctions.h">
+    <ClInclude Include="TAKCore\include\Functions\NewFunctions.h">
       <Filter>Headers\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\GlobalPointers\GlobalPointers.h">
+    <ClInclude Include="TAKCore\include\GlobalPointers\GlobalPointers.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Aura.h">
+    <ClInclude Include="TAKCore\include\Models\Aura.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\GameMath.h">
+    <ClInclude Include="TAKCore\include\Models\GameMath.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\HapiFile.h">
+    <ClInclude Include="TAKCore\include\Models\HapiFile.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\MapPosition.h">
+    <ClInclude Include="TAKCore\include\Models\MapPosition.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Measurement.h">
+    <ClInclude Include="TAKCore\include\Models\Measurement.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Mission.h">
+    <ClInclude Include="TAKCore\include\Models\Mission.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\MovementHandler.h">
+    <ClInclude Include="TAKCore\include\Models\MovementHandler.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\NavGoal.h">
+    <ClInclude Include="TAKCore\include\Models\NavGoal.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\PathNavigator.h">
+    <ClInclude Include="TAKCore\include\Models\PathNavigator.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Player.h">
+    <ClInclude Include="TAKCore\include\Models\Player.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\PlayerViewModel.h">
+    <ClInclude Include="TAKCore\include\Models\PlayerViewModel.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Side.h">
+    <ClInclude Include="TAKCore\include\Models\Side.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\TAobjectScript.h">
+    <ClInclude Include="TAKCore\include\Models\TAobjectScript.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Unit.h">
+    <ClInclude Include="TAKCore\include\Models\Unit.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UnitInfo.h">
+    <ClInclude Include="TAKCore\include\Models\UnitInfo.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UnitRenderer.h">
+    <ClInclude Include="TAKCore\include\Models\UnitRenderer.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Weapon.h">
+    <ClInclude Include="TAKCore\include\Models\Weapon.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\WeaponType.h">
+    <ClInclude Include="TAKCore\include\Models\WeaponType.h">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\ConsoleOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\ConsoleOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\DevelopmentOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\DevelopmentOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\GameOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\GameOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\GameSetupOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\GameSetupOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\InterfaceOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\InterfaceOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\MusicOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\MusicOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\SoundOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\SoundOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\Options\VisualOptions.h">
+    <ClInclude Include="TAKCore\include\Models\Options\VisualOptions.h">
       <Filter>Headers\Models\Options</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\Windows\InGameDesktop.h">
+    <ClInclude Include="TAKCore\include\Models\UI\Windows\InGameDesktop.h">
       <Filter>Headers\Models\UI\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\BattleMenu.h">
+    <ClInclude Include="TAKCore\include\Models\UI\BattleMenu.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\BrushHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\BrushHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\BuildButton.h">
+    <ClInclude Include="TAKCore\include\Models\UI\BuildButton.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\BuildMenu.h">
+    <ClInclude Include="TAKCore\include\Models\UI\BuildMenu.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\ChooseMapMenu.h">
+    <ClInclude Include="TAKCore\include\Models\UI\ChooseMapMenu.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\CursorHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\CursorHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\FontHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\FontHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\Gadget.h">
+    <ClInclude Include="TAKCore\include\Models\UI\Gadget.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\GameInterfaceHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\GameInterfaceHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\GraphicsHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\GraphicsHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\ImageHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\ImageHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\InputHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\InputHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\KingdomsDialog.h">
+    <ClInclude Include="TAKCore\include\Models\UI\KingdomsDialog.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\KingdomsPanel.h">
+    <ClInclude Include="TAKCore\include\Models\UI\KingdomsPanel.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\SoundHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\SoundHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\TextHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\TextHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\Window.h">
+    <ClInclude Include="TAKCore\include\Models\UI\Window.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Models\UI\WindowHandler.h">
+    <ClInclude Include="TAKCore\include\Models\UI\WindowHandler.h">
       <Filter>Headers\Models\UI</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\Functions\FunctionsSignatures.h">
+    <ClInclude Include="TAKCore\include\Functions\FunctionsSignatures.h">
       <Filter>Headers\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="TAKReversed\include\GameDefs.h" />
-    <ClInclude Include="TAKReversed\include\Models\UI\SingleEdit.h" />
+    <ClInclude Include="TAKCore\include\GameDefs.h" />
+    <ClInclude Include="TAKCore\include\Models\UI\SingleEdit.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TAKReversed\main.cpp" />
+    <ClCompile Include="TAKCore\main.cpp" />
   </ItemGroup>
 </Project>
