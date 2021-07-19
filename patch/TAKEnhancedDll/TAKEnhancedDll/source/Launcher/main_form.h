@@ -22,6 +22,7 @@ class main_form
 
     // Buttons
     std::unique_ptr<nana::button> btn_play;
+    std::unique_ptr<nana::button> btn_save;
     std::unique_ptr<nana::button> btn_exit;
 
 public:
@@ -36,7 +37,9 @@ public:
         fm_main->bgcolor(default_bgcolor);
 
         layout = std::make_unique<nana::place>(fm_main->handle());
-        layout->div("margin=[1] vert<weight=25 tabs><content><weight=40 <><margin=5 grid=[2, 1] gap=5 buttons>>");
+        layout->div("margin=[1] vert<weight=25 tabs>                                                                  \
+                                       <content>                                                                      \
+                    <weight=50 margin=[0, 20, 15, 15] <weight=60 saveBtn><><weight=120 buttons gap=5 arrange=[60, 60]>");
 
         tabs = std::make_unique<nana::tabbar<std::string>>(fm_main->handle());
         tabs->bgcolor(default_bgcolor);
@@ -59,8 +62,6 @@ public:
         initialize_buttons();
 
         layout->collocate();
-
-        
     }
     void show()
     {
@@ -73,84 +74,18 @@ private:
     {
         btn_play = std::make_unique<nana::button>(fm_main->handle(), "Play");
         btn_exit = std::make_unique<nana::button>(fm_main->handle(), "Exit");
+        btn_save = std::make_unique<nana::button>(fm_main->handle(), "Save");
 
         btn_play->events().click(
             [&]() {
-                nana::size main_form_size = fm_main->size();
-
-                settings.Launcher.Width = main_form_size.width;
-                settings.Launcher.Height = main_form_size.height;
-
-                settings.MaxUnits                  = tp_patches->get_max_units();
-                settings.PathFindingCycles         = tp_patches->get_pathfinding_cycles();
-                settings.ForcedMinRangeForMelees   = tp_patches->get_forced_minrange_for_melees();
-
-                settings.EnableDevMode       = tp_mods->get_enableDevMode();
-                settings.EnableMods          = tp_mods->get_enableMods();
-                settings.NoCD                = tp_patches->get_noCD();
-                settings.MeleeStuckFix       = tp_patches->get_meleeStuckFix();
-                settings.OffscreenFix        = tp_patches->get_offscreenFix();
-                settings.PauseWhenUnfocused  = tp_patches->get_pauseWhenUnfocused();
-
-                // HP Options
-                
-                // My Options
-                settings.myHpOptions.showHpOption               = (ShowHpOption) tp_customization->cbb_myShowHpMode->option();
-
-                if (tp_customization->cbb_myHpBarColorMode->enabled())
-                    settings.myHpOptions.hpColorOption.mode     = (HpColorMode)  tp_customization->cbb_myHpBarColorMode->option();
-
-                if (tp_customization->cbb_myHpBarColor->enabled())
-                    settings.myHpOptions.hpColorOption.color    = (Color)        tp_customization->cbb_myHpBarColor->option();
-
-                // Ally Options
-                settings.allyHpOptions.showHpOption             = (ShowHpOption) tp_customization->cbb_allyShowHpMode->option();
-
-                if (tp_customization->cbb_allyHpBarColorMode->enabled())
-                    settings.allyHpOptions.hpColorOption.mode   = (HpColorMode)  tp_customization->cbb_allyHpBarColorMode->option();
-
-                if (tp_customization->cbb_allyHpBarColorMode->enabled())
-                settings.allyHpOptions.hpColorOption.color      = (Color)        tp_customization->cbb_allyHpBarColor->option();
-
-                // Enemy Options
-                settings.enemyHpOptions.showHpOption            = (ShowHpOption) tp_customization->cbb_enemyShowHpMode->option();
-
-                if (tp_customization->cbb_enemyHpBarColorMode->enabled())
-                    settings.enemyHpOptions.hpColorOption.mode  = (HpColorMode)  tp_customization->cbb_enemyHpBarColorMode->option();
-                
-                if (tp_customization->cbb_enemyHpBarColor->enabled())
-                    settings.enemyHpOptions.hpColorOption.color = (Color)        tp_customization->cbb_enemyHpBarColor->option();
-
-                // Selected Mods
-                settings.SelectedMods.clear();
-                
-                std::vector<std::string> selected_mods = tp_mods->get_selected_mods();
-
-                for (std::string selected_mod : selected_mods) {
-                    settings.SelectedMods.push_back(selected_mod);
-                }
-
-                std::vector<KeyBindingListItem> keyBindings = tp_keys->get_keyBindings();
-
-                for (KeyBindingListItem keyBinding : keyBindings) {
-                    Command command = strToCommand(keyBinding.command);
-                    Keys keys = strToKeys(keyBinding.keyBinding);
-
-                    auto keys_iterator = std::find_if(settings.keyBindings.begin(), settings.keyBindings.end(),
-                        [&](std::pair<Keys, Command> entry) {
-                            return command == entry.second;
-                        }
-                    );
-
-                    if (keys_iterator != settings.keyBindings.end()) {
-                        settings.keyBindings.erase(keys_iterator);
-                    }
-
-                    settings.keyBindings.insert(std::pair { keys, command });
-                }
-
-                settings.Save();
+                save_settings();
                 nana::API::exit_all();
+            }
+        );
+
+        btn_save->events().click(
+            [&]() {
+                save_settings();
             }
         );
 
@@ -161,6 +96,85 @@ private:
             }
         );
 
+        layout->field("saveBtn") << *btn_save;
         layout->field("buttons") << *btn_play << *btn_exit;
+    }
+
+    void save_settings()
+    {
+        nana::size main_form_size = fm_main->size();
+
+        settings.Launcher.Width = main_form_size.width;
+        settings.Launcher.Height = main_form_size.height;
+
+        settings.MaxUnits                  = tp_patches->get_max_units();
+        settings.PathFindingCycles         = tp_patches->get_pathfinding_cycles();
+        settings.ForcedMinRangeForMelees   = tp_patches->get_forced_minrange_for_melees();
+
+        settings.EnableDevMode       = tp_mods->get_enableDevMode();
+        settings.EnableMods          = tp_mods->get_enableMods();
+        settings.NoCD                = tp_patches->get_noCD();
+        settings.MeleeStuckFix       = tp_patches->get_meleeStuckFix();
+        settings.OffscreenFix        = tp_patches->get_offscreenFix();
+        settings.PauseWhenUnfocused  = tp_patches->get_pauseWhenUnfocused();
+
+        // HP Options
+
+        // My Options
+        settings.myHpOptions.showHpOption               = (ShowHpOption) tp_customization->cbb_myShowHpMode->option();
+
+        if (tp_customization->cbb_myHpBarColorMode->enabled())
+            settings.myHpOptions.hpColorOption.mode     = (HpColorMode)  tp_customization->cbb_myHpBarColorMode->option();
+
+        if (tp_customization->cbb_myHpBarColor->enabled())
+            settings.myHpOptions.hpColorOption.color    = (Color)        tp_customization->cbb_myHpBarColor->option();
+
+        // Ally Options
+        settings.allyHpOptions.showHpOption             = (ShowHpOption) tp_customization->cbb_allyShowHpMode->option();
+
+        if (tp_customization->cbb_allyHpBarColorMode->enabled())
+            settings.allyHpOptions.hpColorOption.mode   = (HpColorMode)  tp_customization->cbb_allyHpBarColorMode->option();
+
+        if (tp_customization->cbb_allyHpBarColorMode->enabled())
+            settings.allyHpOptions.hpColorOption.color  = (Color)        tp_customization->cbb_allyHpBarColor->option();
+
+        // Enemy Options
+        settings.enemyHpOptions.showHpOption            = (ShowHpOption) tp_customization->cbb_enemyShowHpMode->option();
+
+        if (tp_customization->cbb_enemyHpBarColorMode->enabled())
+            settings.enemyHpOptions.hpColorOption.mode  = (HpColorMode)  tp_customization->cbb_enemyHpBarColorMode->option();
+
+        if (tp_customization->cbb_enemyHpBarColor->enabled())
+            settings.enemyHpOptions.hpColorOption.color = (Color)        tp_customization->cbb_enemyHpBarColor->option();
+
+        // Selected Mods
+        settings.SelectedMods.clear();
+
+        std::vector<std::string> selected_mods = tp_mods->get_selected_mods();
+
+        for (std::string selected_mod : selected_mods) {
+            settings.SelectedMods.push_back(selected_mod);
+        }
+
+        std::vector<KeyBindingListItem> keyBindings = tp_keys->get_keyBindings();
+
+        for (KeyBindingListItem keyBinding : keyBindings) {
+            Command command = strToCommand(keyBinding.command);
+            Keys keys = strToKeys(keyBinding.keyBinding);
+
+            auto keys_iterator = std::find_if(settings.keyBindings.begin(), settings.keyBindings.end(),
+                [&](std::pair<Keys, Command> entry) {
+                    return command == entry.second;
+                }
+            );
+
+            if (keys_iterator != settings.keyBindings.end()) {
+                settings.keyBindings.erase(keys_iterator);
+            }
+
+            settings.keyBindings.insert(std::pair { keys, command });
+        }
+
+        settings.Save();
     }
 };
