@@ -238,7 +238,7 @@ std::shared_ptr<Game> GameWrapper::getGame()
 
 bool GameWrapper::isMe(Player* player)
 {
-    return player->playerId == 0;
+    return player == players[0]._player;
 }
 
 bool GameWrapper::isEnemy(Player* player)
@@ -246,7 +246,7 @@ bool GameWrapper::isEnemy(Player* player)
     uint8_t myTeamId = players[0].getTeamId();
     uint8_t unitPlayerTeamId = player->playerViewModel->teamId;
 
-    if (myTeamId != unitPlayerTeamId || player->playerId != 0 && unitPlayerTeamId == 4) {
+    if (myTeamId != unitPlayerTeamId || !isMe(player) && unitPlayerTeamId == 4) {
         return true;
     }
 
@@ -258,7 +258,7 @@ bool GameWrapper::isAlly(Player* player)
     uint8_t myTeamId = players[0].getTeamId();
     uint8_t unitPlayerTeamId = player->playerViewModel->teamId;
 
-    if (player->playerId != 0 && myTeamId == unitPlayerTeamId && unitPlayerTeamId != 4) { // 4 = No team
+    if (!isMe(player) && myTeamId == unitPlayerTeamId && unitPlayerTeamId != 4) { // 4 = No team
         return true;
     }
 
