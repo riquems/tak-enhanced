@@ -202,7 +202,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKEnhancedDll\TAKEnhancedDll\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\Utils\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\TAKReversed\TAKReversed\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKReversed\TAKReversed\include</AdditionalIncludeDirectories>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -212,7 +212,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced Source\patch\bin\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;..\bin\Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>nana_v142_Release_x86_Zp1.lib;Utils.lib;TAKLibrary.lib;TAKReversed.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkStatus>false</LinkStatus>
     </Link>
