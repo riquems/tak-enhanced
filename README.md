@@ -2,19 +2,11 @@
 Adds new features and bugfixes to improve TA:K Crusades Balance experience.  
 It's totally compatible with other 4.1bb versions.
 
-## How to install
+## Download & Install
 
-- Simply move the files you downloaded to your TA:K root folder (i.e. C:\Cavedog\Kingdoms).
-- These are the files needed:
-  - Kingdoms.exe
-  - TAKEnhanced.dll
-  - TAKEnhanced.hpi
+Please refer to the last release here: https://github.com/riquems/tak-enhanced/releases
 
-Use [DXWnd](http://kingdoms.catsboard.com/t1522-how-to-use-dxwnd) to improve even more your experience.  
-
-Also, GameRanger won't accept any file that is not called Kingdoms so I renamed it to Kingdoms.exe. You can overwrite or backup your own file. The real original executable is the .icd file anyway (you can rename it to .exe and run it).
-
-## Features
+## Why TA:K Enhanced?
 * New badass icon.
 
 * Command line params allowed.  
