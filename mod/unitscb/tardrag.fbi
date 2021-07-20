@@ -1,0 +1,154 @@
+[UNITINFO]
+{
+	acceleration = 0.2;
+	bankscale = 0.4;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = scale;
+	brakerate = 0.15;
+	buildcost = 29666;
+	buildtime = 8888;
+	canattack = 1;
+	canfly = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = TAR FLY ATTACK MAGIC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	cruisealt = 150;
+	damagecategory = Dragon;
+	defaultmissiontype = VTOL_Standby;
+	description = Taros;
+	experiencepoints = 300;
+	footprintx = 4;
+	footprintz = 4;
+	healtime = 9.8756;
+	hoverattack = 1;
+	hoverattackdistance = 150;
+	immunetoparalyzer = 1;
+	manarechargerate = 30;
+	maneuverleashlength = 500;
+	maxdamage = 23946;
+	maxmana = 1000;
+	maxvelocity = 9;
+	maxwaterdepth = 0;
+	moverate1 = 1;
+	moverate2 = 5;
+	name = Black Dragon;
+	objectname = TARDRAG;
+	radardistance = 2000;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = TAR;
+	sightdistance = 224;
+	soundcategory = TARDRAG;
+	soundclass = TARDRAG;
+	standingunitorder = 2;
+	stone = tardrag_stone;
+	tedclass = Taros;
+	totalallowed = 1;
+	turninplacerate = 600;
+	turnrate = 400;
+	unitname = TARDRAG;
+	unitnumber = 79;
+	upright = 1;
+	version = 1;
+	weaponswitching = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 50;
+	buttonimagedisabled = FireBreathPU;
+	buttonimagedown = FireBreathPU;
+	buttonimageselected = FireBreathSBh;
+	buttonimageup = FireBreathSB;
+	damagetype = fire;
+	emittime = 45;
+	firestarter = 1;
+	hweffect = fire;
+	name = Fire Breath;
+	range = 625;
+	reloadtime = 2.5;
+	soundhitclass = fire;
+	subtype = fire;
+	type = Line of Sight;
+	weaponvelocity = 230;
+
+	[DAMAGE]
+	{
+		default = 796;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 2048;
+	areaofeffect = 100;
+	buttonimagedisabled = FireBallPU;
+	buttonimagedown = FireBallPU;
+	buttonimageselected = FireBallSBh;
+	buttonimageup = FireBallSB;
+	explosionclass = fireball explosion;
+	firestarter = 1;
+	lightmap = small;
+	manapershot = 300;
+	name = Fire Ball;
+	range = 675;
+	reloadtime = 2.5;
+	shadowart = weaponshad01;
+	shadowgaf = shadows;
+	soundhitclass = fire;
+	turnrate = 180;
+	type = Guided;
+	weaponart = fireballB;
+	weaponvelocity = 350;
+
+	[DAMAGE]
+	{
+		default = 1296;
+		dragon = 2;
+	}
+}
+
+[WEAPON3]
+{
+	aimtolerance = 2048;
+	areaofeffect = 420;
+	builduptime = 0.5;
+	buttonimagedisabled = FireRingTPU;
+	buttonimagedown = FireRingTPU;
+	buttonimageselected = FireRingTSBh;
+	buttonimageup = FireRingTSB;
+	decaytime = 1;
+	edgeeffectiveness = 1;
+	manapershot = 1300;
+	name = Ring of Fire;
+	nimbus = 1;
+	radiusart0 = ring_fx_whiteA;
+	radiusart1 = ring_fx_whiteB;
+	radiusart2 = ring_fx_whiteC;
+	range = 450;
+	reloadtime = 5;
+	ringcount = 3;
+	ringdelay = 0.45;
+	ringduration = 1.2;
+	showeffect = 0;
+	soundhitclass = fire;
+	spritecount = 25;
+	type = Remote Effect;
+	weaponvelocity = 1000;
+
+	[DAMAGE]
+	{
+		default = 2025;
+	}
+}

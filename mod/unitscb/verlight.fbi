@@ -1,0 +1,59 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 10000;
+	buildcost = 3616;
+	buildtime = 420;
+	canattack = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = VER MAGIC ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = VERLIGHT_dead;
+	damagecategory = fort;
+	defaultmissiontype = guard_nomove;
+	description = Veruna;
+	experiencepoints = 32;
+	footprintx = 3;
+	footprintz = 3;
+	healtime = 0.875;
+	immunetoparalyzer = 1;
+	maxdamage = 10302;
+	maxslope = 20;
+	maxwaterdepth = 20;
+	name = Lighthouse;
+	objectname = VERLIGHT;
+	radardistance = 1280;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 650;
+	soundcategory = VERLIGHT;
+	soundclass = VERLIGHT;
+	tedclass = Veruna;
+	unitname = VERLIGHT;
+	unitnumber = 35;
+	version = 1;
+	yardmap = o;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1800;
+	damagetype = paralyzer;
+	model = VerLight2;
+	name = Flame Beam;
+	range = 480;
+	reloadtime = 2.4;
+	soundhitclass = fire;
+	type = Ballistic;
+	waterexplosionclass = small water explosion;
+	weaponvelocity = 695;
+
+	[DAMAGE]
+	{
+		default = 15; // ~0.5s
+	}
+}

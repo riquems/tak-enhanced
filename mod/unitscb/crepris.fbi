@@ -1,0 +1,66 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 8000;
+	buildcost = 8765;
+	buildtime = 700;
+	canattack = 1;
+	canguard = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = CRE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = CREPRIS_dead;
+	damagecategory = mechanical;
+	defaultmissiontype = guard_nomove;
+	description = Creon;
+	experiencepoints = 55;
+	footprintx = 3;
+	footprintz = 3;
+	healtime = 1.45;
+	immunetoparalyzer = 1;
+	maxdamage = 3830;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	name = Prismatic Mirror;
+	objectname = CREPRIS;
+	radardistance = 800;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = CRE;
+	sightdistance = 220;
+	soundcategory = CREPRIS;
+	soundclass = CREPRIS;
+	tedclass = Creon;
+	unitname = CREPRIS;
+	unitnumber = 35;
+	version = 1;
+	yardmap = o;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 2000;
+	emittime = 80;
+	hweffect = creon lightbeam;
+	innercolor = 255 255 150;
+	middlecolor = 230 230 145;
+	outercolor = 200 200 140;
+	lightmap = large;
+	minrange = 96;
+	name = Lightbeam;
+	range = 1200;
+	reloadtime = 3.0;
+	soundhitclass = crelbeam;
+	subtype = lightning;
+	type = Line of Sight;
+	weaponvelocity = 2000;
+
+	[DAMAGE]
+	{
+		default = 1052;
+		monarch = 0.25;
+	}
+}

@@ -1,0 +1,153 @@
+[UNITINFO]
+{
+	acceleration = 0.2;
+	bankscale = 0.4;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = scale;
+	brakerate = 0.15;
+	buildcost = 34287;
+	buildtime = 9654;
+	canattack = 1;
+	canfly = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbefrozen = 1;
+	cantbecaptured = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = VER FLY MAGIC ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	cruisealt = 150;
+	damagecategory = Dragon;
+	defaultmissiontype = VTOL_standby;
+	description = Veruna;
+	experiencepoints = 300;
+	footprintx = 4;
+	footprintz = 4;
+	healtime = 10.7267;
+	hoverattack = 1;
+	hoverattackdistance = 150;
+	immunetoparalyzer = 1;
+	manarechargerate = 30;
+	maneuverleashlength = 500;
+	maxdamage = 23988;
+	maxmana = 1000;
+	maxvelocity = 8;
+	maxwaterdepth = 0;
+	moverate1 = 1.5;
+	moverate2 = 7.5;
+	name = Sea Dragon;
+	objectname = VERDRAG;
+	radardistance = 2000;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 210;
+	soundcategory = VERDRAG;
+	soundclass = VERDRAG;
+	standingunitorder = 2;
+	stone = verdrag_stone;
+	tedclass = Veruna;
+	totalallowed = 1;
+	turninplacerate = 600;
+	turnrate = 500;
+	unitname = VERDRAG;
+	unitnumber = 126;
+	upright = 1;
+	version = 1;
+	weaponswitching = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 40;
+	buttonimagedisabled = FireBreathPU;
+	buttonimagedown = FireBreathPU;
+	buttonimageselected = FireBreathSBh;
+	buttonimageup = FireBreathSB;
+	damagetype = fire;
+	emittime = 55;
+	firestarter = 1;
+	hweffect = fire;
+	name = Fire Breath;
+	range = 525;
+	reloadtime = 3;
+	soundhitclass = fire;
+	subtype = fire;
+	type = Line of Sight;
+	weaponvelocity = 230;
+
+	[DAMAGE]
+	{
+		default = 795;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 2048;
+	areaofeffect = 100;
+	buttonimagedisabled = WaterBallPU;
+	buttonimagedown = WaterBallPU;
+	buttonimageselected = WaterBallSBh;
+	buttonimageup = WaterBallSB;
+	explosionclass = TsunamiExp;
+	lightmap = large;
+	manapershot = 300;
+	name = Water Ball;
+	range = 800;
+	reloadtime = 2.5;
+	shadowart = weaponshad01;
+	shadowgaf = shadows;
+	soundhit = arrow08;
+	turnrate = 180;
+	type = Guided;
+	weaponart = TsunamiSprite;
+	weaponvelocity = 375;
+
+	[DAMAGE]
+	{
+		default = 1295;
+		dragon = 2;
+	}
+}
+
+[WEAPON3]
+{
+	aimtolerance = 1024;
+	areaofeffect = 220;
+	builduptime = 0.5;
+	buttonimagedisabled = WaterBurstTPU;
+	buttonimagedown = WaterBurstTPU;
+	buttonimageselected = WaterBurstTSBh;
+	buttonimageup = WaterBurstTSB;
+	decaytime = 1;
+	edgeeffectiveness = 1;
+	manapershot = 1300;
+	name = Tsunami;
+	nimbus = 1;
+	radiusart0 = TsunamiExplode;
+	radiusart1 = TsunamiExplode;
+	radiusart2 = TsunamiExplode;
+	range = 450;
+	reloadtime = 5;
+	ringcount = 3;
+	ringdelay = 0.45;
+	ringduration = 1.2;
+	soundhit = arrow08;
+	spritecount = 25;
+	turnrate = 250;
+	type = Remote Effect;
+	weaponvelocity = 1000;
+
+	[DAMAGE]
+	{
+		default = 3150;
+	}
+}

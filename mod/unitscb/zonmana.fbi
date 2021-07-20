@@ -1,0 +1,38 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildcost = 3550;
+	buildtime = 501;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = ZON;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	damagecategory = lodestone;
+	description = Zhon;
+	experiencepoints = 30;
+	footprintx = 3;
+	footprintz = 3;
+	healtime = 2.175;
+	immunetoparalyzer = 1;
+	maxdamage = 25092;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	mogriumincome = 20;
+	mogriumstorage = 2000;
+	name = Divine Lodestone;
+	objectname = ZONMANA;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ZON;
+	sightdistance = 125;
+	soundcategory = ZONMANA;
+	soundclass = ZONMANA;
+	tedclass = Zhon;
+	unitname = ZONMANA;
+	unitnumber = 17;
+	unitstandorders = 0;
+	version = 1;
+	wind = 1;
+	yardmap = S;
+}

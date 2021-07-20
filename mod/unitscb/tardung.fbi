@@ -1,0 +1,47 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 8192;
+	buildcost = 5687;
+	builddistance = 500;
+	builder = 1;
+	buildtime = 1411;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = TAR FACTORY;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = tardung_dead;
+	corpseadjustz = 5;
+	damagecategory = factory;
+	description = Taros;
+	experiencepoints = 200;
+	footprintx = 8;
+	footprintz = 18;
+	healtime = 2.939583333;
+	immunetoparalyzer = 1;
+	maxdamage = 23020;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	mogriumincome = 1;
+	mogriumstorage = 100;
+	name = Abyss;
+	objectname = TARDUNG;
+	radardistance = 750;
+	shootme = 1;
+	side = TAR;
+	sightdistance = 250;
+	soundcategory = TARDUNG;
+	soundclass = TARDUNG;
+	tedclass = Taros;
+	unitname = TARDUNG;
+	unitnumber = 81;
+	unitstandorders = 0;
+	version = 1;
+	wind = 1;
+	workertime = 10;
+	yardmap = ........ ........ ........ ........ ........ oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo cccccccc cccccccc cccccccc;
+}

@@ -1,0 +1,42 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 0;
+	buildcost = 399;
+	buildtime = 169;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = VER;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = verngate_dead;
+	damagecategory = fort;
+	description = Veruna;
+	experiencepoints = 5;
+	footprintx = 14;
+	footprintz = 4;
+	gate = 1;
+	healtime = 0.3520833;
+	immunetoparalyzer = 1;
+	maxdamage = 17000;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	name = Gate;
+	objectname = VERNGATE;
+	onoffable = 1;
+	radardistance = 500;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 300;
+	soundcategory = VERNGATE;
+	soundclass = VERNGATE;
+	tedclass = Veruna;
+	unitname = VERNGATE;
+	unitnumber = 146;
+	unitstandorders = 0;
+	version = 1;
+	wind = 1;
+	yardmap = ooooccccccoooo ooooccccccoooo ooooccccccoooo ooooccccccoooo;
+}
