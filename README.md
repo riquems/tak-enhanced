@@ -1,26 +1,36 @@
-<h1 align="center"><b>TA:<img src="https://i.imgur.com/xhbJwvH.png" width="32" height="32" style="transform: translateY(8px);"/>Enhanced</b></h1>
+<h1 align="center"><b>TA:K Enhanced</b></h1>
 <p align="center">Adds new features and bugfixes to improve your TA:K experience.<br>
 It's totally compatible with other 4.1bb versions.</p>
-<br/>
+
 <h2 align="center"><b>Download & Install</b></h2>
 <p align="center">Please refer to the last release here: <a href="https://github.com/riquems/tak-enhanced/releases">https://github.com/riquems/tak-enhanced/releases</a></p>
-<br/>
+
 <h2 align="center"><b>Why TA:K Enhanced?</b></h1>
 <br/>
 <div align="center"> 
-<img src="https://i.imgur.com/XDNPTey.png"><br/>
+<img src="https://i.imgur.com/lRk32z3.png"><br/>
 <b>Colored HP Bars</b></div>
 <br/>
 
 <div align="center">
-<video src="https://media.giphy.com/media/2t9pvYdRaS8Wq55chI/giphy.mp4" width="40%" height="40%" autoplay loop></video>&nbsp<video src="https://media.giphy.com/media/2t9pvYdRaS8Wq55chI/giphy.mp4" width="40%" height="40%" autoplay loop></video><br>
+<img src="https://media.giphy.com/media/W0OKzkuUZCtD1PwA8F/giphy.gif" width="40%" height="40%"/>&nbsp<img src="https://media.giphy.com/media/ZNNcMNVkjRFbKKlmJl/giphy.gif" width="40%" height="40%"/><br>
 Melee Stuck Fix
 </div>
 <br/>
+
+<div align="center"><img src="https://i.imgur.com/r3s734w.png" /><br/>
+Many HP Bar Options... You can choose to see Enemy HP!</div>
+<br/>
+
+<div align="center"><img src="https://i.imgur.com/GXiXsWq.png"/><br>
+Mod Loader</div>
+<br/>
+
 <div align="center"> 
 <img src="https://i.imgur.com/xhbJwvH.png" width="64" height="64"><br/>
 New badass icon</div>
 <br/>
+
 <p align="center">And much more:</p>
 
 * Allows command line params like -testmultiscript to test scripts in singleplayer.  
@@ -30,7 +40,6 @@ New badass icon</div>
 * Increases max unit limit from 500 to 5000.
 
 * PathFinding improved (raised from 12,000 to 100,000 path cycles).  
-  [PathFinding Study (Not available yet)]()
 
 * Game doesn't pause anymore when minimizing during SinglePlayer games.
 
@@ -346,3 +355,4 @@ lifsaber.fbi
 Paladin for many findings and ideas. Most of his contributions can be found here: https://kingdoms.catsboard.com/t1445-patch-bugs-balance-improvements  
 WhiteHammer for ExtremeAI  
 WL- Albino for tests and time.  
+Kronos for testing and ideas.
