@@ -55,6 +55,7 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedDll\source\Settings.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Launcher\Widgets\profile_picker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAKEnhancedDll\source\Changes.h">
@@ -112,9 +113,6 @@
       <Filter>Sources\Changes</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\nana_common.h">
       <Filter>Sources\Launcher</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_keys.h">
@@ -219,5 +217,9 @@
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_customization.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\LauncherSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\ModLoader.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\Widgets\profile_picker.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\nana_common.h">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

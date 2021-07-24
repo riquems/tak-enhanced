@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Context.h"
-#include "nana_common.h"
+#include "TAKEnhancedDll/Launcher/nana_common.h"
 #include "tab_page_mods.h"
 #include "tab_page_patches.h"
 #include "tab_page_keys.h"

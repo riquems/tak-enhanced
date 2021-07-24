@@ -1,5 +1,5 @@
 #pragma once
-#include "nana_common.h"
+#include "TAKEnhancedDll/Launcher/nana_common.h"
 #include "Utils/defs.h"
 #include "Utils/HelperFunctions.hpp"
 

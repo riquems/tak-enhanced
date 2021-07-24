@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TAKEnhancedDll\source\Launcher\Widgets\profile_picker.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedDll.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\ConfigFile.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\CommandsFunctions.cpp" />
@@ -63,11 +64,12 @@
     <ClInclude Include="TAKEnhancedDll\source\Hooks\UpdateGuiHook.h" />
     <ClInclude Include="TAKEnhancedDll\source\Hooks\WeaponsHook.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\nana_common.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\nana_common.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_customization.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_keys.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_mods.h" />
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_patches.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\Widgets\profile_picker.hpp" />
     <ClInclude Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.h" />
     <ClInclude Include="TAKEnhancedDll\source\Managers\WindowManager.h" />
     <ClInclude Include="TAKEnhancedDll\source\MemoryHandler.h" />
