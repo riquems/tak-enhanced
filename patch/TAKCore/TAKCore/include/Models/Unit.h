@@ -35,14 +35,14 @@ public:                                  // offset
     char padding7[2];                    // 0x07C
     uint16_t direction;                  // 0x07E
     char padding8[4];                    // 0x080
-    Player* player;                      // 0x084
+    Player* fakePlayer;                  // 0x084
     char padding9[4];                    // 0x088
     MapPosition xMapPosition2;           // 0x08C
     char padding10[4];                   // 0x090
     MapPosition zMapPosition2;           // 0x094
     char padding11[28];                  // 0x09B
     UnitInfo* unitInfo;                  // 0x0B4
-    Player* player2;                     // 0x0B8
+    Player* player;                      // 0x0B8
     TAobjectScript* cobScript;           // 0x0BC
     UnitRenderer* renderer;              // 0x0C0
     char padding12[20];                  // 0x0C4
