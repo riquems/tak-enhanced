@@ -124,21 +124,8 @@ auto singleShotKeysStillBeingHold = [&]()->bool {
     return false;
 };
 
-
-
-void startTAKEnhancedService()
+void guaranteeFocus()
 {
-    int i = 0;
-
-    Sleep(1000);
-
-    /*lpDDSurface = &(IDirectDrawSurface*) ;
-
-    uintptr_t* DirectDrawVTable = (uintptr_t*) 0x5066A2A0;
-
-
-    HookVTable(&DirectDrawVTable, 5, (uintptr_t) &newBlt, oldBlt);*/
-
     HWND nextWindow = FindWindowA(NULL, "Kingdoms");
     HWND takWindow = nullptr;
 
@@ -156,6 +143,22 @@ void startTAKEnhancedService()
 
     SwitchToThisWindow(takWindow, true);
     SetWindowPos(takWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+}
+
+void startTAKEnhancedService()
+{
+    int i = 0;
+
+    Sleep(1000);
+
+    /*lpDDSurface = &(IDirectDrawSurface*) ;
+
+    uintptr_t* DirectDrawVTable = (uintptr_t*) 0x5066A2A0;
+
+
+    HookVTable(&DirectDrawVTable, 5, (uintptr_t) &newBlt, oldBlt);*/
+
+    guaranteeFocus();
 
     std::vector<int> specialKeys = { VK_CTRL };
 
