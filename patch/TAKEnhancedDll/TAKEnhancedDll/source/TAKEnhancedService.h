@@ -3,7 +3,6 @@
 #include "./Changes/RandomRace.h"
 #include "./Changes/OffscreenFix.h"
 #include "./Changes/SearchBox.h"
-#include "./Changes/BuildingsShortcuts.h"
 #include "TAKEnhancedDll/Models/Command.hpp"
 #include "CommandsFunctions.h"
 

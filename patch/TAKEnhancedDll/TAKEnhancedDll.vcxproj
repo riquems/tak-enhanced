@@ -37,12 +37,11 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\LauncherSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\PlayerOptions.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes.h" />
-    <ClInclude Include="TAKEnhancedDll\source\Changes\BuildingsShortcuts.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\HelperFeatures.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\HumorInteractions.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\MaxUnits.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\MeleeStuckFix.h" />
-    <ClInclude Include="TAKEnhancedDll\source\Changes\NewHpiVerification.h" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ModLoader.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\NoCD.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\NoPauseWhenUnfocused.h" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\OffscreenFix.h" />
