@@ -1,11 +1,11 @@
 #pragma once
 
-#include "MemoryHandler.h"
+#include "../MemoryHandler.h"
 #include "GlobalPointers/GlobalPointers.h"
-#include "GameFunctions.h"
+#include "../GameFunctions.h"
 #include "../Wrappers/Info.h"
 
-extern "C" __declspec(dllexport) bool __stdcall HpiVerificationExtension()
+extern "C" __declspec(dllexport) bool __stdcall HpiVerificationHook()
 {
     HapiFile* hapiFile;
 
@@ -33,10 +33,12 @@ extern "C" __declspec(dllexport) bool __stdcall HpiVerificationExtension()
     return false;
 }
 
-void applyNewHpiVerificationPatch()
+void applyModLoader()
 {
+    MemoryHandler::fillWithNOPs(Memory(0x08CD81, 0x08CD83));
+
     ShellCode shellcode("8BCE", Memory(0x08CD83, 0x08CD85)); // MOV ECX, ESI
     MemoryHandler::writeShellCode(shellcode);
 
-    MemoryHandler::insertFunctionCall((DWORD) &HpiVerificationExtension, 0x08CD85);
+    MemoryHandler::insertFunctionCall((DWORD) &HpiVerificationHook, 0x08CD85);
 }

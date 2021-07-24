@@ -7,7 +7,7 @@
 #include "./Changes/MeleeStuckFix.h"
 #include "./Changes/MaxUnits.h"
 #include "./Changes/RandomRace.h"
-#include "./Changes/NewHpiVerification.h"
+#include "./Changes/ModLoader.h"
 #include "./Changes/ShowEveryoneHealthBars.h"
 #include "Hooks/UpdateGuiHook.h"
 #include "Hooks/ReadSideDataHook.h"
@@ -15,7 +15,7 @@
 #include "Hooks/ShowHpHook.h"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
 
-extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.0";
+extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v0.2.0";
 
 void applyTakEnhancedVersion()
 {
@@ -37,6 +37,8 @@ void applyChanges()
     showEveryoneHealthBars();
     installShowHpHook();
 
+    applyModLoader();
+
     if (settings.NoCD) {
         applyNoCD();
     }
@@ -53,7 +55,6 @@ void applyChanges()
     applyUpdateGuiHook();
     applyReadSideDataHooks();
     applyLoadingScreenHooks();
-    applyNewHpiVerificationPatch();
     // ProcessCodesExtension
 
     // Option to choose random race

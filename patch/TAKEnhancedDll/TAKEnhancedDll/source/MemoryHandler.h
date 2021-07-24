@@ -99,7 +99,8 @@ namespace MemoryHandler
         POP_EBX = 0x5B,
         POP_EBP = 0x5D,
         POP_ESI = 0x5E,
-        POP_EDI = 0x5F
+        POP_EDI = 0x5F,
+        NOP = 0x90
     };
 
     template <typename T>

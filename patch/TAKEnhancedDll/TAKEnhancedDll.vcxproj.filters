@@ -75,9 +75,6 @@
     <ClInclude Include="TAKEnhancedDll\source\TAKEnhancedService.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\BuildingsShortcuts.h">
-      <Filter>Sources\Changes</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Changes\HelperFeatures.h">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
@@ -88,9 +85,6 @@
       <Filter>Sources\Changes</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Changes\MeleeStuckFix.h">
-      <Filter>Sources\Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\NewHpiVerification.h">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Changes\NoCD.h">
@@ -224,5 +218,6 @@
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_customization.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\LauncherSettings.hpp" />
+    <ClInclude Include="TAKEnhancedDll\source\Changes\ModLoader.h" />
   </ItemGroup>
 </Project>
