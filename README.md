@@ -18,14 +18,6 @@ Melee Stuck Fix
 </div>
 <br/>
 
-<div align="center"><img src="https://i.imgur.com/r3s734w.png" /><br/>
-Many HP Bar Options... You can choose to see Enemy HP!</div>
-<br/>
-
-<div align="center"><img src="https://i.imgur.com/GXiXsWq.png"/><br>
-Mod Loader</div>
-<br/>
-
 <div align="center"> 
 <img src="https://i.imgur.com/xhbJwvH.png" width="64" height="64"><br/>
 New badass icon</div>
@@ -55,6 +47,17 @@ New badass icon</div>
 - Knights aren't freezeable.
 - Fire Demon's attack delay against moving targets is gone.
 - Acolyte and Weather Witch 1st and 2nd weapon have been swapped.
+
+
+<h2 align="center"><b>Introduction to the Launcher</b></h2>
+
+<div align="center"><img src="https://i.imgur.com/GXiXsWq.png"/><br>
+Mod Loader</div>
+<br/>
+
+<div align="center"><img src="https://i.imgur.com/r3s734w.png" /><br/>
+Many HP Bar Options... You can choose to see Enemy HP!</div>
+<br/>
 
 ## Detailed Log
 
