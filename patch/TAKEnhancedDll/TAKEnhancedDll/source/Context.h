@@ -42,7 +42,11 @@ void initializeContext()
     initializeCommands();
     settings.LoadSettings("TAKEnhanced.cfg");
 
-    logger.initialize("TAKEnhancedLog.txt", "a");
+#ifdef DEBUG_NANA
+    logger.initialize("TAKEnhancedLog.txt", "a", LogLevel::DEBUG_LEVEL);
+#else
+    logger.initialize("TAKEnhancedLog.txt", "a", LogLevel::INFORMATION_LEVEL);
+#endif
 
     logger.context("DLL");
 

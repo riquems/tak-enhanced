@@ -79,5 +79,4 @@ void applyChanges()
     // Why watching in multiplayer causes so much lag
     
     logger.log("\nEndded applying changes. Enjoy!");
-    logger.end();
 }

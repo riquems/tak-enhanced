@@ -261,4 +261,6 @@ void startTAKEnhancedService()
 
         Sleep(10);
     }
+
+    logger.end();
 }

@@ -112,6 +112,13 @@ private:
         settings.ForcedMinRangeForMelees   = tp_patches->get_forced_minrange_for_melees();
 
         settings.EnableDevMode       = tp_mods->get_enableDevMode();
+        if (settings.EnableDevMode) {
+            logger.MinimumLevel = DEBUG_LEVEL;
+        }
+        else {
+            logger.MinimumLevel = INFORMATION_LEVEL;
+        }
+
         settings.EnableMods          = tp_mods->get_enableMods();
         settings.NoCD                = tp_patches->get_noCD();
         settings.MeleeStuckFix       = tp_patches->get_meleeStuckFix();
