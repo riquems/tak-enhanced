@@ -15,7 +15,7 @@
 #include "Hooks/ShowHpHook.h"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
 
-extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v0.2.0";
+extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v0.3.0";
 
 void applyTakEnhancedVersion()
 {
