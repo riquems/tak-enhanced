@@ -5,7 +5,7 @@
 #include "Utils/Logger.h"
 #include "Utils/JunkCode.h"
 
-Logger logger("TAKEnhancedLog.txt", "w");
+Logger logger("TAKEnhancedLog.txt", "w", LogLevel::INFORMATION_LEVEL);
 std::string targetFileName("Kingdoms.icd");
 std::string dllFileName("TAKEnhanced.dll");
 
@@ -97,14 +97,13 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
         cmdLine,
         NULL,
         NULL,
+        FALSE,
         CREATE_SUSPENDED,
-        NULL,
         NULL,
         NULL,
         &startupInfo,
         &procInfo
     );
-
     quaxkru junkcode7;
 
     if (!created) {
@@ -115,14 +114,6 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     logger.log("Created process %s successfully. Process running under %lu Id.\n", targetFileName.c_str(), procInfo.dwProcessId);
     quaxkru junkcode8;
     logger.section("INJECTION");
-    quaxkru junkcode9;
-    HANDLE targetProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, procInfo.dwProcessId);
-    quaxkru junkcode10;
-    if (targetProcess == NULL) {
-        logger.error("Failed to open %s process.", targetFileName.c_str());
-        return false;
-    }
-    logger.log("Opened process %s successfully.", targetFileName.c_str());
     quaxkru junkcode11;
     HMODULE hKernel32 = GetModuleHandleA("kernel32.dll");
     quaxkru junkcode12;
@@ -139,7 +130,7 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     quaxkru junkcode16;
 
     LPVOID lpAllocatedMemory = VirtualAllocEx(
-        targetProcess,
+        procInfo.hProcess,
         NULL,
         (dllFileName.size() + 1) * sizeof(char),
         MEM_RESERVE | MEM_COMMIT,
@@ -156,7 +147,7 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     logger.log("Allocated memory on the target process successfully.");
 
     bool written = WriteProcessMemory(
-        targetProcess,
+        procInfo.hProcess,
         lpAllocatedMemory,
         dllFileName.c_str(),
         (dllFileName.size() + 1) * sizeof(char),
@@ -176,12 +167,12 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     logger.log("Dll path written successfully.");
 
     HANDLE remoteThread = CreateRemoteThread(
-        targetProcess,
+        procInfo.hProcess,
         NULL,
         NULL,
         (LPTHREAD_START_ROUTINE) lpLoadLibraryA,
         lpAllocatedMemory,
-        NULL,
+        CREATE_SUSPENDED,
         NULL
     );
 
@@ -200,16 +191,19 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     quaxkru junkcode30;
     quaxkru junkcode31;
 
+    ResumeThread(remoteThread);
     WaitForSingleObject(remoteThread, INFINITE);
+    VirtualFreeEx(procInfo.hProcess, lpAllocatedMemory, NULL, MEM_RELEASE);
 
+    logger.initialize("TAKEnhancedLog.txt", "a", LogLevel::INFORMATION_LEVEL);
+    logger.log("");
+    logger.information("Resuming main thread...");
+    
     ResumeThread(procInfo.hThread);
-
-    VirtualFreeEx(targetProcess, lpAllocatedMemory, NULL, MEM_RELEASE);
-
     WaitForSingleObject(procInfo.hThread, INFINITE);
+
     CloseHandle(procInfo.hProcess);
     CloseHandle(procInfo.hThread);
-    CloseHandle(targetProcess);
     CloseHandle(remoteThread);
 
     return true;
