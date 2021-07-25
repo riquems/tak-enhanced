@@ -8,6 +8,7 @@ public:
     std::unique_ptr<nana::place> layout;
 
     // Hp Bar Options
+    std::shared_ptr<nana::checkbox> cb_enableHpBarOptions;
     std::shared_ptr<nana::label> lbl_hpBarOptions;
     std::shared_ptr<nana::label> lbl_myHpBarOptions;
     std::shared_ptr<nana::label> lbl_allyHpBarOptions;
@@ -32,7 +33,8 @@ public:
     void initialize_hp_bar_options()
     {
         // Hp Bar Options Group Box
-        lbl_hpBarOptions = std::make_shared<nana::label>(*this, nana::rectangle(25, 13, 75, 30));
+        cb_enableHpBarOptions = std::make_shared<nana::checkbox>(*this, nana::rectangle(8, 26, 15, 15));
+        lbl_hpBarOptions = std::make_shared<nana::label>(*this, nana::rectangle(30, 18, 75, 30));
         lbl_hpBarOptions->caption("<bold>Hp Bar Options</>");
         lbl_hpBarOptions->format(true);
 
@@ -46,6 +48,7 @@ public:
         lbl_hpBarColorMode      = std::make_shared<nana::label>(*this, "HP Color Mode");
         lbl_hpBarColor          = std::make_shared<nana::label>(*this, "Color");
 
+        cb_enableHpBarOptions->bgcolor(default_bgcolor);
         lbl_hpBarOptions->bgcolor(default_bgcolor);
         lbl_myHpBarOptions->bgcolor(default_bgcolor);
         lbl_allyHpBarOptions->bgcolor(default_bgcolor);
@@ -54,6 +57,13 @@ public:
         lbl_showHpMode->bgcolor(default_bgcolor);
         lbl_hpBarColorMode->bgcolor(default_bgcolor);
         lbl_hpBarColor->bgcolor(default_bgcolor);
+
+        if (settings.EnableHpOptions) {
+            cb_enableHpBarOptions->check(true);
+        }
+        else {
+            cb_enableHpBarOptions->check(false);
+        }
 
         // Checkboxes
         cbb_myShowHpMode        = std::make_shared<nana::combox>(*this);
@@ -134,6 +144,24 @@ public:
             }
         );
 
+        if (cb_enableHpBarOptions->checked()) {
+            on_cb_enableHpBarOptions_checked();
+        }
+        else {
+            disableHpBarOptions();
+        }
+
+        cb_enableHpBarOptions->events().checked(
+            [&](nana::arg_checkbox args) {
+                if (args.widget->checked()) {
+                    on_cb_enableHpBarOptions_checked();
+                }
+                else {
+                    disableHpBarOptions();
+                }
+            }
+        );
+
         layout->field("leftLabels") << *lbl_myHpBarOptions << *lbl_allyHpBarOptions << *lbl_enemyHpBarOptions;
         layout->field("topLabels") << *lbl_showHpMode << *lbl_hpBarColorMode << *lbl_hpBarColor;
 
@@ -193,6 +221,44 @@ public:
         {
             combox->push_back(entry.second);
         }
+    }
+
+    void on_cb_enableHpBarOptions_checked()
+    {
+        enableHpBarOptions();
+
+        update_hpBarColorMode_combox(cbb_myShowHpMode, cbb_myHpBarColorMode);
+        update_hpBarColorMode_combox(cbb_allyShowHpMode, cbb_allyHpBarColorMode);
+        update_hpBarColorMode_combox(cbb_enemyShowHpMode, cbb_enemyHpBarColorMode);
+        update_hpBarColor_combox(cbb_myHpBarColorMode, cbb_myHpBarColor);
+        update_hpBarColor_combox(cbb_allyHpBarColorMode, cbb_allyHpBarColor);
+        update_hpBarColor_combox(cbb_enemyHpBarColorMode, cbb_enemyHpBarColor);
+    }
+
+    void enableHpBarOptions()
+    {
+        cbb_myShowHpMode->enabled(true);
+        cbb_myHpBarColorMode->enabled(true);
+        cbb_myHpBarColor->enabled(true);
+        cbb_allyShowHpMode->enabled(true);
+        cbb_allyHpBarColorMode->enabled(true);
+        cbb_allyHpBarColor->enabled(true);
+        cbb_enemyShowHpMode->enabled(true);
+        cbb_enemyHpBarColorMode->enabled(true);
+        cbb_enemyHpBarColor->enabled(true);
+    }
+
+    void disableHpBarOptions()
+    {
+        cbb_myShowHpMode->enabled(false);
+        cbb_myHpBarColorMode->enabled(false);
+        cbb_myHpBarColor->enabled(false);
+        cbb_allyShowHpMode->enabled(false);
+        cbb_allyHpBarColorMode->enabled(false);
+        cbb_allyHpBarColor->enabled(false);
+        cbb_enemyShowHpMode->enabled(false);
+        cbb_enemyHpBarColorMode->enabled(false);
+        cbb_enemyHpBarColor->enabled(false);
     }
 
     tab_page_customization(nana::window parent) : nana::panel<false>(parent)

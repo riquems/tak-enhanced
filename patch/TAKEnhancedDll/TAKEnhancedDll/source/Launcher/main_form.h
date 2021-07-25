@@ -126,6 +126,7 @@ private:
         settings.PauseWhenUnfocused  = tp_patches->get_pauseWhenUnfocused();
 
         // HP Options
+        settings.EnableHpOptions = tp_customization->cb_enableHpBarOptions->checked();
 
         // My Options
         settings.myHpOptions.showHpOption               = (ShowHpOption) tp_customization->cbb_myShowHpMode->option();

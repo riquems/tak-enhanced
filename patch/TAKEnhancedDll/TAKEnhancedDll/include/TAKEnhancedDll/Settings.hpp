@@ -39,6 +39,7 @@ public:
     HpOptions allyHpOptions  = { SHOW_ONLY_IF_DAMAGED, HpColorOptions { MATCH_PLAYER_COLOR, LIGHT_BLUE } };
     HpOptions enemyHpOptions = { SHOW_ONLY_IF_DAMAGED, HpColorOptions { MATCH_PLAYER_COLOR, RED } };
 
+    bool EnableHpOptions = true;
     bool MeleeStuckFix = false;
 
     std::vector<std::string> ShowHpOptions;
@@ -68,7 +69,8 @@ public:
         std::pair("NoCD"                   , &NoCD),
         std::pair("PauseWhenUnfocused"     , &PauseWhenUnfocused),
         std::pair("OffscreenFix"           , &OffscreenFix),
-        std::pair("MeleeStuckFix"          , &MeleeStuckFix)
+        std::pair("MeleeStuckFix"          , &MeleeStuckFix),
+        std::pair("EnableHpOptions"        , &EnableHpOptions)
     };
 
     std::string sectionBeingScanned;

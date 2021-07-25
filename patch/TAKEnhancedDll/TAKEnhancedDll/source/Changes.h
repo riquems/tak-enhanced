@@ -34,8 +34,10 @@ void applyChanges()
     uint pathFindingCycles = settings.PathFindingCycles;
     applyPathfindingFix(pathFindingCycles);
 
-    showEveryoneHealthBars();
-    installShowHpHook();
+    if (settings.EnableHpOptions) {
+        showEveryoneHealthBars();
+        installShowHpHook();
+    }
 
     applyModLoader();
 

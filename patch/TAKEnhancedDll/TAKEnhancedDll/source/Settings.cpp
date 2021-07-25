@@ -215,6 +215,11 @@ void Settings::Save()
 
         cfgFile << std::endl;
 
+        cfgFile.writeSection("HpOptions");
+        cfgFile.writeProperty("EnableHpOptions", EnableHpOptions);
+
+        cfgFile << std::endl;
+
         cfgFile.writeSection("MyHpOptions");
         cfgFile.writeProperty("Mode", showHpOptionToString[myHpOptions.showHpOption]);
         cfgFile.writeProperty("HpColorMode", hpColorModeToString[myHpOptions.hpColorOption.mode]);
