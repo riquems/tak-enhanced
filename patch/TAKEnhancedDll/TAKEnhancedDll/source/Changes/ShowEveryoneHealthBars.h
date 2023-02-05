@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MemoryHandler.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 
 void showEveryoneHealthBars()
 {

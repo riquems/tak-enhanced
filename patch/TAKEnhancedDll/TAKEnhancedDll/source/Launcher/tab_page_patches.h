@@ -1,8 +1,10 @@
 #pragma once
-#include "TAKEnhancedDll/Launcher/nana_common.h"
+#include "TAKEnhancedDll/Launcher/nana_common.hpp"
 
 class tab_page_patches : public nana::panel<false>
 {
+    std::shared_ptr<GameConfig> gameConfig;
+
 public:
     std::unique_ptr<nana::place> layout;
 
@@ -32,23 +34,6 @@ public:
         cb_noCD->bgcolor(default_bgcolor);
         cb_pauseWhenUnfocused->bgcolor(default_bgcolor);
         cb_offscreenFix->bgcolor(default_bgcolor);
-
-        if (settings.NoCD) {
-            cb_noCD->check(true);
-        }
-
-        if (settings.PauseWhenUnfocused) {
-            cb_pauseWhenUnfocused->check(true);
-        }
-
-        if (settings.OffscreenFix) {
-            cb_offscreenFix->check(true);
-        }
-
-        layout->field("options") << *cb_noCD
-                                 << *cb_offscreenFix
-                                 << *cb_pauseWhenUnfocused;
-        
     }
 
     void initialize_textboxes()
@@ -56,19 +41,15 @@ public:
         lbl_maxUnits = std::make_shared<nana::label>(*this, "Max Units:");
         sb_maxUnits = std::make_shared<nana::spinbox>(*this);
         sb_maxUnits->range(20, INT_MAX, 1);
-        sb_maxUnits->value(std::to_string(settings.MaxUnits));
 
         lbl_pathfindingCycles = std::make_shared<nana::label>(*this, "Pathfinding Cycles:");
         sb_pathfindingCycles = std::make_shared<nana::spinbox>(*this);
         sb_pathfindingCycles->range(0, INT_MAX, 1);
-        sb_pathfindingCycles->value(std::to_string(settings.PathFindingCycles));
 
         lbl_forcedMinRangeForMelees = std::make_shared<nana::label>(*this, "Forced minrange for Melees:");
         lbl_forcedMinRangeForMelees->bgcolor(default_bgcolor);
         sb_forcedMinRangeForMelees = std::make_shared<nana::spinbox>(*this);
         sb_forcedMinRangeForMelees->range(0, INT_MAX, 1);
-        sb_forcedMinRangeForMelees->value(std::to_string(settings.ForcedMinRangeForMelees));
-        sb_forcedMinRangeForMelees->enabled(false);
 
         cb_meleeStuckFix = std::make_shared<nana::checkbox>(*this, "Melee Stuck Fix");
         cb_meleeStuckFix->bgcolor(default_bgcolor);
@@ -85,20 +66,26 @@ public:
             }
         );
 
-        if (settings.MeleeStuckFix) {
-            cb_meleeStuckFix->check(true);
-            sb_forcedMinRangeForMelees->enabled(true);
-        }
-
         lbl_maxUnits->bgcolor(default_bgcolor);
         lbl_pathfindingCycles->bgcolor(default_bgcolor);
-
-        layout->field("maxUnits") << *lbl_maxUnits << *sb_maxUnits;
-        layout->field("pathfindingCycles") << *lbl_pathfindingCycles << *sb_pathfindingCycles;
-        layout->field("forcedMinRangeForMelees") << *cb_meleeStuckFix << *lbl_forcedMinRangeForMelees << *sb_forcedMinRangeForMelees;
     }
 
-    tab_page_patches(nana::window parent) : nana::panel<false>(parent)
+    tab_page_patches(nana::window parent, std::shared_ptr<GameConfig> gameConfig)
+        : nana::panel<false>(parent), gameConfig(gameConfig)
+    {
+        initialize();
+        draw();
+        load();
+        update();
+    }
+
+    void initialize()
+    {
+        initialize_checkboxes();
+        initialize_textboxes();
+    }
+
+    void draw()
     {
         layout = std::make_unique<nana::place>(*this);
 
@@ -109,45 +96,88 @@ public:
                                                                <vert margin=[5] pathfindingCycles arrange=[20, 25]>><vert margin=[10] weight=120 forcedMinRangeForMelees arrange=[25, 35, 25] \
                             >                                                                                                                                                                 \
                     >                                                                                                                                                                         ");
+    
+    
+        layout->field("options") << *cb_noCD
+                                 << *cb_offscreenFix
+                                 << *cb_pauseWhenUnfocused;
 
-        initialize_checkboxes();
-        initialize_textboxes();
+        layout->field("maxUnits") << *lbl_maxUnits << *sb_maxUnits;
+        layout->field("pathfindingCycles") << *lbl_pathfindingCycles << *sb_pathfindingCycles;
+        layout->field("forcedMinRangeForMelees") << *cb_meleeStuckFix << *lbl_forcedMinRangeForMelees << *sb_forcedMinRangeForMelees;
 
         layout->collocate();
     }
 
-    int get_max_units()
+    void load()
     {
-        return sb_maxUnits->to_int();
+        cb_noCD              ->check(this->gameConfig->noCD.enabled);
+        cb_pauseWhenUnfocused->check(this->gameConfig->pauseWhenUnfocused.enabled);
+        cb_offscreenFix->check(this->gameConfig->offscreenFix.enabled);
+
+        sb_maxUnits->value(std::to_string(this->gameConfig->maxUnits));
+        sb_pathfindingCycles->value(std::to_string(this->gameConfig->pathfindingCycles));
+
+        cb_meleeStuckFix->check(this->gameConfig->meleeStuckFix.enabled);
+        sb_forcedMinRangeForMelees->value(std::to_string(this->gameConfig->meleeStuckFix.forcedMinRangeForMelees));
     }
 
-    int get_pathfinding_cycles()
+    void update()
     {
-        return sb_pathfindingCycles->to_int();
+        if (cb_meleeStuckFix->checked()) {
+            sb_forcedMinRangeForMelees->enabled(true);
+        }
+        else {
+            sb_forcedMinRangeForMelees->enabled(false);
+        }
     }
 
-    bool get_meleeStuckFix()
+    void save()
     {
-        return cb_meleeStuckFix->checked();
+        this->gameConfig->maxUnits = sb_maxUnits->to_int();
+        this->gameConfig->pathfindingCycles = sb_pathfindingCycles->to_int();
+        this->gameConfig->meleeStuckFix.forcedMinRangeForMelees = sb_forcedMinRangeForMelees->to_int();
+
+        this->gameConfig->noCD.enabled = cb_noCD->checked();
+        this->gameConfig->meleeStuckFix.enabled = cb_meleeStuckFix->checked();
+        this->gameConfig->offscreenFix.enabled = cb_offscreenFix->checked();
+        this->gameConfig->pauseWhenUnfocused.enabled = cb_pauseWhenUnfocused->checked();
     }
 
-    int get_forced_minrange_for_melees()
+    void reload()
     {
-        return sb_forcedMinRangeForMelees->to_int();
+        load();
     }
 
-    bool get_noCD()
+    void make_editable()
     {
-        return cb_noCD->checked();
+        // Checkboxes
+        cb_noCD              ->enabled(true);
+        cb_pauseWhenUnfocused->enabled(true);
+        cb_offscreenFix      ->enabled(true);
+
+        // Textboxes
+        sb_maxUnits         ->enabled(true);
+        sb_pathfindingCycles->enabled(true);
+
+        // Melee Stuck Fix
+        cb_meleeStuckFix          ->enabled(true);
+        sb_forcedMinRangeForMelees->enabled(true);
     }
 
-    bool get_pauseWhenUnfocused()
+    void make_readonly()
     {
-        return cb_pauseWhenUnfocused->checked();
-    }
+        // Checkboxes
+        cb_noCD              ->enabled(false);
+        cb_pauseWhenUnfocused->enabled(false);
+        cb_offscreenFix      ->enabled(false);
 
-    bool get_offscreenFix()
-    {
-        return cb_offscreenFix->checked();
+        // Textboxes
+        sb_maxUnits         ->enabled(false);
+        sb_pathfindingCycles->enabled(false);
+
+        // Melee Stuck Fix
+        cb_meleeStuckFix          ->enabled(false);
+        sb_forcedMinRangeForMelees->enabled(false);
     }
 };

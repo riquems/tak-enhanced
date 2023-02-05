@@ -1,5 +1,5 @@
 #pragma once
-#include "MemoryHandler.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 
 void applyNoCD()
 {
@@ -9,6 +9,4 @@ void applyNoCD()
 
     MemoryHandler::writeShortJMP(Memory(0x0A7E7A, 0x0A7E7C), 0x0A7EF0);
     MemoryHandler::writeShortJMP(Memory(0x09BA35, 0x09BA37), 0x09BA49);
-
-    logger.log("No-CD applied.");
 }

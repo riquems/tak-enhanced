@@ -1,9 +1,10 @@
 #pragma once
 
-#include "../MemoryHandler.h"
-#include "GlobalPointers/GlobalPointers.h"
-#include "../GameFunctions.h"
-#include "../Wrappers/Info.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
+#include "TAKCore/GlobalPointers/GlobalPointers.h"
+#include <TAKEnhancedDll/Wrappers/Defs.h>
+#include <TAKEnhancedDll/GlobalState.hpp>
+#include <TAKCore/Models/HapiFile.h>
 
 extern "C" __declspec(dllexport) bool __stdcall HpiVerificationHook()
 {
@@ -18,14 +19,17 @@ extern "C" __declspec(dllexport) bool __stdcall HpiVerificationHook()
     if (vector_has_str(files_loaded_by_default, filename)) {
         hapiFile->allowed = true;
         hapiFile->allowed2 = true;
+
+        logger->debug("Loading game file %s", hapiFile->filename);
         return true;
     }
 
-    if (settings.EnableMods) {
-        if (vector_has_str(settings.SelectedMods, filename)) {
+    if (currentGameConfig->mods.enabled) {
+        if (vector_has_str(currentGameConfig->mods.selectedMods, filename)) {
             hapiFile->allowed = true;
             hapiFile->allowed2 = true;
 
+            logger->debug("Loading 3rd party file %s", hapiFile->filename);
             return true;
         }
     }

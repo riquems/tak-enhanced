@@ -1,48 +1,34 @@
 #pragma once
-#include "TAKEnhancedDll/Launcher/nana_common.h"
-#include "Wrappers/Info.h"
+#include "TAKEnhancedDll/Launcher/nana_common.hpp"
 #include "TAKEnhancedDll/Utils.hpp"
+#include "TAKEnhancedDll/Wrappers/Defs.h"
 
 class tab_page_mods : public nana::panel<false>
 {
-    std::unique_ptr<nana::place> layout;
+    std::shared_ptr<GameConfig> gameConfig;
+    std::shared_ptr<Logger> logger;
 
-    std::unique_ptr<nana::checkbox> cb_enableDevMode;
-    std::unique_ptr<nana::checkbox> cb_enableMods;
+    std::shared_ptr<nana::place> layout;
+
+    std::shared_ptr<nana::checkbox> cb_enableDevMode;
+    std::shared_ptr<nana::checkbox> cb_enableMods;
     std::shared_ptr<nana::label> lbl_listbox1;
     std::shared_ptr<nana::label> lbl_listbox2;
     std::shared_ptr<nana::listbox> lb_listbox1;
     std::shared_ptr<nana::listbox> lb_listbox2;
 
-    std::unique_ptr<nana::button> btn_moveAllRight;
-    std::unique_ptr<nana::button> btn_moveSelectedRight;
-    std::unique_ptr<nana::button> btn_moveSelectedLeft;
-    std::unique_ptr<nana::button> btn_moveAllLeft;
+    std::shared_ptr<nana::button> btn_moveAllRight;
+    std::shared_ptr<nana::button> btn_moveSelectedRight;
+    std::shared_ptr<nana::button> btn_moveSelectedLeft;
+    std::shared_ptr<nana::button> btn_moveAllLeft;
 
     void initialize_checkboxes()
     {
-        cb_enableDevMode = std::make_unique<nana::checkbox>(*this, "Enable Developer Mode");
+        cb_enableDevMode = std::make_shared<nana::checkbox>(*this, "Enable Developer Mode");
+        cb_enableMods    = std::make_shared<nana::checkbox>(*this, "Enable Mods");
+
         cb_enableDevMode->bgcolor(default_bgcolor);
-
-        if (settings.EnableDevMode) {
-            cb_enableDevMode->check(true);
-        }
-
-        cb_enableMods = std::make_unique<nana::checkbox>(*this, "Enable Mods");
         cb_enableMods->bgcolor(default_bgcolor);
-
-        if (settings.EnableMods) {
-            cb_enableMods->check(true);
-        }
-
-        if (!cb_enableMods->checked()) {
-            desactivate_listboxes();
-            desactivate_buttons();
-        }
-        else {
-            activate_listboxes();
-            activate_buttons();
-        }
 
         cb_enableMods->events().checked(
             [&]() {
@@ -56,8 +42,6 @@ class tab_page_mods : public nana::panel<false>
                 }
             }
         );
-
-        layout->field("checkboxes") << *cb_enableDevMode << *cb_enableMods;
     }
 
     void desactivate_listboxes()
@@ -82,6 +66,7 @@ class tab_page_mods : public nana::panel<false>
     {
         lb_listbox1->enabled(true);
         lb_listbox2->enabled(true);
+
         nana::color listbox_colors_activated = nana::color(255, 255, 255, 1);
         lb_listbox1->bgcolor(listbox_colors_activated);
         lb_listbox2->bgcolor(listbox_colors_activated);
@@ -100,9 +85,12 @@ class tab_page_mods : public nana::panel<false>
         lbl_listbox1 = std::make_shared<nana::label>(*this, "Available Mods:");
         lbl_listbox1->bgcolor(default_bgcolor);
 
-        lb_listbox1 = std::make_unique<nana::listbox>(*this);
+        lb_listbox1 = std::make_shared<nana::listbox>(*this);
         lb_listbox1->append_header("Name");
+    }
 
+    void load_listbox1()
+    {
         nana::listbox::cat_proxy default_category = lb_listbox1->at(0);
 
         std::filesystem::path current_path = std::filesystem::current_path();
@@ -112,13 +100,11 @@ class tab_page_mods : public nana::panel<false>
         std::for_each(hpi_files.begin(), hpi_files.end(),
             [&](std::string filename) {
                 if (!vector_has_str(files_loaded_by_default, filename) &&
-                    !vector_has_str(settings.SelectedMods, filename)) {
+                    !vector_has_str(this->gameConfig->mods.selectedMods, filename)) {
                     default_category.append(filename);
                 }
             }
         );
-
-        layout->field("listbox1") << *lbl_listbox1 << *lb_listbox1;
     }
 
     void initialize_listbox2()
@@ -126,16 +112,17 @@ class tab_page_mods : public nana::panel<false>
         lbl_listbox2 = std::make_shared<nana::label>(*this, "Selected Mods:");
         lbl_listbox2->bgcolor(default_bgcolor);
 
-        lb_listbox2 = std::make_unique<nana::listbox>(*this);
+        lb_listbox2 = std::make_shared<nana::listbox>(*this);
         lb_listbox2->append_header("Name");
+    }
 
+    void load_listbox2()
+    {
         nana::listbox::cat_proxy default_category = lb_listbox2->at(0);
 
-        for (std::string mod_filename : settings.SelectedMods) {
-             default_category.append(mod_filename);
+        for (std::string mod_filename : this->gameConfig->mods.selectedMods) {
+            default_category.append(mod_filename);
         }
-
-        layout->field("listbox2") << *lbl_listbox2 << *lb_listbox2;
     }
 
     void move_items(nana::listbox::index_pairs items, std::shared_ptr<nana::listbox> source, std::shared_ptr<nana::listbox> dest)
@@ -164,10 +151,10 @@ class tab_page_mods : public nana::panel<false>
 
     void initialize_buttons()
     {
-        btn_moveAllRight = std::make_unique<nana::button>(*this, ">>");
-        btn_moveSelectedRight = std::make_unique<nana::button>(*this, ">");
-        btn_moveSelectedLeft = std::make_unique<nana::button>(*this, "<");
-        btn_moveAllLeft = std::make_unique<nana::button>(*this, "<<");
+        btn_moveAllRight = std::make_shared<nana::button>(*this, ">>");
+        btn_moveSelectedRight = std::make_shared<nana::button>(*this, ">");
+        btn_moveSelectedLeft = std::make_shared<nana::button>(*this, "<");
+        btn_moveAllLeft = std::make_shared<nana::button>(*this, "<<");
 
         btn_moveAllRight->events().click(
             [&]() {
@@ -200,15 +187,29 @@ class tab_page_mods : public nana::panel<false>
                 move_items(items, lb_listbox2, lb_listbox1);
             }
         );
-
-        layout->field("buttons") << *btn_moveAllRight << *btn_moveSelectedRight
-                                 << *btn_moveSelectedLeft << *btn_moveAllLeft;
     }
 
 public:
-    tab_page_mods(nana::window parent) : nana::panel<false>(parent)
+    tab_page_mods(nana::window parent, std::shared_ptr<GameConfig> gameConfig, std::shared_ptr<Logger> logger) :
+        nana::panel<false>(parent), gameConfig(gameConfig), logger(logger)
     {
-        layout = std::make_unique<nana::place>(*this);
+        initialize();
+        draw();
+        load();
+        update();
+    }
+
+    void initialize()
+    {
+        initialize_listbox1();
+        initialize_buttons();
+        initialize_listbox2();
+        initialize_checkboxes();
+    }
+
+    void draw()
+    {
+        layout = std::make_shared<nana::place>(*this);
 
         layout->div("margin=15 vert                                                                     \
                      <weight=30 checkboxes>                                                             \
@@ -216,22 +217,15 @@ public:
                          <vert arrange=[20] listbox1><weight=40 vert margin=5 <><weight=150 vert margin=[20] grid=[1,4] gap=5 buttons><>><vert arrange=[20] listbox2>         \
                      >");
 
-        initialize_listbox1();
-        initialize_buttons();
-        initialize_listbox2();
-        initialize_checkboxes();
+        layout->field("checkboxes") << *cb_enableDevMode << *cb_enableMods;
+
+        layout->field("listbox1") << *lbl_listbox1 << *lb_listbox1;
+        layout->field("listbox2") << *lbl_listbox2 << *lb_listbox2;
+
+        layout->field("buttons") << *btn_moveAllRight << *btn_moveSelectedRight
+            << *btn_moveSelectedLeft << *btn_moveAllLeft;
 
         layout->collocate();
-    }
-
-    bool get_enableDevMode()
-    {
-        return cb_enableDevMode->checked();
-    }
-
-    bool get_enableMods()
-    {
-        return cb_enableMods->checked();
     }
 
     std::vector<std::string> get_selected_mods()
@@ -247,5 +241,71 @@ public:
         }
 
         return selected_mods;
+    }
+
+    void load()
+    {
+        cb_enableDevMode->check(this->gameConfig->developerMode.enabled);
+        cb_enableMods->check(this->gameConfig->mods.enabled);
+
+        load_listbox1();
+        load_listbox2();
+    }
+
+    void update()
+    {
+        if (!cb_enableMods->checked()) {
+            desactivate_listboxes();
+            desactivate_buttons();
+        }
+        else {
+            activate_listboxes();
+            activate_buttons();
+        }
+    }
+
+    void save()
+    {
+        this->gameConfig->developerMode.enabled = cb_enableDevMode->checked();
+        this->gameConfig->mods.enabled = cb_enableMods->checked();
+
+        // Selected Mods
+        this->gameConfig->mods.selectedMods.clear();
+
+        std::vector<std::string> selected_mods = get_selected_mods();
+
+        for (std::string selected_mod : selected_mods) {
+            this->gameConfig->mods.selectedMods.push_back(selected_mod);
+        }
+    }
+
+    void reset()
+    {
+        lb_listbox1->clear();
+        lb_listbox2->clear();
+    }
+
+    void reload()
+    {
+        this->reset();
+        load();
+    }
+
+    void make_readonly()
+    {
+        cb_enableDevMode->enabled(false);
+        cb_enableMods->enabled(false);
+
+        desactivate_listboxes();
+        desactivate_buttons();
+    }
+
+    void make_editable()
+    {
+        cb_enableDevMode->enabled(true);
+        cb_enableMods->enabled(true);
+
+        activate_listboxes();
+        activate_buttons();
     }
 };

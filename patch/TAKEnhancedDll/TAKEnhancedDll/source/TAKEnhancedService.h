@@ -3,8 +3,9 @@
 #include "./Changes/RandomRace.h"
 #include "./Changes/OffscreenFix.h"
 #include "./Changes/SearchBox.h"
-#include "TAKEnhancedDll/Models/Command.hpp"
-#include "CommandsFunctions.h"
+#include "TAKEnhancedDll/Commands/Command.hpp"
+#include "TAKEnhancedDll/GlobalState.hpp"
+#include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 
 #include <iostream>
 #include <queue>
@@ -19,33 +20,6 @@
     different tasks.
 
 **********************************************************/
-
-// Keys that should fire once only
-std::vector<int> singleShotKeys = { VK_RETURN,
-                                    VK_R,
-                                    VK_S,
-                                    VK_K };
-
-void selectBuilding(std::vector<std::string> params)
-{
-    if (!gameWrapper->isBuildMenuOpen())
-        return;
-
-    if (gameWrapper->isInWriteMode())
-        return;
-
-    if (params.size() != 1) {
-        logger.log("The number of given parameters is not supported by this command.\n \
-                    Command: %s                                                     \n \
-                    Number of supported params: 1                                   \n \
-                    Number of given params: %d", "Select Building", params.size());
-        return;
-    }
-
-    int buildingId = std::stoi(params[0]);
-
-    gameWrapper->selectBuilding(buildingId);
-}
 
 //typedef HRESULT(__stdcall* BltFcn)(LPRECT, LPDIRECTDRAWSURFACE, LPRECT, DWORD, LPDDBLTFX);
 //
@@ -85,17 +59,29 @@ void selectBuilding(std::vector<std::string> params)
 //    (*vTable)[targetFcnIndex] = newFunction;
 //}
 
+// Keys that should fire once only
+std::vector<int> singleShotKeys = {
+    VK_RETURN,
+    VK_R,
+    VK_S,
+    VK_K
+};
+
+std::vector<int> specialKeys = { VK_CTRL };
 
 void processInputSequence(std::queue<int>& sequence)
 {
-    for (std::pair<Keys, Command> keyBinding : settings.keyBindings) {
+    for (KeyBinding keyBinding : userConfig->keyBindings) {
+        if (keyBinding.keyCombination.keys.empty())
+            continue;
+
         int i = 0;
 
         std::queue<int> sequenceCopy = sequence;
         while (!sequenceCopy.empty()) {
             int key = sequenceCopy.front();
 
-            if (keyBinding.first.values[i] != key) {
+            if (keyBinding.keyCombination.keys[i] != key) {
                 break;
             }
 
@@ -105,7 +91,7 @@ void processInputSequence(std::queue<int>& sequence)
         }
 
         if (sequenceCopy.empty()) {
-            keyBinding.second.execute();
+            keyBinding.command.execute();
         }
     }
 
@@ -145,8 +131,12 @@ void guaranteeFocus()
     SetWindowPos(takWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
 }
 
-void startTAKEnhancedService()
+void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
 {
+    logger->context("TA:K Enhanced Service");
+
+    logger->info("TA:K Enhanced Service started!");
+
     int i = 0;
 
     Sleep(1000);
@@ -159,13 +149,6 @@ void startTAKEnhancedService()
     HookVTable(&DirectDrawVTable, 5, (uintptr_t) &newBlt, oldBlt);*/
 
     guaranteeFocus();
-
-    std::vector<int> specialKeys = { VK_CTRL };
-
-    auto selectBuildingMap =
-        std::pair<CommandCode, std::function<void(std::vector<std::string>)>>(CommandCode::SELECT_BUILDING, selectBuilding);
-
-    commandCodeToFunction.insert(selectBuildingMap);
 
     bool offscreenMonitorThreadRunning = false;
 
@@ -184,7 +167,7 @@ void startTAKEnhancedService()
             gameWrapper->onInitialize();
         }
 
-        if (settings.OffscreenFix) {
+        if (gameConfig->offscreenFix.enabled) {
             if (!offscreenMonitorThreadRunning && gameWrapper->match->isRunning()) {
                 startOffscreenMonitorThread();
                 offscreenMonitorThreadRunning = true;
@@ -262,5 +245,5 @@ void startTAKEnhancedService()
         Sleep(10);
     }
 
-    logger.end();
+    logger->stop();
 }

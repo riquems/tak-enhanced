@@ -1,5 +1,5 @@
 #pragma once
-#include "MemoryHandler.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 
 void applyMaxUnitsPatch(uint value)
 {
@@ -32,6 +32,4 @@ void applyMaxUnitsPatch(uint value)
 
     shellCode = ShellCode("8B510C", Memory(0x0A03FA, 0x0A03FD));
     MemoryHandler::writeShellCode(shellCode);
-
-    logger.log("Unit limit applied.");
 }

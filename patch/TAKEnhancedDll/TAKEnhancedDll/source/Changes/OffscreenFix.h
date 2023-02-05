@@ -1,6 +1,6 @@
 #pragma once
-#include "Context.h"
-#include "GameFunctions.h"
+#include "TAKEnhancedDll/GlobalState.hpp"
+#include "TAKEnhancedDll/Wrappers/MatchWrapper.h" 
 
 /******************************************************************
 

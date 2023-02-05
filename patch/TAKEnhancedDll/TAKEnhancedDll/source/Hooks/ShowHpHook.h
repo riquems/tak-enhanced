@@ -1,9 +1,8 @@
 #pragma once
 
-#include "../Context.h"
-#include "../MemoryHandler.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 
-#include "Models/UnitInfo.h"
+#include "TAKCore/Models/UnitInfo.h"
 
 typedef void (__stdcall *origShowHpFcn_t)(Unit*, unsigned int, unsigned int);
 
@@ -12,51 +11,51 @@ __declspec(dllexport) origShowHpFcn_t origShowHpFcn;
 extern "C" __declspec(dllexport) void __stdcall newShowHpFcn(Unit* unit, unsigned int posX, unsigned int posY)
 {
     if (gameWrapper->isMe(unit->player)) {
-        logger.debug("%s is mine.", unit->unitInfo->name);
+        logger->debug("%s is mine.", unit->unitInfo->name);
 
-        if (settings.myHpOptions.showHpOption == NEVER_SHOW) {
+        if (currentGameConfig->customizableHpBars.mine.showMode == ShowMode::Never) {
             return;
         }
-        else if (settings.myHpOptions.showHpOption == SHOW_ONLY_IF_DAMAGED) {
+        else if (currentGameConfig->customizableHpBars.mine.showMode == ShowMode::OnlyIfDamaged) {
             if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
-                logger.debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
+                logger->debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
                 return;
             }
         }
 
-        gameWrapper->setHpBarColor(unit->player, settings.myHpOptions.hpColorOption);
+        gameWrapper->setHpBarColor(unit->player, currentGameConfig->customizableHpBars.mine);
     }
 
     if (gameWrapper->isAlly(unit->player)) {
-        logger.debug("%s is ally.", unit->unitInfo->name);
+        logger->debug("%s is ally.", unit->unitInfo->name);
 
-        if (settings.allyHpOptions.showHpOption == NEVER_SHOW) {
+        if (currentGameConfig->customizableHpBars.ally.showMode == ShowMode::Never) {
             return;
         }
-        else if (settings.allyHpOptions.showHpOption == SHOW_ONLY_IF_DAMAGED) {
+        else if (currentGameConfig->customizableHpBars.ally.showMode == ShowMode::OnlyIfDamaged) {
             if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
-                logger.debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
+                logger->debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
                 return;
             }
         }
 
-        gameWrapper->setHpBarColor(unit->player, settings.allyHpOptions.hpColorOption);
+        gameWrapper->setHpBarColor(unit->player, currentGameConfig->customizableHpBars.ally);
     }
 
     if (gameWrapper->isEnemy(unit->player)) {
-        logger.debug("%s is enemy.", unit->unitInfo->name);
+        logger->debug("%s is enemy.", unit->unitInfo->name);
 
-        if (settings.enemyHpOptions.showHpOption == NEVER_SHOW) {
+        if (currentGameConfig->customizableHpBars.enemy.showMode == ShowMode::Never) {
             return;
         }
-        else if (settings.enemyHpOptions.showHpOption == SHOW_ONLY_IF_DAMAGED) {
+        else if (currentGameConfig->customizableHpBars.enemy.showMode == ShowMode::OnlyIfDamaged) {
             if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
-                logger.debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
+                logger->debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
                 return;
             }
         }
 
-        gameWrapper->setHpBarColor(unit->player, settings.enemyHpOptions.hpColorOption);
+        gameWrapper->setHpBarColor(unit->player, currentGameConfig->customizableHpBars.enemy);
     }
 
     origShowHpFcn(unit, posX, posY);

@@ -14,51 +14,66 @@
 #include "Hooks/LoadingScreenHook.h"
 #include "Hooks/ShowHpHook.h"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
+#include <TAKEnhancedDll/Configs/GameConfig.hpp>
+#include <Utils/Logger.h>
 
-extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v0.3.0";
+extern "C" __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.0.0";
 
 void applyTakEnhancedVersion()
 {
     MemoryHandler::write(TAK_Enhanced_Label, 0xA4E23);
-
-    logger.log("TA:K Enhanced Label applied.");
 }
 
-void applyChanges()
+void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> logger)
 {
     applyTakEnhancedVersion();
+    logger->info("TA:K Enhanced Label applied.");
 
-    uint maxUnits = settings.MaxUnits;
+    uint maxUnits = config->maxUnits;
     applyMaxUnitsPatch(maxUnits);
+    logger->info("Unit limit applied.");
 
-    uint pathFindingCycles = settings.PathFindingCycles;
+    uint pathFindingCycles = config->pathfindingCycles;
     applyPathfindingFix(pathFindingCycles);
 
-    if (settings.EnableHpOptions) {
+    if (config->customizableHpBars.enabled) {
         showEveryoneHealthBars();
         installShowHpHook();
     }
 
     applyModLoader();
 
-    if (settings.NoCD) {
+    if (config->noCD.enabled) {
         applyNoCD();
+        logger->info("No-CD applied.");
     }
 
-    if (!settings.PauseWhenUnfocused) {
+    if (!config->pauseWhenUnfocused.enabled) {
         applyNoPauseWhenUnfocused();
+        logger->info("No pause when unfocused applied.");
     }
     
-    if (settings.MeleeStuckFix) {
+    if (config->meleeStuckFix.enabled) {
         applyMeleeStuckFix();
+        logger->info("Melee Stuck fix applied.");
     }
     
-    // Extensions
-    applyUpdateGuiHook();
+    // Hooks
+    /*applyUpdateGuiHook();
+    logger->info("Added Hook when updating GUI.");
+    *
     applyReadSideDataHooks();
+    logger->info("Added Hook on reading SideData.tdf.");
+    */
     applyLoadingScreenHooks();
+    logger->info("Added Loading Screen Extension.");
     // ProcessCodesExtension
 
+    // Pick map positions
+    // autodiplomacy
+    // Know pause state in loading screen
+    // Double click => select units of the same type on the screen
+    // Track unit in watching mode
     // Option to choose random race
     // Walls have hp 
     // Not able to ctrl d while in combat
@@ -68,9 +83,7 @@ void applyChanges()
     // Archers lob weapons
     // AutoGates in game for real
     // MakeAurasOnOffAble
-    // Pick map positions
     // Humor Interactions
-    // autodiplomacy
     // ReclaimFeaturesGiveMana();
     // Investigate why units go closer than they need to attack (can use kirenna wave to test)
     // Find out how get unknown unit value works
@@ -80,5 +93,5 @@ void applyChanges()
     // MakePlayAnOpponentSearchForGamesSomewhereElse()
     // Why watching in multiplayer causes so much lag
     
-    logger.log("\nEndded applying changes. Enjoy!");
+    logger->info("Endded applying changes. Enjoy!");
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Common.hpp"
-#include "GlobalPointers/GlobalPointers.h"
-#include "Functions/FunctionsSignatures.h"
+#include "TAKCore/GlobalPointers/GlobalPointers.h"
+#include "TAKCore/Functions/FunctionsSignatures.h"
 
 enum class TextureDisplayMode {
     ORIGINAL_SIZE,
