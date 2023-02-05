@@ -1,6 +1,6 @@
 {
   "currentPreset": "TA:K Enhanced",
-  "presetsPath": "C:/Cavedog/Kingdoms/TAKEnhanced/Presets",
+  "presetsPath": "./TAKEnhanced/Presets",
   "window": {
     "height": 341,
     "width": 441
