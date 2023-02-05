@@ -29,3 +29,29 @@ std::vector<std::string> get_files_from_path(std::filesystem::path& path, const 
 
     return hpi_files;
 }
+
+std::pair<std::string, std::string> getKeyValue(std::string line)
+{
+    std::pair<std::string, std::string> keyValue;
+
+    std::stringstream sstream(line);
+    std::string buffer;
+
+    std::getline(sstream, buffer, '=');
+
+    if (buffer.at(buffer.size() - 1) == ' ') {
+        buffer.pop_back();
+    }
+
+    keyValue.first = buffer;
+
+    std::getline(sstream, buffer, '=');
+    
+    if (buffer.at(0) == ' ') {
+        buffer = buffer.substr(1, buffer.size() - 1);
+    }
+
+    keyValue.second = buffer;
+
+    return keyValue;
+}

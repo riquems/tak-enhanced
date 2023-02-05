@@ -58,15 +58,6 @@ bool isKeyDown(int keyCode)
     return GetAsyncKeyState(keyCode) & 0x8000;
 }
 
-void StartConsole()
-{
-    AllocConsole();
-    freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
-    freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
-    std::cout.clear();
-    std::cin.clear();
-}
-
 void SetConsoleBufferSize(SHORT x, SHORT y)
 {
     HANDLE hOut;
@@ -96,7 +87,7 @@ void toggleBoolean(bool& boolean)
     boolean = !boolean;
 }
 
-bool str_contains_str(std::string& str1, std::string& str2)
+bool str_contains_str(const std::string& str1, const std::string& str2)
 {
     return str1.find(str2) != std::string::npos;
 }

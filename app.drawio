@@ -1,0 +1,40 @@
+<mxfile host="65bd71144e">
+    <diagram id="CZg7c7uTws8TEC22x9_P" name="Page-1">
+        <mxGraphModel dx="1213" dy="679" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="13" value="App" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-199" y="632" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="14" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Injector" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-390" y="451" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="The Game" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-186" y="154" width="628" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="16" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Launcher UI" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-219" y="451" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="TA:K Service" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="8" y="243" width="438" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Changes to apply" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-219" y="346" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Config" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-390" y="529" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Config" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-219" y="530" width="121" height="61" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

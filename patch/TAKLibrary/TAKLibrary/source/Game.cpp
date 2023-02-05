@@ -1,8 +1,8 @@
 #include "Game.hpp"
-#include "Models/Options/GameOptions.h"
-#include "Models/Options/DevelopmentOptions.h"
-#include "GlobalPointers/GlobalPointers.h"
-#include "Functions/FunctionsOffsets.h"
+#include "TAKCore/Models/Options/GameOptions.h"
+#include "TAKCore/Models/Options/DevelopmentOptions.h"
+#include "TAKCore/GlobalPointers/GlobalPointers.h"
+#include "TAKCore/Functions/FunctionsOffsets.h"
 
 Game::Game() {}
 Game::Game(uintptr_t baseAddress)

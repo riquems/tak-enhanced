@@ -1,9 +1,9 @@
 #pragma once
 #include "Common.hpp"
 
-#include "Models/Player.h"
-#include "Models/Side.h"
-#include "Models/Options/GameOptions.h"
+#include "TAKCore/Models/Player.h"
+#include "TAKCore/Models/Side.h"
+#include "TAKCore/Models/Options/GameOptions.h"
 
 class Game
 {

@@ -1,63 +1,70 @@
 #pragma once
-#include "HelperFunctions.hpp"
+#include "Windows.hpp"
+#include <string>
+#include <iostream>
+#include <format>
+#include <stdarg.h>
+#include "Utils/json.hpp"
+
+enum class LogLevel
+{
+    Invalid,
+    Verbose,
+    Debug,
+    Information,
+    Warning,
+    Error,
+    Fatal
+};
+
+struct LogToConfig
+{
+    bool console;
+    std::string file;
+};
+
+struct LoggerConfig
+{
+    LogLevel minimumLevel;
+    LogToConfig logTo;
+};
+
+NLOHMANN_JSON_SERIALIZE_ENUM(LogLevel, {
+    { LogLevel::Invalid, "Invalid" },
+    { LogLevel::Verbose, "Verbose" },
+    { LogLevel::Debug, "Debug" },
+    { LogLevel::Information, "Information" },
+    { LogLevel::Warning, "Warning" },
+    { LogLevel::Error, "Error" },
+    { LogLevel::Fatal, "Fatal" }
+});
+
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+    LogToConfig, console, file
+)
+
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+    LoggerConfig, minimumLevel, logTo
+)
 
 class Logger
 {
-public:
+    LoggerConfig config;
+    std::string mode;
     FILE* outputFile = nullptr;
 
-    Logger() {}
+    void raw(const std::string msg, va_list args) const;
+    std::string buildMessage(const std::string prefix, const std::string message, const std::string postfix = std::string()) const;
+    void logToFile(const std::string msg, va_list args) const;
+    void logToConsole(const std::string msg, va_list args) const;
 
-    Logger(std::string fileName, std::string mode)
-    {
-        outputFile = _fsopen(fileName.c_str(), mode.c_str(), _SH_DENYNO);
-    }
-
-    void initialize(std::string fileName, std::string mode)
-    {
-        outputFile = _fsopen(fileName.c_str(), mode.c_str(), _SH_DENYNO);
-    }
-
-    void log(const char* fmt, ...)
-    {
-        va_list args;
-        va_start(args, fmt);
-
-        vfprintf(outputFile, fmt, args);
-        fprintf(outputFile, "%c", '\n');
-
-        fflush(outputFile);
-    }
-
-    void section(const char* str)
-    {
-        fprintf(outputFile, "[%s]\n\n", str);
-
-        fflush(outputFile);
-    }
-
-    void context(const char* str)
-    {
-        fprintf(outputFile, "### %s ###\n\n", str);
-
-        fflush(outputFile);
-    }
-
-    void error(const char* fmt, ...)
-    {
-        va_list args;
-        va_start(args, fmt);
-
-        vfprintf(outputFile, fmt, args);
-        fprintf(outputFile, " Error Code: %lu", GetLastError());
-        fprintf(outputFile, "\n\nFor further information, contact DeeKay with this error code:\nE-Mail: Henrique-MS@Outlook.com\nGameRanger ID: 1184157\nDiscord: DeeKay#3610\n");
-        fprintf(outputFile, "%c", '\n');
-
-        fflush(outputFile);
-    }
-
-    void end()
-    {
-        fclose(outputFile);
-    }
+public:
+    Logger(LoggerConfig config, std::string mode);
+    void debug(const std::string msg, ...) const;
+    void info(const std::string msg, ...) const;
+    void error(const std::string msg, ...);
+    void fatal(const std::string msg, ...) const;
+    void context(const std::string msg, ...) const;
+    void section(const std::string msg, ...) const;
+    void stop();
 };

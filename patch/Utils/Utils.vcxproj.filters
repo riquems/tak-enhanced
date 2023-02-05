@@ -12,7 +12,7 @@
     <ClInclude Include="include\Utils\common.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="include\Utils\defs.h">
+    <ClInclude Include="include\Utils\VirtualKeys.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="include\Utils\JunkCode.h">
@@ -24,6 +24,12 @@
     <ClInclude Include="include\Utils\HelperFunctions.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="include\Utils\json.hpp" />
+    <ClInclude Include="include\Utils\Console.hpp" />
+    <ClInclude Include="include\Utils\CRC.h" />
+    <ClInclude Include="include\Utils\Window.hpp" />
+    <ClInclude Include="include\Utils\Windows.hpp" />
+    <ClInclude Include="include\Utils\Keyboard.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -32,5 +38,13 @@
     <ClCompile Include="source\HelperFunctions.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="source\Logger.cpp" />
+    <ClCompile Include="source\Console.cpp" />
+    <ClCompile Include="source\CopyToClipboard.cpp" />
+    <ClCompile Include="source\Window.cpp" />
+    <ClCompile Include="source\Keyboard.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\Utils\CopyToClipboard.hpp" />
   </ItemGroup>
 </Project>

@@ -6,9 +6,10 @@
 #include <string>
 #include <functional>
 
+#include <vector>
 #include <fstream>
 #include <filesystem>
 
 typedef unsigned int uint;
 
-#include "defs.h"
+#include "VirtualKeys.h"
