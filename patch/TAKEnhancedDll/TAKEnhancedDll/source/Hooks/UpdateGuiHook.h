@@ -1,5 +1,5 @@
 #pragma once
-#include "MemoryHandler.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 #include "../Changes/SearchBox.h"
 
 extern "C" __declspec(dllexport) void __stdcall updateGuiHook()
@@ -25,6 +25,4 @@ void applyUpdateGuiHook()
     MemoryHandler::insertOpCode(MemoryHandler::OpCode::RETN, 0x17016F);
 
     MemoryHandler::insertFunctionCall((DWORD) &updateGuiHook, 0x170165);
-
-    logger.log("Added Hook when updating GUI.");
 }

@@ -1,19 +1,19 @@
 #pragma once
 #include <conio.h>
 
-#include "MemoryHandler.h"
-#include "ModelsExtensions/GadgetExtensions.h"
-#include "ModelsExtensions/WindowExtensions.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
+#include "TAKCore/ModelsExtensions/GadgetExtensions.h"
+#include "TAKCore/ModelsExtensions/WindowExtensions.h"
 
-#include "../Wrappers/ChooseMapMenuWrapper.h"
-#include "../Wrappers/BattleMenuWrapper.h"
-#include "Models/UI/BattleMenu.h"
+#include "TAKCore/Models/UI/BattleMenu.h"
+#include <TAKEnhancedDll/Wrappers/ChooseMapMenuWrapper.h>
+#include <TAKEnhancedDll/Wrappers/BattleMenuWrapper.h>
+#include <Utils/Console.hpp>
 
 #define VK_BACKSPACE VK_BACK
 
 void TryToInitializeSearchBox();
 void InitializeSearchBox(Window* window);
-void ConfigureConsole(uint height, uint width, HWND zOrder, bool borderless);
 
 extern "C" __declspec(dllexport) bool nameMatches = false;
 extern "C" __declspec(dllexport) int itemIndex = 0;
@@ -156,49 +156,4 @@ void InitializeSearchBox(Window* window)
 
         StartSearchBox(&battleMenuWrapper._mapNamesLowerCase);
     }
-}
-
-void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
-{
-    SetConsoleBufferSize(256, 2);
-
-    RECT desktopWndRect;
-
-    HWND desktopWnd = GetDesktopWindow();
-
-    GetWindowRect(desktopWnd, &desktopWndRect);
-
-    int consoleWidth = width;
-    int consoleHeight = height;
-    int xConsolePosition;
-    int yConsolePosition;
-
-    xConsolePosition = ((desktopWndRect.right - desktopWndRect.left) / 2) - (consoleWidth / 2);
-
-    yConsolePosition = ((desktopWndRect.bottom - desktopWndRect.top) / 2) - (consoleHeight / 2);
-
-    if (isFullscreen)
-    {
-        yConsolePosition = ((desktopWndRect.bottom - desktopWndRect.top) / 2) - 385;
-    }
-
-    HWND consoleWindow = GetConsoleWindow();
-
-    if (borderless)
-        SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_POPUPWINDOW);
-    
-    // SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_NOACTIVATE | SWP_NOOWNERZORDER);
-    SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_SHOWWINDOW);
-}
-
-void startConsole()
-{
-    AllocConsole();
-
-    freopen_s((FILE**) stdin, "CONIN$", "r", stdin);
-    freopen_s((FILE**) stdout, "CONOUT$", "w", stdout);
-    std::cout.clear();
-    std::cin.clear();
-
-    ConfigureConsole(600, 200, HWND_NOTOPMOST, false);
 }

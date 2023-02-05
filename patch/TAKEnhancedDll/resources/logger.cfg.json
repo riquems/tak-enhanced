@@ -1,0 +1,7 @@
+{
+  "minimumLevel": "Information",
+  "logTo": {
+    "console": true,
+    "file": "TAKEnhancedLog.txt"
+  }
+}

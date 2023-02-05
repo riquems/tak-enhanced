@@ -1,9 +1,6 @@
 #pragma once
 #include "Common.hpp"
-
-#include "GlobalPointers/GlobalPointers.h"
-#include "Models/UI/GameInterfaceHandler.h"
-#include "Models/UI/Window.h"
+#include "TAKCore/Models/UI/Window.h"
 
 class GameInterface
 {

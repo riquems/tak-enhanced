@@ -1,11 +1,11 @@
 #pragma once
-#include "Models/PlayerViewModel.h"
-#include "ModelsExtensions/WindowExtensions.h"
-#include "../Managers/WindowManager.h"
+#include "TAKEnhancedDll/Managers/WindowManager.h"
+#include "TAKCore/Models/PlayerViewModel.h"
+#include "TAKCore/ModelsExtensions/WindowExtensions.h"
 
 void TryToChooseRandomRace()
 {
-    std::shared_ptr<WindowManager> windowManager = std::make_shared<WindowManager>();
+    std::shared_ptr<WindowManager> windowManager = std::make_shared<WindowManager>(uiHandler, baseAddress);
 
     Window* currentWindow = windowManager->getCurrentWindow();
 

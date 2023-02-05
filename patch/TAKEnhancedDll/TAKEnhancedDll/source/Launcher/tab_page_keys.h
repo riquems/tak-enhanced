@@ -1,10 +1,14 @@
 #pragma once
-#include "TAKEnhancedDll/Launcher/nana_common.h"
-#include "Utils/defs.h"
+#include "TAKEnhancedDll/Launcher/nana_common.hpp"
+#include "Utils/VirtualKeys.h"
 #include "Utils/HelperFunctions.hpp"
 
-#include "TAKEnhancedDll/Models/Command.hpp"
-#include "TAKEnhancedDll/Models/Keys.hpp"
+#include "TAKEnhancedDll/Commands/Command.hpp"
+#include "TAKEnhancedDll/Keys/Keys.hpp"
+#include <TAKEnhancedDll/Configs/UserConfig.hpp>
+#include <TAKEnhancedDll/Commands/CommandStringParser.hpp>
+#include <TAKEnhancedDll/Keys/KeyCombinationStringParser.hpp>
+#include "Components/e_dialog.hpp"
 
 struct KeyBindingListItem
 {
@@ -38,83 +42,50 @@ auto cell_translator = [](const KeyBindingListItem& kb)
     return cells;
 };
 
-class takenhanced_dialog : public nana::form
-{
-    std::shared_ptr<nana::place> layout;
-    std::shared_ptr<nana::label> lbl_text;
-    std::shared_ptr<nana::label> lbl_helpText;
-
-public:
-    takenhanced_dialog(std::string title, std::string text, std::string helpText, nana::rectangle rect) : nana::form(rect, nana::appearance(1, 1, 1, 0, 0, 0, 1))
-    {
-        this->caption(title);
-        this->bgcolor(default_bgcolor);
-
-        layout = std::make_shared<nana::place>(*this);
-
-        lbl_text = std::make_shared<nana::label>(*this, text);
-        lbl_helpText = std::make_shared<nana::label>(*this, helpText);
-        lbl_text->text_align(nana::align::center);
-        lbl_helpText->text_align(nana::align::center);
-
-        layout->div("margin=10 vert         <>                \
-                                      <<><lblText><>>         \
-                                       <lblHelpText>          ");
-
-        layout->field("lblText") << *lbl_text;
-        layout->field("lblHelpText") << *lbl_helpText;
-        layout->collocate();
-    }
-};
-
 class tab_page_keys : public nana::panel<false>
 {
+    std::shared_ptr<UserConfig> userConfig;
+    std::shared_ptr<Commands> commands;
+    std::shared_ptr<Keys> keys;
+    std::shared_ptr<CommandStringParser> commandStringParser;
+    std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser;
+
     std::unique_ptr<nana::place> layout;
 
-    std::shared_ptr<nana::textbox> tb_searchBox;
     std::shared_ptr<nana::listbox> lb_keyBindings;
 
     std::shared_ptr<nana::button> btn_add;
     std::shared_ptr<nana::button> btn_edit;
     std::shared_ptr<nana::button> btn_clear;
 
-    void add_search_box()
+public:
+    tab_page_keys(
+        nana::window parent,
+        std::shared_ptr<UserConfig> userConfig,
+        std::shared_ptr<Commands> commands,
+        std::shared_ptr<Keys> keys,
+        std::shared_ptr<CommandStringParser> commandStringParser,
+        std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser
+    ) :
+        nana::panel<false>(parent),
+        userConfig(userConfig),
+        commands(commands),
+        keys(keys),
+        commandStringParser(commandStringParser),
+        keyCombinationStringParser(keyCombinationStringParser)
     {
-        tb_searchBox = std::make_shared<nana::textbox>(*this);
-
-        layout->field("searchBox") << *tb_searchBox;
+        initialize();
+        draw();
+        load();
+        update();
     }
 
-    void add_key_bindings()
+    void initialize()
     {
         lb_keyBindings = std::make_shared<nana::listbox>(*this);
         lb_keyBindings->append_header("Command");
-        lb_keyBindings->append_header("KeyBinding");
+        lb_keyBindings->append_header("Key Combination");
 
-        load_key_bindings();
-
-        layout->field("keyBindingsList") << *lb_keyBindings;
-    }
-
-    void load_key_bindings()
-    {
-        nana::listbox::cat_proxy category = lb_keyBindings->at(0);
-
-        std::vector<KeyBindingListItem> keyBindingsListItems;
-
-        for (std::pair<Keys, Command> entry : settings.keyBindings) {
-            Keys keys = entry.first;
-            Command command = entry.second;
-
-            KeyBindingListItem keyBindingListItem = { command.to_string(), keys.to_string() };
-            keyBindingsListItems.push_back(keyBindingListItem);
-        }
-
-        category.model<std::recursive_mutex>(std::move(keyBindingsListItems), value_translator, cell_translator);
-    }
-
-    void add_buttons()
-    {
         btn_add = std::make_shared<nana::button>(*this, "Add");
         btn_edit = std::make_shared<nana::button>(*this, "Edit");
         btn_clear = std::make_shared<nana::button>(*this, "Clear");
@@ -131,14 +102,18 @@ class tab_page_keys : public nana::panel<false>
                 KeyBindingListItem kb;
                 item.resolve_to(kb);
 
-                takenhanced_dialog keyBindingForm(kb.command, kb.keyBinding, 
-                                                  "Hit any Key...", nana::API::make_center(160, 110));
+                e_dialog keyBindingForm(
+                    kb.command,
+                    kb.keyBinding,
+                    "Hit any Key...",
+                    nana::API::make_center(160, 110)
+                );
                 
                 keyBindingForm.events().key_press(
                     [&](nana::arg_keyboard args) {
                         int keyPressed = args.key;
 
-                        item.text(1, keyToStr[keyPressed]);
+                        item.text(1, this->keys->get(keyPressed).value().name);
 
                         keyBindingForm.close();
                     }
@@ -158,26 +133,68 @@ class tab_page_keys : public nana::panel<false>
 
                 nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
 
-                item.text(1, keyToStr[VK_NONE]);
+                item.text(1, keys->get(VK_NONE).value().name);
             }
         );
-
-        layout->field("actionButtons") << *btn_edit << *btn_clear;
     }
 
-public:
-    tab_page_keys(nana::window parent) : nana::panel<false>(parent)
+    void draw()
     {
         layout = std::make_unique<nana::place>(*this);
 
-        layout->div("margin=15                            \
+        layout->div("margin=15                                                          \
                      <margin=[0] keyBindingsList><weight=100 vert margin=[0, 20, 0, 20] <weight=80 vert gap=5 actionButtons>>");
-
-        add_search_box();
-        add_key_bindings();
-        add_buttons();
+        
+        layout->field("keyBindingsList") << *lb_keyBindings;
+        layout->field("actionButtons") << *btn_edit << *btn_clear;
 
         layout->collocate();
+    }
+
+    void load()
+    {
+        nana::listbox::cat_proxy category = lb_keyBindings->at(0);
+
+        std::vector<KeyBindingListItem> keyBindingsListItems;
+
+        for (KeyBinding entry : this->userConfig->keyBindings) {
+            KeyCombination keyCombination = entry.keyCombination;
+            Command command = entry.command;
+
+            KeyBindingListItem keyBindingListItem = {
+                this->commandStringParser->toString(command),
+                this->keyCombinationStringParser->toString(keyCombination)
+            };
+
+            keyBindingsListItems.push_back(keyBindingListItem);
+        }
+
+        category.model<std::recursive_mutex>(std::move(keyBindingsListItems), value_translator, cell_translator);
+    }
+
+    void save()
+    {
+        std::vector<KeyBindingListItem> keyBindings = get_keyBindings();
+
+        this->userConfig->keyBindings.clear();
+
+        for (KeyBindingListItem keyBinding : keyBindings) {
+            Command command = this->commandStringParser->fromString(keyBinding.command);
+            KeyCombination keyCombination = this->keyCombinationStringParser->fromString(keyBinding.keyBinding);
+
+            this->userConfig->keyBindings.push_back(KeyBinding{ keyCombination, command });
+        }
+    }
+
+    void update()
+    {
+
+    }
+
+    void reload()
+    {
+        lb_keyBindings->clear();
+        load();
     }
 
     std::vector<KeyBindingListItem> get_keyBindings() {

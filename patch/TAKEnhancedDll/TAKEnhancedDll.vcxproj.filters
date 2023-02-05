@@ -36,41 +36,56 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedDll.cpp">
+    <ClCompile Include="TAKEnhancedDll\source\DllMain.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Models\Keys.cpp">
+    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombination.cpp">
       <Filter>Sources\Models</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\ConfigFile.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Models\Command.cpp">
+    <ClCompile Include="TAKEnhancedDll\source\Commands\Command.cpp">
       <Filter>Sources\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\CommandsFunctions.cpp">
-      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedDll\source\Utils.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Settings.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Launcher\Widgets\profile_picker.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandStringParser.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\Commands.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\UnitWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\BattleMenuWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\BuildButtonWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\BuildMenuWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\ChooseMapMenuWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\Defs.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\GameFunctions.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\GameWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\MapPositionWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\MatchWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Wrappers\PlayerWrapper.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Managers\WindowManager.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationStringParser.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Configs\CustomizableHpBarsSettings.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\Params.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\Param.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\App.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedDll\source\Keys\Keys.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandJsonParser.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationJsonParser.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Presets\Presets.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Presets\PresetApplier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Memory\Memory.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedDll\source\Memory\ShellCode.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Memory\MemoryHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAKEnhancedDll\source\Changes.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\CommandsFunctions.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Context.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\GameFunctions.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\MemoryHandler.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameFunctions.h">
       <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\TAKEnhancedService.h">
@@ -124,43 +139,43 @@
     <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_patches.h">
       <Filter>Sources\Launcher</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Managers\GameInterfaceManager.h">
       <Filter>Sources\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Managers\WindowManager.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Managers\WindowManager.h">
       <Filter>Sources\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BattleMenuWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\BattleMenuWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BuildButtonWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\BuildButtonWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\BuildMenuWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\BuildMenuWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\ChooseMapMenuWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\ChooseMapMenuWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\GameWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\Info.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\Defs.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\MapPositionWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\MapPositionWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\MatchWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\MatchWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\PlayerWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\PlayerWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\UnitWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\UnitWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Wrappers\WeaponWrapper.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\WeaponWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Hooks\GameInitHook.h">
@@ -184,22 +199,16 @@
     <ClInclude Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.h">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\ConfigFile.hpp">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings.hpp">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp">
       <Filter>Headers\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Command.hpp">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Command.hpp">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\KeyBinding.hpp">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\KeyBinding.hpp">
       <Filter>Headers\Models</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Models\Keys.hpp">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombination.hpp">
       <Filter>Headers\Models</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp">
@@ -211,15 +220,45 @@
     <ClInclude Include="TAKEnhancedDll\source\Hooks\ShowHpHook.h">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\PlayerOptions.h">
-      <Filter>Headers\Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_customization.h" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Settings\LauncherSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\source\Changes\ModLoader.h" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\Widgets\profile_picker.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\nana_common.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\nana_common.hpp">
       <Filter>Sources\Launcher</Filter>
     </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\success_modal.hpp">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_hp_bars.h">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\modal_save_as_preset.hpp">
+      <Filter>Sources\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameConfig.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\CustomizableHpBarsSettings.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\LauncherConfig.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\GlobalState.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Commands.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Params.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandStringParser.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Param.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationStringParser.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Keys.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Key.hpp" />
+    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\e_dialog.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandJsonParser.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationJsonParser.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\App.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Presets.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Preset.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\PresetApplier.hpp" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\Memory.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\ShellCode.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\MemoryHandler.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,6 @@
 #include "GameInterface.hpp"
+#include "TAKCore/GlobalPointers/GlobalPointers.h"
+#include "TAKCore/Models/UI/GameInterfaceHandler.h"
 
 GameInterface::GameInterface(uintptr_t baseAddress)
 {

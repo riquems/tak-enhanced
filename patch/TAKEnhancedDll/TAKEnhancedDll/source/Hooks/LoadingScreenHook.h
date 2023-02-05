@@ -1,7 +1,8 @@
 #pragma once
-#include "MemoryHandler.h"
-#include "Models/Player.h"
-#include "Models/PlayerViewModel.h"
+#include "TAKEnhancedDll/GlobalState.hpp"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
+#include "TAKCore/Models/Player.h"
+#include "TAKCore/Models/PlayerViewModel.h"
 
 extern "C" __declspec(dllexport) bool firstLoad = false;
 
@@ -16,8 +17,8 @@ extern "C" __declspec(dllexport) void __stdcall LoadingScreenHook()
 
 extern "C" __declspec(dllexport) void __stdcall LoadingScreenEndHook()
 {
-    if (settings.EnableDevMode) {
-        std::cout << "Activating developer mode" << std::endl;
+    if (currentGameConfig->developerMode.enabled) {
+        logger->info("Activating developer mode");
         gameWrapper->activateDeveloperMode();
     }
 
@@ -32,6 +33,4 @@ void applyLoadingScreenHooks()
 
     MemoryHandler::insertOpCode(MemoryHandler::OpCode::RETN, 0x125AC6);
     MemoryHandler::insertFunctionCall((DWORD) &LoadingScreenEndHook, 0x125AC1);
-
-    logger.log("Added Loading Screen Extension.");
 }

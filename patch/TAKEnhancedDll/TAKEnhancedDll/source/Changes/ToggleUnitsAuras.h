@@ -1,10 +1,8 @@
 #pragma once
 
-#include "../Context.h"
-
-#include <map>
-#include "Models/Unit.h"
-#include "Models/UnitInfo.h"
+#include <unordered_map>
+#include <TAKCore/Models/Unit.h>
+#include <TAKEnhancedDll/Wrappers/GameWrapper.h>
 
 std::unordered_map<Unit*, UnitInfo*> unitsWithDisabledAura;
 

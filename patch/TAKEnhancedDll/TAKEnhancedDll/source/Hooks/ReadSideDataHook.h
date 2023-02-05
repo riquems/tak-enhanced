@@ -1,5 +1,5 @@
 #pragma once
-#include "MemoryHandler.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 
 extern "C" __declspec(dllexport) void __stdcall ReadSideDataHook()
 {
@@ -35,6 +35,4 @@ void applyReadSideDataHooks()
 
     ShellCode shellCode(std::string("8D4DF4"), 0x0C2E81); // LEA ECX, [EBP-0C]
     MemoryHandler::writeShellCode(shellCode);
-
-    logger.log("Added Hook on reading SideData.tdf.");
 }

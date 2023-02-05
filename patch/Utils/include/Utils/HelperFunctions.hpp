@@ -1,5 +1,7 @@
 #pragma once
+#pragma pack(push, 8)
 #include <Windows.h>
+#pragma pack(pop)
 #include <TlHelp32.h>
 #include <fstream>
 #include <string>
@@ -11,12 +13,13 @@
 #include <chrono>
 #include <unordered_map>
 #include <algorithm>
+#include "openssl/aes.h"
+#include "openssl/md5.h"
 
 DWORD getProcessId(std::string processName);
 DWORD getProcessBaseAddress(std::string processName);
 
 bool isKeyDown(int keyCode);
-void StartConsole();
 
 void SetConsoleBufferSize(SHORT x, SHORT y);
 
@@ -27,7 +30,7 @@ namespace HelperFunctions
 
 void toggleBoolean(bool& boolean);
 
-bool str_contains_str(std::string& str1, std::string& str2);
+bool str_contains_str(const std::string& str1,const std::string& str2);
 bool str_equals_str(const char* str1, const char* str2);
 bool str_equals_str(std::string& str1, std::string& str2);
 bool str_equals_str(std::string& str1, const std::string& str2);
@@ -45,5 +48,4 @@ bool vector_has_str(std::vector<std::string>& vector, std::string str);
 
 std::vector<std::string> split_str(char* str, const char* token);
 std::vector<std::string> split_str(std::string str, const char* token);
-
 /* DWORD GetMainThreadId(); */

@@ -1,12 +1,13 @@
 #pragma once
-#include "MemoryHandler.h"
-#include "Functions/FunctionsOffsets.h"
-#include "Functions/NewFunctions.h"
-#include "Models/Mission.h"
-#include "Models/NavGoal.h"
-#include "Models/GameMath.h"
-#include "Models/Weapon.h"
-#include "Models/MovementHandler.h"
+#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
+#include "TAKEnhancedDll/GlobalState.hpp"
+#include "TAKCore/Functions/FunctionsOffsets.h"
+#include "TAKCore/Functions/NewFunctions.h"
+#include "TAKCore/Models/Mission.h"
+#include "TAKCore/Models/NavGoal.h"
+#include "TAKCore/Models/GameMath.h"
+#include "TAKCore/Models/Weapon.h"
+#include "TAKCore/Models/MovementHandler.h"
 
 extern "C" __declspec(dllexport) void __stdcall createNavGoalRectAdjusted(DWORD mission, DWORD target)
 {
@@ -40,7 +41,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(Missio
     Weapon* weapon = *(Weapon**) (weapon1Addr + offset);
 
     uint32_t range = weapon->range;
-    uint32_t minRange = settings.ForcedMinRangeForMelees;
+    uint32_t minRange = currentGameConfig->meleeStuckFix.forcedMinRangeForMelees;
     MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
     __asm {
@@ -82,7 +83,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingM
     if (cannotAttack && lastNavGoal == nullptr)
     {
         uint32_t range = weapon->range + 30;
-        uint32_t minRange = settings.ForcedMinRangeForMelees + 30;
+        uint32_t minRange = currentGameConfig->meleeStuckFix.forcedMinRangeForMelees + 30;
         MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
         __asm {
@@ -182,7 +183,5 @@ void applyMeleeStuckFix()
 
     // Replace melee can attack function
     MemoryHandler::write((DWORD) &new_MeleeCanAttack, 0x01F3B04);
-
-    logger.log("Melee Stuck fix applied.");
 }
 
