@@ -1,7 +1,5 @@
 #pragma once
-#pragma pack(push, 8)
-#include <Windows.h>
-#pragma pack(pop)
+#include "Windows.hpp"
 #include <string>
 #include <iostream>
 #include <format>

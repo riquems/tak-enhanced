@@ -24,9 +24,10 @@
 #include "TAKCore/Models/UI/Window.h"
 #include "TAKEnhancedDll/GlobalState.hpp"
 #include "Launcher/main_form.h"
-#include "Changes.h"
-#include "TAKEnhancedService.h"
+#include "TAKEnhancedDll/Changes.hpp"
+#include "TAKEnhancedDll/TAKEnhancedService.hpp"
 #include <TAKEnhancedDll/Keys/KeyCombination.hpp>
+#include <Utils/Console.hpp>
 
 __declspec(dllexport) DWORD setListItem_fcnAddr;
 __declspec(dllexport) bool TAKisInitialized;
@@ -209,7 +210,6 @@ void init()
     logger->section("CHANGES");
     applyChanges(currentGameConfig, logger);
 
-    logger->info("Starting TA:K Enhanced Service...");
     std::thread TAKEnhancedServiceThread(startTAKEnhancedService, std::ref(currentGameConfig));
     TAKEnhancedServiceThread.detach();
 }

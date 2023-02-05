@@ -80,51 +80,67 @@
     </ClCompile>
     <ClCompile Include="TAKEnhancedDll\source\Memory\ShellCode.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\MemoryHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedService.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\WeaponsHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\GameInitHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\GameUpdateLoopHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\KeyboardInputHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\LoadingScreenHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\ReadSideDataHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\ShowHpHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Hooks\UpdateGuiHook.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\HumorInteractions.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\MaxUnits.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\MeleeStuckFix.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\ModLoader.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\NoCD.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\NoPauseWhenUnfocused.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\OffscreenFix.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\PathFindingChanger.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\RandomRace.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\RotatingBuildings.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\SearchBox.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TAKEnhancedDll\source\Changes.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameFunctions.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\TAKEnhancedService.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\HelperFeatures.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\HumorInteractions.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\HumorInteractions.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\MaxUnits.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\MaxUnits.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\MeleeStuckFix.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\MeleeStuckFix.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\NoCD.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\NoCD.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\NoPauseWhenUnfocused.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\NoPauseWhenUnfocused.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\OffscreenFix.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\OffscreenFix.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\PathFindingChanger.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\PathFindingChanger.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\RandomRace.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\RandomRace.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\RotatingBuildings.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\RotatingBuildings.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\SearchBox.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\SearchBox.h">
-      <Filter>Sources\Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ToggleUnitsAuras.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h">
@@ -178,25 +194,25 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\WeaponWrapper.h">
       <Filter>Sources\Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Hooks\GameInitHook.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\GameInitHook.hpp">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Hooks\GameUpdateLoopHook.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\GameUpdateLoopHook.hpp">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Hooks\LoadingScreenHook.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\LoadingScreenHook.hpp">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Hooks\ReadSideDataHook.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\ReadSideDataHook.hpp">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Hooks\UpdateGuiHook.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\UpdateGuiHook.hpp">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Hooks\WeaponsHook.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\WeaponsHook.hpp">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ShowEveryoneHealthBars.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp">
@@ -217,10 +233,10 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Utils.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Hooks\ShowHpHook.h">
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\ShowHpHook.hpp">
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Changes\ModLoader.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ModLoader.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\nana_common.hpp">
       <Filter>Sources\Launcher</Filter>
     </ClInclude>
@@ -257,6 +273,10 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\Memory.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\ShellCode.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\MemoryHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\TAKEnhancedService.hpp">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />
