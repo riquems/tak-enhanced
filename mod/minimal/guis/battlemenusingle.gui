@@ -1,0 +1,1880 @@
+2 1 
+2 0 0 640 480 1 1 0 0 
+3 255 48 48 48 
+1 0 0 
+1 0 
+10 BattleMenu 1 2 
+2 
+1 21 BattleSkirmScreen.gaf 11 BattleSkirm 0 9 
+1 21 BattleSkirmScreen.gaf 11 BattleSkirm 1 9 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 24 #Enter#Play#Esc#Previous 
+32 
+
+4 1 
+1 
+2 544 407 39 51 1 0 0 0 
+3 255 48 48 48 
+1 0 0 
+1 0 
+4 Play 2 3 
+3 
+1 21 BattleSkirmScreen.gaf 8 OKButton 0 9 
+1 21 BattleSkirmScreen.gaf 8 OKButton 1 9 
+1 21 BattleSkirmScreen.gaf 8 OKButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 10 Start Game 
+0 
+
+4 1 
+1 
+2 59 407 39 51 1 0 0 0 
+3 255 48 48 48 
+1 0 0 
+1 0 
+8 Previous 2 3 
+3 
+1 21 BattleSkirmScreen.gaf 12 CancelButton 0 9 
+1 21 BattleSkirmScreen.gaf 12 CancelButton 1 9 
+1 21 BattleSkirmScreen.gaf 12 CancelButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 7 Default 
+1 10 cancel.wav 
+1 7 Default 
+2 0 15 Previous Screen 
+0 
+
+19 1 
+1 
+2 198 399 244 46 1 0 0 0 
+3 255 48 48 48 
+1 0 0 
+1 25 times new roman (100).gaf 
+14 MapDescription 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 15 Map Description 2 0 15 Map Description 2 
+1 0 
+1 0 
+2 0 15 Map description 
+0 
+
+9 1 
+1 
+2 64 61 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 286 62 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 61 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 61 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 61 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+19 1 
+1 
+2 208 452 224 30 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 26 Times New Roman (100B).gaf 
+8 HelpText 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 16 1 . 2 16 1 . 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+15 2 3 255 0 0 255 
+
+0 0 0 0 
+1 
+2 210 275 373 112 1 1 1 0 
+3 0 0 0 0 
+1 0 0 
+1 0 
+7 MapList 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+12 1 100 0 1 0 0 
+1 
+2 558 275 25 112 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+6 slider 0 3 
+3 
+1 14 ScrollBars.gaf 9 BattleBar 0 9 
+1 14 ScrollBars.gaf 9 BattleBar 1 9 
+1 14 ScrollBars.gaf 9 BattleBar 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+3 
+
+14 1 
+1 
+1 
+1 
+2 558 275 25 21 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+9 incbutton 0 3 
+3 
+1 14 ScrollBars.gaf 9 ScrollInc 0 9 
+1 14 ScrollBars.gaf 9 ScrollInc 1 9 
+1 14 ScrollBars.gaf 9 ScrollInc 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+14 1 
+1 
+1 
+1 
+2 558 364 25 23 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+9 decbutton 0 3 
+3 
+1 14 ScrollBars.gaf 9 ScrollDec 0 9 
+1 14 ScrollBars.gaf 9 ScrollDec 1 9 
+1 14 ScrollBars.gaf 9 ScrollDec 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+14 1 
+1 
+1 
+1 
+2 559 342 22 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 sbutton 0 3 
+3 
+1 14 ScrollBars.gaf 11 ScrollThumb 0 9 
+1 14 ScrollBars.gaf 11 ScrollThumb 1 9 
+1 14 ScrollBars.gaf 11 ScrollThumb 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 210 275 360 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+20 MapNameEntryTemplate 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+1 
+
+19 1 
+1 
+2 216 275 339 22 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+15 MapNameTemplate 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 7 MapName 2 1 7 MapName 2 
+1 0 
+1 0 
+2 0 10 Select map 
+0 
+
+19 1 
+1 
+2 67 30 111 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+4 Name 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 8 _SPName_ 2 1 8 _SPName_ 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 200 30 70 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+4 Side 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 8 _SPSide_ 2 0 8 _SPSide_ 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 271 30 49 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+5 Color 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 9 _SPColor_ 2 0 9 _SPColor_ 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+4 1 
+1 
+2 470 406 60 57 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 Options 2 3 
+3 
+1 21 BattleSkirmScreen.gaf 13 OptionsButton 0 9 
+1 21 BattleSkirmScreen.gaf 13 OptionsButton 1 9 
+1 21 BattleSkirmScreen.gaf 13 OptionsButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 14 menubutton.wav 
+1 0 
+2 0 7 Options 
+0 
+
+4 1 
+1 
+2 113 406 60 57 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+12 LoadSkirmish 2 3 
+3 
+1 21 BattleSkirmScreen.gaf 9 MapButton 0 9 
+1 21 BattleSkirmScreen.gaf 9 MapButton 1 9 
+1 21 BattleSkirmScreen.gaf 9 MapButton 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 14 menubutton.wav 
+1 0 
+2 0 9 Load Game 
+0 
+
+19 1 
+1 
+2 314 30 63 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+4 Team 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 8 _SPTeam_ 2 0 8 _SPTeam_ 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 64 83 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 1 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 286 84 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 83 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 83 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 83 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+9 1 
+1 
+2 64 105 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 2 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 286 106 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 105 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 105 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 105 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+9 1 
+1 
+2 64 127 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 3 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 286 128 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 127 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 127 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 127 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+9 1 
+1 
+2 64 149 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 4 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 286 150 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 149 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 149 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 149 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+9 1 
+1 
+2 64 171 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 5 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 286 172 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 171 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 171 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 171 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+9 1 
+1 
+2 64 193 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 6 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 286 194 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 193 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 193 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 193 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+9 1 
+1 
+2 64 215 311 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 7 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+4 
+
+18 1 2 -1 
+1 
+2 285 216 17 17 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+11 PlayerColor 2 12 
+12 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+12 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 12 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to select color 
+0 
+
+4 1 
+1 
+2 70 215 125 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerName 1 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 1 6 Player 2 1 6 Player 3 
+1 0 
+1 0 
+1 0 
+2 0 19 Select player or AI 
+0 
+
+4 1 
+1 
+2 196 215 77 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerSide 2 3 
+3 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+3 
+2 0 0 2 0 4 Side 2 0 4 Side 3 
+1 0 
+1 0 
+1 0 
+2 0 20 Click to select side 
+0 
+
+18 1 2 -1 
+1 
+2 317 215 50 20 1 0 0 0 
+3 0 0 0 0 
+1 0 0 
+1 25 times new roman (100).gaf 
+10 PlayerTeam 2 7 
+7 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+1 0 0 0 0 
+7 
+2 0 0 2 0 0 2 0 6 Team 1 2 0 6 Team 2 2 0 6 Team 3 2 0 6 Team 4 2 0 1   7 
+1 0 
+1 7 Default 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 21 Click to create teams 
+0 
+
+19 1 
+1 
+2 210 244 167 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+4 Name 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 8 Map Name 2 1 8 Map Name 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+19 1 
+1 
+2 403 30 178 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 18 lombardic (cd).gaf 
+4 Team 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 16 Game Information 2 0 16 Game Information 2 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 409 61 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 20 Unit LOS reveals map 
+2 
+
+19 1 
+1 
+2 413 61 133 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 13 Line of Sight 2 1 13 Line of Sight 2 
+1 0 
+1 0 
+2 0 20 Unit los reveals map 
+0 
+
+5 1 6 
+1 
+2 558 65 13 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+11 LineOfSight 3 5 
+5 
+1 14 scrollbars.gaf 8 CheckBox 0 9 
+1 14 scrollbars.gaf 8 CheckBox 1 9 
+1 14 scrollbars.gaf 8 CheckBox 2 9 
+1 14 scrollbars.gaf 8 CheckBox 3 9 
+1 14 scrollbars.gaf 8 CheckBox 4 9 
+5 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 5 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+12 1 100 50 1 0 0 
+1 
+2 415 218 157 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+8 MaxUnits 2 3 
+3 
+1 14 ScrollBars.gaf 13 UnitBattleBar 0 9 
+1 14 ScrollBars.gaf 13 UnitBattleBar 1 9 
+1 14 ScrollBars.gaf 13 UnitBattleBar 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+3 
+
+14 1 
+1 
+1 
+1 
+2 431 218 13 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 sbutton 2 3 
+3 
+1 14 ScrollBars.gaf 15 UnitBattleThumb 0 9 
+1 14 ScrollBars.gaf 15 UnitBattleThumb 1 9 
+1 14 ScrollBars.gaf 15 UnitBattleThumb 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+14 1 
+1 
+1 
+1 
+2 560 218 12 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+9 incbutton 2 3 
+3 
+1 14 ScrollBars.gaf 13 UnitBattleDec 0 9 
+1 14 ScrollBars.gaf 13 UnitBattleDec 1 9 
+1 14 ScrollBars.gaf 13 UnitBattleDec 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+14 1 
+1 
+1 
+1 
+2 415 218 12 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+9 decbutton 2 3 
+3 
+1 14 ScrollBars.gaf 13 UnitBattleInc 0 9 
+1 14 ScrollBars.gaf 13 UnitBattleInc 1 9 
+1 14 ScrollBars.gaf 13 UnitBattleInc 2 9 
+3 
+2 0 0 2 0 0 2 0 0 3 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 409 127 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 413 127 149 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 22 Random Start Locations 2 1 22 Random Start Locations 2 
+1 0 
+1 0 
+2 0 32 Monarchs placed at random on map 
+0 
+
+5 1 6 
+1 
+2 558 131 13 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+14 StartLocations 3 5 
+5 
+1 14 scrollbars.gaf 8 CheckBox 0 9 
+1 14 scrollbars.gaf 8 CheckBox 1 9 
+1 14 scrollbars.gaf 8 CheckBox 2 9 
+1 14 scrollbars.gaf 8 CheckBox 3 9 
+1 14 scrollbars.gaf 8 CheckBox 4 9 
+5 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 5 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 409 149 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 413 149 137 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 11 Power Codes 2 1 11 Power Codes 2 
+1 0 
+1 0 
+2 0 23 Power codes are allowed 
+0 
+
+5 1 6 
+1 
+2 558 153 13 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+10 CheatCodes 3 5 
+5 
+1 14 scrollbars.gaf 8 CheckBox 0 9 
+1 14 scrollbars.gaf 8 CheckBox 1 9 
+1 14 scrollbars.gaf 8 CheckBox 2 9 
+1 14 scrollbars.gaf 8 CheckBox 3 9 
+1 14 scrollbars.gaf 8 CheckBox 4 9 
+5 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 5 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 409 105 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 413 105 137 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 18 Monarch Expendable 2 1 18 Monarch Expendable 2 
+1 0 
+1 0 
+2 0 35 Game continues if monarch is killed 
+0 
+
+5 1 6 
+1 
+2 558 109 13 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+12 MonarchDeath 3 5 
+5 
+1 14 scrollbars.gaf 8 CheckBox 0 9 
+1 14 scrollbars.gaf 8 CheckBox 1 9 
+1 14 scrollbars.gaf 8 CheckBox 2 9 
+1 14 scrollbars.gaf 8 CheckBox 3 9 
+1 14 scrollbars.gaf 8 CheckBox 4 9 
+5 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 5 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 409 83 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 413 83 137 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 12 Map Revealed 2 1 12 Map Revealed 2 
+1 0 
+1 0 
+2 0 35 Terrain is visible at start of game 
+0 
+
+5 1 6 
+1 
+2 558 87 13 13 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 Mapping 3 5 
+5 
+1 14 scrollbars.gaf 8 CheckBox 0 9 
+1 14 scrollbars.gaf 8 CheckBox 1 9 
+1 14 scrollbars.gaf 8 CheckBox 2 9 
+1 14 scrollbars.gaf 8 CheckBox 3 9 
+1 14 scrollbars.gaf 8 CheckBox 4 9 
+5 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 5 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 409 171 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 413 171 137 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 16 Crusades Balance 2 1 16 Crusades Balance 2 
+1 0 
+1 0 
+2 0 18 Use Crusades Units 
+0 
+
+5 1 6 
+1 
+2 558 175 13 13 1 0 0 0 
+3 255 128 0 0 
+1 0 0 
+1 0 
+15 CrusadesBalance 3 5 
+5 
+1 14 scrollbars.gaf 8 CheckBox 0 9 
+1 14 scrollbars.gaf 8 CheckBox 1 9 
+1 14 scrollbars.gaf 8 CheckBox 2 9 
+1 14 scrollbars.gaf 8 CheckBox 3 9 
+1 14 scrollbars.gaf 8 CheckBox 4 9 
+5 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 5 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+9 1 
+1 
+2 409 193 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 413 193 93 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 5 Units 2 1 5 Units 2 
+1 0 
+1 0 
+2 0 23 Maximum number of units 
+0 
+
+19 1 
+1 
+2 535 193 39 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+13 NumberOfUnits 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 2 3 500 2 2 3 500 2 
+1 0 
+1 0 
+2 0 23 Maximum number of units 
+0 
+
+19 1 
+1 
+2 67 276 110 110 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+15 SelectedMapView 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 8 Map view 
+0 
+
+9 1 
+1 
+2 409 193 170 20 1 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+1 0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 0 0 2 0 0 2 
+1 0 
+1 0 
+2 0 0 
+2 
+
+19 1 
+1 
+2 413 193 137 20 0 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 25 times new roman (100).gaf 
+7 Static0 1 2 
+2 
+1 0 0 0 0 
+1 0 0 0 0 
+2 
+2 1 9 Slow Game 2 1 9 Slow Game 2 
+1 0 
+1 0 
+2 0 19 Degrade Performance 
+0 
+
+5 1 6 
+1 
+2 558 197 13 13 0 0 0 0 
+3 255 255 255 255 
+1 0 0 
+1 0 
+8 SlowGame 3 5 
+5 
+1 14 scrollbars.gaf 8 CheckBox 0 9 
+1 14 scrollbars.gaf 8 CheckBox 1 9 
+1 14 scrollbars.gaf 8 CheckBox 2 9 
+1 14 scrollbars.gaf 8 CheckBox 3 9 
+1 14 scrollbars.gaf 8 CheckBox 4 9 
+5 
+2 0 0 2 0 0 2 0 0 2 0 0 2 0 0 5 
+1 0 
+1 0 
+1 0 
+1 0 
+1 0 
+2 0 0 
+0 
+
+18 1 2 -1 
+1 
+2 49 471 105 8 1 0 0 0
+3 255 255 255 255 
+1 0 0 
+1 0 
+7 Static0 1 2
+3
+1 11 version.gaf 7 version 0 9 
+1 11 version.gaf 7 version 1 9
+2 
+2 0 0 2 0 0 2
+1 0 
+1 0 
+2 0 7 Version
+0 

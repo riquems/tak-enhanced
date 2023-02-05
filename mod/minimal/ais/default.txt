@@ -1,0 +1,496 @@
+// Extreme AI profile by WhiteHammer
+
+// Aramon
+weight ara 0.5
+// god
+weight aragod 0
+weight araxgod 0
+
+// lodes
+weight aralode 70
+weight aramana 70
+
+// builders
+weight arabuild 500
+weight aracastl 0.5
+weight arafly 0
+weight arakeep 500
+weight arapries 90
+
+// defence
+weight araat 0
+weight arassh 5
+
+// melee
+weight arabroad 0.7
+weight araknigh 0
+weight arapal 0.8
+weight arasmith 0.1
+weight arasword 0.7
+
+// ranged/siege
+weight araarch 0.7
+weight arabow 0.7
+weight aracan 0.3
+weight aragren 0
+weight arapult 0.4
+weight arasiege 0
+weight araspy 0
+weight aratre 0.03
+
+// air
+weight aradrag 0.005
+weight arafast 0
+
+// naval
+weight arawar 0.1
+
+// gate/wall
+weight arangate 0
+weight arawall 0
+
+// god
+limit aragod 0
+limit araxgod 0
+// lodes
+limit aralode 10
+limit aramana 10
+
+// builders
+limit arabuild 4
+limit aracastl 3
+limit arafly 0
+limit arakeep 7
+limit arapries 3
+
+// defence
+limit araat 0
+limit arassh 7
+
+// melee
+limit arabroad 25
+limit araknigh 0
+limit arapal 15
+limit arasmith 10
+limit arasword 50
+
+// ranged/siege
+limit araarch 30
+limit arabow 25
+limit aracan 10
+limit aragren 0
+limit arapult 12
+limit arasiege 0
+limit araspy 0
+limit aratre 2
+
+// air
+limit aradrag 1
+limit arafast 0
+
+// naval
+limit arawar 15
+
+// gate/wall
+limit arangate 0
+limit arawall 0
+
+// Creon
+weight cre 0.5
+// god
+weight cregod 0
+weight crexgod 0
+
+// lodes
+weight crelode 70
+weight cremana 70
+
+// builders
+weight creacad 0.5
+weight crechie 90
+weight cremech 500
+weight crenavy 50
+weight cresmit 500
+
+// defence
+weight crebomb 0
+weight cregatl 1
+weight crepris 3
+
+// melee
+weight creauto 0
+weight credev 10
+
+// ranged
+weight crebeas 0.8
+weight crefire 0.7
+weight creshoc 0.9
+weight cretort 0.7
+
+// air
+weight creaeri 5
+weight crebarn 0
+weight credrag 13
+
+// naval
+weight creiron 5
+weight crester 15
+weight cresubm 45
+
+// gate/wall
+weight cregate 0
+weight crewall 0
+
+// god
+limit cregod 0
+limit crexgod 0
+// lodes
+limit crelode 10
+limit cremana 10
+
+// builders
+limit creacad 4
+limit crechie 3
+limit cremech 6
+limit crenavy 3
+limit cresmit 7
+
+// defence
+limit crebomb 0
+limit cregatl 5
+limit crepris 7
+
+// melee
+limit creauto 0
+limit credev 15
+
+// ranged
+limit crebeas 15
+limit crefire 25
+limit creshoc 10
+limit cretort 25
+
+// air
+limit creaeri 1
+limit crebarn 0
+limit credrag 7
+
+// naval
+limit creiron 5
+limit crester 10
+limit cresubm 20
+
+// gate/wall
+limit cregate 0
+limit crewall 0
+
+// Taros
+weight tar 0.5
+// god
+weight targod 0
+weight tarxgod 0
+// lodes
+weight tarlode 70
+weight tarmana 70
+
+// builders
+weight tarcastl 500
+weight tardung 0.8
+weight tarhell 0.5
+weight tarpries 90
+weight tartb 500
+
+// defence
+weight tarcage 0 
+weight tarsh 0
+
+// melee
+weight tardemon 0.8
+weight tarhand 0
+weight tarlich 0
+weight tartroop 0.7
+weight tarzom 0
+
+// ranged/siege
+weight tararch 0.7
+weight tarblack 0.7 
+weight tarcan 0.4
+weight tarfire 0.5
+weight tarkam 0
+weight tarmage 0.1
+weight tarmind 0.1
+weight tarspout 0.6 
+weight tarwitch 0.1 
+
+// air
+weight tarang 0
+weight tarbeak 0
+weight tardrag 0.005
+weight targarg 0
+weight tarknigh 0.5 
+weight tarship 0
+
+// naval
+weight tarcship 3
+
+// gate/wall
+weight tarngate 0
+weight tarwall 0
+
+// god
+limit targod 0
+limit tarxgod 0
+// lodes
+limit tarlode 10
+limit tarmana 10
+
+// builders
+limit tarcastl 7
+limit tardung 4
+limit tarhell 3
+limit tarpries 3
+limit tartb 4
+
+// defence
+limit tarcage 0 
+limit tarsh 0
+
+// melee
+limit tardemon 15
+limit tarhand 0
+limit tarlich 0
+limit tartroop 30 
+limit tarzom 0
+
+// ranged/siege
+limit tararch 15
+limit tarblack 25 
+limit tarcan 10
+limit tarfire 20
+limit tarkam 0
+limit tarmage 5
+limit tarmind 5
+limit tarspout 15 
+limit tarwitch 3 
+
+// air
+limit tarang 0
+limit tarbeak 0
+limit tardrag 1
+limit targarg 0
+limit tarknigh 7 
+limit tarship 0
+
+// naval
+limit tarcship 5
+
+// gate/wall
+limit tarngate 0
+limit tarwall 0
+
+// Veruna
+weight ver 0.5
+// god
+weight vergod 0
+weight verxgod 0
+// lodes
+weight verlode 70
+weight vermana 70
+
+// builders
+weight verasy 100
+weight vercastl 0.5 
+weight verflag 90
+weight verkeep 500
+weight verliege 500
+weight verlihr 90
+
+// defence
+weight verat 0
+weight verfltwr 20
+weight verpill 0
+weight vertower 0
+weight verlight 0
+
+// melee
+weight verbers 0.5
+weight vercrus 0.7
+weight vermer 0.2
+weight versword 0.7
+
+// ranged/siege
+weight verarch 0.8
+weight verbal 0.3
+weight verknigh 0.5
+weight vermerm 0
+weight vermort 0
+weight vermusk 0.5
+weight verpult 0.4
+
+// air
+weight verball 0.1
+weight verdrag 0.005
+weight verpar 0
+
+// naval
+weight verharp 7
+weight verman 15
+weight verscout 0
+weight vertrans 0
+weight vertre 3
+
+// gate/wall
+weight verngate 0
+weight verwall 0
+
+// god
+limit vergod 0
+limit verxgod 0
+
+// lodes
+limit verlode 10
+limit vermana 10
+
+// builders
+limit verasy 3
+limit vercastl 4
+limit verflag 3
+limit verkeep 7
+limit verliege 4
+limit verlihr 3
+
+// defence
+limit verat 0
+limit verfltwr 7
+limit verpill 0
+limit vertower 0
+limit verlight 0
+
+// melee
+limit verbers 10
+limit vercrus 10
+limit vermer 15
+limit versword 30
+
+// ranged/siege
+limit verarch 25
+limit verbal 10
+limit verknigh 5
+limit vermerm 0
+limit vermort 0
+limit vermusk 7
+limit verpult 5
+
+// air
+limit verball 5
+limit verdrag 1
+limit verpar 0
+
+// naval
+limit verharp 7
+limit verman 15
+limit verscout 0
+limit vertrans 0
+limit vertre 3
+
+// gate/wall
+limit verngate 0
+limit verwall 0
+
+// Zhon
+weight zon 0.5
+
+// god
+weight zongod 0
+weight zonxgod 0
+// lodes
+weight zonlode 70 
+weight zonmana 70 
+
+// builders
+weight zonfark 500
+weight zonhand 500
+weight zonlord 3
+weight zonsham 90
+weight zontrain 5
+
+// defence
+weight zonfire 0
+weight zonglyph 1
+weight zonspide 1
+
+// melee
+weight zonamoe 0
+weight zongob 0
+weight zonorc 0.5
+weight zonswamp 0
+weight zontroll 0.7
+weight zonwolf 0.4
+
+// ranged/siege
+weight zonbasil 0.7
+weight zongiant 0.8
+weight zonter 0.9
+
+// air
+weight zonbat 0
+weight zondrag 0.005
+weight zondrake 0.2
+weight zonflies 0.1
+weight zongryp 0.5
+weight zonharp 0.3
+weight zonroc 0
+
+// naval
+weight zonbar 0.3
+weight zonkrak 0.5
+
+// gate/wall
+
+// god
+limit zongod 0
+limit zonxgod 0
+// lodes
+limit zonlode 10
+limit zonmana 10
+
+// builders
+limit zonhand 7
+limit zonlord 3
+limit zonsham 3
+limit zontrain 3
+
+// defence
+limit zonfire 0
+limit zonglyph 7 
+limit zonspide 7 
+
+// melee
+limit zonamoe 0
+limit zongob 0
+limit zonorc 10
+limit zonswamp 0
+limit zontroll 30
+limit zonwolf 10
+
+// ranged/siege
+limit zonbasil 7 
+limit zongiant 20 
+limit zonter 30
+
+// air
+limit zonbat 0
+limit zondrag 1
+limit zondrake 7 
+limit zonflies 7 
+limit zongryp 7
+limit zonharp 7
+limit zonroc 0
+
+// naval
+limit zonbar 15
+limit zonkrak 15
+
+// gate/wall
+
+
