@@ -29,9 +29,9 @@ New badass icon</div>
   [More info on command line params](http://kingdoms.catsboard.com/t1257-tak-target-command-line-parameters)
 * No-CD patch.
 
-* Increases max unit limit from 500 to 5000.
+* Configurable unit limit (default 5000).
 
-* PathFinding improved (raised from 12,000 to 100,000 path cycles).  
+* Configurable PathFinding (default 100,000 path cycles).
 
 * Game doesn't pause anymore when minimizing during SinglePlayer games.
 
@@ -50,14 +50,38 @@ New badass icon</div>
 
 
 <h2 align="center"><b>Introduction to the Launcher</b></h2>
+<br>
 
-<div align="center"><img src="https://i.imgur.com/GXiXsWq.png"/><br>
-Mod Loader</div>
-<br/>
+<div align="center">
+  <img src="imgs/mod-loader.png"/><br>
+  Mod Loader<br>
+  It can load mods! No need for TA:K Switcher or Kingdoms.key removal!
+</div>
 
-<div align="center"><img src="https://i.imgur.com/r3s734w.png" /><br/>
-Many HP Bar Options... You can choose to see Enemy HP!</div>
-<br/>
+<br>
+
+<div align="center">
+  <img src="imgs/presets.png"/><br>
+  Preset Picker<br>
+  Load your mod configuration for best experience!
+</div>
+
+<br>
+
+<div align="center">
+  <img src="imgs/hp-bars.png" /><br/>
+  Many HP Bar Options... Allows you to see your enemy's HP!
+</div>
+
+<br>
+
+<div align="center">
+  <img src="imgs/keybindings.png"/><br>
+  Keybindings<br>
+  Currently allows selecting buildings from the building menu using the keyboard.
+</div>
+
+<br>
 
 ## Detailed Log
 
@@ -352,6 +376,12 @@ lifsaber.fbi
 </pre>
 </details>
 <br/>
+
+## Important notes
+
+- TA:K Enhanced is a series of improvements, and aims to be a must have in future TA:K competitive or non competitive matches, because of its potential.
+- The full mod (TAKEnhanced.hpi) may cause conflicts with other mods, because it modifies the unitscb folder. So please, for integration with other mods, use TAKEnhancedMinimal.hpi. This unitscb modification is due to the "Melee Stuck Fix" patch and it normalizes melees ranges (some have really weird ones, like Swamp Beast with 150 range). So if you're taking TAKEnhanced.hpi out, and the mod you gonna use doesn't normalize the ranges, it may be better to ensure to disable the "Melee Stuck Fix". Modders should submit game configuration presets to be used in the launcher.
+- Watch out enabling patches and not adding TAKEnhancedMinimal.hpi or TAKEnhanced.hpi. Your game will crash! Some of them are dependent of these .hpis, so please always use one of them.
 
 ## Credits
 
