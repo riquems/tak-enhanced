@@ -1,11 +1,5 @@
 #pragma once
 
-__declspec(dllexport) void __stdcall keyboardInputHook()
-{
+__declspec(dllexport) void __stdcall keyboardInputHook();
 
-}
-
-void installKeyBoardInputHook()
-{
-
-}
+void installKeyBoardInputHook();

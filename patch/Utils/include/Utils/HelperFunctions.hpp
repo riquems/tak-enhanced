@@ -1,7 +1,5 @@
 #pragma once
-#pragma pack(push, 8)
-#include <Windows.h>
-#pragma pack(pop)
+#include "Utils/Windows.hpp"
 #include <TlHelp32.h>
 #include <fstream>
 #include <string>

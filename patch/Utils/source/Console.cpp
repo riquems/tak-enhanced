@@ -8,7 +8,7 @@ void StartConsole()
     std::cout.clear();
     std::cin.clear();
 
-    ConfigureConsole(600, 300, HWND_TOPMOST, false);
+    ConfigureConsole(600, 300, HWND_NOTOPMOST, false);
 }
 
 void CloseConsole()
