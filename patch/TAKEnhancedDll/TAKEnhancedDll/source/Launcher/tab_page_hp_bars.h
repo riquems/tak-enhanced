@@ -271,7 +271,7 @@ public:
 
     void update_hpBarColorMode_combox(std::shared_ptr<nana::combox>& showMode, std::shared_ptr<nana::combox>& colorMode)
     {
-        if (showMode->option() == ShowMode::Never) {
+        if ((showMode->option() + 1) == ShowMode::Never) {
             colorMode->enabled(false);
         }
         else {
@@ -281,7 +281,7 @@ public:
 
     void update_hpBarColor_combox(std::shared_ptr<nana::combox>& mode, std::shared_ptr<nana::combox>& color)
     {
-        if (mode->option() != ColorMode::Custom) {
+        if ((mode->option() + 1) != ColorMode::Custom) {
             color->enabled(false);
         }
         else {
