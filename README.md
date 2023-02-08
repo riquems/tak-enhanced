@@ -8,18 +8,18 @@ It's totally compatible with other 4.1bb versions.</p>
 <h2 align="center"><b>Why TA:K Enhanced?</b></h1>
 <br/>
 <div align="center"> 
-<img src="https://i.imgur.com/lRk32z3.png"><br/>
-<b>Colored HP Bars</b></div>
+<img src="imgs/colorful-hpbars.png"><br/>
+<b>Colorful HP Bars</b></div>
 <br/>
 
 <div align="center">
-<img src="https://media.giphy.com/media/W0OKzkuUZCtD1PwA8F/giphy.gif" width="40%" height="40%"/>&nbsp<img src="https://media.giphy.com/media/ZNNcMNVkjRFbKKlmJl/giphy.gif" width="40%" height="40%"/><br>
+<img src="imgs/before-melee-fix.gif" width="40%" height="40%"/>&nbsp<img src="imgs/after-melee-fix.gif" width="40%" height="40%"/><br>
 Melee Stuck Fix
 </div>
 <br/>
 
 <div align="center"> 
-<img src="https://i.imgur.com/xhbJwvH.png" width="64" height="64"><br/>
+<img src="imgs/badass-icon.png" width="64" height="64"><br/>
 New badass icon</div>
 <br/>
 
