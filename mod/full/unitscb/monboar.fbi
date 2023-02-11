@@ -1,0 +1,64 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 825;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = MON MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = monboar_dead;
+	defaultmissiontype = Standby_wander;
+	description = Monster;
+	experiencepoints = 3;
+	frozen = monboar_frozen;
+	healtime = 3.4375;
+	maneuverleashlength = 500;
+	maxdamage = 300;
+	maxvelocity = 3;
+	movementclass = GROUND2;
+	name = Giant Boar;
+	noveteran = 1;
+	objectname = MONBOAR;
+	roadmultiplier = 1;
+	shadowart = shadow04;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = MON;
+	sightdistance = 200;
+	soundcategory = MONBOAR;
+	soundclass = MONBOAR;
+	standingunitorder = 2;
+	stone = monboar_stone;
+	tedclass = Monster;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = MONBOAR;
+	unitnumber = 56;
+	upright = 1;
+	version = 1;
+	watermultiplier = 1;
+}
+
+[WEAPON1]
+{
+	name = Tusks;
+	range = 80;
+	reloadtime = 1.6;
+	soundhitclass = fist;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 305;
+	}
+}

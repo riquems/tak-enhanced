@@ -1,0 +1,61 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 825;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = NPC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = npcsail_dead;
+	defaultmissiontype = Standby_wander;
+	description = NPC;
+	experiencepoints = 2;
+	frozen = npcsail_frozen;
+	healtime = 3.4375;
+	maneuverleashlength = 500;
+	maxdamage = 1000;
+	maxvelocity = 1.15;
+	movementclass = GROUND2;
+	name = Sailor;
+	noveteran = 1;
+	objectname = NPCSAIL;
+	roadmultiplier = 1;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = NPC;
+	sightdistance = 200;
+	soundcategory = NPCSAIL;
+	soundclass = NPCSAIL;
+	standingunitorder = 2;
+	stone = npcsail_stone;
+	tedclass = NPC;
+	turnrate = 2500;
+	unitname = NPCSAIL;
+	unitnumber = 67;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.5;
+}
+
+[WEAPON1]
+{
+	damagetype = paralyzer;
+	name = Gibberish;
+	range = 50;
+	reloadtime = 4;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 1;
+	}
+}

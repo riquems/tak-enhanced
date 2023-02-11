@@ -1,0 +1,64 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bmcode = 1;
+	bodytype = armor;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 223.5;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbefrozen = 1;
+	category = MIS MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = NPCEMEN_dead;
+	damagecategory = HUMAN;
+	defaultmissiontype = Standby;
+	description = Mission;
+	experiencepoints = 9;
+	healtime = 0.93125;
+	maneuverleashlength = 500;
+	maxdamage = 1840;
+	maxvelocity = 1.7;
+	movementclass = GROUND2;
+	name = Emen the Messenger;
+	noveteran = 1;
+	objectname = NPCEMEN;
+	roadmultiplier = 1.21;
+	shadowart = shadow03;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = NPC;
+	sightdistance = 189;
+	soundcategory = NPCEMEN;
+	soundclass = NPCEMEN;
+	standingunitorder = 1;
+	stone = npcemen_stone;
+	tedclass = Mission;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = NPCEMEN;
+	unitnumber = 37;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 24;
+	name = Dagger;
+	range = 50;
+	reloadtime = 1.8;
+	soundhitclass = sword;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		buri = 100;
+		default = 305;
+	}
+}
