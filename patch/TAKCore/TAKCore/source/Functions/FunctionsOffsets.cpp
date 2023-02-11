@@ -14,4 +14,6 @@ namespace FunctionsOffsets
     const uintptr_t buildButtonClick = 0x0AF800;
 
     const uintptr_t createGraphicObjectFromJPG = 0x022060;
+
+    const uintptr_t executeCommand = 0x028F10;
 }

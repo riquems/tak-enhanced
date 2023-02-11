@@ -1,3 +1,4 @@
+#include "TAKEnhancedDll/common.hpp"
 #include "TAKEnhancedDll/TAKEnhancedService.hpp"
 #include "TAKEnhancedDll/Changes/RandomRace.hpp"
 #include "TAKEnhancedDll/Changes/OffscreenFix.hpp"
@@ -12,6 +13,8 @@
 #include "ddraw.h"
 #include <Utils/Window.hpp>
 #include <Utils/Keyboard.hpp>
+#include <TAKCore/Commands.h>
+#include <TAKCore/Functions/Functions.h>
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -134,10 +137,29 @@ void guaranteeFocus() {
     }
 }
 
+typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+wndProc_t oldWndProc;
+
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    switch (msg)
+    {
+    case WM_LBUTTONDBLCLK:
+        TAK::Functions::executeCommand(TAK::Commands::SelectUnitsOnScreenSelectedType, false);
+        break;
+    }
+
+    return oldWndProc(hwnd, msg, wParam, lParam);
+}
+
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
 {
     waitForTheGameToLaunch();
     guaranteeFocus();
+
+    auto wnd = GetThisWindow("Kingdoms");
+    oldWndProc = (wndProc_t) GetWindowLongPtr(wnd, GWLP_WNDPROC);
+    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)WndProc);
 
     logger->context("TA:K Enhanced Service");
     logger->info("TA:K Enhanced Service started!");
@@ -145,7 +167,6 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
     /*lpDDSurface = &(IDirectDrawSurface*) ;
 
     uintptr_t* DirectDrawVTable = (uintptr_t*) 0x5066A2A0;
-
 
     HookVTable(&DirectDrawVTable, 5, (uintptr_t) &newBlt, oldBlt);*/
 
