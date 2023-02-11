@@ -1,0 +1,82 @@
+[UNITINFO]
+{
+	acceleration = 0.11;
+	bankscale = 1.75;
+	bmcode = 1;
+	bodytype = wood;
+	brakerate = 0.022;
+	buildcost = 2531;
+	buildtime = 677;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	cantransport = 1;
+	category = ARA BOAT ATTACK BALLISTIC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = aratrans_dead;
+	damagecategory = naval;
+	defaultmissiontype = Standby;
+	description = Aramon;
+	experiencepoints = 44;
+	floater = 1;
+	healtime = 2.808;
+	immunetoparalyzer = 1;
+	maneuverleashlength = 325;
+	maxdamage = 9111;
+	maxvelocity = 1.02;
+	mogriumincome = 1;
+	mogriumstorage = 100;
+	movementclass = WATER5;
+	name = Ark;
+	objectname = ARATRANS;
+	pitchscale = 1.5;
+	radardistance = 510;
+	shadowart = shadow01;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ARA;
+	sightdistance = 325;
+	soundcategory = ARATRANS;
+	soundclass = ARATRANS;
+	standingunitorder = 1;
+	tedclass = Aramon;
+	transportcapacity = 100;
+	transportdistance = 419;
+	transportsize = 16;
+	transportsizecapacity = 400;
+	turnrate = 65;
+	unitname = ARATRANS;
+	unitnumber = 43;
+	version = 1;
+	waterline = 10;
+	wind = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	model = Araarrow;
+	name = Anti-Air Arrows;
+	range = 350;
+	reloadtime = 3.1;
+	soundhitclass = arrow;
+	type = Ballistic;
+	waterexplosionclass = small water explosion;
+	weaponvelocity = 525;
+
+	[DAMAGE]
+	{
+		default = 252;
+		fort = 0.25;
+		factory = 0.25;
+		stalwart = 0.25;
+		mechanical = 0.5;
+		naval = 0.5;
+	}
+}

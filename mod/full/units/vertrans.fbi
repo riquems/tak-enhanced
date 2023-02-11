@@ -1,0 +1,78 @@
+[UNITINFO]
+{
+	acceleration = 0.25;
+	bankscale = 1.25;
+	bmcode = 1;
+	bodytype = wood;
+	brakerate = 0.05;
+	buildcost = 1133;
+	buildtime = 230;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	cantransport = 1;
+	category = VER BOAT;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = vertrans_dead;
+	damagecategory = naval;
+	defaultmissiontype = Standby;
+	description = Veruna;
+	experiencepoints = 14;
+	floater = 1;
+	healtime = 0.958333333;
+	immunetoparalyzer = 1;
+	maneuverleashlength = 500;
+	maxdamage = 8650;
+	maxvelocity = 2.5;
+	movementclass = WATER4;
+	name = Transport Ship;
+	objectname = VERTRANS;
+	pitchscale = 1.5;
+	radardistance = 851;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 270;
+	soundcategory = VERTRANS;
+	soundclass = VERTRANS;
+	standingunitorder = 1;
+	tedclass = Veruna;
+	transportcapacity = 32;
+	transportdistance = 300;
+	transportsize = 16;
+	transportsizecapacity = 128;
+	turnrate = 150;
+	unitname = VERTRANS;
+	unitnumber = 153;
+	version = 1;
+	waterline = 1;
+	wind = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	model = araarrow;
+	name = Arrow;
+	range = 450;
+	reloadtime = 2.4;
+	soundhitclass = arrow;
+	type = Ballistic;
+	waterexplosionclass = small water explosion;
+	weaponvelocity = 420;
+
+	[DAMAGE]
+	{
+		default = 243;
+		fort = 0.25;
+		factory = 0.25;
+		stalwart = 0.25;
+		mechanical = 0.5;
+		naval = 0.5;
+	}
+}

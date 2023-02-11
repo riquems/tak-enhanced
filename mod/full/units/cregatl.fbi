@@ -1,0 +1,66 @@
+[UNITINFO]
+{
+	bodytype = wood;
+	buildangle = 6000;
+	buildcost = 3506;
+	buildtime = 350;
+	canattack = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = CRE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = CREGATL_dead;
+	damagecategory = mechanical;
+	defaultmissiontype = guard_nomove;
+	description = Creon;
+	experiencepoints = 40;
+	footprintx = 4;
+	footprintz = 4;
+	healtime = .61416;
+	immunetoparalyzer = 1;
+	maxdamage = 5500;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	name = Gatling Crossbow;
+	objectname = CREGATL;
+	radardistance = 1000;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = CRE;
+	sightdistance = 320;
+	soundcategory = CREGATL;
+	soundclass = CREGATL;
+	tedclass = Creon;
+	unitname = CREGATL;
+	unitnumber = 11;
+	version = 1;
+	yardmap = o;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1550;
+	areaofeffect = 24;
+	explosionclass = medium dust puff;
+	minrange = 75;
+	model = cregatl1;
+	name = Arrow;
+	range = 600;
+	reloadtime = 1.0;
+	soundhitclass = arrow;
+	type = ballistic;
+	waterexplosionclass = small water explosion;
+	weaponvelocity = 800;
+
+	[DAMAGE]
+	{
+		default = 325;
+		tier1 = 2.0;
+		fort = 0.25;
+		factory = 0.25;
+		stalwart = 0.25;
+		mechanical = 0.5;
+	}
+}

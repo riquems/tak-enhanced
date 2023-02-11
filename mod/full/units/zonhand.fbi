@@ -1,0 +1,72 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 1685;
+	builddistance = 75;
+	builder = 1;
+	builderlimited = 1;
+	buildtime = 455;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canreclaim = 1;
+	canstop = 1;
+	category = ZON BUILDER;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	damagecategory = stalwart;
+	defaultmissiontype = Standby;
+	description = Zhon;
+	experiencepoints = 20;
+	frozen = zonhand_frozen;
+	healtime = 1.895833333;
+	maneuverleashlength = 500;
+	maxdamage = 3401;
+	maxvelocity = 1.2;
+	mogriumincome = 1;
+	mogriumstorage = 100;
+	movementclass = GROUND2;
+	name = Beast Handler;
+	objectname = ZONHAND;
+	radardistance = 420;
+	roadmultiplier = 1.21;
+	shadowart = shadow07;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ZON;
+	sightdistance = 175;
+	soundcategory = ZONHAND;
+	soundclass = ZONHAND;
+	standingunitorder = 1;
+	stone = zonhand_stone;
+	tedclass = Zhon;
+	turninplacerate = 2500;
+	turnrate = 2450;
+	unitname = ZONHAND;
+	unitnumber = 169;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+	workertime = 10;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 24;
+	edgeeffectiveness = 0.7;
+	name = Whip;
+	range = 60;
+	reloadtime = 2;
+	soundhitclass = staff;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 480;
+	}
+}

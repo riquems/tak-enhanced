@@ -1,0 +1,77 @@
+[UNITINFO]
+{
+	acceleration = 0.18;
+	bankscale = 1.25;
+	bmcode = 1;
+	bodytype = wood;
+	brakerate = 0.036;
+	buildcost = 7843;
+	buildtime = 574;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = VER BOAT ATTACK BALLISTIC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = vertre_dead;
+	damagecategory = naval;
+	defaultmissiontype = Standby;
+	description = Veruna;
+	experiencepoints = 51;
+	floater = 1;
+	healtime = 2.39166667;
+	immunetoparalyzer = 1;
+	maneuverleashlength = 500;
+	maxdamage = 3288;
+	maxvelocity = 1.8;
+	movementclass = WATER5;
+	name = Trebuchet Ship;
+	objectname = VERTRE;
+	pitchscale = 1.5;
+	radardistance = 600;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 237;
+	soundcategory = VERTRE;
+	soundclass = VERTRE;
+	standingunitorder = 1;
+	tedclass = Veruna;
+	turninplacerate = 54;
+	turnrate = 108;
+	unitname = VERTRE;
+	unitnumber = 154;
+	version = 1;
+	waterline = 1;
+	wind = 1;
+	wpri_badtargetcategory = FLY;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 87;
+	damagetype = explosion;
+	explosionclass = large explosion;
+	name = trebuchet;
+	noairweapon = 1;
+	minrange = 500;
+	range = 2037;
+	reloadtime = 7;
+	shadowart = weaponshad01;
+	shadowgaf = shadows;
+	soundhitclass = cannon;
+	type = Ballistic;
+	waterexplosionclass = large water explosion;
+	weaponart = cannbsm;
+	weaponvelocity = 1141;
+
+	[DAMAGE]
+	{
+		default = 1845;
+	}
+}

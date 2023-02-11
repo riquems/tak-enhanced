@@ -1,0 +1,46 @@
+[UNITINFO]
+{
+	bodytype = armor;
+	buildangle = 2800;
+	buildcost = 1564;
+	builddistance = 100;
+	builder = 1;
+	buildtime = 600;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = CRE FACTORY;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = CRESMIT_dead;
+	damagecategory = factory;
+	description = Creon;
+	experiencepoints = 100;
+	footprintx = 7;
+	footprintz = 8;
+	healtime = 1.25;
+	immunetoparalyzer = 1;
+	maxdamage = 13946;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	mogriumincome = 1;
+	mogriumstorage = 100;
+	name = Smithy;
+	objectname = CRESMIT;
+	radardistance = 700;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = CRE;
+	sightdistance = 250;
+	soundcategory = CRESMIT;
+	soundclass = CRESMIT;
+	tedclass = Creon;
+	unitname = CRESMIT;
+	unitnumber = 14;
+	unitstandorders = 0;
+	version = 1;
+	workertime = 10;
+	yardmap = ..ooo.. .ooooo. ooooooo ooooooo occccco occccco occccco occccco;
+}

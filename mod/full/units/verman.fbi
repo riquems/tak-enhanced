@@ -1,0 +1,80 @@
+[UNITINFO]
+{
+	acceleration = 0.31;
+	bankscale = 1.75;
+	bmcode = 1;
+	bodytype = wood;
+	brakerate = 0.062;
+	buildcost = 2656;
+	buildtime = 185;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	cantransport = 1;
+	category = VER BOAT ATTACK BALLISTIC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = verman_dead;
+	damagecategory = naval;
+	defaultmissiontype = Standby;
+	description = Veruna;
+	experiencepoints = 40;
+	floater = 1;
+	healtime = 0.770833333;
+	immunetoparalyzer = 1;
+	maneuverleashlength = 500;
+	maxdamage = 7630;
+	maxvelocity = 3.1;
+	movementclass = WATER4;
+	name = Man of War;
+	objectname = VERMAN;
+	pitchscale = 1.2;
+	radardistance = 800;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 278;
+	soundcategory = VERMAN;
+	soundclass = VERMAN;
+	standingunitorder = 2;
+	tedclass = Veruna;
+	transportcapacity = 8;
+	transportdistance = 300;
+	transportsize = 16;
+	transportsizecapacity = 32;
+	turnrate = 186;
+	unitname = VERMAN;
+	unitnumber = 141;
+	version = 1;
+	waterline = 1;
+	wind = 1;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 60;
+	damagetype = explosion;
+	explosionclass = medium explosion;
+	name = cannon;
+	noairweapon = 1;
+	range = 550;
+	reloadtime = 3.9;
+	shadowart = weaponshad01;
+	shadowgaf = shadows;
+	soundhitclass = cannon;
+	type = Ballistic;
+	waterexplosionclass = medium water explosion;
+	weaponart = cannbsm;
+	weaponvelocity = 760;
+
+	[DAMAGE]
+	{
+		default = 1332;
+	}
+}

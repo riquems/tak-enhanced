@@ -1,0 +1,36 @@
+[UNITINFO]
+{
+	bodytype = armor;
+	buildcost = 10;
+	buildtime = 223.5;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = MIS;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = NPCFLAG_dead;
+	damagecategory = HUMAN;
+	description = Mission;
+	experiencepoints = 2;
+	footprintx = 1;
+	footprintz = 1;
+	healtime = 0.93125;
+	immunetoparalyzer = 1;
+	maxdamage = 29999;
+	name = Flag;
+	objectname = NPCFLAG;
+	shadowart = shadow02;
+	shadowgaf = shadows;
+	side = NPC;
+	sightdistance = 135;
+	soundcategory = NPCFLAG;
+	soundclass = NPCFLAG;
+	tedclass = Mission;
+	unitname = NPCFLAG;
+	unitnumber = 37;
+	unitstandorders = 0;
+	upright = 1;
+	version = 1;
+	wind = 1;
+	yardmap = c;
+}

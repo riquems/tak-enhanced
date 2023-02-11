@@ -1,0 +1,81 @@
+[UNITINFO]
+{
+	acceleration = 0.1;
+	bankscale = 1.75;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = wood;
+	brakerate = 0.02;
+	buildcost = 1367;
+	buildtime = 239;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = VER BALLISTIC ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = verpult_dead;
+	damagecategory = siege;
+	defaultmissiontype = Standby;
+	description = Veruna;
+	experiencepoints = 25;
+	frozen = verpult_frozen;
+	healtime = 0.995833;
+	maneuverleashlength = 500;
+	maxdamage = 1289;
+	maxvelocity = 0.8;
+	movementclass = GROUND5;
+	name = Catapult;
+	notargetcategory = FLY;
+	objectname = VERPULT;
+	pitchscale = 1.5;
+	roadmultiplier = 1.5;
+	shadowart = shadow13;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 160;
+	soundcategory = VERPULT;
+	soundclass = VERPULT;
+	standingunitorder = 1;
+	stone = verpult_stone;
+	tedclass = Veruna;
+	turninplacerate = 350;
+	turnrate = 350;
+	unitname = VERPULT;
+	unitnumber = 147;
+	version = 1;
+	watermultiplier = 0.5;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 50;
+	damagetype = explosion;
+	explosionclass = large dust puff;
+	gravityadjustment = 4;
+	lobpreferred = 1;
+	minrange = 180;
+	name = Rocky in the Sky;
+	noairweapon = 1;
+	range = 800;
+	reloadtime = 5.5;
+	shadowart = weaponshad01;
+	shadowgaf = shadows;
+	soundhitclass = rock;
+	type = Ballistic;
+	waterexplosionclass = medium water explosion;
+	weaponart = cannbmed;
+	weaponvelocity = 800;
+
+	[DAMAGE]
+	{
+		default = 1013;
+		fort = 1.25;
+		factory = 1.25;
+	}
+}

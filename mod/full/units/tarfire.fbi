@@ -1,0 +1,72 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 1;
+	buildangle = 4096;
+	buildcost = 1889;
+	buildtime = 264;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = TAR ATTACK BALLISTIC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = tarfire_dead;
+	damagecategory = monster;
+	defaultmissiontype = Standby;
+	description = Taros;
+	experiencepoints = 32;
+	frozen = tarfire_frozen;
+	healtime = 1.1;
+	maneuverleashlength = 500;
+	maxdamage = 3000;
+	maxvelocity = 1;
+	movementclass = GROUND3;
+	name = Fire Demon;
+	objectname = TARFIRE;
+	roadmultiplier = 1.21;
+	shadowart = shadow08;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = TAR;
+	sightdistance = 156;
+	soundcategory = TARFIRE;
+	soundclass = TARFIRE;
+	standingunitorder = 1;
+	stone = tarfire_stone;
+	tedclass = Taros;
+	turninplacerate = 2400;
+	turnrate = 2400;
+	unitname = TARFIRE;
+	unitnumber = 84;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	areaofeffect = 50;
+	explosionclass = fireball explosion;
+	firestarter = 1;
+	name = Fire Ball of Gloom;
+	range = 900;
+	reloadtime = 3.2;
+	soundhitclass = fire;
+	turnrate = 180;
+	type = Guided;
+	weaponart = FireballA;
+	weaponvelocity = 250;
+
+	[DAMAGE]
+	{
+		default = 600;
+	}
+}

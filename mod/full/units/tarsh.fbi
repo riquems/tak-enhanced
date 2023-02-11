@@ -1,0 +1,67 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 0;
+	buildcost = 7951;
+	buildtime = 705;
+	canattack = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = TAR ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = tarsh_dead;
+	damagecategory = fort;
+	defaultmissiontype = guard_nomove;
+	description = Taros;
+	experiencepoints = 65;
+	footprintx = 4;
+	footprintz = 4;
+	healtime = 1.46875;
+	immunetoparalyzer = 1;
+	maxdamage = 19189;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	name = Mage Tower;
+	objectname = TARSH;
+	radardistance = 1000;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = TAR;
+	sightdistance = 500;
+	soundcategory = TARSH;
+	soundclass = TARSH;
+	tedclass = Taros;
+	unitname = TARSH;
+	unitnumber = 102;
+	version = 1;
+	wind = 1;
+	yardmap = o;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	emittime = 10;
+	explosionclass = lightning explosion;
+	hweffect = lightning;
+	innercolor = 255 255 255;
+	lightmap = small;
+	middlecolor = 200 230 255;
+	name = lightning;
+	outercolor = 180 200 255;
+	range = 500;
+	reloadtime = 2.4;
+	soundhitclass = lightning;
+	subtype = lightning;
+	type = Line of Sight;
+	weaponvelocity = 1500;
+
+	[DAMAGE]
+	{
+		default = 1450;
+		tier1 = 2.0;
+		mechanical = 1.25;
+	}
+}
