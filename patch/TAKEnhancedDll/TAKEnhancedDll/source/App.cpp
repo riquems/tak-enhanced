@@ -173,6 +173,7 @@ void init()
     userConfig = std::make_shared<UserConfig>(maybeUserConfig.value());
 
     baseAddress = getProcessBaseAddress("Kingdoms.icd");
+    TAK::init(baseAddress);
     logger->debug("Process base address loaded successfully.");
 
     hProcess = GetCurrentProcess();

@@ -1,3 +1,4 @@
+#include "TAKEnhancedDll/common.hpp"
 #include "TAKEnhancedDll/TAKEnhancedService.hpp"
 #include "TAKEnhancedDll/Changes/RandomRace.hpp"
 #include "TAKEnhancedDll/Changes/OffscreenFix.hpp"
@@ -12,6 +13,10 @@
 #include "ddraw.h"
 #include <Utils/Window.hpp>
 #include <Utils/Keyboard.hpp>
+#include <TAKCore/Commands.h>
+#include <TAKCore/Functions/Functions.h>
+#include <Utils/Timer.hpp>
+#include <thread>
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -134,10 +139,112 @@ void guaranteeFocus() {
     }
 }
 
+void bindWndProc();
+
+typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+wndProc_t oldWndProc;
+bool bindingScheduled = false;
+Timer timer;
+
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    switch (msg)
+    {
+        case WM_LBUTTONDOWN: {
+            auto doubleClickTimeInMilliseconds = timer.timeInMilliseconds();
+
+            if (doubleClickTimeInMilliseconds != 0 && doubleClickTimeInMilliseconds <= GetDoubleClickTime()) {
+                timer.stop();
+                logger->debug("A Triple Click has occured.");
+                
+                bool isTargetCommand = std::find_if(
+                    std::begin(TAK::Commands::targetCommands),
+                    std::end(TAK::Commands::targetCommands),
+                    [](const char* cmd) {
+                        return cmd == userConfig->onTripleClick;
+                    }
+                );
+
+                if (isTargetCommand && gameWrapper->getMouseHoveredUnitAddress() != NULL) {
+                    Timer::run([&]() {
+                        TAK::Functions::executeCommand(userConfig->onTripleClick.c_str(), false);
+                        }, 100);
+
+                    // delay here is needed otherwise it'll not work
+                    // because when you triple click an unit the third click will actually select just one of them
+                    // and deselect the others, so we need to make sure this runs after this happens
+                }
+            }
+
+            break;
+        }
+        case WM_LBUTTONDBLCLK: {
+            if (wParam & MK_CONTROL) {
+                logger->debug("A CTRL + Double Click has occured.");
+
+                bool isTargetCommand = std::find_if(
+                    std::begin(TAK::Commands::targetCommands),
+                    std::end(TAK::Commands::targetCommands),
+                    [](const char* cmd) {
+                        return cmd == userConfig->onCtrlDoubleClick;
+                    }
+                );
+
+                if (isTargetCommand && gameWrapper->getMouseHoveredUnitAddress() != NULL) {
+                    TAK::Functions::executeCommand(userConfig->onCtrlDoubleClick.c_str(), false);
+                }
+
+                break;
+            }
+
+            logger->debug("A Double Click has occured.");
+
+            bool isTargetCommand = std::find_if(
+                std::begin(TAK::Commands::targetCommands),
+                std::end(TAK::Commands::targetCommands),
+                [](const char* cmd) {
+                    return cmd == userConfig->onDoubleClick;
+                }
+            );
+
+            if (isTargetCommand && gameWrapper->getMouseHoveredUnitAddress() != NULL) {
+                TAK::Functions::executeCommand(userConfig->onDoubleClick.c_str(), false);
+            }
+            timer.start();
+            break;
+        }
+        case WM_STYLECHANGED:
+            logger->debug("[Windows] WM_STYLECHANGED");
+
+            if (!bindingScheduled) {
+                bindingScheduled = true;
+                std::thread t([&]() {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+                    bindWndProc(); // we need to rebind our WndProc because DXWnd overwrites it when this event occurs
+                    bindingScheduled = false;
+                });
+                t.detach();
+            }
+            break;
+    }
+
+    return oldWndProc(hwnd, msg, wParam, lParam);
+}
+
+void bindWndProc() {
+    logger->debug("Binding WndProc...");
+    auto wnd = GetThisWindow("Kingdoms");
+    oldWndProc = (wndProc_t)GetWindowLongPtr(wnd, GWLP_WNDPROC);
+    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)WndProc);
+}
+
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
 {
     waitForTheGameToLaunch();
     guaranteeFocus();
+
+    bindWndProc();
 
     logger->context("TA:K Enhanced Service");
     logger->info("TA:K Enhanced Service started!");
@@ -145,7 +252,6 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
     /*lpDDSurface = &(IDirectDrawSurface*) ;
 
     uintptr_t* DirectDrawVTable = (uintptr_t*) 0x5066A2A0;
-
 
     HookVTable(&DirectDrawVTable, 5, (uintptr_t) &newBlt, oldBlt);*/
 

@@ -238,6 +238,9 @@
     <ClInclude Include="TAKCore\include\TAKCore\ModelsExtensions\WindowExtensions.h" />
     <ClInclude Include="TAKCore\include\TAKCore\common.h" />
     <ClInclude Include="TAKCore\include\TAKCore\GameDefs.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\Commands.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\Functions\Functions.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\TAKCore.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKCore\source\ModelsExtensions\WindowExtensions.cpp" />
@@ -247,5 +250,7 @@
     <ClCompile Include="TAKCore\source\ModelsExtensions\InGameDesktopExtensions.cpp" />
     <ClCompile Include="TAKCore\source\Functions\NewFunctions.cpp" />
     <ClCompile Include="TAKCore\source\Functions\FunctionsOffsets.cpp" />
+    <ClCompile Include="TAKCore\source\TAKCore.cpp" />
+    <ClCompile Include="TAKCore\source\Functions\Functions.cpp" />
   </ItemGroup>
 </Project>
