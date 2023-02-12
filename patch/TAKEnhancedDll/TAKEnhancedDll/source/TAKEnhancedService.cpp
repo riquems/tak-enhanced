@@ -15,6 +15,8 @@
 #include <Utils/Keyboard.hpp>
 #include <TAKCore/Commands.h>
 #include <TAKCore/Functions/Functions.h>
+#include <Utils/Timer.hpp>
+#include <thread>
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -139,14 +141,39 @@ void guaranteeFocus() {
 
 typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 wndProc_t oldWndProc;
+Timer timer;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
-    case WM_LBUTTONDBLCLK:
-        TAK::Functions::executeCommand(TAK::Commands::SelectUnitsOnScreenSelectedType, false);
-        break;
+        case WM_LBUTTONDOWN: {
+            auto doubleClickTimeInMilliseconds = timer.timeInMilliseconds();
+
+            if (doubleClickTimeInMilliseconds != 0 && doubleClickTimeInMilliseconds <= GetDoubleClickTime()) {
+                timer.stop();
+                
+                Timer::run([&]() {
+                    TAK::Functions::executeCommand(TAK::Commands::SelectAllUnitsSelectedType, false);
+                }, 100);
+
+                // delay here is needed otherwise it'll not work
+                // because when you triple click an unit the third click will actually select just one of them
+                // and deselect the others, so we need to make sure this runs after this happens
+            }
+
+            break;
+        }
+        case WM_LBUTTONDBLCLK: {
+            if (wParam & MK_CONTROL) {
+                TAK::Functions::executeCommand(TAK::Commands::SelectAllUnitsSelectedType, false);
+                break;
+            }
+
+            TAK::Functions::executeCommand(TAK::Commands::SelectUnitsOnScreenSelectedType, false);
+            timer.start();
+            break;
+        }
     }
 
     return oldWndProc(hwnd, msg, wParam, lParam);
