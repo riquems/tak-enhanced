@@ -91,6 +91,24 @@ namespace TAKCore
             UnitCommand,
             SelectSquad
         };
+
+        inline const char* targetCommands[] = {
+            PasteUnitFromClipboard,
+            CutUnitToClipboard,
+            CopyUnitToClipboard,
+            DebugDestroyUnit,
+            DebugUnitProbeDebug,
+            UnitInfo,
+            ToggleDamageBars,
+            MoveToNextUnit,
+            MoveToLastReport,
+            MapBookmarkRetrieve,
+            MapBookmarkStore,
+            TrackUnitReverse,
+            TrackUnit,
+            SelectUnitsOnScreenSelectedType,
+            SelectAllUnitsSelectedType,
+        };
     }
 }
 
