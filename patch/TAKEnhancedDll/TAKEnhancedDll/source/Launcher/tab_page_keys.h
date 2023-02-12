@@ -221,7 +221,7 @@ public:
             <                                                                                    \
                 <max=200 arrange=[15, 25, repeated] vert gap=[3, 10, repeated] clickOptions>     \
                 <max=10>                                                                         \
-                <max=247 keyBindingsList>                                                        \
+                <max=249 keyBindingsList>                                                        \
                 <max=10>                                                                         \
                 <max=80 arrange=30 vert gap=5 actionButtons>                                     \
             >"
