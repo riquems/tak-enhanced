@@ -1,4 +1,7 @@
 {
+  "onDoubleClick": "SelectUnitsOnScreenSelectedType",
+  "onTripleClick": "SelectAllUnitsSelectedType",
+  "onCtrlDoubleClick": "SelectAllUnitsSelectedType",
   "keyBindings": [
     {
       "command": "Select Building 1",

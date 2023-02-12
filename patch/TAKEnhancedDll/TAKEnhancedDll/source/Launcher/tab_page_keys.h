@@ -3,6 +3,7 @@
 #include "Utils/VirtualKeys.h"
 #include "Utils/HelperFunctions.hpp"
 
+#include "TAKCore/Commands.h"
 #include "TAKEnhancedDll/Commands/Command.hpp"
 #include "TAKEnhancedDll/Keys/Keys.hpp"
 #include <TAKEnhancedDll/Configs/UserConfig.hpp>
@@ -52,6 +53,15 @@ class tab_page_keys : public nana::panel<false>
 
     std::unique_ptr<nana::place> layout;
 
+    std::shared_ptr<nana::label> lbl_onDoubleClick;
+    std::shared_ptr<nana::combox> cb_onDoubleClick;
+
+    std::shared_ptr<nana::label> lbl_onTripleClick;
+    std::shared_ptr<nana::combox> cb_onTripleClick;
+
+    std::shared_ptr<nana::label> lbl_onCtrlDoubleClick;
+    std::shared_ptr<nana::combox> cb_onCtrlDoubleClick;
+
     std::shared_ptr<nana::listbox> lb_keyBindings;
 
     std::shared_ptr<nana::button> btn_add;
@@ -82,6 +92,10 @@ public:
 
     void initialize()
     {
+        addOnDoubleClickOption();
+        addOnTripleClickOption();
+        addOnCtrlDoubleClickOption();
+
         lb_keyBindings = std::make_shared<nana::listbox>(*this);
         lb_keyBindings->append_header("Command");
         lb_keyBindings->append_header("Key Combination");
@@ -138,13 +152,90 @@ public:
         );
     }
 
+    void addOnDoubleClickOption() {
+        lbl_onDoubleClick = std::make_shared<nana::label>(*this, "On Double Click: ");
+        lbl_onDoubleClick->bgcolor(default_bgcolor);
+
+        cb_onDoubleClick = std::make_shared<nana::combox>(*this);
+
+        int idx = 0;
+        int userOptionIndex = 0;
+        for (auto& clickOption : TAK::Commands::commands) {
+            if (this->userConfig->onDoubleClick == clickOption) {
+                userOptionIndex = idx;
+            }
+
+            cb_onDoubleClick->push_back(clickOption);
+            idx++;
+        }
+
+        cb_onDoubleClick->option(userOptionIndex);
+    }
+
+    void addOnTripleClickOption() {
+        lbl_onTripleClick = std::make_shared<nana::label>(*this, "On Triple Click: ");
+        lbl_onTripleClick->bgcolor(default_bgcolor);
+
+        cb_onTripleClick = std::make_shared<nana::combox>(*this);
+
+        int idx = 0;
+        int userOptionIndex = 0;
+        for (auto& clickOption : TAK::Commands::commands) {
+            if (this->userConfig->onTripleClick == clickOption) {
+                userOptionIndex = idx;
+            }
+
+            cb_onTripleClick->push_back(clickOption);
+            idx++;
+        }
+
+        cb_onTripleClick->option(userOptionIndex);
+    }
+
+    void addOnCtrlDoubleClickOption() {
+        lbl_onCtrlDoubleClick = std::make_shared<nana::label>(*this, "On CTRL + Double Click: ");
+        lbl_onCtrlDoubleClick->bgcolor(default_bgcolor);
+
+        cb_onCtrlDoubleClick = std::make_shared<nana::combox>(*this);
+
+        int idx = 0;
+        int userOptionIndex = 0;
+        for (auto& clickOption : TAK::Commands::commands) {
+            if (this->userConfig->onCtrlDoubleClick == clickOption) {
+                userOptionIndex = idx;
+            }
+
+            cb_onCtrlDoubleClick->push_back(clickOption);
+            idx++;
+        }
+
+        cb_onCtrlDoubleClick->option(userOptionIndex);
+    }
+
     void draw()
     {
         layout = std::make_unique<nana::place>(*this);
 
-        layout->div("margin=15                                                          \
-                     <margin=[0] keyBindingsList><weight=100 vert margin=[0, 20, 0, 20] <weight=80 vert gap=5 actionButtons>>");
-        
+        layout->div(
+            "margin=15                                                                           \
+            <                                                                                    \
+                <max=200 arrange=[15, 25, repeated] vert gap=[3, 10, repeated] clickOptions>     \
+                <max=10>                                                                         \
+                <max=247 keyBindingsList>                                                        \
+                <max=10>                                                                         \
+                <max=80 arrange=30 vert gap=5 actionButtons>                                     \
+            >"
+        );
+
+        layout->field("clickOptions") << *lbl_onDoubleClick;
+        layout->field("clickOptions") << *cb_onDoubleClick;
+
+        layout->field("clickOptions") << *lbl_onTripleClick;
+        layout->field("clickOptions") << *cb_onTripleClick;
+
+        layout->field("clickOptions") << *lbl_onCtrlDoubleClick;
+        layout->field("clickOptions") << *cb_onCtrlDoubleClick;
+
         layout->field("keyBindingsList") << *lb_keyBindings;
         layout->field("actionButtons") << *btn_edit << *btn_clear;
 
@@ -184,6 +275,10 @@ public:
 
             this->userConfig->keyBindings.push_back(KeyBinding{ keyCombination, command });
         }
+
+        this->userConfig->onDoubleClick = this->cb_onDoubleClick->text(this->cb_onDoubleClick->option());
+        this->userConfig->onTripleClick = this->cb_onTripleClick->text(this->cb_onTripleClick->option());
+        this->userConfig->onCtrlDoubleClick = this->cb_onCtrlDoubleClick->text(this->cb_onCtrlDoubleClick->option());
     }
 
     void update()

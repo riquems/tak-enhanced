@@ -154,7 +154,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 timer.stop();
                 
                 Timer::run([&]() {
-                    TAK::Functions::executeCommand(TAK::Commands::SelectAllUnitsSelectedType, false);
+                    TAK::Functions::executeCommand(userConfig->onTripleClick.c_str(), false);
                 }, 100);
 
                 // delay here is needed otherwise it'll not work
@@ -166,11 +166,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         case WM_LBUTTONDBLCLK: {
             if (wParam & MK_CONTROL) {
-                TAK::Functions::executeCommand(TAK::Commands::SelectAllUnitsSelectedType, false);
+                TAK::Functions::executeCommand(userConfig->onCtrlDoubleClick.c_str(), false);
                 break;
             }
 
-            TAK::Functions::executeCommand(TAK::Commands::SelectUnitsOnScreenSelectedType, false);
+            TAK::Functions::executeCommand(userConfig->onDoubleClick.c_str(), false);
             timer.start();
             break;
         }
