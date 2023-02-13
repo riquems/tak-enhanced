@@ -1,8 +1,8 @@
 {
-  "currentPreset": "TA:K Enhanced",
+  "currentPreset": "Custom",
   "presetsPath": "./TAKEnhanced/Presets",
   "window": {
-    "height": 341,
-    "width": 441
+    "height": 401,
+    "width": 580
   }
 }

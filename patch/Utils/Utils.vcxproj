@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Keyboard.cpp" />
+    <ClCompile Include="source\Timer.cpp" />
     <ClCompile Include="source\Window.cpp" />
     <ClInclude Include="include\Utils\common.h" />
     <ClInclude Include="include\Utils\CRC.h" />
     <ClInclude Include="include\Utils\Keyboard.hpp" />
+    <ClInclude Include="include\Utils\Timer.hpp" />
     <ClInclude Include="include\Utils\VirtualKeys.h" />
     <ClInclude Include="include\Utils\Console.hpp" />
     <ClInclude Include="include\Utils\HelperFunctions.hpp" />

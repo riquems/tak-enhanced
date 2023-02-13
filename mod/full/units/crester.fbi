@@ -1,0 +1,77 @@
+[UNITINFO]
+{
+	acceleration = 0.27;
+	bankscale = 1.75;
+	bmcode = 1;
+	bodytype = wood;
+	brakerate = 0.08;
+	buildcost = 3119;
+	buildtime = 190;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	cantransport = 1;
+	category = CRE BOAT ATTACK BALLISTIC;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = CRESTER_dead;
+	damagecategory = naval;
+	defaultmissiontype = Standby;
+	description = Creon;
+	experiencepoints = 35;
+	floater = 1;
+	healtime = 1.263;
+	immunetoparalyzer = 1;
+	maneuverleashlength = 500;
+	maxdamage = 8405;
+	maxvelocity = 2.3;
+	movementclass = WATER3;
+	name = Stern Wheeler;
+	objectname = CRESTER;
+	pitchscale = 1.5;
+	radardistance = 780;
+	shadowart = shadow01;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = CRE;
+	sightdistance = 330;
+	soundcategory = CRESTER;
+	soundclass = CRESTER;
+	standingunitorder = 2;
+	tedclass = Creon;
+	transportcapacity = 20;
+	transportdistance = 300;
+	transportsize = 16;
+	transportsizecapacity = 80;
+	turnrate = 160;
+	unitname = CRESTER;
+	unitnumber = 43;
+	version = 1;
+	waterline = 1;
+}
+
+
+[WEAPON1]
+{
+	aimtolerance = 1640;
+	areaofeffect = 45;
+	explosionclass = medium explosion;
+	name = Cannon;
+	range = 500;
+	reloadtime = 3.0;
+	soundhitclass = cremdcan;
+	type = ballistic;
+	waterexplosionclass = small water explosion;
+	weaponart = cannbsm;
+	weaponvelocity = 550;
+
+	[DAMAGE]
+	{
+		default = 750;
+	}
+}

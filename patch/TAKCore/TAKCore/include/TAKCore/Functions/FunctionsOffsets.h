@@ -15,4 +15,6 @@ namespace FunctionsOffsets
     extern const uintptr_t buildButtonClick;
 
     extern const uintptr_t createGraphicObjectFromJPG;
+
+    extern const uintptr_t executeCommand;
 }

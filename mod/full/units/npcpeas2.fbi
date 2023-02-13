@@ -1,0 +1,64 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 825;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = NPC MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = npcpeas2_dead;
+	defaultmissiontype = Standby;
+	description = NPC;
+	experiencepoints = 3;
+	frozen = npcpeas2_frozen;
+	healtime = 3.4375;
+	maneuverleashlength = 500;
+	maxdamage = 650;
+	maxvelocity = 1.4;
+	movementclass = GROUND2;
+	name = Peasant;
+	objectname = NPCPEAS2;
+	roadmultiplier = 1.21;
+	shadowart = shadow03;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = NPC;
+	sightdistance = 200;
+	soundcategory = NPCPEAS2;
+	soundclass = NPCPEAS;
+	standingunitorder = 2;
+	stone = npcpeas2_stone;
+	tedclass = NPC;
+	turnrate = 2500;
+	unitname = NPCPEAS2;
+	unitnumber = 65;
+	unitstandorders = 0;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 24;
+	edgeeffectiveness = 0.7;
+	name = Sword;
+	range = 50;
+	reloadtime = 1.7;
+	soundhitclass = sword;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 230;
+	}
+}

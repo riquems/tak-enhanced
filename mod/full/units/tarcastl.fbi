@@ -1,0 +1,47 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 8192;
+	buildcost = 1688;
+	builddistance = 500;
+	builder = 1;
+	buildtime = 512;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = TAR FACTORY;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = tarcastl_dead;
+	corpseadjustz = 7;
+	damagecategory = factory;
+	description = Taros;
+	experiencepoints = 100;
+	footprintx = 8;
+	footprintz = 20;
+	healtime = 1.066666667;
+	immunetoparalyzer = 1;
+	maxdamage = 16558;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	mogriumincome = 1;
+	mogriumstorage = 200;
+	name = Cabal;
+	objectname = TARCASTL;
+	radardistance = 750;
+	shootme = 1;
+	side = TAR;
+	sightdistance = 250;
+	soundcategory = TARCASTL;
+	soundclass = TARCASTL;
+	tedclass = Taros;
+	unitname = TARCASTL;
+	unitnumber = 75;
+	unitstandorders = 0;
+	version = 1;
+	wind = 1;
+	workertime = 10;
+	yardmap = ........ ........ ........ ........ ........ ........ ........ oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo cccccccc cccccccc cccccccc cccccccc;
+}

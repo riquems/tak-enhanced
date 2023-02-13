@@ -1,0 +1,45 @@
+[UNITINFO]
+{
+	activatewhenbuilt = 1;
+	bmcode = 0;
+	bodytype = wood;
+	buildcost = 214;
+	buildtime = 100;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = ZON;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = zonfire_dead;
+	description = Zhon;
+	experiencepoints = 5;
+	footprintx = 3;
+	footprintz = 3;
+	healtime = 0.104166667;
+	immunetoparalyzer = 1;
+	maxdamage = 845;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	name = Sacred Fire;
+	noshadow = 1;
+	objectname = zonfire;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ZON;
+	sightdistance = 130;
+	soundcategory = zonfire;
+	soundclass = zonfire;
+	tedclass = Zhon;
+	unitname = zonfire;
+	unitnumber = 26;
+	unitstandorders = 0;
+	version = 1;
+	yardmap = o;
+
+	[AdjustJoy]
+	{
+		adjustment = 45;
+		affectsenemy = 0;
+		edgeeffectiveness = 1;
+		radius = 90;
+	}
+}

@@ -1,0 +1,153 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	builddistance = 100;
+	builder = 1;
+	buildtime = 22500;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canreclaim = 1;
+	canstop = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = ZON Monarch;
+	commander = 1;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	damagecategory = Monarch;
+	defaultmissiontype = Standby;
+	description = Zhon;
+	economybonus = 30;
+	experiencepoints = 151;
+	healtime = 93.75;
+	immunetoparalyzer = 1;
+	manarechargerate = 20;
+	maneuverleashlength = 500;
+	maxdamage = 10000;
+	maxmana = 1000;
+	maxvelocity = 1.5;
+	mogriumincome = 10;
+	mogriumstorage = 5000;
+	movementclass = GROUND2;
+	name = Injured Thirsha;
+	noveteran = 1;
+	objectname = ZONHURT;
+	radardistance = 700;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ZON;
+	sightdistance = 275;
+	soundcategory = ZONHURT;
+	soundclass = ZONHURT;
+	standingunitorder = 1;
+	tedclass = Zhon;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = ZONHURT;
+	unitnumber = 190;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.75;
+	weaponswitching = 1;
+	workertime = 50;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 1024;
+	buttonimagedisabled = LightningPU;
+	buttonimagedown = LightningPU;
+	buttonimageselected = LightningSBh;
+	buttonimageup = LightningSB;
+	emittime = 10;
+	explosionclass = lightning explosion;
+	hweffect = lightning;
+	innercolor = 255 255 255;
+	lightmap = medium;
+	manapershot = 150;
+	middlecolor = 200 230 255;
+	name = Lightning;
+	nimbus = 1;
+	outercolor = 180 200 255;
+	range = 500;
+	reloadtime = 4;
+	soundhitclass = lightning;
+	subtype = lightning;
+	type = Line of Sight;
+	weaponvelocity = 5000;
+
+	[DAMAGE]
+	{
+		default = 1031;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 1024;
+	areaofeffect = 60;
+	buttonimagedisabled = LightningBallGPU;
+	buttonimagedown = LightningBallGPU;
+	buttonimageselected = LightningBallGSBh;
+	buttonimageup = LightningBallGSB;
+	explosionclass = blue_shockring;
+	lightmap = small;
+	manapershot = 300;
+	name = Lightning Ball;
+	nimbus = 1;
+	range = 500;
+	reloadtime = 4;
+	soundhitclass = lightning;
+	turnrate = 180;	
+	type = Guided;
+	weaponart = LtngBall_1a;
+	weaponvelocity = 480;
+
+	[DAMAGE]
+	{
+		default = 2031;
+	}
+}
+
+[WEAPON3]
+{
+	areaofeffect = 500;
+	builduptime = 1;
+	buttonimagedisabled = WindWavePU;
+	buttonimagedown = WindWavePU;
+	buttonimageselected = WindWaveSBh;
+	buttonimageup = WindWaveSB;
+	decaytime = 0.9;
+	edgeeffectiveness = 1;
+	manapershot = 900;
+	name = Wind Wave;
+	nimbus = 1;
+	radiusart0 = ring_fx_blueA;
+	radiusart1 = ring_fx_blueB;
+	radiusart2 = ring_fx_blueC;
+	range = 60;
+	reloadtime = 5;
+	ringcount = 3;
+	ringdelay = 0.15;
+	ringduration = 1.2;
+	showeffect = 0;
+	soundhit = arrow08;
+	spritecount = 30;
+	type = Remote Effect;
+	unitsonly = 1;
+	weaponvelocity = 100;
+
+	[DAMAGE]
+	{
+		default = 2000;
+	}
+}

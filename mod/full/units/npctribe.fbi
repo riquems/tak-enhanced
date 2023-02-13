@@ -1,0 +1,64 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 825;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = NPC MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = npctribe_dead;
+	defaultmissiontype = Standby_wander;
+	description = NPC;
+	experiencepoints = 6;
+	frozen = npctribe_frozen;
+	healtime = 3.4375;
+	maneuverleashlength = 500;
+	maxdamage = 1500;
+	maxvelocity = 1.5;
+	movementclass = GROUND2;
+	name = Zhonian Tribesman;
+	noveteran = 1;
+	objectname = NPCTRIBE;
+	roadmultiplier = 1.21;
+	shadowart = shadow02;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = NPC;
+	sightdistance = 200;
+	soundcategory = NPCTRIBE;
+	soundclass = NPCTRIBE;
+	standingunitorder = 2;
+	stone = npctribe_stone;
+	tedclass = NPC;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = NPCTRIBE;
+	unitnumber = 69;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 24;
+	name = Axe;
+	range = 50;
+	reloadtime = 1.05;
+	soundhitclass = sword;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 405;
+	}
+}

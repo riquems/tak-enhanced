@@ -17,3 +17,5 @@
 #include "nana/gui/filebox.hpp"
 
 extern nana::color default_bgcolor;
+
+namespace TAK = TAKCore;

@@ -1,0 +1,64 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 825;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = MON MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = mondev_dead;
+	defaultmissiontype = Standby_wander;
+	description = Monster;
+	experiencepoints = 8;
+	frozen = mondev_frozen;
+	healtime = 3.4375;
+	maneuverleashlength = 500;
+	maxdamage = 10000;
+	maxvelocity = 2.1;
+	movementclass = GROUND4;
+	name = Devourer;
+	noveteran = 1;
+	objectname = MONDEV;
+	roadmultiplier = 1.21;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = MON;
+	sightdistance = 200;
+	soundcategory = MONDEV;
+	soundclass = MONDEV;
+	standingunitorder = 2;
+	stone = mondev_stone;
+	tedclass = Monster;
+	turninplacerate = 1500;
+	turnrate = 1500;
+	unitname = MONDEV;
+	unitnumber = 56;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 24;
+	edgeeffectiveness = 0.7;
+	name = Arms;
+	range = 50;
+	reloadtime = 1.2;
+	soundhitclass = fist;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 460;
+	}
+}

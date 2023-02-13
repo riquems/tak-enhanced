@@ -1,0 +1,70 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = armor;
+	brakerate = 10;
+	buildcost = 285;
+	buildtime = 90;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbefrozen = 1;
+	category = ARA MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = arasword_dead;
+	damagecategory = Tier1;
+	defaultmissiontype = Standby;
+	description = Aramon;
+	experiencepoints = 9;
+	healtime = 0.375;
+	maneuverleashlength = 500;
+	maxdamage = 3000;
+	maxvelocity = 1.1;
+	movementclass = GROUND2;
+	name = Swordsman;
+	objectname = ARASWORD;
+	roadmultiplier = 1.21;
+	shadowart = shadow03;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ARA;
+	sightdistance = 135;
+	soundcategory = ARASWORD;
+	soundclass = ARASWORD;
+	standingunitorder = 2;
+	stone = arasword_stone;
+	tedclass = Aramon;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = ARASWORD;
+	unitnumber = 37;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 24;
+	edgeeffectiveness = 0.7;
+	name = Sword;
+	range = 50;
+	reloadtime = 1.7;
+	soundhitclass = sword;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 360;
+		fort = 0.5;
+		factory = 0.5;
+		stalwart = 0.5;
+		mechanical = 0.75;
+	}
+}

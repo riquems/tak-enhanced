@@ -1,0 +1,42 @@
+[UNITINFO]
+{
+	bodytype = stone;
+	buildangle = 0;
+	buildcost = 200;
+	buildtime = 130;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	category = ARA;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = arangate_dead;
+	damagecategory = fort;
+	description = Aramon;
+	experiencepoints = 5;
+	footprintx = 14;
+	footprintz = 4;
+	gate = 1;
+	healtime = 0.2708;
+	immunetoparalyzer = 1;
+	maxdamage = 16145;
+	maxslope = 15;
+	maxwaterdepth = 0;
+	name = Gate;
+	objectname = ARANGATE;
+	onoffable = 1;
+	radardistance = 500;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ARA;
+	sightdistance = 300;
+	soundcategory = ARANGATE;
+	soundclass = ARANGATE;
+	tedclass = Aramon;
+	unitname = ARANGATE;
+	unitnumber = 21;
+	unitstandorders = 0;
+	version = 1;
+	wind = 1;
+	yardmap = ooooccccccoooo ooooccccccoooo ooooccccccoooo ooooccccccoooo;
+}

@@ -1,0 +1,65 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 825;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = LIF MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = lifwolf_dead;
+	defaultmissiontype = Standby_wander;
+	description = Animal;
+	experiencepoints = 3;
+	frozen = lifwolf_frozen;
+	healtime = 3.4375;
+	maneuverleashlength = 500;
+	maxdamage = 800;
+	maxvelocity = 2.4;
+	movementclass = GROUND3;
+	name = Wolf;
+	noveteran = 1;
+	objectname = LIFWOLF;
+	roadmultiplier = 1.25;
+	shadowart = shadow04;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = LIF;
+	sightdistance = 200;
+	soundcategory = LIFWOLF;
+	soundclass = LIFWOLF;
+	standingunitorder = 2;
+	stone = lifwolf_stone;
+	tedclass = Animal;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = LIFWOLF;
+	unitnumber = 54;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	name = Claws;
+	range = 80;
+	reloadtime = 2;
+	soundhitclass = fist;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 105;
+		lodestone = 0;
+	}
+}
