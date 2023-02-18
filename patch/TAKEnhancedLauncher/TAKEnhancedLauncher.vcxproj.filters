@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TAKEnhancedLauncher.aps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\nana_common.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\source\Components\e_dialog.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\source\Components\modal_save_as_preset.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\source\Components\success_modal.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\source\main_form.h" />
+    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_hp_bars.h" />
+    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_keys.h" />
+    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_mods.h" />
+    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_patches.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TAKEnhancedLauncher\source\main.cpp" />
+  </ItemGroup>
+</Project>

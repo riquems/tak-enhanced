@@ -23,7 +23,7 @@
 #include "TAKCore/Models/Side.h"
 #include "TAKCore/Models/UI/Window.h"
 #include "TAKEnhancedDll/GlobalState.hpp"
-#include "Launcher/main_form.h"
+#include "TAKEnhancedLauncher/main_form.hpp"
 #include "TAKEnhancedDll/Changes.hpp"
 #include "TAKEnhancedDll/TAKEnhancedService.hpp"
 #include <TAKEnhancedDll/Keys/KeyCombination.hpp>
