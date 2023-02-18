@@ -27,14 +27,22 @@
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\nana_common.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\source\Components\e_dialog.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\source\Components\modal_save_as_preset.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\source\Components\success_modal.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\source\main_form.h" />
-    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_hp_bars.h" />
-    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_keys.h" />
-    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_mods.h" />
-    <ClInclude Include="TAKEnhancedLauncher\source\tab_page_patches.h" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_dialog.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\modal_save_as_preset.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\success_modal.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\main_form.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_page_hp_bars.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_page_keys.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_page_mods.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_page_patches.hpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\main_form.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\tab_page_hp_bars.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\tab_page_keys.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\e_dialog.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\modal_save_as_preset.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\success_modal.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\tab_page_mods.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\tab_page_patches.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLauncher\source\main.cpp" />
@@ -55,7 +63,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -102,8 +110,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>TAKEnhanced</TargetName>
-    <OutDir>C:\Cavedog\Kingdoms\TAKEnhanced\</OutDir>
+    <TargetName>TAKEnhancedLauncher</TargetName>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
     <IntDir>.vs\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,7 +164,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include; ..\TAKEnhancedLauncher\TAKEnhancedLauncher\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>

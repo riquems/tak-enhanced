@@ -1,4 +1,5 @@
 #pragma once
+#include "TAKEnhancedDll/common.hpp"
 #include "nana/gui.hpp"
 #include "nana/gui/place.hpp"
 #include "nana/gui/widgets/form.hpp"

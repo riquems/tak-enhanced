@@ -1,53 +1,14 @@
 #pragma once
-
-#include "TAKEnhancedDll/Launcher/nana_common.hpp"
+#include "TAKEnhancedLauncher/nana_common.hpp"
 
 class success_modal : public nana::form
 {
 public:
-    success_modal(uint width, uint height, std::string message) : nana::form(nana::API::make_center(width, height), nana::appearance(1, 1, 1, 0, 0, 0, 0))
-    {
-        this->message = message;
+    success_modal(uint width, uint height, std::string message);
 
-        initialize();
-        load();
-        draw();
-    }
-
-    void initialize()
-    {
-        layout = std::make_shared<nana::place>(*this);
-        lbl_successMessage = std::make_shared<nana::label>(*this);
-        btn_ok = std::make_shared<nana::button>(*this);
-
-        btn_ok->events().click(
-            [&]() {
-                this->close();
-            }
-        );
-    }
-
-    void load()
-    {
-        this->caption("Success!");
-        lbl_successMessage->format(true);
-        lbl_successMessage->caption(message);
-        lbl_successMessage->text_align(nana::align::center);
-        btn_ok->caption("Ok");
-
-        this              ->bgcolor(default_bgcolor);
-        lbl_successMessage->bgcolor(default_bgcolor);
-    }
-
-    void draw()
-    {
-        layout->div("margin=[30, 15, 15, 15] vert <successMessage> <weight=35 <> <weight=65 okBtn>>");
-
-        layout->field("successMessage") << *lbl_successMessage;
-        layout->field("okBtn") << *btn_ok;
-
-        layout->collocate();
-    }
+    void initialize();
+    void load();
+    void draw();
 
 
 private:
