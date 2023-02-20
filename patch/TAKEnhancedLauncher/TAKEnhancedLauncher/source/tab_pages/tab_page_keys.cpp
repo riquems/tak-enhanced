@@ -1,5 +1,5 @@
-#pragma once
-#include "TAKEnhancedLauncher/tab_page_keys.hpp"
+#include "TAKEnhancedLauncher/tab_pages/tab_page_keys.hpp"
+#include <iostream>
 
 nana::listbox::iresolver& operator>>(nana::listbox::iresolver& irs, KeyBindingListItem& kb)
 {
@@ -30,7 +30,7 @@ tab_page_keys::tab_page_keys(
     std::shared_ptr<CommandStringParser> commandStringParser,
     std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser
 ) :
-    nana::panel<false>(parent),
+    e_panel(parent),
     userConfig(userConfig),
     commands(commands),
     keys(keys),
@@ -40,7 +40,6 @@ tab_page_keys::tab_page_keys(
     initialize();
     draw();
     load();
-    update();
 }
 
 void tab_page_keys::initialize()
@@ -52,10 +51,14 @@ void tab_page_keys::initialize()
     lb_keyBindings = std::make_shared<nana::listbox>(*this);
     lb_keyBindings->append_header("Command");
     lb_keyBindings->append_header("Key Combination");
+    this->add_widget(lb_keyBindings, "keyBindingsList");
 
     btn_add = std::make_shared<nana::button>(*this, "Add");
     btn_edit = std::make_shared<nana::button>(*this, "Edit");
+    this->add_widget(btn_edit, "actionButtons");
+
     btn_clear = std::make_shared<nana::button>(*this, "Clear");
+    this->add_widget(btn_clear, "actionButtons");
 
     btn_edit->events().click(
         [&]() {
@@ -105,70 +108,45 @@ void tab_page_keys::initialize()
     );
 }
 
+void addComboxOptions(std::shared_ptr<nana::combox> cbb, std::vector<std::string> options) {
+    for (auto option : options) {
+        cbb->push_back(option);
+    }
+}
+
+
 void tab_page_keys::addOnDoubleClickOption() {
     lbl_onDoubleClick = std::make_shared<nana::label>(*this, "On Double Click: ");
-    lbl_onDoubleClick->bgcolor(default_bgcolor);
+    this->add_widget(lbl_onDoubleClick, "clickOptions");
 
     cb_onDoubleClick = std::make_shared<nana::combox>(*this);
-
-    int idx = 0;
-    int userOptionIndex = 0;
-    for (auto& clickOption : TAK::Commands::commands) {
-        if (this->userConfig->onDoubleClick == clickOption) {
-            userOptionIndex = idx;
-        }
-
-        cb_onDoubleClick->push_back(clickOption);
-        idx++;
-    }
-
-    cb_onDoubleClick->option(userOptionIndex);
+    addComboxOptions(cb_onDoubleClick, TAK::Commands::commands);
+    this->add_widget(cb_onDoubleClick, "clickOptions");
+    this->add_binding(create_combox_binding(cb_onDoubleClick, this->userConfig->onDoubleClick, TAK::Commands::commands));
 }
 
 void tab_page_keys::addOnTripleClickOption() {
     lbl_onTripleClick = std::make_shared<nana::label>(*this, "On Triple Click: ");
-    lbl_onTripleClick->bgcolor(default_bgcolor);
+    this->add_widget(lbl_onTripleClick, "clickOptions");
 
     cb_onTripleClick = std::make_shared<nana::combox>(*this);
-
-    int idx = 0;
-    int userOptionIndex = 0;
-    for (auto& clickOption : TAK::Commands::commands) {
-        if (this->userConfig->onTripleClick == clickOption) {
-            userOptionIndex = idx;
-        }
-
-        cb_onTripleClick->push_back(clickOption);
-        idx++;
-    }
-
-    cb_onTripleClick->option(userOptionIndex);
+    addComboxOptions(cb_onTripleClick, TAK::Commands::commands);
+    this->add_widget(cb_onTripleClick, "clickOptions");
+    this->add_binding(create_combox_binding(cb_onTripleClick, this->userConfig->onTripleClick, TAK::Commands::commands));
 }
 
 void tab_page_keys::addOnCtrlDoubleClickOption() {
     lbl_onCtrlDoubleClick = std::make_shared<nana::label>(*this, "On CTRL + Double Click: ");
-    lbl_onCtrlDoubleClick->bgcolor(default_bgcolor);
+    this->add_widget(lbl_onCtrlDoubleClick, "clickOptions");
 
     cb_onCtrlDoubleClick = std::make_shared<nana::combox>(*this);
-
-    int idx = 0;
-    int userOptionIndex = 0;
-    for (auto& clickOption : TAK::Commands::commands) {
-        if (this->userConfig->onCtrlDoubleClick == clickOption) {
-            userOptionIndex = idx;
-        }
-
-        cb_onCtrlDoubleClick->push_back(clickOption);
-        idx++;
-    }
-
-    cb_onCtrlDoubleClick->option(userOptionIndex);
+    addComboxOptions(cb_onCtrlDoubleClick, TAK::Commands::commands);
+    this->add_widget(cb_onCtrlDoubleClick, "clickOptions");
+    this->add_binding(create_combox_binding(cb_onCtrlDoubleClick, this->userConfig->onCtrlDoubleClick, TAK::Commands::commands));
 }
 
 void tab_page_keys::draw()
 {
-    layout = std::make_unique<nana::place>(*this);
-
     layout->div(
         "margin=15                                                                           \
         <                                                                                    \
@@ -180,19 +158,7 @@ void tab_page_keys::draw()
         >"
     );
 
-    layout->field("clickOptions") << *lbl_onDoubleClick;
-    layout->field("clickOptions") << *cb_onDoubleClick;
-
-    layout->field("clickOptions") << *lbl_onTripleClick;
-    layout->field("clickOptions") << *cb_onTripleClick;
-
-    layout->field("clickOptions") << *lbl_onCtrlDoubleClick;
-    layout->field("clickOptions") << *cb_onCtrlDoubleClick;
-
-    layout->field("keyBindingsList") << *lb_keyBindings;
-    layout->field("actionButtons") << *btn_edit << *btn_clear;
-
-    layout->collocate();
+    e_panel::draw();
 }
 
 void tab_page_keys::load()
@@ -214,6 +180,8 @@ void tab_page_keys::load()
     }
 
     category.model<std::recursive_mutex>(std::move(keyBindingsListItems), value_translator, cell_translator);
+
+    e_panel::load();
 }
 
 void tab_page_keys::save()
@@ -229,14 +197,7 @@ void tab_page_keys::save()
         this->userConfig->keyBindings.push_back(KeyBinding{ keyCombination, command });
     }
 
-    this->userConfig->onDoubleClick = this->cb_onDoubleClick->text(this->cb_onDoubleClick->option());
-    this->userConfig->onTripleClick = this->cb_onTripleClick->text(this->cb_onTripleClick->option());
-    this->userConfig->onCtrlDoubleClick = this->cb_onCtrlDoubleClick->text(this->cb_onCtrlDoubleClick->option());
-}
-
-void tab_page_keys::update()
-{
-
+    e_panel::save();
 }
 
 void tab_page_keys::reload()

@@ -1,5 +1,6 @@
 #pragma once
 #include "TAKEnhancedLauncher/nana_common.hpp"
+#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
 #include "Utils/VirtualKeys.h"
 #include "Utils/HelperFunctions.hpp"
 
@@ -22,15 +23,13 @@ struct KeyBindingListItem
     }
 };
 
-class tab_page_keys : public nana::panel<false>
+class tab_page_keys : public e_panel
 {
     std::shared_ptr<UserConfig> userConfig;
     std::shared_ptr<Commands> commands;
     std::shared_ptr<Keys> keys;
     std::shared_ptr<CommandStringParser> commandStringParser;
     std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser;
-
-    std::unique_ptr<nana::place> layout;
 
     std::shared_ptr<nana::label> lbl_onDoubleClick;
     std::shared_ptr<nana::combox> cb_onDoubleClick;
@@ -67,8 +66,6 @@ public:
     void load();
 
     void save();
-
-    void update();
 
     void reload();
 

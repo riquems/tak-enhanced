@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include <string>
 
 namespace TAKCore
 {
@@ -47,68 +49,9 @@ namespace TAKCore
         constexpr const char* UnitCommand = "UnitCommand";
         constexpr const char* SelectSquad = "SelectSquad";
 
-        inline const char* commands[] = {
-            DoNothing,
-            PasteUnitFromClipboard,
-            CutUnitToClipboard,
-            CopyUnitToClipboard,
-            DebugResetSearchProfile,
-            DebugDestroyUnit,
-            DebugCycleMode,
-            DebugToggleInfo,
-            DebugToggleDebug,
-            DebugBuilderProbe,
-            DebugUnitProbeDebug,
-            ToggleMovie,
-            FacingQueue,
-            FullScreenRadar,
-            DecreaseSpeed,
-            IncreaseSpeed,
-            ClearChat,
-            NetScorecard,
-            LoadGame,
-            SaveGame,
-            DiplomacyMenu,
-            F2Menu,
-            UnitInfo,
-            ToggleDamageBars,
-            MoveToNextUnit,
-            MoveToLastReport,
-            MapBookmarkRetrieve,
-            MapBookmarkStore,
-            TrackUnitReverse,
-            TrackUnit,
-            SelectUnitsOnScreenSelectedType,
-            SelectUnitsOnScreenAdd,
-            SelectUnitsOnScreen,
-            SelectAllUnitsSelectedType,
-            SelectAllUnits,
-            SelectUnitsAdd,
-            SelectUnits,
-            RetrieveSquadAdd,
-            RetrieveSquadCreateSquad,
-            TogglePause,
-            UnitCommand,
-            SelectSquad
-        };
+        extern std::vector<std::string> commands;
 
-        inline const char* targetCommands[] = {
-            PasteUnitFromClipboard,
-            CutUnitToClipboard,
-            CopyUnitToClipboard,
-            DebugDestroyUnit,
-            DebugUnitProbeDebug,
-            UnitInfo,
-            ToggleDamageBars,
-            MoveToNextUnit,
-            MoveToLastReport,
-            MapBookmarkRetrieve,
-            MapBookmarkStore,
-            TrackUnitReverse,
-            TrackUnit,
-            SelectUnitsOnScreenSelectedType,
-            SelectAllUnitsSelectedType,
-        };
+        extern std::vector<std::string> targetCommands;
     }
 }
 

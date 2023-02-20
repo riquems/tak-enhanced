@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TAKCore\source\Commands.cpp" />
     <ClCompile Include="TAKCore\source\Functions\Functions.cpp" />
     <ClCompile Include="TAKCore\source\TAKCore.cpp" />
     <ClInclude Include="TAKCore\include\common.h" />

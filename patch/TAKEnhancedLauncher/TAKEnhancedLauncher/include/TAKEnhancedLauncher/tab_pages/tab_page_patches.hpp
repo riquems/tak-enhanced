@@ -1,14 +1,13 @@
 #pragma once
 #include "TAKEnhancedLauncher/nana_common.hpp"
+#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
 #include "TAKEnhancedDll/Configs/GameConfig.hpp"
 
-class tab_page_patches : public nana::panel<false>
+class tab_page_patches : public e_panel
 {
     std::shared_ptr<GameConfig> gameConfig;
 
 public:
-    std::unique_ptr<nana::place> layout;
-
     // Checkboxes
     std::shared_ptr<nana::checkbox> cb_noCD;
     std::shared_ptr<nana::checkbox> cb_pauseWhenUnfocused;
@@ -26,20 +25,9 @@ public:
     std::shared_ptr<nana::label> lbl_forcedMinRangeForMelees;
     std::shared_ptr<nana::spinbox> sb_forcedMinRangeForMelees;
     
-    void initialize_checkboxes();
-
-    void initialize_textboxes();
-
     tab_page_patches(nana::window parent, std::shared_ptr<GameConfig> gameConfig);
 
     void initialize();
-
     void draw();
-    void load();
     void update();
-    void save();
-    void reload();
-
-    void make_editable();
-    void make_readonly();
 };

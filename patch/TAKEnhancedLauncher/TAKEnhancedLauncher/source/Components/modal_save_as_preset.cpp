@@ -1,4 +1,3 @@
-#pragma once
 #include "TAKEnhancedLauncher/Components/modal_save_as_preset.hpp"
 
 class main_form;

@@ -1,4 +1,3 @@
-#pragma once
 #include "TAKEnhancedLauncher/Components/e_dialog.hpp"
 
 e_dialog::e_dialog(std::string title, std::string text, std::string helpText, nana::rectangle rect)

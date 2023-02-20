@@ -157,10 +157,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 timer.stop();
                 logger->debug("A Triple Click has occured.");
                 
-                bool isTargetCommand = std::find_if(
-                    std::begin(TAK::Commands::targetCommands),
-                    std::end(TAK::Commands::targetCommands),
-                    [](const char* cmd) {
+                bool isTargetCommand = dky::contains(
+                    TAK::Commands::targetCommands,
+                    [](const std::string& cmd) {
                         return cmd == userConfig->onTripleClick;
                     }
                 );
@@ -168,7 +167,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 if (isTargetCommand && gameWrapper->getMouseHoveredUnitAddress() != NULL) {
                     Timer::run([&]() {
                         TAK::Functions::executeCommand(userConfig->onTripleClick.c_str(), false);
-                        }, 100);
+                    }, 100);
 
                     // delay here is needed otherwise it'll not work
                     // because when you triple click an unit the third click will actually select just one of them
@@ -182,10 +181,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             if (wParam & MK_CONTROL) {
                 logger->debug("A CTRL + Double Click has occured.");
 
-                bool isTargetCommand = std::find_if(
-                    std::begin(TAK::Commands::targetCommands),
-                    std::end(TAK::Commands::targetCommands),
-                    [](const char* cmd) {
+                bool isTargetCommand = dky::contains(
+                    TAK::Commands::targetCommands,
+                    [](const std::string& cmd) {
                         return cmd == userConfig->onCtrlDoubleClick;
                     }
                 );
@@ -199,10 +197,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             logger->debug("A Double Click has occured.");
 
-            bool isTargetCommand = std::find_if(
-                std::begin(TAK::Commands::targetCommands),
-                std::end(TAK::Commands::targetCommands),
-                [](const char* cmd) {
+            bool isTargetCommand = dky::contains(
+                TAK::Commands::targetCommands,
+                [](const std::string& cmd) {
                     return cmd == userConfig->onDoubleClick;
                 }
             );

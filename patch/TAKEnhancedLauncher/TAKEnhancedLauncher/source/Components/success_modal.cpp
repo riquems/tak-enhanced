@@ -1,4 +1,3 @@
-#pragma once
 #include "TAKEnhancedLauncher/Components/success_modal.hpp"
 
 success_modal::success_modal(uint width, uint height, std::string message)
