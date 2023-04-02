@@ -14,11 +14,11 @@ public:
     Timer();
     void start();
     static void run(auto function, milliseconds after) {
-        std::thread t([&]() {
+        std::thread t([=]() {
             std::this_thread::sleep_for(std::chrono::milliseconds(after));
 
             function();
-            });
+        });
         t.detach();
     }
     uint timeInMilliseconds();
