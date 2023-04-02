@@ -4,6 +4,7 @@
 #include "Utils/CRC.h"
 #include "Utils/CopyToClipboard.hpp"
 #include "TAKEnhancedLauncher/nana_common.hpp"
+#include "TAKEnhancedLauncher/Components/e_form.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_hp_bars.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_keys.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_mods.hpp"
@@ -13,7 +14,7 @@
 #include "TAKEnhancedDll/Configs/LauncherConfig.hpp"
 #include <TAKEnhancedDll/Presets/PresetApplier.hpp>
 
-class main_form
+class main_form : public e_form
 {
     std::shared_ptr<LauncherConfig> launcherConfig;
     std::shared_ptr<GameConfig> gameConfig;
@@ -26,27 +27,24 @@ class main_form
     std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser;
     std::shared_ptr<Logger> logger;
 
-    std::unique_ptr<nana::form> fm_main;
-    std::unique_ptr<nana::place> layout;
-
-    std::unique_ptr<nana::tabbar<std::string>> tabs;
+    std::shared_ptr<nana::tabbar<std::string>> tabs;
 
     // Tab Pages
-    std::unique_ptr<tab_page_mods> tp_mods;
-    std::unique_ptr<tab_page_patches> tp_patches;
-    std::unique_ptr<tab_page_hp_bars> tp_hp_bars;
-    std::unique_ptr<tab_page_keys> tp_keys;
+    std::shared_ptr<tab_page_mods> tp_mods;
+    std::shared_ptr<tab_page_patches> tp_patches;
+    std::shared_ptr<tab_page_hp_bars> tp_hp_bars;
+    std::shared_ptr<tab_page_keys> tp_keys;
     
     // Buttons
-    std::unique_ptr<nana::button> btn_play;
-    std::unique_ptr<nana::button> btn_save;
-    //std::unique_ptr<nana::button> btn_save_as_preset;
-    std::unique_ptr<nana::button> btn_exit;
+    std::shared_ptr<nana::button> btn_play;
+    std::shared_ptr<nana::button> btn_save;
+    //std::shared_ptr<nana::button> btn_save_as_preset;
+    std::shared_ptr<nana::button> btn_exit;
 
-    std::unique_ptr<nana::label> lbl_preset_picker;
-    std::unique_ptr<nana::combox> cbb_preset_picker;
-    std::unique_ptr<nana::label> lbl_preset_hash;
-    std::unique_ptr<nana::label> lbl_lbl_preset_hash;
+    std::shared_ptr<nana::label> lbl_preset_picker;
+    std::shared_ptr<nana::combox> cbb_preset_picker;
+    std::shared_ptr<nana::label> lbl_preset_hash;
+    std::shared_ptr<nana::label> lbl_lbl_preset_hash;
 
     std::string oldHash;
 
@@ -55,6 +53,7 @@ public:
     std::function<void(void)> on_save;
 
     main_form(
+        nana::rectangle rect,
         std::shared_ptr<LauncherConfig> launcherConfig,
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
@@ -74,6 +73,8 @@ public:
 
 private:
     void initialize();
+    void draw();
+
     void addTabs();
     void addModsTab();
     void addPatchesTab();

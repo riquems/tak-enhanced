@@ -27,4 +27,4 @@ std::shared_ptr<e_binding> create_combox_binding(std::shared_ptr<nana::combox>& 
     return create_binding(reflect, commit);
 }
 
-std::shared_ptr<e_binding> create_combox_binding(std::shared_ptr<nana::combox>& cbb, std::string& entity, const std::vector<std::string>& source);
+std::shared_ptr<e_binding> create_combox_binding(std::shared_ptr<nana::combox>& cbb, std::string& entity);

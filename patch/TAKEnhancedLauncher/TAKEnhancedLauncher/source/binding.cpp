@@ -62,11 +62,12 @@ std::shared_ptr<e_binding> create_listbox_binding(std::shared_ptr<nana::listbox>
     return create_binding(reflect, commit);
 }
 
-std::shared_ptr<e_binding> create_combox_binding(std::shared_ptr<nana::combox>& cbb, std::string& entity, const std::vector<std::string>& source) {
+std::shared_ptr<e_binding> create_combox_binding(std::shared_ptr<nana::combox>& cbb, std::string& entity) {
     auto reflect = [&]() -> void {
-        for (int i = 0; i < source.size(); i++) {
-            if (entity == source.at(i)) {
+        for (int i = 0; i < cbb->the_number_of_options(); i++) {
+            if (cbb->text(i) == entity) {
                 cbb->option(i);
+                break;
             }
         }
     };

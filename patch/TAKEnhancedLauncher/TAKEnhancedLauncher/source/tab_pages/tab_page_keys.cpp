@@ -122,7 +122,7 @@ void tab_page_keys::addOnDoubleClickOption() {
     cb_onDoubleClick = std::make_shared<nana::combox>(*this);
     addComboxOptions(cb_onDoubleClick, TAK::Commands::commands);
     this->add_widget(cb_onDoubleClick, "clickOptions");
-    this->add_binding(create_combox_binding(cb_onDoubleClick, this->userConfig->onDoubleClick, TAK::Commands::commands));
+    this->add_binding(create_combox_binding(cb_onDoubleClick, this->userConfig->onDoubleClick));
 }
 
 void tab_page_keys::addOnTripleClickOption() {
@@ -132,7 +132,7 @@ void tab_page_keys::addOnTripleClickOption() {
     cb_onTripleClick = std::make_shared<nana::combox>(*this);
     addComboxOptions(cb_onTripleClick, TAK::Commands::commands);
     this->add_widget(cb_onTripleClick, "clickOptions");
-    this->add_binding(create_combox_binding(cb_onTripleClick, this->userConfig->onTripleClick, TAK::Commands::commands));
+    this->add_binding(create_combox_binding(cb_onTripleClick, this->userConfig->onTripleClick));
 }
 
 void tab_page_keys::addOnCtrlDoubleClickOption() {
@@ -142,7 +142,7 @@ void tab_page_keys::addOnCtrlDoubleClickOption() {
     cb_onCtrlDoubleClick = std::make_shared<nana::combox>(*this);
     addComboxOptions(cb_onCtrlDoubleClick, TAK::Commands::commands);
     this->add_widget(cb_onCtrlDoubleClick, "clickOptions");
-    this->add_binding(create_combox_binding(cb_onCtrlDoubleClick, this->userConfig->onCtrlDoubleClick, TAK::Commands::commands));
+    this->add_binding(create_combox_binding(cb_onCtrlDoubleClick, this->userConfig->onCtrlDoubleClick));
 }
 
 void tab_page_keys::draw()

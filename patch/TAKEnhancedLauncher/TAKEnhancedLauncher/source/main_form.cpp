@@ -1,7 +1,9 @@
 #pragma once
 #include "TAKEnhancedLauncher/main_form.hpp"
+#include "TAKEnhancedLauncher/binding.hpp"
 
 main_form::main_form(
+        nana::rectangle rect,
         std::shared_ptr<LauncherConfig> launcherConfig,
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
@@ -13,6 +15,7 @@ main_form::main_form(
         std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser,
         std::shared_ptr<Logger> logger
     ) :
+        e_form(rect, nana::appearance(1, 1, 1, 0, 0, 0, 1)),
         launcherConfig(launcherConfig),
         gameConfig(gameConfig),
         userConfig(userConfig),
@@ -24,12 +27,14 @@ main_form::main_form(
         keyCombinationStringParser(keyCombinationStringParser),
         logger(logger)
     {
-        initialize();
+        this->initialize();
+        this->load();
+        this->draw();
     }
 
 void main_form::show()
 {
-    fm_main->show();
+    nana::form::show();
     nana::exec();
 }
 
@@ -50,30 +55,18 @@ void main_form::save_all()
 
 void main_form::initialize()
 {
-    nana::API::window_icon_default(nana::paint::image("Kingdoms.exe"));
-
-    nana::rectangle fm_rect = nana::API::make_center(launcherConfig->window.width, launcherConfig->window.height);
-    fm_main = std::make_unique<nana::form>(fm_rect, nana::appearance(1, 1, 1, 0, 0, 0, 1));
-
-    fm_main->caption("TA:K Enhanced Launcher");
-    fm_main->bgcolor(default_bgcolor);
-
-    layout = std::make_unique<nana::place>(fm_main->handle());
-    layout->div("margin=[1] vert<weight=25 tabs>                                                                  \
-                                    <content>                                                                      \
-                <weight=60 margin=[0, 20, 15, 15] <weight=60 saveBtn><margin=[0, 0, 0, 5]><weight=170 vert <weight=25 margin=[0, 0, 0, 5] <weight=43 margin=[4] presetPickerLabel><weight=110 presetPicker>><<weight=36 margin=[5, 0, 0, 9] presetHashLabel><margin=[5, 0, 0, 7] presetHash>>><weight=120 buttons gap=5 arrange=[60, 60]>");
+    this->caption("TA:K Enhanced Launcher");
+    this->bgcolor(default_bgcolor);
 
     addTabs();
-        
+
     addPlayButton();
     addExitButton();
     addSaveButton();
-        
+
     addPresetPicker();
 
-    layout->collocate();
-
-    //btn_save_as_preset = std::make_unique<nana::button>(fm_main->handle(), "Save as preset");
+    //btn_save_as_preset = std::make_shared<nana::button>(this->handle(), "Save as preset");
 
     /*btn_save_as_preset->events().click(
         [&]() {
@@ -84,8 +77,30 @@ void main_form::initialize()
     );*/
 }
 
+void main_form::draw() {
+    layout->div("                                                                           \
+        margin=[1] vert                                                                             \
+        <weight=25 tabs>                                                                            \
+        <content>                                                                                   \
+        <margin=25 weight=100                                                                       \
+            <vert weight=60 <weight=40 saveBtn>>                                                    \
+            <>                                                                                      \
+            <vert                                                                                   \
+                <weight=25 margin=[0, 0, 0, 5]                                                      \
+                    <weight=43 margin=[4] presetPickerLabel><weight=110 presetPicker>               \
+                >                                                                                   \
+                <                                                                                   \
+                    <weight=36 margin=[5, 0, 0, 9] presetHashLabel><margin=[5, 0, 0, 7] presetHash> \
+                >                                                                                   \
+            >                                                                                       \
+            <vert weight=120 <weight=40 buttons gap=5 arrange=[60, 60]>>                            \
+        >");
+
+    e_form::draw();
+}
+
 void main_form::addTabs() {
-    tabs = std::make_unique<nana::tabbar<std::string>>(fm_main->handle());
+    tabs = std::make_shared<nana::tabbar<std::string>>(this->handle());
     tabs->bgcolor(default_bgcolor);
 
     addModsTab();
@@ -100,26 +115,26 @@ void main_form::addTabs() {
 }
 
 void main_form::addModsTab() {
-    tp_mods = std::make_unique<tab_page_mods>(fm_main->handle(), this->gameConfig, this->logger);
+    tp_mods = std::make_shared<tab_page_mods>(this->handle(), this->gameConfig, this->logger);
 
     tabs->append("Mods", *tp_mods);
 }
 
 void main_form::addPatchesTab() {
-    tp_patches = std::make_unique<tab_page_patches>(fm_main->handle(), this->gameConfig);
+    tp_patches = std::make_shared<tab_page_patches>(this->handle(), this->gameConfig);
 
     tabs->append("Patches", *tp_patches);
 }
 
 void main_form::addHpBarsTab() {
-    tp_hp_bars = std::make_unique<tab_page_hp_bars>(fm_main->handle(), this->gameConfig, this->logger);
+    tp_hp_bars = std::make_shared<tab_page_hp_bars>(this->handle(), this->gameConfig, this->logger);
 
     tabs->append("HP Bars", *tp_hp_bars);
 }
 
 void main_form::addKeysTab() {
-    tp_keys = std::make_unique<tab_page_keys>(
-        fm_main->handle(),
+    tp_keys = std::make_shared<tab_page_keys>(
+        this->handle(),
         this->userConfig,
         this->commands,
         this->keys,
@@ -131,7 +146,7 @@ void main_form::addKeysTab() {
 }
 
 void main_form::addPlayButton() {
-    btn_play = std::make_unique<nana::button>(fm_main->handle(), "Play");
+    btn_play = std::make_shared<nana::button>(this->handle(), "Play");
 
     btn_play->events().click(
         [&]() {
@@ -140,11 +155,11 @@ void main_form::addPlayButton() {
         }
     );
 
-    layout->field("buttons") << *btn_play;
+    this->add_widget(btn_play, "buttons");
 }
 
 void main_form::addExitButton() {
-    btn_exit = std::make_unique<nana::button>(fm_main->handle(), "Exit");
+    btn_exit = std::make_shared<nana::button>(this->handle(), "Exit");
 
     btn_exit->events().click(
         [&]() {
@@ -153,11 +168,11 @@ void main_form::addExitButton() {
         }
     );
 
-    layout->field("buttons") << *btn_exit;
+    this->add_widget(btn_exit, "buttons");
 }
 
 void main_form::addSaveButton() {
-    btn_save = std::make_unique<nana::button>(fm_main->handle(), "Save");
+    btn_save = std::make_shared<nana::button>(this->handle(), "Save");
 
     btn_save->events().click(
         [&]() {
@@ -166,28 +181,26 @@ void main_form::addSaveButton() {
         }
     );
 
-    layout->field("saveBtn") << *btn_save;
+    this->add_widget(btn_save, "saveBtn");
 }
 
 void main_form::save()
 {
-    nana::size main_form_size = fm_main->size();
-
-    this->launcherConfig->currentPreset = cbb_preset_picker->text(cbb_preset_picker->option());
+    nana::size main_form_size = this->size();
     this->launcherConfig->window.width = main_form_size.width;
     this->launcherConfig->window.height = main_form_size.height;
+
+    e_form::save();
 }
 
 void main_form::addPresetPicker()
 {
-    lbl_preset_picker = std::make_unique<nana::label>(fm_main->handle(), "Preset: ");
-    cbb_preset_picker = std::make_unique<nana::combox>(fm_main->handle());
-    lbl_lbl_preset_hash = std::make_unique<nana::label>(fm_main->handle(), "CRC: ");
-    lbl_preset_hash = std::make_unique<nana::label>(fm_main->handle());
+    lbl_preset_picker = std::make_shared<nana::label>(this->handle(), "Preset: ");
+    cbb_preset_picker = std::make_shared<nana::combox>(this->handle());
+    lbl_lbl_preset_hash = std::make_shared<nana::label>(this->handle(), "CRC: ");
+    lbl_preset_hash = std::make_shared<nana::label>(this->handle());
     lbl_preset_hash->format(true);
     lbl_preset_hash->tooltip("Click to copy");
-
-    lbl_preset_picker->bgcolor(default_bgcolor);
 
     cbb_preset_picker->push_back("Custom");
 
@@ -223,15 +236,6 @@ void main_form::addPresetPicker()
         }
     );
 
-    cbb_preset_picker->option(0);
-    for (int i = 0; i < cbb_preset_picker->the_number_of_options(); i++)
-    {
-        if (cbb_preset_picker->text(i) == this->launcherConfig->currentPreset) {
-            cbb_preset_picker->option(i);
-            break;
-        }
-    }
-
     lbl_preset_hash->events().click(
         [&]() {
             std::string text = lbl_preset_hash->caption();
@@ -251,11 +255,12 @@ void main_form::addPresetPicker()
         }
     );
 
-    layout->field("presetPickerLabel") << *lbl_preset_picker;
-    layout->field("presetPicker") << *cbb_preset_picker;
+    this->add_widget(this->lbl_preset_picker, "presetPickerLabel");
+    this->add_widget(this->cbb_preset_picker, "presetPicker");
+    this->add_binding(create_combox_binding(this->cbb_preset_picker, this->launcherConfig->currentPreset));
 
-    layout->field("presetHashLabel") << *lbl_lbl_preset_hash;
-    layout->field("presetHash") << *lbl_preset_hash;
+    this->add_widget(this->lbl_lbl_preset_hash, "presetHashLabel");
+    this->add_widget(this->lbl_preset_hash, "presetHash");
 }
 
 void main_form::update_crc() {

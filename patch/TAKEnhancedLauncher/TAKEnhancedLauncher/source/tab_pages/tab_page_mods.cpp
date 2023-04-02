@@ -34,6 +34,12 @@ void tab_page_mods::initialize()
     );
 }
 
+void tab_page_mods::save()
+{
+    e_panel::save();
+    this->mod_loader->save();
+}
+
 void tab_page_mods::draw()
 {
     this->layout->div(

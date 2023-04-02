@@ -1,11 +1,20 @@
 #include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
+#include "Utils/TypeExtensions.hpp"
 
 e_panel::e_panel(nana::window parent) : nana::panel<false>(parent) {
-    layout = std::make_unique<nana::place>(*this);
+    layout = std::make_shared<nana::place>(*this);
 }
 
 void e_panel::add_widget(std::shared_ptr<nana::widget> widget, std::string field) {
-    widget->bgcolor(default_bgcolor);
+    if (
+        is_not<nana::combox>(*widget)
+     && is_not<nana::button>(*widget)
+     && is_not<nana::spinbox>(*widget)
+     && is_not<nana::listbox>(*widget)
+    ) {
+        widget->bgcolor(default_bgcolor);
+    }
+
     this->widgets.push_back(std::make_shared<e_widget>(widget, field));
 }
 

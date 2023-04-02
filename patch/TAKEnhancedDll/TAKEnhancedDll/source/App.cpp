@@ -186,7 +186,11 @@ void init()
     // Initialize functions
     setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
 
+    nana::API::window_icon_default(nana::paint::image("Kingdoms.exe"));
+    nana::rectangle fm_rect = nana::API::make_center(launcherConfig->window.width, launcherConfig->window.height);
+
     main_form launcher(
+        fm_rect,
         launcherConfig,
         currentGameConfig,
         userConfig,

@@ -21,6 +21,7 @@
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\binding.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\e_panel.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_mod_loader.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_form.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLauncher\source\main.cpp" />
@@ -33,8 +34,9 @@
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_dialog.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\modal_save_as_preset.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_widget.cpp" />
-    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\e_tab_page.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\e_panel.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\binding.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_mod_loader.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\e_form.cpp" />
   </ItemGroup>
 </Project>
