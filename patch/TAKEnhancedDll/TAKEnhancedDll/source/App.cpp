@@ -23,7 +23,7 @@
 #include "TAKCore/Models/Side.h"
 #include "TAKCore/Models/UI/Window.h"
 #include "TAKEnhancedDll/GlobalState.hpp"
-#include "Launcher/main_form.h"
+#include "TAKEnhancedLauncher/main_form.hpp"
 #include "TAKEnhancedDll/Changes.hpp"
 #include "TAKEnhancedDll/TAKEnhancedService.hpp"
 #include <TAKEnhancedDll/Keys/KeyCombination.hpp>
@@ -186,7 +186,11 @@ void init()
     // Initialize functions
     setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
 
+    nana::API::window_icon_default(nana::paint::image("Kingdoms.exe"));
+    nana::rectangle fm_rect = nana::API::make_center(launcherConfig->window.width, launcherConfig->window.height);
+
     main_form launcher(
+        fm_rect,
         launcherConfig,
         currentGameConfig,
         userConfig,

@@ -143,16 +143,7 @@
     <ClCompile Include="TAKEnhancedDll\source\Changes\SearchBox.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.cpp" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\e_dialog.hpp" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\modal_save_as_preset.hpp" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\success_modal.hpp" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\nana_common.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\CustomizableHpBarsSettings.hpp" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_hp_bars.h" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_keys.h" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_mods.h" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_patches.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Managers\GameInterfaceManager.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Managers\WindowManager.h" />
     <ClCompile Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.cpp" />
@@ -308,7 +299,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include;..\TAKEnhancedLauncher\TAKEnhancedLauncher\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
@@ -319,7 +310,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>DKy.lib;libcrypto32MT.lib;nana_v143_Release_x86_Zp1.lib;Utils.lib;TAKLibrary.lib;TAKCore.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DKy.lib;nana_v143_Release_x86_Zp1.lib;libcrypto32MT.lib;Utils.lib;TAKLibrary.lib;TAKEnhancedLauncher.lib;TAKCore.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkStatus>false</LinkStatus>
       <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Program Files (x86)\OpenSSL-Win32\lib\VC;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\bin\Release;..\package</AdditionalLibraryDirectories>
     </Link>

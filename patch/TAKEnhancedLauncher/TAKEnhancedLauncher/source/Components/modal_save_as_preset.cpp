@@ -1,37 +1,9 @@
-#pragma once
-
-#include "TAKEnhancedDll/Launcher/nana_common.hpp"
-#include "success_modal.hpp"
+#include "TAKEnhancedLauncher/Components/modal_save_as_preset.hpp"
 
 class main_form;
 
-//class modal_save_as_preset : public nana::form
-//{
-//    main_form* configurationUpdater,
-//
-//    std::shared_ptr<nana::place> layout;
-//
-//    std::shared_ptr<nana::label> lbl_presetName;
-//    std::shared_ptr<nana::textbox> tb_presetName;
-//    std::shared_ptr<nana::label> lbl_invalidNameMessage;
-//
-//    std::shared_ptr<nana::label> lbl_presetFilename;
-//    std::shared_ptr<nana::textbox> tb_presetFilename;
-//    std::shared_ptr<nana::label> lbl_invalidFilenameMessage;
-//
-//    std::shared_ptr<nana::label> lbl_select_settings_to_include;
-//
-//    std::shared_ptr<nana::checkbox> cb_include_mods;
-//    std::shared_ptr<nana::checkbox> cb_include_patches;
-//    std::shared_ptr<nana::checkbox> cb_include_customization;
-//    std::shared_ptr<nana::checkbox> cb_include_keys;
-//
-//    std::shared_ptr<nana::button> btn_save;
-//
-//    std::shared_ptr<nana::filebox> fb_save;
-//
-//public:
-//    modal_save_as_preset(main_form* configurationUpdater, Settings* settings) : nana::form(nana::api::make_center(345, 250), nana::appearance(1, 1, 1, 0, 0, 0, 0))
+//    modal_save_as_preset::modal_save_as_preset(main_form* configurationUpdater, Settings* settings)
+//      : nana::form(nana::api::make_center(345, 250), nana::appearance(1, 1, 1, 0, 0, 0, 0))
 //    {
 //        this->settings = settings;
 //        this->configurationUpdater = configurationUpdater;
@@ -41,7 +13,7 @@ class main_form;
 //        load();
 //    }
 //
-//    void initialize()
+//    void modal_save_as_preset::initialize()
 //    {
 //        layout = std::make_shared<nana::place>(*this);
 //
@@ -120,7 +92,7 @@ class main_form;
 //        return is_valid_tb_presetName() && is_valid_tb_presetFilename();
 //    }
 //
-//    void validate_form()
+//    void modal_save_as_preset::validate_form()
 //    {
 //        if (!is_valid_tb_presetName()) {
 //            lbl_invalidNameMessage->show();
@@ -153,7 +125,7 @@ class main_form;
 //        return true;
 //    }
 //
-//    void fill_presetFilename_with_suggestion()
+//    void modal_save_as_preset::fill_presetFilename_with_suggestion()
 //    {
 //        std::string presetName = tb_presetName->text();
 //
@@ -164,7 +136,7 @@ class main_form;
 //        }
 //    }
 //
-//    void draw()
+//    void modal_save_as_preset::draw()
 //    {
 //        layout->div("margin=15 vert <weight=25 <weight=150 presetNameLabel> <margin=[0, 0, 0, 10] weight=160 presetFilenameLabel>>                                         \
 //                                    <weight=40 <vert weight=150 <weight=20 presetNameInput><weight=20 margin=[2] <weight=150 presetInvalidNameMessage>>> <margin=[0, 0, 0, 10] vert weight=160 <weight=20 presetFilenameInput>         \
@@ -194,7 +166,7 @@ class main_form;
 //        layout->collocate();
 //    }
 //
-//    void load()
+//    void modal_save_as_preset::load()
 //    {
 //        this->caption("Save as preset");
 //        this->bgcolor(default_bgcolor);
@@ -221,7 +193,7 @@ class main_form;
 //        tb_presetName->focus();
 //    }
 //
-//    void save_preset()
+//    void modal_save_as_preset::save_preset()
 //    {
 //        std::string presetName = tb_presetName->text();
 //        std::string presetFilename = tb_presetFilename->text();
@@ -235,4 +207,3 @@ class main_form;
 //        configurationUpdater->save_all();
 //        settings->saveAsPreset(presetName, presetFilename, presetOptions);
 //    }
-//};

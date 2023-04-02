@@ -252,5 +252,6 @@
     <ClCompile Include="TAKCore\source\Functions\FunctionsOffsets.cpp" />
     <ClCompile Include="TAKCore\source\TAKCore.cpp" />
     <ClCompile Include="TAKCore\source\Functions\Functions.cpp" />
+    <ClCompile Include="TAKCore\source\Commands.cpp" />
   </ItemGroup>
 </Project>
