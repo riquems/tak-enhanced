@@ -7,55 +7,38 @@ typedef void (__stdcall *origShowHpFcn_t)(Unit*, unsigned int, unsigned int);
 
 __declspec(dllexport) origShowHpFcn_t origShowHpFcn;
 
-extern "C" __declspec(dllexport) void __stdcall newShowHpFcn(Unit* unit, unsigned int posX, unsigned int posY)
+extern "C" __declspec(dllexport) void __stdcall newShowHpFcn(Unit * unit, unsigned int posX, unsigned int posY)
 {
+    std::string message;
+    CustomizableHpBarSetting hpBarSetting;
+
     if (gameWrapper->isMe(unit->player)) {
-        logger->debug("%s is mine.", unit->unitInfo->name);
-
-        if (currentGameConfig->customizableHpBars.mine.showMode == ShowMode::Never) {
-            return;
-        }
-        else if (currentGameConfig->customizableHpBars.mine.showMode == ShowMode::OnlyIfDamaged) {
-            if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
-                logger->debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
-                return;
-            }
-        }
-
-        gameWrapper->setHpBarColor(unit->player, currentGameConfig->customizableHpBars.mine);
+        message = "%s is mine.";
+        hpBarSetting = currentGameConfig->customizableHpBars.mine;
+    }
+    else if (gameWrapper->isAlly(unit->player)) {
+        message = "%s is ally.";
+        hpBarSetting = currentGameConfig->customizableHpBars.ally;
+    }
+    else {
+        message = "%s is enemy.";
+        hpBarSetting = currentGameConfig->customizableHpBars.enemy;
     }
 
-    if (gameWrapper->isAlly(unit->player)) {
-        logger->debug("%s is ally.", unit->unitInfo->name);
+    //logger->debug(message.c_str(), unit->unitInfo->name);
 
-        if (currentGameConfig->customizableHpBars.ally.showMode == ShowMode::Never) {
+    if (hpBarSetting.showMode == ShowMode::Never) {
+        return;
+    }
+    
+    if (hpBarSetting.showMode == ShowMode::OnlyIfDamaged) {
+        if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
+            //logger->debug("%s => Unit is full hp, not going to show.");
             return;
         }
-        else if (currentGameConfig->customizableHpBars.ally.showMode == ShowMode::OnlyIfDamaged) {
-            if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
-                logger->debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
-                return;
-            }
-        }
-
-        gameWrapper->setHpBarColor(unit->player, currentGameConfig->customizableHpBars.ally);
     }
 
-    if (gameWrapper->isEnemy(unit->player)) {
-        logger->debug("%s is enemy.", unit->unitInfo->name);
-
-        if (currentGameConfig->customizableHpBars.enemy.showMode == ShowMode::Never) {
-            return;
-        }
-        else if (currentGameConfig->customizableHpBars.enemy.showMode == ShowMode::OnlyIfDamaged) {
-            if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
-                logger->debug("%s => Unit is full hp, not going to show.", unit->unitInfo->name);
-                return;
-            }
-        }
-
-        gameWrapper->setHpBarColor(unit->player, currentGameConfig->customizableHpBars.enemy);
-    }
+    gameWrapper->setHpBarColor(unit->player, hpBarSetting);
 
     origShowHpFcn(unit, posX, posY);
 }
