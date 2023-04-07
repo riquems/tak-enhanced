@@ -29,7 +29,7 @@
 #include <TAKEnhancedDll/Keys/KeyCombination.hpp>
 #include <Utils/Console.hpp>
 
-__declspec(dllexport) DWORD setListItem_fcnAddr;
+__declspec(dllexport) DWORD setSelectedListItem_fcnAddr;
 __declspec(dllexport) bool TAKisInitialized;
 
 std::shared_ptr<Logger> logger;
@@ -184,7 +184,7 @@ void init()
     gameWrapper = std::make_shared<GameWrapper>(uiHandler, baseAddress);
 
     // Initialize functions
-    setListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
+    setSelectedListItem_fcnAddr = *(DWORD*) (FunctionsOffsets::changeSelectedItem + baseAddress);
 
     nana::API::window_icon_default(nana::paint::image("Kingdoms.exe"));
     nana::rectangle fm_rect = nana::API::make_center(launcherConfig->window.width, launcherConfig->window.height);
