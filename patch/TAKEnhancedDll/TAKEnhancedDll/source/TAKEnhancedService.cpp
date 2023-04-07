@@ -151,6 +151,12 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
+        case WM_KEYDOWN:
+            if (wParam == VK_SPACE) {
+                logger->debug("Spacebar pressed");
+                executeCommand(userConfig->onSpacebar);
+            }
+        break;
         case WM_LBUTTONDOWN: {
             auto doubleClickTimeInMilliseconds = timer.timeInMilliseconds();
 

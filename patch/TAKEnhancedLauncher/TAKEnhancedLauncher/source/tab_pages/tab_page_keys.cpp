@@ -44,6 +44,7 @@ tab_page_keys::tab_page_keys(
 
 void tab_page_keys::initialize()
 {
+    addOnSpacebarOption();
     addOnDoubleClickOption();
     addOnTripleClickOption();
     addOnCtrlDoubleClickOption();
@@ -114,6 +115,15 @@ void addComboxOptions(std::shared_ptr<nana::combox> cbb, std::vector<std::string
     }
 }
 
+void tab_page_keys::addOnSpacebarOption() {
+    lbl_onSpacebar = std::make_shared<nana::label>(*this, "On Spacebar: ");
+    this->add_widget(lbl_onSpacebar, "clickOptions");
+
+    cb_onSpacebar = std::make_shared<nana::combox>(*this);
+    addComboxOptions(cb_onSpacebar, TAK::Commands::commands);
+    this->add_widget(cb_onSpacebar, "clickOptions");
+    this->add_binding(create_combox_binding(cb_onSpacebar, this->userConfig->onSpacebar));
+}
 
 void tab_page_keys::addOnDoubleClickOption() {
     lbl_onDoubleClick = std::make_shared<nana::label>(*this, "On Double Click: ");
