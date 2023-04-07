@@ -57,8 +57,6 @@ std::vector<std::string> TAKCore::Commands::targetCommands = {
     MoveToLastReport,
     MapBookmarkRetrieve,
     MapBookmarkStore,
-    TrackUnitReverse,
-    TrackUnit,
     SelectUnitsOnScreenSelectedType,
     SelectAllUnitsSelectedType,
 };
