@@ -52,11 +52,12 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
         applyMeleeStuckFix();
         logger->info("Melee Stuck fix applied.");
     }
-    
-    // Hooks
-    /*applyUpdateGuiHook();
+
+    applyUpdateGuiHook();
     logger->info("Added Hook when updating GUI.");
-    *
+
+    // Hooks
+    /*
     applyReadSideDataHooks();
     logger->info("Added Hook on reading SideData.tdf.");
     */

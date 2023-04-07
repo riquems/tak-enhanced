@@ -147,7 +147,7 @@ wndProc_t oldWndProc;
 bool bindingScheduled = false;
 Timer timer;
 
-LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -186,7 +186,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 std::thread t([&]() {
                     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-                    bindWndProc(); // we need to rebind our WndProc because DXWnd overwrites it when this event occurs
+                    // we need to rebind these because DXWnd overwrites it when this event occurs
+                    bindWndProc();
+
                     bindingScheduled = false;
                 });
                 t.detach();
@@ -220,7 +222,7 @@ void bindWndProc() {
     logger->debug("Binding WndProc...");
     auto wnd = GetThisWindow("Kingdoms");
     oldWndProc = (wndProc_t)GetWindowLongPtr(wnd, GWLP_WNDPROC);
-    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)WndProc);
+    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);
 }
 
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)

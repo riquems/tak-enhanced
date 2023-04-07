@@ -5,12 +5,12 @@
 class ChooseMapMenuWrapper
 {
 public:
-    ChooseMapMenu* _chooseMapMenu;
+    ChooseMapMenu* chooseMapMenu;
 
-    std::vector<std::string> _mapNamesCapitalized;
-    std::vector<std::string> _mapNamesLowerCase;
+    std::vector<std::string> mapNamesCapitalized;
+    std::vector<std::string> mapNamesLowerCase;
 
     ChooseMapMenuWrapper(ChooseMapMenu* chooseMapMenu);
 
-    void loadMapVector(std::vector<std::string>& v, char** mapNames);
+    void loadMapVector(std::vector<std::string>& v, char** begin, char** end);
 };

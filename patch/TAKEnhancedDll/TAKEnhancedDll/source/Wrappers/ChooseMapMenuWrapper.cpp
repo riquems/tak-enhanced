@@ -2,19 +2,24 @@
 
 ChooseMapMenuWrapper::ChooseMapMenuWrapper(ChooseMapMenu* chooseMapMenu)
 {
-    _chooseMapMenu = chooseMapMenu;
-    loadMapVector(_mapNamesCapitalized, _chooseMapMenu->mapNamesCapitalizedStart);
-    loadMapVector(_mapNamesLowerCase, _chooseMapMenu->mapNamesLowerCaseStart);
+    this->chooseMapMenu = chooseMapMenu;
+
+    loadMapVector(
+        this->mapNamesCapitalized,
+        this->chooseMapMenu->mapNamesCapitalizedStart,
+        this->chooseMapMenu->mapNamesCapitalizedEnd
+    );
+
+    loadMapVector(
+        this->mapNamesLowerCase,
+        this->chooseMapMenu->mapNamesLowerCaseStart,
+        this->chooseMapMenu->mapNamesLowerCaseEnd
+    );
 }
 
-void ChooseMapMenuWrapper::loadMapVector(std::vector<std::string>& v, char** mapNames)
+void ChooseMapMenuWrapper::loadMapVector(std::vector<std::string>& v, char** begin, char** end)
 {
-    char** firstMap = mapNames;
-
-    char** nextMap = firstMap;
-    while (*nextMap != nullptr)
-    {
-        v.push_back(std::string(*nextMap));
-        nextMap++;
+    for (int i = 0; begin[i] != *end; i++) {
+        v.push_back(std::string(begin[i]));
     }
 }

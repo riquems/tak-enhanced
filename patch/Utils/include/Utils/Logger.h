@@ -67,4 +67,5 @@ public:
     void context(const std::string msg, ...) const;
     void section(const std::string msg, ...) const;
     void stop();
+    LogLevel minimumLevel() const;
 };

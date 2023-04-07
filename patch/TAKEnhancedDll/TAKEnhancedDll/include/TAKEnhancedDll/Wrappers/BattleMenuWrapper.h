@@ -6,12 +6,12 @@
 class BattleMenuWrapper
 {
 public:
-    BattleMenu* _battleMenu;
+    BattleMenu* battleMenu;
 
-    std::vector<std::string> _mapNamesCapitalized;
-    std::vector<std::string> _mapNamesLowerCase;
+    std::vector<std::string> mapNamesCapitalized;
+    std::vector<std::string> mapNamesLowerCase;
 
     BattleMenuWrapper(BattleMenu* battleMenu);
 
-    void loadMapVector(std::vector<std::string>& v, char** mapNames);
+    void loadMapVector(std::vector<std::string>& v, char** begin, char** end);
 };

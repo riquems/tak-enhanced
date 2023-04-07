@@ -2,19 +2,24 @@
 
 BattleMenuWrapper::BattleMenuWrapper(BattleMenu* battleMenu)
 {
-    _battleMenu = battleMenu;
-    loadMapVector(_mapNamesCapitalized, _battleMenu->mapNamesCapitalizedStart);
-    loadMapVector(_mapNamesLowerCase, _battleMenu->mapNamesLowerCaseStart);
+    this->battleMenu = battleMenu;
+
+    loadMapVector(
+        this->mapNamesCapitalized,
+        this->battleMenu->mapNamesCapitalizedStart,
+        this->battleMenu->mapNamesCapitalizedEnd
+    );
+
+    loadMapVector(
+        this->mapNamesLowerCase,
+        this->battleMenu->mapNamesLowerCaseStart,
+        this->battleMenu->mapNamesLowerCaseEnd
+    );
 }
 
-void BattleMenuWrapper::loadMapVector(std::vector<std::string>& v, char** mapNames)
+void BattleMenuWrapper::loadMapVector(std::vector<std::string>& v, char** begin, char** end)
 {
-    char** firstMap = mapNames;
-
-    char** nextMap = firstMap;
-    while (*nextMap != nullptr)
-    {
-        v.push_back(std::string(*nextMap));
-        nextMap++;
+    for (int i = 0; begin[i] != *end; i++) {
+        v.push_back(std::string(begin[i]));
     }
 }
