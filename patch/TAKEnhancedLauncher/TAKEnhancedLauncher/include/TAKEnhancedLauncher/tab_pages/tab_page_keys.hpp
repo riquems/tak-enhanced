@@ -31,6 +31,9 @@ class tab_page_keys : public e_panel
     std::shared_ptr<CommandStringParser> commandStringParser;
     std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser;
 
+    std::shared_ptr<nana::label> lbl_onSpacebar;
+    std::shared_ptr<nana::combox> cb_onSpacebar;
+
     std::shared_ptr<nana::label> lbl_onDoubleClick;
     std::shared_ptr<nana::combox> cb_onDoubleClick;
 
@@ -58,6 +61,7 @@ public:
 
     void initialize();
 
+    void addOnSpacebarOption();
     void addOnDoubleClickOption();
     void addOnTripleClickOption();
     void addOnCtrlDoubleClickOption();
