@@ -27,7 +27,7 @@ public:
 
     void initialize();
 
-    void save();
+    void commit();
     void draw();
     void reset();
     void reload();

@@ -69,7 +69,7 @@ public:
     void draw();
     void load();
 
-    void save();
+    void commit();
 
     void reload();
 

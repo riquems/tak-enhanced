@@ -68,8 +68,8 @@ public:
 
     void show();
 
-    void update();
-    void save_all();
+    void commit_all();
+    void save();
 
 private:
     void initialize();
@@ -83,10 +83,11 @@ private:
     void addPlayButton();
     void addExitButton();
     void addSaveButton();
-    void save();
+    void commit();
 
     void addPresetPicker();
 
+    void on_state_changed();
     void update_crc();
 
     void reload_all();

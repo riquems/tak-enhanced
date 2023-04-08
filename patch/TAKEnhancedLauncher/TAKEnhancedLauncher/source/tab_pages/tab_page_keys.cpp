@@ -194,7 +194,7 @@ void tab_page_keys::load()
     e_panel::load();
 }
 
-void tab_page_keys::save()
+void tab_page_keys::commit()
 {
     std::vector<KeyBindingListItem> keyBindings = get_keyBindings();
 
@@ -207,7 +207,7 @@ void tab_page_keys::save()
         this->userConfig->keyBindings.push_back(KeyBinding{ keyCombination, command });
     }
 
-    e_panel::save();
+    e_panel::commit();
 }
 
 void tab_page_keys::reload()
