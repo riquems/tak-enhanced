@@ -69,6 +69,8 @@ void e_mod_loader::initialize() {
             nana::listbox::index_pairs items = this->lb_listbox1->items();
 
             move_items(items, this->lb_listbox1, this->lb_listbox2);
+
+            this->on_state_changed();
         }
     );
     this->add_widget(this->btn_moveAllRight, "buttons");
@@ -79,6 +81,8 @@ void e_mod_loader::initialize() {
             nana::listbox::index_pairs selected_items = this->lb_listbox1->selected();
 
             move_items(selected_items, this->lb_listbox1, this->lb_listbox2);
+
+            this->on_state_changed();
         }
     );
     this->add_widget(this->btn_moveSelectedRight, "buttons");
@@ -89,6 +93,8 @@ void e_mod_loader::initialize() {
             nana::listbox::index_pairs selected_items = this->lb_listbox2->selected();
 
             move_items(selected_items, this->lb_listbox2, this->lb_listbox1);
+
+            this->on_state_changed();
         }
     );
     this->add_widget(this->btn_moveSelectedLeft, "buttons");
@@ -99,6 +105,8 @@ void e_mod_loader::initialize() {
             nana::listbox::index_pairs items = this->lb_listbox2->items();
 
             move_items(items, this->lb_listbox2, this->lb_listbox1);
+
+            this->on_state_changed();
         }
     );
     this->add_widget(this->btn_moveAllLeft, "buttons");

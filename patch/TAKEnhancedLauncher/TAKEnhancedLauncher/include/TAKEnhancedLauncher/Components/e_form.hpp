@@ -18,7 +18,9 @@ public:
     void draw();
     void load();
     void reload();
-    void save();
+    void commit();
+    std::function<void()> on_state_changed_callback = []() {};
+    virtual void on_state_changed();
     void make_editable();
     void make_readonly();
 };

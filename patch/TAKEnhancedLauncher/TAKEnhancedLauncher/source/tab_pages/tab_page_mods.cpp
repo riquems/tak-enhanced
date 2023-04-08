@@ -21,6 +21,9 @@ void tab_page_mods::initialize()
     this->mod_loader = std::make_shared<e_mod_loader>(
         *this, this->gameConfig, this->logger
     );
+    mod_loader->on_state_changed_callback = [&]() {
+        this->on_state_changed();
+    };
     this->add_widget(this->mod_loader, "mod_loader");
 
     cb_enableMods->events().checked(
@@ -34,10 +37,10 @@ void tab_page_mods::initialize()
     );
 }
 
-void tab_page_mods::save()
+void tab_page_mods::commit()
 {
-    e_panel::save();
-    this->mod_loader->save();
+    e_panel::commit();
+    this->mod_loader->commit();
 }
 
 void tab_page_mods::draw()

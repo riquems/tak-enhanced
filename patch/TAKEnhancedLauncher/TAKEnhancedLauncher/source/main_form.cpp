@@ -30,6 +30,7 @@ main_form::main_form(
         this->initialize();
         this->load();
         this->draw();
+        this->on_state_changed();
     }
 
 void main_form::show()
@@ -38,19 +39,19 @@ void main_form::show()
     nana::exec();
 }
 
-void main_form::update()
+void main_form::commit_all()
 {
-    update_crc();
+    this->commit();
+    tp_mods->commit();
+    tp_patches->commit();
+    tp_hp_bars->commit();
+    tp_keys->commit();
 }
 
-void main_form::save_all()
+void main_form::save()
 {
-    this      ->save();
-    tp_mods   ->save();
-    tp_patches->save();
-    tp_hp_bars->save();
-    tp_keys   ->save();
-    this      ->on_save();
+    this->commit_all();
+    this->on_save();
 }
 
 void main_form::initialize()
@@ -116,18 +117,27 @@ void main_form::addTabs() {
 
 void main_form::addModsTab() {
     tp_mods = std::make_shared<tab_page_mods>(this->handle(), this->gameConfig, this->logger);
+    tp_mods->on_state_changed_callback = [&]() {
+        this->on_state_changed();
+    };
 
     tabs->append("Mods", *tp_mods);
 }
 
 void main_form::addPatchesTab() {
     tp_patches = std::make_shared<tab_page_patches>(this->handle(), this->gameConfig);
+    tp_patches->on_state_changed_callback = [&]() {
+        this->on_state_changed();
+    };
 
     tabs->append("Patches", *tp_patches);
 }
 
 void main_form::addHpBarsTab() {
     tp_hp_bars = std::make_shared<tab_page_hp_bars>(this->handle(), this->gameConfig, this->logger);
+    tp_hp_bars->on_state_changed_callback = [&]() {
+        this->on_state_changed();
+    };
 
     tabs->append("HP Bars", *tp_hp_bars);
 }
@@ -141,6 +151,9 @@ void main_form::addKeysTab() {
         this->commandStringParser,
         this->keyCombinationStringParser
     );
+    tp_keys->on_state_changed_callback = [&]() {
+        this->on_state_changed();
+    };
 
     tabs->append("Keys", *tp_keys);
 }
@@ -150,7 +163,7 @@ void main_form::addPlayButton() {
 
     btn_play->events().click(
         [&]() {
-            save_all();
+            this->save();
             nana::API::exit_all();
         }
     );
@@ -176,21 +189,20 @@ void main_form::addSaveButton() {
 
     btn_save->events().click(
         [&]() {
-            save_all();
-            update();
+            this->save();
         }
     );
 
     this->add_widget(btn_save, "saveBtn");
 }
 
-void main_form::save()
+void main_form::commit()
 {
     nana::size main_form_size = this->size();
     this->launcherConfig->window.width = main_form_size.width;
     this->launcherConfig->window.height = main_form_size.height;
 
-    e_form::save();
+    e_form::commit();
 }
 
 void main_form::addPresetPicker()
@@ -231,8 +243,6 @@ void main_form::addPresetPicker()
                 this->make_all_readonly();
                 btn_save->enabled(false);
             }
-
-            update_crc();
         }
     );
 
@@ -261,6 +271,14 @@ void main_form::addPresetPicker()
 
     this->add_widget(this->lbl_lbl_preset_hash, "presetHashLabel");
     this->add_widget(this->lbl_preset_hash, "presetHash");
+}
+
+void main_form::on_state_changed() {
+    logger->debug("State has changed");
+    this->commit_all();
+    this->update_crc();
+
+    e_form::on_state_changed();
 }
 
 void main_form::update_crc() {

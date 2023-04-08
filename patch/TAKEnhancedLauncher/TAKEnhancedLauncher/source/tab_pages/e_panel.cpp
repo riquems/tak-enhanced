@@ -15,6 +15,35 @@ void e_panel::add_widget(std::shared_ptr<nana::widget> widget, std::string field
         widget->bgcolor(default_bgcolor);
     }
 
+    if (is<nana::combox>(*widget)) {
+        auto combox = std::dynamic_pointer_cast<nana::combox>(widget);
+
+        combox->events().text_changed([&]() {
+            this->on_state_changed();
+        });
+    }
+    else if (is<nana::checkbox>(*widget)) {
+        auto checkbox = std::dynamic_pointer_cast<nana::checkbox>(widget);
+
+        checkbox->events().checked([&]() {
+            this->on_state_changed();
+        });
+    }
+    else if (is<nana::textbox>(*widget)) {
+        auto textbox = std::dynamic_pointer_cast<nana::textbox>(widget);
+
+        textbox->events().text_changed([&]() {
+            this->on_state_changed();
+        });
+    }
+    else if (is<nana::spinbox>(*widget)) {
+        auto spinbox = std::dynamic_pointer_cast<nana::spinbox>(widget);
+
+        spinbox->events().text_changed([&]() {
+            this->on_state_changed();
+        });
+    }
+
     this->widgets.push_back(std::make_shared<e_widget>(widget, field));
 }
 
@@ -45,11 +74,15 @@ void e_panel::reload()
 }
 
 
-void e_panel::save()
+void e_panel::commit()
 {
     for (auto& binding : this->bindings) {
         binding->commit();
     }
+}
+
+void e_panel::on_state_changed() {
+    this->on_state_changed_callback();
 }
 
 void e_panel::make_editable()

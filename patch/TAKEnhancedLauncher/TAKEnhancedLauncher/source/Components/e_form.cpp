@@ -15,6 +15,27 @@ void e_form::add_widget(std::shared_ptr<nana::widget> widget, std::string field)
         widget->bgcolor(default_bgcolor);
     }
 
+    if (is<nana::combox>(*widget)) {
+        ((nana::combox)*widget).events().text_changed([&]() {
+            this->on_state_changed();
+        });
+    }
+    else if (is<nana::checkbox>(*widget)) {
+        ((nana::checkbox)*widget).events().checked([&]() {
+            this->on_state_changed();
+        });
+    }
+    else if (is<nana::textbox>(*widget)) {
+        ((nana::textbox)*widget).events().text_changed([&]() {
+            this->on_state_changed();
+        });
+    }
+    else if (is<nana::spinbox>(*widget)) {
+        ((nana::spinbox)*widget).events().text_changed([&]() {
+            this->on_state_changed();
+        });
+    }
+
     this->widgets.push_back(std::make_shared<e_widget>(widget, field));
 }
 
@@ -44,11 +65,15 @@ void e_form::reload()
     this->load();
 }
 
-void e_form::save()
+void e_form::commit()
 {
     for (auto& binding : this->bindings) {
         binding->commit();
     }
+}
+
+void e_form::on_state_changed() {
+    this->on_state_changed_callback();
 }
 
 void e_form::make_editable()
