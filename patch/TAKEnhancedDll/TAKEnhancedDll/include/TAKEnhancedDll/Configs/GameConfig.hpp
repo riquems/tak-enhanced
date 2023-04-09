@@ -15,7 +15,7 @@ struct MeleeStuckFixSettings : GameSetting
 
 struct GameConfig
 {
-    GameSetting useMapScript;
+    GameSetting testMultiScript;
     GameSetting skipLogo;
     GameSetting showNetworkStats;
     GameSetting disableCavedogVerification;
@@ -46,7 +46,7 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
 )
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
     GameConfig,
-    useMapScript,
+    testMultiScript,
     skipLogo,
     showNetworkStats,
     disableCavedogVerification,

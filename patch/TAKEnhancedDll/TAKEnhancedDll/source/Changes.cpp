@@ -37,8 +37,8 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
         installShowHpHook();
     }
 
-    if (config->useMapScript.enabled) {
-        *TAK::Config::useMapScript = true;
+    if (config->testMultiScript.enabled) {
+        *TAK::Config::testMultiScript = true;
         *TAK::Config::noSideCulling = false;
     }
     

@@ -1,6 +1,6 @@
 #include "TAKCore/Config.h"
 
-bool* TAKCore::Config::useMapScript;
+bool* TAKCore::Config::testMultiScript;
 bool* TAKCore::Config::skipLogo;
 bool* TAKCore::Config::showNetworkStats;
 bool* TAKCore::Config::disableCavedogVerification;

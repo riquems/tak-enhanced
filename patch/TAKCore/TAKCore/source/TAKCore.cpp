@@ -6,7 +6,7 @@
 void TAKCore::init(unsigned int baseAddress) {
     TAKCore::Functions::executeCommand = (executeCommand_t) (baseAddress + FunctionsOffsets::executeCommand);
 
-    TAKCore::Config::useMapScript = (bool*)(TAKCore::Config::useMapScriptAddress + baseAddress);
+    TAKCore::Config::testMultiScript = (bool*)(TAKCore::Config::testMultiScriptAddress + baseAddress);
     TAKCore::Config::skipLogo = (bool*)(TAKCore::Config::skipLogoAddress + baseAddress);
     TAKCore::Config::showNetworkStats = (bool*)(TAKCore::Config::showNetworkStatsAddress + baseAddress);
     TAKCore::Config::disableCavedogVerification = (bool*)(TAKCore::Config::disableCavedogVerificationAddress + baseAddress);

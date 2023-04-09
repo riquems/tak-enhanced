@@ -73,7 +73,7 @@
   "skipLogo": {
     "enabled": false
   },
-  "useMapScript": {
+  "testMultiScript": {
     "enabled": false
   }
 }

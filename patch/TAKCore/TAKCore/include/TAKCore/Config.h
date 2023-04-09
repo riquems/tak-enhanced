@@ -4,8 +4,8 @@ namespace TAKCore
 {
     namespace Config
     {
-        constexpr unsigned int useMapScriptAddress = 0x24185D;
-        extern bool* useMapScript;
+        constexpr unsigned int testMultiScriptAddress = 0x24185D;
+        extern bool* testMultiScript;
 
         constexpr unsigned int skipLogoAddress = 0x24181E;
         extern bool* skipLogo;

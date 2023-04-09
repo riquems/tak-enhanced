@@ -25,7 +25,7 @@ void tab_page_main::initialize()
     this->add_widget(cb_enableMods, "checkboxes");
     this->add_binding(create_checkbox_binding(cb_enableMods, this->gameConfig->mods.enabled));
 
-    cb_useMapScript = std::make_shared<nana::checkbox>(*this, "Use Map Script");
+    cb_testMultiScript = std::make_shared<nana::checkbox>(*this, "Test Multi Script (Offline only)");
     cb_skipLogo = std::make_shared<nana::checkbox>(*this, "Skip Logo");
     cb_showNetworkStats = std::make_shared<nana::checkbox>(*this, "Show Network Stats");
     cb_disableCavedogVerification = std::make_shared<nana::checkbox>(*this, "Disable Cavedog Verification");
@@ -34,7 +34,7 @@ void tab_page_main::initialize()
     cb_disableUiPreload = std::make_shared<nana::checkbox>(*this, "Disable UI Preload");
     cb_noSideCulling = std::make_shared<nana::checkbox>(*this, "No Side Culling");
 
-    this->add_widget(cb_useMapScript, "checkboxes");
+    this->add_widget(cb_testMultiScript, "checkboxes");
     this->add_widget(cb_skipLogo, "checkboxes");
     this->add_widget(cb_showNetworkStats, "checkboxes");
     this->add_widget(cb_disableCavedogVerification, "checkboxes");
@@ -43,7 +43,7 @@ void tab_page_main::initialize()
     this->add_widget(cb_disableUiPreload, "checkboxes");
     this->add_widget(cb_noSideCulling, "checkboxes");
 
-    this->add_binding(create_checkbox_binding(cb_useMapScript, this->gameConfig->useMapScript.enabled));
+    this->add_binding(create_checkbox_binding(cb_testMultiScript, this->gameConfig->testMultiScript.enabled));
     this->add_binding(create_checkbox_binding(cb_skipLogo, this->gameConfig->skipLogo.enabled));
     this->add_binding(create_checkbox_binding(cb_showNetworkStats, this->gameConfig->showNetworkStats.enabled));
     this->add_binding(create_checkbox_binding(cb_disableCavedogVerification, this->gameConfig->disableCavedogVerification.enabled));

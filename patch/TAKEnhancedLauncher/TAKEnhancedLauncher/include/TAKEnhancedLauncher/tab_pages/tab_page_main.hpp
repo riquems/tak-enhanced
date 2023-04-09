@@ -19,7 +19,7 @@ class tab_page_main : public e_panel
     std::shared_ptr<nana::checkbox> cb_enableDevMode;
     std::shared_ptr<nana::checkbox> cb_enableMods;
 
-    std::shared_ptr<nana::checkbox> cb_useMapScript;
+    std::shared_ptr<nana::checkbox> cb_testMultiScript;
     std::shared_ptr<nana::checkbox> cb_skipLogo;
     std::shared_ptr<nana::checkbox> cb_showNetworkStats;
     std::shared_ptr<nana::checkbox> cb_disableCavedogVerification;
