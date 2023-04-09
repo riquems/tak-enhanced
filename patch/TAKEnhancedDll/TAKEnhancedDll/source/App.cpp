@@ -93,13 +93,32 @@ std::vector<Preset> getPresets(std::string configsPath)
     return configs;
 }
 
-void init()
+void _init();
+
+void init() {
+    try {
+        _init();
+    }
+    catch (const std::exception& e) {
+        if (logger != nullptr) {
+            logger->fatal(e.what());
+        }
+        else {
+            auto errorCode = GetLastError();
+            std::cout << "[Fatal]" << e.what() << " Error Code: " << std::to_string(errorCode) << "\n";
+        }
+    }
+}
+
+void _init()
 {
     StartConsole();
     
     std::cout << "[Info] App start" << "\n";
-    std::cout << "[Info] Loading logger config..." << "\n";
-    auto maybeLoggerConfig = fromJson<LoggerConfig>("./TAKEnhanced/logger.cfg.json");
+
+    auto loggerConfigPath = "./TAKEnhanced/logger.cfg.json";
+    std::cout << "[Info] Loading logger config from " << loggerConfigPath << "\n";
+    auto maybeLoggerConfig = fromJson<LoggerConfig>(loggerConfigPath);
 
     if (!maybeLoggerConfig.has_value()) {
         std::cout << "[Error] Logger config not found." << '\n';
@@ -110,8 +129,9 @@ void init()
 
     logger = std::make_shared<Logger>(loggerConfig, "a");
 
-    logger->info("Loading launcher config...");
-    auto maybeLauncherConfig = fromJson<LauncherConfig>("./TAKEnhanced/launcher.cfg.json");
+    auto launcherConfigPath = "./TAKEnhanced/launcher.cfg.json";
+    logger->info("Loading launcher config from %s", launcherConfigPath);
+    auto maybeLauncherConfig = fromJson<LauncherConfig>(launcherConfigPath);
 
     if (!maybeLauncherConfig.has_value()) {
         logger->error("Launcher config not found.");
@@ -120,7 +140,7 @@ void init()
 
     launcherConfig = std::make_shared<LauncherConfig>(maybeLauncherConfig.value());
 
-    logger->info("Loading presets at %s", maybeLauncherConfig.value().presetsPath.c_str());
+    logger->info("Loading presets from %s", maybeLauncherConfig.value().presetsPath.c_str());
     auto presets = Presets(getPresets(maybeLauncherConfig.value().presetsPath));
 
     if (presets.empty()) {
@@ -133,12 +153,12 @@ void init()
             logger->info("- " + preset.name);
         }
 
-        logger->info("Loading current game config...");
-
-        std::optional<GameConfig> maybeCurrentGameConfig = fromJson<GameConfig>("./TAKEnhanced/game.cfg.json");;
+        auto currentGameConfigPath = "./TAKEnhanced/game.cfg.json";
+        logger->info("Loading current game config from %s", currentGameConfigPath);
+        std::optional<GameConfig> maybeCurrentGameConfig = fromJson<GameConfig>(currentGameConfigPath);
 
         if (!maybeLauncherConfig.has_value()) {
-            logger->error("Current game config not found. (searching for %s)", "./TAKEnhanced/game.cfg.json");
+            logger->error("Current game config not found.");
             return;
         }
 
@@ -163,8 +183,9 @@ void init()
         currentGameConfig = std::make_shared<GameConfig>(currentGameConfigValue);
     }
 
-    logger->info("Loading user config...");
-    auto maybeUserConfig = fromJson<UserConfig>("./TAKEnhanced/user.cfg.json");
+    auto userConfigPath = "./TAKEnhanced/user.cfg.json";
+    logger->info("Loading user config from %s", userConfigPath);
+    auto maybeUserConfig = fromJson<UserConfig>(userConfigPath);
 
     if (!maybeUserConfig.has_value()) {
         logger->error("User config not found.");
