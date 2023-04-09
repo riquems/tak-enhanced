@@ -43,7 +43,7 @@ void main_form::show()
 void main_form::commit_all()
 {
     this->commit();
-    tp_general->commit();
+    tp_main->commit();
     tp_patches->commit();
     tp_hp_bars->commit();
     tp_keys->commit();
@@ -105,30 +105,30 @@ void main_form::addTabs() {
     tabs = std::make_shared<nana::tabbar<std::string>>(this->handle());
     tabs->bgcolor(default_bgcolor);
 
-    addGeneralTab();
+    addMainTab();
     addPatchesTab();
     addHpBarsTab();
     addKeysTab();
 
     layout->field("tabs") << *tabs;
-    layout->field("content").fasten(*tp_general).fasten(*tp_patches).fasten(*tp_hp_bars).fasten(*tp_keys);
+    layout->field("content").fasten(*tp_main).fasten(*tp_patches).fasten(*tp_hp_bars).fasten(*tp_keys);
 
     tabs->activated(0);
 }
 
-void main_form::addGeneralTab() {
-    tp_general = std::make_shared<tab_page_general>(
+void main_form::addMainTab() {
+    tp_main = std::make_shared<tab_page_main>(
         this->handle(),
         this->launcherConfig,
         this->gameConfig,
         this->logger
     );
 
-    tp_general->on_state_changed_callback = [&]() {
+    tp_main->on_state_changed_callback = [&]() {
         this->on_state_changed();
     };
 
-    tabs->append(tp_general->name, *tp_general);
+    tabs->append(tp_main->name, *tp_main);
 }
 
 void main_form::addPatchesTab() {
@@ -304,7 +304,7 @@ void main_form::update_crc() {
 
 void main_form::reload_all()
 {
-    tp_general   ->reload();
+    tp_main   ->reload();
     tp_keys   ->reload();
     tp_patches->reload();
     tp_hp_bars->reload();
@@ -312,12 +312,12 @@ void main_form::reload_all()
 
 void main_form::make_all_editable()
 {
-    tp_general   ->make_editable();
+    tp_main   ->make_editable();
     tp_patches->make_editable();
 }
 
 void main_form::make_all_readonly()
 {
-    tp_general   ->make_readonly();
+    tp_main   ->make_readonly();
     tp_patches->make_readonly();
 }

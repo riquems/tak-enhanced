@@ -7,7 +7,7 @@
 #include "TAKEnhancedLauncher/Components/e_form.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_hp_bars.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_keys.hpp"
-#include "TAKEnhancedLauncher/tab_pages/tab_page_general.hpp"
+#include "TAKEnhancedLauncher/tab_pages/tab_page_main.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_patches.hpp"
 #include "TAKEnhancedLauncher/Components/modal_save_as_preset.hpp"
 #include <TAKEnhancedDll/Presets/Presets.hpp>
@@ -30,7 +30,7 @@ class main_form : public e_form
     std::shared_ptr<nana::tabbar<std::string>> tabs;
 
     // Tab Pages
-    std::shared_ptr<tab_page_general> tp_general;
+    std::shared_ptr<tab_page_main> tp_main;
     std::shared_ptr<tab_page_patches> tp_patches;
     std::shared_ptr<tab_page_hp_bars> tp_hp_bars;
     std::shared_ptr<tab_page_keys> tp_keys;
@@ -76,7 +76,7 @@ private:
     void draw();
 
     void addTabs();
-    void addGeneralTab();
+    void addMainTab();
     void addPatchesTab();
     void addHpBarsTab();
     void addKeysTab();
