@@ -10,6 +10,8 @@ class tab_page_hp_bars : public e_panel
     std::shared_ptr<Logger> logger;
 
 public:
+    const std::string name = "HP Bars";
+
     // Hp Bar Options
     std::shared_ptr<nana::checkbox> cb_enableHpBarOptions;
     std::shared_ptr<nana::label> lbl_hpBarOptions;

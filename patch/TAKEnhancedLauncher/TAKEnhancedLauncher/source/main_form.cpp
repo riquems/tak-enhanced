@@ -128,7 +128,7 @@ void main_form::addGeneralTab() {
         this->on_state_changed();
     };
 
-    tabs->append("General", *tp_general);
+    tabs->append(tp_general->name, *tp_general);
 }
 
 void main_form::addPatchesTab() {
@@ -137,7 +137,7 @@ void main_form::addPatchesTab() {
         this->on_state_changed();
     };
 
-    tabs->append("Patches", *tp_patches);
+    tabs->append(tp_patches->name, *tp_patches);
 }
 
 void main_form::addHpBarsTab() {
@@ -146,7 +146,7 @@ void main_form::addHpBarsTab() {
         this->on_state_changed();
     };
 
-    tabs->append("HP Bars", *tp_hp_bars);
+    tabs->append(tp_hp_bars->name, *tp_hp_bars);
 }
 
 void main_form::addKeysTab() {
@@ -162,7 +162,7 @@ void main_form::addKeysTab() {
         this->on_state_changed();
     };
 
-    tabs->append("Keys", *tp_keys);
+    tabs->append(tp_keys->name, *tp_keys);
 }
 
 void main_form::addPlayButton() {

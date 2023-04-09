@@ -50,6 +50,8 @@ class tab_page_keys : public e_panel
     std::shared_ptr<nana::button> btn_clear;
 
 public:
+    const std::string name = "Keys";
+
     tab_page_keys(
         nana::window parent,
         std::shared_ptr<UserConfig> userConfig,

@@ -8,6 +8,8 @@ class tab_page_patches : public e_panel
     std::shared_ptr<GameConfig> gameConfig;
 
 public:
+    const std::string name = "Patches";
+
     // Checkboxes
     std::shared_ptr<nana::checkbox> cb_noCD;
     std::shared_ptr<nana::checkbox> cb_pauseWhenUnfocused;

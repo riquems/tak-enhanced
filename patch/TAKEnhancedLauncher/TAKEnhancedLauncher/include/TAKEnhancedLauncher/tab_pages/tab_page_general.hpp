@@ -31,6 +31,8 @@ class tab_page_general : public e_panel
     std::shared_ptr<e_mod_loader> mod_loader;
 
 public:
+    const std::string name = "General";
+
     tab_page_general(
         nana::window parent,
         std::shared_ptr<LauncherConfig> launcherConfig,
