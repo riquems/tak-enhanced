@@ -13,7 +13,7 @@
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
 #include "TAKCore/Config.h"
 
-__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.1.0";
+__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.2.0";
 
 void applyTakEnhancedVersion()
 {
