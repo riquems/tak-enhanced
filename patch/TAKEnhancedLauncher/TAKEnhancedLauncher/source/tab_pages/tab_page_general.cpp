@@ -1,6 +1,6 @@
-#include "TAKEnhancedLauncher/tab_pages/tab_page_mods.hpp"
+#include "TAKEnhancedLauncher/tab_pages/tab_page_general.hpp"
 
-tab_page_mods::tab_page_mods(
+tab_page_general::tab_page_general(
     nana::window parent,
     std::shared_ptr<LauncherConfig> launcherConfig,
     std::shared_ptr<GameConfig> gameConfig,
@@ -15,7 +15,7 @@ tab_page_mods::tab_page_mods(
     load();
 }
 
-void tab_page_mods::initialize()
+void tab_page_general::initialize()
 {
     cb_enableDevMode = std::make_shared<nana::checkbox>(*this, "Enable Developer Mode");
     this->add_widget(cb_enableDevMode, "checkboxes");
@@ -47,13 +47,13 @@ void tab_page_mods::initialize()
     );
 }
 
-void tab_page_mods::commit()
+void tab_page_general::commit()
 {
     e_panel::commit();
     this->mod_loader->commit();
 }
 
-void tab_page_mods::draw()
+void tab_page_general::draw()
 {
     this->layout->div(
         "margin=15 vert   \
@@ -66,12 +66,12 @@ void tab_page_mods::draw()
     e_panel::draw();
 }
 
-void tab_page_mods::reset()
+void tab_page_general::reset()
 {
     this->mod_loader->reset();
 }
 
-void tab_page_mods::reload()
+void tab_page_general::reload()
 {
     this->reset();
     this->load();

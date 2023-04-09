@@ -14,7 +14,7 @@
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\main_form.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_hp_bars.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_keys.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_mods.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_general.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_patches.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_widget.hpp" />
@@ -29,7 +29,7 @@
     <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_hp_bars.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_keys.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_patches.cpp" />
-    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_mods.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_general.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\success_modal.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_dialog.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\modal_save_as_preset.cpp" />
