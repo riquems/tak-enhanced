@@ -43,6 +43,7 @@ CommandStringParser commandStringParser(commands);
 Keys keys;
 KeyCombinationStringParser keyCombinationStringParser(keys);
 
+std::filesystem::path exePath;
 HANDLE hProcess = nullptr;
 
 DWORD baseAddress = 0;
@@ -76,7 +77,7 @@ std::vector<Preset> getPresets(std::string configsPath)
 {
     std::vector<Preset> configs;
     
-    std::vector<std::filesystem::path> files = dky::getFilesFromPath(configsPath, ".preset.json", true);
+    std::vector<std::filesystem::path> files = files::get(configsPath, ".preset.json", true);
 
     for (auto file : files) {
         std::fstream fileStream(file);
@@ -172,6 +173,7 @@ void init()
 
     userConfig = std::make_shared<UserConfig>(maybeUserConfig.value());
 
+    exePath = std::filesystem::current_path();
     baseAddress = getProcessBaseAddress("Kingdoms.icd");
     TAK::init(baseAddress);
     logger->debug("Process base address loaded successfully.");

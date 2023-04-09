@@ -1,7 +1,14 @@
 #include "TAKEnhancedLauncher/tab_pages/tab_page_mods.hpp"
 
-tab_page_mods::tab_page_mods(nana::window parent, std::shared_ptr<GameConfig> gameConfig, std::shared_ptr<Logger> logger) :
-    e_panel(parent), gameConfig(gameConfig), logger(logger)
+tab_page_mods::tab_page_mods(
+    nana::window parent,
+    std::shared_ptr<LauncherConfig> launcherConfig,
+    std::shared_ptr<GameConfig> gameConfig,
+    std::shared_ptr<Logger> logger
+) : e_panel(parent),
+    launcherConfig(launcherConfig),
+    gameConfig(gameConfig),
+    logger(logger)
 {
     initialize();
     draw();
@@ -19,7 +26,10 @@ void tab_page_mods::initialize()
     this->add_binding(create_checkbox_binding(cb_enableMods, this->gameConfig->mods.enabled));
 
     this->mod_loader = std::make_shared<e_mod_loader>(
-        *this, this->gameConfig, this->logger
+        *this,
+        this->launcherConfig,
+        this->gameConfig,
+        this->logger
     );
     mod_loader->on_state_changed_callback = [&]() {
         this->on_state_changed();

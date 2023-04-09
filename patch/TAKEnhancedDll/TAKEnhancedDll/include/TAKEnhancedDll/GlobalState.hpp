@@ -15,6 +15,7 @@ extern std::shared_ptr<LauncherConfig> launcherConfig;
 extern std::shared_ptr<GameConfig> currentGameConfig;
 extern std::shared_ptr<UserConfig> userConfig;
 
+extern std::filesystem::path exePath;
 extern HANDLE hProcess;
 
 extern DWORD baseAddress;

@@ -1,4 +1,5 @@
 {
+  "onSpacebar": "TrackUnit",
   "onDoubleClick": "SelectUnitsOnScreenSelectedType",
   "onTripleClick": "SelectAllUnitsSelectedType",
   "onCtrlDoubleClick": "SelectAllUnitsSelectedType",

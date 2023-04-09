@@ -1,10 +1,12 @@
 #pragma once
 #include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
 #include <TAKEnhancedDll/Configs/GameConfig.hpp>
+#include <TAKEnhancedDll/Configs/LauncherConfig.hpp>
 #include <Utils/Logger.h>
 
 class e_mod_loader : public e_panel
 {
+    std::shared_ptr<LauncherConfig> launcherConfig;
     std::shared_ptr<GameConfig> gameConfig;
     std::shared_ptr<Logger> logger;
 
@@ -29,6 +31,7 @@ class e_mod_loader : public e_panel
 public:
     e_mod_loader(
         nana::window parent,
+        std::shared_ptr<LauncherConfig> launcherConfig,
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<Logger> logger
     );

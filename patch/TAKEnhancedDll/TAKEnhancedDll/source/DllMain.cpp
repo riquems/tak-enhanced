@@ -2,6 +2,7 @@
 #include <string>
 
 #include "TAKEnhancedDll/App.hpp"
+#include "TAKEnhancedDll/GlobalState.hpp"
 
 void showMessageBox(std::string message)
 {
@@ -10,8 +11,17 @@ void showMessageBox(std::string message)
 
 BOOL WINAPI DllMain(HMODULE hInstance, DWORD dwReason, LPVOID lpReserved)
 {
-    if (dwReason == DLL_PROCESS_ATTACH) {
+    switch (dwReason)
+    {
+    case DLL_PROCESS_ATTACH:
         init();
+        break;
+    case DLL_PROCESS_DETACH:
+        files::move(exePath, launcherConfig->modsPath, {
+            .filenames = &currentGameConfig->mods.selectedMods
+        });
+
+        break;
     }
 
     return true;

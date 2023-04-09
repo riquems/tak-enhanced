@@ -1,6 +1,7 @@
 #pragma once
 #include "TAKEnhancedLauncher/main_form.hpp"
 #include "TAKEnhancedLauncher/binding.hpp"
+#include "TAKEnhancedDll/GlobalState.hpp"
 
 main_form::main_form(
         nana::rectangle rect,
@@ -116,7 +117,13 @@ void main_form::addTabs() {
 }
 
 void main_form::addModsTab() {
-    tp_mods = std::make_shared<tab_page_mods>(this->handle(), this->gameConfig, this->logger);
+    tp_mods = std::make_shared<tab_page_mods>(
+        this->handle(),
+        this->launcherConfig,
+        this->gameConfig,
+        this->logger
+    );
+
     tp_mods->on_state_changed_callback = [&]() {
         this->on_state_changed();
     };
@@ -164,6 +171,11 @@ void main_form::addPlayButton() {
     btn_play->events().click(
         [&]() {
             this->save();
+
+            files::move(this->launcherConfig->modsPath, exePath, {
+                .filenames = &this->gameConfig->mods.selectedMods
+            });
+
             nana::API::exit_all();
         }
     );
