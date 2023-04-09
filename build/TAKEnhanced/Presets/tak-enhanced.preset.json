@@ -1,0 +1,81 @@
+{
+  "id": "tak-enhanced",
+  "name": "TA:K Enhanced",
+  "maxUnits": 5000,
+  "pathfindingCycles": 100000,
+  "developerMode": {
+    "enabled": false
+  },
+  "mods": {
+    "enabled": true,
+    "selectedMods": [
+      "TAK Enhanced.hpi",
+      "Aimtolerance Fix.hpi",
+      "Colorful HP Bars.hpi",
+      "Elsin Fix.hpi",
+      "Fire Mage Fix.hpi",
+      "Guided Weapons Fix.hpi",
+      "Kirenna Fix.hpi",
+      "Melees Stuck Fix.hpi",
+      "Misspellings Fix.hpi",
+      "Paralyze Fix.hpi",
+      "Weapons Swap Tweak.hpi",
+      "Wisp Fix.hpi"
+    ]
+  },
+  "noCD": {
+    "enabled": true
+  },
+  "offscreenFix": {
+    "enabled": true
+  },
+  "pauseWhenUnfocused": {
+    "enabled": false
+  },
+  "customizableHpBars": {
+    "enabled": true,
+    "mine": {
+      "showMode": "onlyIfDamaged",
+      "colorMode": "matchPlayerColor",
+      "color": "blue"
+    },
+    "ally": {
+      "showMode": "onlyIfDamaged",
+      "colorMode": "matchPlayerColor",
+      "color": "lightBlue"
+    },
+    "enemy": {
+      "showMode": "onlyIfDamaged",
+      "colorMode": "matchPlayerColor",
+      "color": "red"
+    }
+  },
+  "meleeStuckFix": {
+    "enabled": true,
+    "forcedMinRangeForMelees": 40
+  },
+  "useMapScript": {
+    "enabled": false
+  },
+  "skipLogo": {
+    "enabled": false
+  },
+  "showNetworkStats": {
+    "enabled": false
+  },
+  "disableCavedogVerification": {
+    "enabled": false
+  },
+  "pretendNoExpansion": {
+    "enabled": false
+  },
+  "fixCursor": {
+    "enabled": false
+  },
+  "disableUiPreload": {
+    "enabled": false
+  },
+  "noSideCulling": {
+    "enabled": false
+  }
+}

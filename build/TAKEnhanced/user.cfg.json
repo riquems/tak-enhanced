@@ -1,8 +1,4 @@
 {
-  "onSpacebar": "TrackUnit",
-  "onDoubleClick": "SelectUnitsOnScreenSelectedType",
-  "onTripleClick": "SelectAllUnitsSelectedType",
-  "onCtrlDoubleClick": "SelectAllUnitsSelectedType",
   "keyBindings": [
     {
       "command": "Select Building 1",
@@ -44,5 +40,9 @@
       "command": "Select Building 10",
       "keyCombination": "0"
     }
-  ]
+  ],
+  "onSpacebar": "TrackUnit",
+  "onDoubleClick": "SelectUnitsOnScreenSelectedType",
+  "onTripleClick": "DoNothing",
+  "onCtrlDoubleClick": "SelectAllUnitsSelectedType"
 }

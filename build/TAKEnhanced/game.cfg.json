@@ -20,6 +20,15 @@
   "developerMode": {
     "enabled": false
   },
+  "disableCavedogVerification": {
+    "enabled": false
+  },
+  "disableUiPreload": {
+    "enabled": false
+  },
+  "fixCursor": {
+    "enabled": false
+  },
   "maxUnits": 5000,
   "meleeStuckFix": {
     "enabled": true,
@@ -27,16 +36,44 @@
   },
   "mods": {
     "enabled": true,
-    "selectedMods": []
+    "selectedMods": [
+      "TAK Enhanced.hpi",
+      "Aimtolerance Fix.hpi",
+      "Colorful HP Bars.hpi",
+      "Elsin Fix.hpi",
+      "Fire Mage Fix.hpi",
+      "Guided Weapons Fix.hpi",
+      "Kirenna Fix.hpi",
+      "Melees Stuck Fix.hpi",
+      "Misspellings Fix.hpi",
+      "Paralyze Fix.hpi",
+      "Weapons Swap Tweak.hpi",
+      "Wisp Fix.hpi"
+    ]
   },
   "noCD": {
     "enabled": true
+  },
+  "noSideCulling": {
+    "enabled": false
   },
   "offscreenFix": {
     "enabled": true
   },
   "pathfindingCycles": 100000,
   "pauseWhenUnfocused": {
+    "enabled": false
+  },
+  "pretendNoExpansion": {
+    "enabled": false
+  },
+  "showNetworkStats": {
+    "enabled": false
+  },
+  "skipLogo": {
+    "enabled": false
+  },
+  "useMapScript": {
     "enabled": false
   }
 }

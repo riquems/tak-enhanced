@@ -1,14 +1,14 @@
 {
-  "id": "tak-enhanced",
-  "name": "TA:K Enhanced",
+  "id": "vanilla",
+  "name": "Vanilla",
   "maxUnits": 5000,
   "pathfindingCycles": 100000,
   "developerMode": {
     "enabled": false
   },
   "mods": {
-    "enabled": true,
-    "selectedMods": ["TAKEnhanced.hpi"]
+    "enabled": false,
+    "selectedMods": []
   },
   "noCD": {
     "enabled": true
@@ -20,7 +20,7 @@
     "enabled": false
   },
   "customizableHpBars": {
-    "enabled": true,
+    "enabled": false,
     "mine": {
       "showMode": "onlyIfDamaged",
       "colorMode": "matchPlayerColor",
@@ -38,7 +38,31 @@
     }
   },
   "meleeStuckFix": {
-    "enabled": true,
+    "enabled": false,
     "forcedMinRangeForMelees": 40
+  },
+  "useMapScript": {
+    "enabled": false
+  },
+  "skipLogo": {
+    "enabled": false
+  },
+  "showNetworkStats": {
+    "enabled": false
+  },
+  "disableCavedogVerification": {
+    "enabled": false
+  },
+  "pretendNoExpansion": {
+    "enabled": false
+  },
+  "fixCursor": {
+    "enabled": false
+  },
+  "disableUiPreload": {
+    "enabled": false
+  },
+  "noSideCulling": {
+    "enabled": false
   }
 }

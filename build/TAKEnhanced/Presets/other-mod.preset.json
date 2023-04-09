@@ -1,14 +1,17 @@
 {
-  "id": "vanilla",
-  "name": "Vanilla",
+  "id": "other-mod",
+  "name": "Other Mod",
   "maxUnits": 5000,
   "pathfindingCycles": 100000,
   "developerMode": {
     "enabled": false
   },
   "mods": {
-    "enabled": false,
-    "selectedMods": []
+    "enabled": true,
+    "selectedMods": [
+      "TAK Enhanced.hpi",
+      "Colorful HP Bars.hpi"
+    ]
   },
   "noCD": {
     "enabled": true
@@ -20,7 +23,7 @@
     "enabled": false
   },
   "customizableHpBars": {
-    "enabled": false,
+    "enabled": true,
     "mine": {
       "showMode": "onlyIfDamaged",
       "colorMode": "matchPlayerColor",
@@ -40,5 +43,29 @@
   "meleeStuckFix": {
     "enabled": false,
     "forcedMinRangeForMelees": 40
+  },
+  "useMapScript": {
+    "enabled": false
+  },
+  "skipLogo": {
+    "enabled": false
+  },
+  "showNetworkStats": {
+    "enabled": false
+  },
+  "disableCavedogVerification": {
+    "enabled": false
+  },
+  "pretendNoExpansion": {
+    "enabled": false
+  },
+  "fixCursor": {
+    "enabled": false
+  },
+  "disableUiPreload": {
+    "enabled": false
+  },
+  "noSideCulling": {
+    "enabled": false
   }
 }
