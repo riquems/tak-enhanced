@@ -19,9 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="TAKEnhancedLauncher.aps" />
   </ItemGroup>
   <ItemGroup>
