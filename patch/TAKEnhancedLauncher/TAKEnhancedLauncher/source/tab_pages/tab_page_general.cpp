@@ -25,6 +25,33 @@ void tab_page_general::initialize()
     this->add_widget(cb_enableMods, "checkboxes");
     this->add_binding(create_checkbox_binding(cb_enableMods, this->gameConfig->mods.enabled));
 
+    cb_useMapScript = std::make_shared<nana::checkbox>(*this, "Use Map Script");
+    cb_skipLogo = std::make_shared<nana::checkbox>(*this, "Skip Logo");
+    cb_showNetworkStats = std::make_shared<nana::checkbox>(*this, "Show Network Stats");
+    cb_disableCavedogVerification = std::make_shared<nana::checkbox>(*this, "Disable Cavedog Verification");
+    cb_pretendNoExpansion = std::make_shared<nana::checkbox>(*this, "Pretend No Expansion");
+    cb_fixCursor = std::make_shared<nana::checkbox>(*this, "Fix Cursor");
+    cb_disableUiPreload = std::make_shared<nana::checkbox>(*this, "Disable UI Preload");
+    cb_noSideCulling = std::make_shared<nana::checkbox>(*this, "No Side Culling");
+
+    this->add_widget(cb_useMapScript, "checkboxes");
+    this->add_widget(cb_skipLogo, "checkboxes");
+    this->add_widget(cb_showNetworkStats, "checkboxes");
+    this->add_widget(cb_disableCavedogVerification, "checkboxes");
+    this->add_widget(cb_pretendNoExpansion, "checkboxes");
+    this->add_widget(cb_fixCursor, "checkboxes");
+    this->add_widget(cb_disableUiPreload, "checkboxes");
+    this->add_widget(cb_noSideCulling, "checkboxes");
+
+    this->add_binding(create_checkbox_binding(cb_useMapScript, this->gameConfig->useMapScript.enabled));
+    this->add_binding(create_checkbox_binding(cb_skipLogo, this->gameConfig->skipLogo.enabled));
+    this->add_binding(create_checkbox_binding(cb_showNetworkStats, this->gameConfig->showNetworkStats.enabled));
+    this->add_binding(create_checkbox_binding(cb_disableCavedogVerification, this->gameConfig->disableCavedogVerification.enabled));
+    this->add_binding(create_checkbox_binding(cb_pretendNoExpansion, this->gameConfig->pretendNoExpansion.enabled));
+    this->add_binding(create_checkbox_binding(cb_fixCursor, this->gameConfig->fixCursor.enabled));
+    this->add_binding(create_checkbox_binding(cb_disableUiPreload, this->gameConfig->disableUiPreload.enabled));
+    this->add_binding(create_checkbox_binding(cb_noSideCulling, this->gameConfig->noSideCulling.enabled));
+
     this->mod_loader = std::make_shared<e_mod_loader>(
         *this,
         this->launcherConfig,
@@ -56,10 +83,11 @@ void tab_page_general::commit()
 void tab_page_general::draw()
 {
     this->layout->div(
-        "margin=15 vert   \
-        <weight=30 checkboxes>    \
-        <                         \
-            mod_loader            \
+        "margin=15   \
+        <horizontal \
+            <vert arrange=[30, repeated] vert weight=30% checkboxes>\
+            |                           \
+            <mod_loader>                \
         >"
     );
 
