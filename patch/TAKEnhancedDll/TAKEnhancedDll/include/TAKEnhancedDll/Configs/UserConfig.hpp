@@ -4,6 +4,7 @@
 
 struct UserConfig
 {
+    std::string onSpacebar;
     std::string onDoubleClick;
     std::string onTripleClick;
     std::string onCtrlDoubleClick;
@@ -11,5 +12,5 @@ struct UserConfig
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
-    UserConfig, onDoubleClick, onTripleClick, onCtrlDoubleClick, keyBindings
+    UserConfig, onSpacebar, onDoubleClick, onTripleClick, onCtrlDoubleClick, keyBindings
 )

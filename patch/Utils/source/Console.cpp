@@ -1,14 +1,13 @@
 #include "Utils/Console.hpp"
 
-void StartConsole()
-{
+void StartConsole(uint width, uint height, HWND zOrder, bool borderless) {
     AllocConsole();
     freopen_s((FILE**)stdin, "CONIN$", "r", stdin);
     freopen_s((FILE**)stdout, "CONOUT$", "w", stdout);
     std::cout.clear();
     std::cin.clear();
 
-    ConfigureConsole(600, 300, HWND_NOTOPMOST, false);
+    ConfigureConsole(width, height, zOrder, borderless);
 }
 
 void CloseConsole()
@@ -18,6 +17,8 @@ void CloseConsole()
     fclose(stderr);
     FreeConsole();
 }
+
+int titleBarHeight = 40;
 
 void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
 {
@@ -30,7 +31,7 @@ void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
     GetWindowRect(desktopWnd, &desktopWndRect);
 
     int consoleWidth = width;
-    int consoleHeight = height;
+    int consoleHeight = titleBarHeight + height;
     int xConsolePosition;
     int yConsolePosition;
 
@@ -45,8 +46,10 @@ void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
 
     HWND consoleWindow = GetConsoleWindow();
 
-    if (borderless)
+    if (borderless) {
         SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_POPUPWINDOW);
+        consoleHeight -= titleBarHeight;
+    }
 
     // SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_NOACTIVATE | SWP_NOOWNERZORDER);
     SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_SHOWWINDOW);

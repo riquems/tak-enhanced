@@ -25,8 +25,8 @@ New badass icon</div>
 
 <p align="center">And much more:</p>
 
-* Allows command line params like -testmultiscript to test scripts in singleplayer.  
-  [More info on command line params](http://kingdoms.catsboard.com/t1257-tak-target-command-line-parameters)
+* Allows playing script maps in singleplayer.
+
 * No-CD patch.
 
 * Configurable unit limit (default 5000).
@@ -35,7 +35,7 @@ New badass icon</div>
 
 * Game doesn't pause anymore when minimizing during SinglePlayer games.
 
-* Uses Extreme AI as default AI.
+* Adds Extreme AI.
 
 ## Game Changing Tweaks
 
@@ -53,9 +53,9 @@ New badass icon</div>
 <br>
 
 <div align="center">
-  <img src="imgs/mod-loader.png"/><br>
-  Mod Loader<br>
-  It can load mods! No need for TA:K Switcher or Kingdoms.key removal!
+  <img src="imgs/main.png"/><br>
+  The main tab<br>
+  It contains general changes of interest for gameplay.
 </div>
 
 <br>
@@ -380,8 +380,11 @@ lifsaber.fbi
 ## Important notes
 
 - TA:K Enhanced is a series of improvements, and aims to be a must have in future TA:K competitive or non competitive matches, because of its potential.
-- The full mod (TAKEnhanced.hpi) may cause conflicts with other mods, because it modifies the unitscb folder. So please, for integration with other mods, use TAKEnhancedMinimal.hpi. This unitscb modification is due to the "Melee Stuck Fix" patch and it normalizes melees ranges (some have really weird ones, like Swamp Beast with 150 range). So if you're taking TAKEnhanced.hpi out, and the mod you gonna use doesn't normalize the ranges, it may be better to ensure to disable the "Melee Stuck Fix". Modders should submit game configuration presets to be used in the launcher.
-- Watch out enabling patches and not adding TAKEnhancedMinimal.hpi or TAKEnhanced.hpi. Your game will crash! Some of them are dependent of these .hpis, so please always use one of them.
+- Watch out for mod conflicts.
+- Watch out enabling patches and not adding corresponding .hpis files. Your game will crash! Some of them are dependent of these .hpis, so please always use one of them. Here is what is dependent on what:
+
+- "Colorful HP Bars" feature needs Colorful HP Bars.hpi
+- "Melees Stuck Fix" feature needs Melees Stuck Fix.hpi
 
 ## Credits
 

@@ -11,8 +11,9 @@
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
 #include "TAKEnhancedDll/Hooks/ShowHpHook.hpp"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
+#include "TAKCore/Config.h"
 
-__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.1.0";
+__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.2.0";
 
 void applyTakEnhancedVersion()
 {
@@ -36,6 +37,33 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
         installShowHpHook();
     }
 
+    if (config->testMultiScript.enabled) {
+        *TAK::Config::testMultiScript = true;
+        *TAK::Config::noSideCulling = false;
+    }
+    
+    if (config->skipLogo.enabled) {
+        *TAK::Config::skipLogo = true;
+    }
+    if (config->showNetworkStats.enabled) {
+        *TAK::Config::showNetworkStats = true;
+    }
+    if (config->disableCavedogVerification.enabled) {
+        *TAK::Config::disableCavedogVerification = true;
+    }
+    if (config->pretendNoExpansion.enabled) {
+        *TAK::Config::pretendNoExpansion = true;
+    }
+    if (config->fixCursor.enabled) {
+        *TAK::Config::fixCursor = true;
+    }
+    if (config->disableUiPreload.enabled) {
+        *TAK::Config::disableUiPreload = true;
+    }
+    if (config->noSideCulling.enabled) {
+        *TAK::Config::noSideCulling = true;
+    }
+
     applyModLoader();
 
     if (config->noCD.enabled) {
@@ -52,11 +80,12 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
         applyMeleeStuckFix();
         logger->info("Melee Stuck fix applied.");
     }
-    
-    // Hooks
-    /*applyUpdateGuiHook();
+
+    applyUpdateGuiHook();
     logger->info("Added Hook when updating GUI.");
-    *
+
+    // Hooks
+    /*
     applyReadSideDataHooks();
     logger->info("Added Hook on reading SideData.tdf.");
     */

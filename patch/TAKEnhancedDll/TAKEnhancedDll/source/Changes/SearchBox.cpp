@@ -1,8 +1,8 @@
 #include "TAKEnhancedDll/Changes/SearchBox.hpp"
+#include "TAKEnhancedDll/GlobalState.hpp"
 
 #include <conio.h>
 
-#include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 #include "TAKCore/ModelsExtensions/GadgetExtensions.h"
 #include "TAKCore/ModelsExtensions/WindowExtensions.h"
 
@@ -16,36 +16,120 @@
 void TryToInitializeSearchBox();
 void InitializeSearchBox(Window* window);
 
-extern "C" __declspec(dllexport) bool nameMatches = false;
-extern "C" __declspec(dllexport) int itemIndex = 0;
+extern "C" __declspec(dllexport) bool needsToUpdateSelectedItem = false;
+extern "C" __declspec(dllexport) int selectedItemIndex = 0;
 extern "C" __declspec(dllexport) DWORD listBoxAddr = 0;
 
 extern "C" __declspec(dllexport) void __stdcall updateSearchBox()
 {
     if (listBoxAddr) {
-        if (nameMatches) {
+        if (needsToUpdateSelectedItem) {
             __asm {
-                push itemIndex
+                push selectedItemIndex
                 mov ecx, listBoxAddr
-                call setListItem_fcnAddr
+                call setSelectedListItem_fcnAddr
             }
 
-            nameMatches = false;
+            needsToUpdateSelectedItem = false;
         }
     }
 }
 
-void StartSearchBox(std::vector<std::string>* mapNamesLowerCase)
+void setSelectedItemIndex(int index) {
+    selectedItemIndex = index;
+    needsToUpdateSelectedItem = true;
+}
+
+void goToNextOccurrence(std::string input, const std::vector<std::string>& maps) {
+    if (input.empty())
+        return;
+
+    logger->debug("Searching for %s...", input.c_str());
+
+    std::transform(input.begin(), input.end(), input.begin(),
+        [](unsigned char c) { return std::tolower(c); });
+
+    logger->debug("Search starting at: %s", (maps.begin() + selectedItemIndex + 1)->c_str());
+
+    auto it = std::find_if(
+        maps.begin() + selectedItemIndex + 1,
+        maps.end(),
+        [&](const std::string& map) {
+            return str_contains_str(map, input);
+        }
+    );
+
+    if (it == maps.end()) {
+        logger->debug("No more occurrences found.");
+        return;
+    }
+
+    int nextOccurrenceIndex = std::distance(maps.begin(), it);
+    setSelectedItemIndex(nextOccurrenceIndex);
+}
+
+void goToPreviousOccurrence(std::string input, const std::vector<std::string>& maps) {
+    if (input.empty())
+        return;
+
+    logger->debug("Searching for %s...", input.c_str());
+
+    std::transform(input.begin(), input.end(), input.begin(),
+        [](unsigned char c) { return std::tolower(c); });
+
+    logger->debug("Search starting at: %s", (maps.rbegin() + (maps.size() - selectedItemIndex))->c_str());
+
+    auto it = std::find_if(
+        maps.rbegin() + (maps.size() - selectedItemIndex),
+        maps.rend(),
+        [&](const std::string& map) {
+            return str_contains_str(map, input);
+        }
+    );
+
+    if (it == maps.rend()) {
+        logger->debug("No more occurrences found.");
+        return;
+    }
+
+    int previousOccurrenceIndex = std::distance(it, maps.rend()) - 1;
+    setSelectedItemIndex(previousOccurrenceIndex);
+}
+
+void search(std::string input, const std::vector<std::string>& maps) {
+    if (input.empty())
+        return;
+
+    std::transform(input.begin(), input.end(), input.begin(),
+        [](unsigned char c) { return std::tolower(c); });
+
+    auto it = std::find_if(
+        maps.begin(),
+        maps.end(),
+        [&](const std::string& map) {
+            return str_contains_str(map, input);
+        }
+    );
+
+    if (it == maps.end()) {
+        return;
+    }
+
+    setSelectedItemIndex(std::distance(maps.begin(), it));
+}
+
+void StartSearchBox(std::vector<std::string> maps)
 {
-    std::string stringToSearchFor("");
+    std::string input;
 
     char c;
+    int c2;
 
     bool end = false;
     while (!end)
     {
         if (!_kbhit()) {
-            Sleep(100);
+            Sleep(10);
             continue;
         }
 
@@ -56,48 +140,54 @@ void StartSearchBox(std::vector<std::string>* mapNamesLowerCase)
         switch (c)
         {
             case VK_BACKSPACE:
-                if (!stringToSearchFor.empty()) {
+                if (!input.empty()) {
                     std::cout << "\b \b";
-                    stringToSearchFor.pop_back();
+                    input.pop_back();
+
+                    search(input, maps);
                 }
                 break;
-            case '\r':
+            case VK_RETURN:
+            case VK_ESCAPE:
                 consoleWnd = GetConsoleWindow();
                 FreeConsole();
                 PostMessage(consoleWnd, WM_CLOSE, NULL, NULL);
                 end = true;
                 break;
+            case 0:
+                c2 = _getch();
+
+                switch (c2) {
+                case 61: // F3
+                    goToNextOccurrence(input, maps);
+                    break;
+                case 86: // SHIFT + F3
+                    goToPreviousOccurrence(input, maps);
+                    break;
+                }
+
+                break;
             case '?':
                 srand(HelperFunctions::GetMilliseconds());
-                itemIndex = rand() % mapNamesLowerCase->size();
-                nameMatches = true;
+                setSelectedItemIndex(rand() % maps.size());
                 break;
             default:
-                stringToSearchFor.push_back(c);
+                if (c == 0) {
+                    break;
+                }
+
+                if (59 <= c && c <= 62) {
+                    break;
+                }
+
+                input.push_back(c);
+
                 std::cout << (char) c;
+                if (logger->minimumLevel() == LogLevel::Debug)
+                    std::cout << " (" << (int)c << ")";
+
+                search(input, maps);
                 break;
-        }
-
-        if (!stringToSearchFor.empty() && !end)
-        {
-            std::transform(stringToSearchFor.begin(), stringToSearchFor.end(), stringToSearchFor.begin(),
-                [](unsigned char c) { return std::tolower(c); });
-
-            std::vector<std::string>::iterator it;
-
-            it = std::find_if(mapNamesLowerCase->begin(), mapNamesLowerCase->end(),
-                [&stringToSearchFor](std::string mapName)
-                {
-                    return str_contains_str(mapName, stringToSearchFor);
-                });
-
-            if (it == mapNamesLowerCase->end())
-            {
-                continue;
-            }
-
-            itemIndex = std::distance(mapNamesLowerCase->begin(), it);
-            nameMatches = true;
         }
     }
 }
@@ -135,10 +225,15 @@ void TryToInitializeSearchBox()
 
 void InitializeSearchBox(Window* window)
 {
-    StartConsole();
-    ConfigureConsole(600, 40, HWND_TOPMOST, true);
+    CloseConsole();
+    int numberOfLines = 5;
+    StartConsole(620, numberOfLines * 20, HWND_TOPMOST, false);
 
-    std::cout << "Type the name of the map to search for it, press enter after you're done." << std::endl;
+    std::cout << "Start typing the name of the map to search for it." << std::endl;
+    std::cout << "Press Esc or Enter after you're done." << std::endl;
+    std::cout << "F3 goes to the next occurrence." << std::endl;
+    std::cout << "Shift + F3 goes to the previous occurrence." << std::endl;
+    std::cout << "Type ? for a random map." << std::endl;
     std::cout << "> ";
 
     if (WindowExtensions::isChooseMapMenu(window, baseAddress))
@@ -147,7 +242,7 @@ void InitializeSearchBox(Window* window)
 
         ChooseMapMenuWrapper chooseMapMenuWrapper(chooseMapMenu);
 
-        StartSearchBox(&chooseMapMenuWrapper._mapNamesLowerCase);
+        StartSearchBox(chooseMapMenuWrapper.mapNamesLowerCase);
     }
     else if (WindowExtensions::isBattleMenu(window, baseAddress))
     {
@@ -155,6 +250,6 @@ void InitializeSearchBox(Window* window)
 
         BattleMenuWrapper battleMenuWrapper(battleMenu);
 
-        StartSearchBox(&battleMenuWrapper._mapNamesLowerCase);
+        StartSearchBox(battleMenuWrapper.mapNamesLowerCase);
     }
 }

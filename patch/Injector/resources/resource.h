@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by TAKEnhanced.rc
+// Used by Injector.rc
 //
 #define IDI_ICON1                       101
 

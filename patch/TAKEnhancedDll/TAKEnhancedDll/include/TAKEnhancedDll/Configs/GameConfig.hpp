@@ -15,6 +15,14 @@ struct MeleeStuckFixSettings : GameSetting
 
 struct GameConfig
 {
+    GameSetting testMultiScript;
+    GameSetting skipLogo;
+    GameSetting showNetworkStats;
+    GameSetting disableCavedogVerification;
+    GameSetting pretendNoExpansion;
+    GameSetting fixCursor;
+    GameSetting disableUiPreload;
+    GameSetting noSideCulling;
     uint maxUnits;
     uint pathfindingCycles;
     GameSetting developerMode;
@@ -26,9 +34,33 @@ struct GameConfig
     CustomizableHpBarsSettings customizableHpBars;
 };
 
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(ModsSettings, enabled, selectedMods)
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(MeleeStuckFixSettings, enabled, forcedMinRangeForMelees)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
-    GameConfig, maxUnits, pathfindingCycles, developerMode,
-    mods, noCD, offscreenFix, pauseWhenUnfocused, meleeStuckFix, customizableHpBars
+    ModsSettings,
+    enabled,
+    selectedMods
+)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+    MeleeStuckFixSettings,
+    enabled,
+    forcedMinRangeForMelees
+)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+    GameConfig,
+    testMultiScript,
+    skipLogo,
+    showNetworkStats,
+    disableCavedogVerification,
+    pretendNoExpansion,
+    fixCursor,
+    disableUiPreload,
+    noSideCulling,
+    maxUnits,
+    pathfindingCycles,
+    developerMode,
+    mods,
+    noCD,
+    offscreenFix,
+    pauseWhenUnfocused,
+    meleeStuckFix,
+    customizableHpBars
 )

@@ -4,6 +4,6 @@
 #include <Utils/HelperFunctions.hpp>
 #include <Utils/common.h>
 
-void StartConsole();
+void StartConsole(uint width = 600, uint height = 300, HWND zOrder = HWND_NOTOPMOST, bool borderless = false);
 void CloseConsole();
 void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless);

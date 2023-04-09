@@ -7,7 +7,7 @@
 #include "TAKEnhancedDll/Configs/UserConfig.hpp"
 #include "TAKEnhancedDll/Configs/GameConfig.hpp"
 
-extern "C" __declspec(dllexport) DWORD setListItem_fcnAddr;
+extern "C" __declspec(dllexport) DWORD setSelectedListItem_fcnAddr;
 extern "C" __declspec(dllexport) bool TAKisInitialized;
 
 extern std::shared_ptr<Logger> logger;
@@ -15,6 +15,7 @@ extern std::shared_ptr<LauncherConfig> launcherConfig;
 extern std::shared_ptr<GameConfig> currentGameConfig;
 extern std::shared_ptr<UserConfig> userConfig;
 
+extern std::filesystem::path exePath;
 extern HANDLE hProcess;
 
 extern DWORD baseAddress;

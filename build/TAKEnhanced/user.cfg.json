@@ -1,0 +1,48 @@
+{
+  "keyBindings": [
+    {
+      "command": "Select Building 1",
+      "keyCombination": "1"
+    },
+    {
+      "command": "Select Building 2",
+      "keyCombination": "2"
+    },
+    {
+      "command": "Select Building 3",
+      "keyCombination": "3"
+    },
+    {
+      "command": "Select Building 4",
+      "keyCombination": "4"
+    },
+    {
+      "command": "Select Building 5",
+      "keyCombination": "5"
+    },
+    {
+      "command": "Select Building 6",
+      "keyCombination": "6"
+    },
+    {
+      "command": "Select Building 7",
+      "keyCombination": "7"
+    },
+    {
+      "command": "Select Building 8",
+      "keyCombination": "8"
+    },
+    {
+      "command": "Select Building 9",
+      "keyCombination": "9"
+    },
+    {
+      "command": "Select Building 10",
+      "keyCombination": "0"
+    }
+  ],
+  "onSpacebar": "TrackUnit",
+  "onDoubleClick": "SelectUnitsOnScreenSelectedType",
+  "onTripleClick": "DoNothing",
+  "onCtrlDoubleClick": "SelectAllUnitsSelectedType"
+}

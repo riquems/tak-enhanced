@@ -143,18 +143,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ToggleUnitsAuras.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\main_form.h">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_keys.h">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_mods.h">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_patches.h">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Managers\GameInterfaceManager.h">
       <Filter>Sources\Managers</Filter>
     </ClInclude>
@@ -237,18 +225,6 @@
       <Filter>Sources\Hooks</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ModLoader.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Launcher\nana_common.hpp">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\success_modal.hpp">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\tab_page_hp_bars.h">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\modal_save_as_preset.hpp">
-      <Filter>Sources\Launcher</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\CustomizableHpBarsSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
@@ -261,7 +237,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationStringParser.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Keys.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Key.hpp" />
-    <ClInclude Include="TAKEnhancedDll\source\Launcher\Components\e_dialog.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandJsonParser.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationJsonParser.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />

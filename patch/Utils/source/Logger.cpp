@@ -103,3 +103,7 @@ void Logger::context(const std::string context, ...) const {
 void Logger::stop() {
     fclose(this->outputFile);
 }
+
+LogLevel Logger::minimumLevel() const {
+    return this->config.minimumLevel;
+}

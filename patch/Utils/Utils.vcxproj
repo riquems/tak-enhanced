@@ -26,6 +26,7 @@
     <ClInclude Include="include\Utils\CRC.h" />
     <ClInclude Include="include\Utils\Keyboard.hpp" />
     <ClInclude Include="include\Utils\Timer.hpp" />
+    <ClInclude Include="include\Utils\TypeExtensions.hpp" />
     <ClInclude Include="include\Utils\VirtualKeys.h" />
     <ClInclude Include="include\Utils\Console.hpp" />
     <ClInclude Include="include\Utils\HelperFunctions.hpp" />

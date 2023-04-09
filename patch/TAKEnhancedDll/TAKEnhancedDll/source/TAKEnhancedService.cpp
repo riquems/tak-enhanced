@@ -140,16 +140,23 @@ void guaranteeFocus() {
 }
 
 void bindWndProc();
+void executeCommand(std::string command);
 
 typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 wndProc_t oldWndProc;
 bool bindingScheduled = false;
 Timer timer;
 
-LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
+        case WM_KEYDOWN:
+            if (wParam == VK_SPACE) {
+                logger->debug("Spacebar pressed");
+                executeCommand(userConfig->onSpacebar);
+            }
+        break;
         case WM_LBUTTONDOWN: {
             auto doubleClickTimeInMilliseconds = timer.timeInMilliseconds();
 
@@ -157,23 +164,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 timer.stop();
                 logger->debug("A Triple Click has occured.");
                 
-                bool isTargetCommand = std::find_if(
-                    std::begin(TAK::Commands::targetCommands),
-                    std::end(TAK::Commands::targetCommands),
-                    [](const char* cmd) {
-                        return cmd == userConfig->onTripleClick;
-                    }
-                );
-
-                if (isTargetCommand && gameWrapper->getMouseHoveredUnitAddress() != NULL) {
-                    Timer::run([&]() {
-                        TAK::Functions::executeCommand(userConfig->onTripleClick.c_str(), false);
-                        }, 100);
-
-                    // delay here is needed otherwise it'll not work
-                    // because when you triple click an unit the third click will actually select just one of them
-                    // and deselect the others, so we need to make sure this runs after this happens
-                }
+                executeCommand(userConfig->onTripleClick);
             }
 
             break;
@@ -182,35 +173,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             if (wParam & MK_CONTROL) {
                 logger->debug("A CTRL + Double Click has occured.");
 
-                bool isTargetCommand = std::find_if(
-                    std::begin(TAK::Commands::targetCommands),
-                    std::end(TAK::Commands::targetCommands),
-                    [](const char* cmd) {
-                        return cmd == userConfig->onCtrlDoubleClick;
-                    }
-                );
-
-                if (isTargetCommand && gameWrapper->getMouseHoveredUnitAddress() != NULL) {
-                    TAK::Functions::executeCommand(userConfig->onCtrlDoubleClick.c_str(), false);
-                }
-
+                executeCommand(userConfig->onCtrlDoubleClick);
                 break;
             }
 
             logger->debug("A Double Click has occured.");
 
-            bool isTargetCommand = std::find_if(
-                std::begin(TAK::Commands::targetCommands),
-                std::end(TAK::Commands::targetCommands),
-                [](const char* cmd) {
-                    return cmd == userConfig->onDoubleClick;
-                }
-            );
-
-            if (isTargetCommand && gameWrapper->getMouseHoveredUnitAddress() != NULL) {
-                TAK::Functions::executeCommand(userConfig->onDoubleClick.c_str(), false);
-            }
+            executeCommand(userConfig->onDoubleClick);
             timer.start();
+
             break;
         }
         case WM_STYLECHANGED:
@@ -221,7 +192,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 std::thread t([&]() {
                     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-                    bindWndProc(); // we need to rebind our WndProc because DXWnd overwrites it when this event occurs
+                    // we need to rebind these because DXWnd overwrites it when this event occurs
+                    bindWndProc();
+
                     bindingScheduled = false;
                 });
                 t.detach();
@@ -232,11 +205,30 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return oldWndProc(hwnd, msg, wParam, lParam);
 }
 
+void executeCommand(std::string command) {
+    bool isTargetCommand = dky::contains(
+        TAK::Commands::targetCommands,
+        [&](const std::string& cmd) {
+            return cmd == command;
+        }
+    );
+
+    if (isTargetCommand) {
+        if (gameWrapper->getMouseHoveredUnitAddress() == NULL) {
+            logger->debug("Command is a target command and no unit is targetted at the moment. Skipping.");
+            return;
+        }
+    }
+    
+    logger->debug("Executing command %s", command.c_str());
+    TAK::Functions::executeCommand(command.c_str(), false);
+}
+
 void bindWndProc() {
     logger->debug("Binding WndProc...");
     auto wnd = GetThisWindow("Kingdoms");
     oldWndProc = (wndProc_t)GetWindowLongPtr(wnd, GWLP_WNDPROC);
-    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)WndProc);
+    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);
 }
 
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)

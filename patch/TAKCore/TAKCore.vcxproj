@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TAKCore\source\Commands.cpp" />
+    <ClCompile Include="TAKCore\source\Config.cpp" />
     <ClCompile Include="TAKCore\source\Functions\Functions.cpp" />
     <ClCompile Include="TAKCore\source\TAKCore.cpp" />
     <ClInclude Include="TAKCore\include\common.h" />
@@ -79,6 +81,7 @@
     <ClInclude Include="TAKCore\include\Models\Weapon.h" />
     <ClInclude Include="TAKCore\include\Models\WeaponType.h" />
     <ClInclude Include="TAKCore\include\TAKCore\common.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\Config.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Functions\Functions.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Functions\FunctionsOffsets.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Functions\FunctionsSignatures.h" />
