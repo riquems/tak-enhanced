@@ -11,6 +11,7 @@
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
 #include "TAKEnhancedDll/Hooks/ShowHpHook.hpp"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
+#include "TAKCore/Config.h"
 
 __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.1.0";
 
@@ -34,6 +35,33 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
     if (config->customizableHpBars.enabled) {
         showEveryoneHealthBars();
         installShowHpHook();
+    }
+
+    if (config->useMapScript.enabled) {
+        *TAK::Config::useMapScript = true;
+        *TAK::Config::noSideCulling = false;
+    }
+    
+    if (config->skipLogo.enabled) {
+        *TAK::Config::skipLogo = true;
+    }
+    if (config->showNetworkStats.enabled) {
+        *TAK::Config::showNetworkStats = true;
+    }
+    if (config->disableCavedogVerification.enabled) {
+        *TAK::Config::disableCavedogVerification = true;
+    }
+    if (config->pretendNoExpansion.enabled) {
+        *TAK::Config::pretendNoExpansion = true;
+    }
+    if (config->fixCursor.enabled) {
+        *TAK::Config::fixCursor = true;
+    }
+    if (config->disableUiPreload.enabled) {
+        *TAK::Config::disableUiPreload = true;
+    }
+    if (config->noSideCulling.enabled) {
+        *TAK::Config::noSideCulling = true;
     }
 
     applyModLoader();
