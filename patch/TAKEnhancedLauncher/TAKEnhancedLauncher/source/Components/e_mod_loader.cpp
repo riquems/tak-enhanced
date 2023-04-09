@@ -2,12 +2,17 @@
 #include "TAKEnhancedLauncher/Components/e_mod_loader.hpp"
 #include <TAKEnhancedDll/Utils.hpp>
 #include <TAKEnhancedDll/Wrappers/Defs.h>
+#include <DKy/files.hpp>
 
 e_mod_loader::e_mod_loader(
     nana::window parent,
+    std::shared_ptr<LauncherConfig> launcherConfig,
     std::shared_ptr<GameConfig> gameConfig,
     std::shared_ptr<Logger> logger
-) : e_panel(parent), gameConfig(gameConfig), logger(logger) {
+) : e_panel(parent),
+    launcherConfig(launcherConfig),
+    gameConfig(gameConfig),
+    logger(logger) {
     this->initialize();
     this->draw();
     this->load();
@@ -48,14 +53,13 @@ void e_mod_loader::initialize() {
     this->lb_listbox1->append_header("Name");
     this->add_widget(this->lb_listbox1, "listbox1");
 
-    std::filesystem::path current_path = std::filesystem::current_path();
-
-    std::vector<std::string> hpi_files = get_files_from_path(current_path, ".hpi");
+    auto hpi_files = files::get(this->launcherConfig->modsPath, ".hpi");
 
     std::for_each(hpi_files.begin(), hpi_files.end(),
-        [&](std::string filename) {
+        [&](std::filesystem::path file) {
+            std::string filename = file.filename().string();
             if (!vector_has_str(files_loaded_by_default, filename) &&
-            !vector_has_str(this->gameConfig->mods.selectedMods, filename)) {
+                !vector_has_str(this->gameConfig->mods.selectedMods, filename)) {
                 this->modFiles.push_back(filename);
             }
         }

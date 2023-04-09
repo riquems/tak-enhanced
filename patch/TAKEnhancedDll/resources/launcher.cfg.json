@@ -1,6 +1,7 @@
 {
   "currentPreset": "Custom",
   "presetsPath": "./TAKEnhanced/Presets",
+  "modsPath": "./Mods",
   "window": {
     "height": 401,
     "width": 580

@@ -10,9 +10,10 @@ struct WindowConfig
 struct LauncherConfig
 {
     std::string presetsPath;
+    std::string modsPath;
     std::string currentPreset;
     WindowConfig window;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(WindowConfig, width, height)
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(LauncherConfig, currentPreset, presetsPath, window)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(LauncherConfig, currentPreset, presetsPath, modsPath, window)

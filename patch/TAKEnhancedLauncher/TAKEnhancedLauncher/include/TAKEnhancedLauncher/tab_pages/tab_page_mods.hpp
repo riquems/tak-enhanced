@@ -3,12 +3,14 @@
 #include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
 #include "TAKEnhancedLauncher/Components/e_mod_loader.hpp"
 #include "TAKEnhancedDll/Configs/GameConfig.hpp"
+#include "TAKEnhancedDll/Configs/LauncherConfig.hpp"
 #include "TAKEnhancedDll/Utils.hpp"
 #include "Utils/Logger.h"
 #include "TAKEnhancedDll/Wrappers/Defs.h"
 
 class tab_page_mods : public e_panel
 {
+    std::shared_ptr<LauncherConfig> launcherConfig;
     std::shared_ptr<GameConfig> gameConfig;
     std::shared_ptr<Logger> logger;
 
@@ -21,6 +23,7 @@ class tab_page_mods : public e_panel
 public:
     tab_page_mods(
         nana::window parent,
+        std::shared_ptr<LauncherConfig> launcherConfig,
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<Logger> logger
     );
