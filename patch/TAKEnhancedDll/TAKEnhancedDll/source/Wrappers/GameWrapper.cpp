@@ -107,7 +107,7 @@ void GameWrapper::selectBuilding(int pos)
     std::shared_ptr<BuildMenu*> build_menu = _gameInterfaceManager->getBuildMenu();
 
     if (build_menu == nullptr || build_menu.get() == nullptr)
-        return;  
+        return;
 
     BuildMenuWrapper build_menu_wrapper(build_menu, this->_baseAddress);
     build_menu_wrapper.reinitializeButtonsWrappers();
@@ -115,9 +115,9 @@ void GameWrapper::selectBuilding(int pos)
     if (pos > build_menu_wrapper.buttons.size())
         return;
 
-    BuildButtonWrapper* build_button = &build_menu_wrapper.buttons[pos - 1];
+    BuildButtonWrapper build_button = build_menu_wrapper.buttons[pos - 1];
 
-    build_button->click();
+    build_button.click();
 }
 
 void GameWrapper::switchSelectedUnitHumor(int humorId)

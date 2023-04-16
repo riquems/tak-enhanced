@@ -8,7 +8,7 @@ class BuildButtonWrapper
 
 public:
     std::shared_ptr<BuildButton*> _buildButton = nullptr;
-    BuildButtonWrapper(BuildButton** buildButton, uintptr_t baseAddress);
+    BuildButtonWrapper(BuildButton* buildButton, uintptr_t baseAddress);
 
     void click();
 };
