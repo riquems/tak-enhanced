@@ -227,8 +227,9 @@ void executeCommand(std::string command) {
 void bindWndProc() {
     logger->debug("Binding WndProc...");
     auto wnd = GetThisWindow("Kingdoms");
-    oldWndProc = (wndProc_t)GetWindowLongPtr(wnd, GWLP_WNDPROC);
-    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);
+    if (GetWindowLongPtr(wnd, GWLP_WNDPROC) != (LONG_PTR)MyWndProc) {
+            oldWndProc = (wndProc_t)SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);
+    }
 }
 
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
