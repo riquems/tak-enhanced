@@ -33,7 +33,7 @@ namespace MemoryHandler
 
         WriteProcessMemory(hProcess, (LPVOID)targetAddress, &value, sizeof(value), NULL);
 
-        VirtualProtectEx(hProcess, (LPVOID)targetAddress, sizeof(value), oldProtect, nullptr);
+        VirtualProtectEx(hProcess, (LPVOID)targetAddress, sizeof(value), oldProtect, &oldProtect);
     }
 
     template <typename T>
