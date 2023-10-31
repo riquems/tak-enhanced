@@ -1,5 +1,6 @@
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
 #include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
+#include <TAKEnhancedDll/GlobalState.hpp>
 
 std::shared_ptr<GameWrapper> gameWrapper;
 
@@ -42,12 +43,12 @@ void GameWrapper::refreshPlayersWrappers()
 
 void GameWrapper::onInitialize()
 {
-    std::cout << "[Event] OnInitialize" << std::endl;
+    logger->info("[Event] OnInitialize");
 }
 
 void GameWrapper::onFirstGameLoading()
 {
-    std::cout << "[Event] OnFirstGameLoading" << std::endl;
+    logger->info("[Event] OnFirstGameLoading");
 
     oldCreateGraphicObjectFromJPG = (createGraphicObjectFromJPG_t)(this->_baseAddress + FunctionsOffsets::createGraphicObjectFromJPG);
 
