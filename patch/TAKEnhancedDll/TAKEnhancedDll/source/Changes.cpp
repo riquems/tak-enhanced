@@ -85,10 +85,10 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
     logger->info("Added Hook when updating GUI.");
 
     // Hooks
-    /*
+    
     applyReadSideDataHooks();
     logger->info("Added Hook on reading SideData.tdf.");
-    */
+
     applyLoadingScreenHooks();
     logger->info("Added Loading Screen Extension.");
     // ProcessCodesExtension
@@ -116,6 +116,6 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
     // ResolutionFix();
     // MakePlayAnOpponentSearchForGamesSomewhereElse()
     // Why watching in multiplayer causes so much lag
-    
+
     logger->info("Endded applying changes. Enjoy!");
 }
