@@ -18,7 +18,7 @@ void MemoryHandler::writeShellCode(ShellCode shellCode)
 
     WriteProcessMemory(hProcess, (LPVOID)shellCode.startAddress(), shellCode.data(), shellCode.size(), NULL);
 
-    VirtualProtectEx(hProcess, (LPVOID)shellCode.startAddress(), shellCode.placeLength(), oldProtect, nullptr);
+    VirtualProtectEx(hProcess, (LPVOID)shellCode.startAddress(), shellCode.placeLength(), oldProtect, &oldProtect);
 }
 
 unsigned int MemoryHandler::toLittleEndian(unsigned int hex)
