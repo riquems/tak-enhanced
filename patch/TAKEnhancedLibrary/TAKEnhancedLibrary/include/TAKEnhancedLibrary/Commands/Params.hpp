@@ -1,12 +1,11 @@
 #pragma once
-#include "TAKEnhancedDll/common.hpp"
-#include <TAKEnhancedDll/Commands/Param.hpp>
+#include "TAKEnhancedLibrary/common.hpp"
+#include "TAKEnhancedLibrary/Commands/Param.hpp"
 
-class Params
+struct Params
 {
     std::unordered_map<std::string, std::string> params;
 
-public:
     Params();
     Params(std::initializer_list<Param> params);
 

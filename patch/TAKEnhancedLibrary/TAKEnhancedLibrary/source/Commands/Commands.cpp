@@ -1,17 +1,7 @@
-#include "TAKEnhancedDll/Commands/Commands.hpp"
+#include "TAKEnhancedLibrary/Commands/Commands.hpp"
+#include "dky/std.hpp"
 
-void selectBuilding(Params params)
-{
-    if (!gameWrapper->isBuildMenuOpen())
-        return;
-
-    if (gameWrapper->isInWriteMode())
-        return;
-
-    int buildingId = std::stoi(params.get("buildingId").value());
-
-    gameWrapper->selectBuilding(buildingId);
-}
+Commands commands;
 
 std::optional<Command> Commands::get(CommandCode code) {
     return dky::find(this->commands, [&](const Command& command) {

@@ -159,6 +159,16 @@ uintptr_t GameWrapper::getMouseHoveredUnitAddress()
     return _game->getMouseHoveredUnitAddress();
 }
 
+std::shared_ptr<UnitWrapper> GameWrapper::getMouseHoveredUnit()
+{
+    Unit* unit = (Unit*) this->getMouseHoveredUnitAddress();
+
+    if (unit == nullptr)
+        return nullptr;
+
+    return std::make_shared<UnitWrapper>(unit);
+}
+
 void GameWrapper::activateDeveloperMode()
 {
     GameOptions* gameOptions = _game->getGameOptions();

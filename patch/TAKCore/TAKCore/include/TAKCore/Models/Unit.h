@@ -1,12 +1,12 @@
 #pragma once
 #include "TAKCore/common.h"
 
+#include "UnitInfo.h"
 #include "MapPosition.h"
 
 class MovementHandler;
 class UnitRenderer;
 class TAobjectScript;
-class UnitInfo;
 class Weapon;
 class Player;
 class Mission;
@@ -48,7 +48,8 @@ public:                                  // offset
     char padding12[20];                  // 0x0C4
     float currentMana;                   // 0x0D8
     float maxMana;                       // 0x0DC
-    char padding13[44];                  // 0x0E0
+    char padding13[40];                  // 0x0E0
+    float buildTimeLeft;                 // 0x108
     uint16_t currentHealth;              // 0x10C
     uint8_t healthRegeneration;          // 0x10E
     char padding14[1];                   // 0x10F

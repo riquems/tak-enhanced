@@ -13,6 +13,8 @@
 #include <TAKEnhancedDll/Presets/Presets.hpp>
 #include "TAKEnhancedDll/Configs/LauncherConfig.hpp"
 #include <TAKEnhancedDll/Presets/PresetApplier.hpp>
+#include "TAKEnhancedLibrary/Commands/Commands.hpp"
+#include "TAKEnhancedLibrary/Commands/CommandStringParser.hpp"
 
 class main_form : public e_form
 {

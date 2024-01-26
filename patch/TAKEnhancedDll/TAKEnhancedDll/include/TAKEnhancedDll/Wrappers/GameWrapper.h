@@ -63,6 +63,7 @@ public:
 
     void switchSelectedUnitHumor(int humorId);
     uintptr_t getMouseHoveredUnitAddress();
+    std::shared_ptr<UnitWrapper> getMouseHoveredUnit();
 
     bool isMe(Player* player);
     bool isEnemy(Player* player);

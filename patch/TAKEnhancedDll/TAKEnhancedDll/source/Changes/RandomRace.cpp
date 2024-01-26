@@ -2,8 +2,12 @@
 
 #include "TAKEnhancedDll/Managers/WindowManager.h"
 #include "TAKCore/Models/PlayerViewModel.h"
+#include "TAKCore/Models/Side.h"
+#include "TAKCore/Models/Player.h"
 #include "TAKCore/ModelsExtensions/WindowExtensions.h"
 #include "TAKEnhancedDll/GlobalState.hpp"
+#include "Utils/HelperFunctions.hpp"
+#include "TAKEnhancedDll/Wrappers/GameWrapper.h"
 
 void TryToChooseRandomRace()
 {
