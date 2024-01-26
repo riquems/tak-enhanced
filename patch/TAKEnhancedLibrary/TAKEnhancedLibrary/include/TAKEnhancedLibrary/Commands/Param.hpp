@@ -1,5 +1,6 @@
 #pragma once
-#include "TAKEnhancedDll/common.hpp"
+
+#include "TAKEnhancedLibrary/common.hpp"
 
 struct Param
 {

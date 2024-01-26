@@ -1,14 +1,13 @@
 #pragma once
 
-#include "TAKEnhancedDll/Commands/Command.hpp"
-#include "TAKEnhancedDll/Commands/CommandJsonParser.hpp"
+#include "TAKEnhancedLibrary/Commands/CommandJsonParser.hpp"
 #include "TAKEnhancedDll/Keys/KeyCombination.hpp"
 #include "TAKEnhancedDll/Keys/KeyCombinationJsonParser.hpp"
 
 struct KeyBinding
 {
     KeyCombination keyCombination;
-    Command command;
+    std::shared_ptr<Command> command;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(KeyBinding, keyCombination, command)

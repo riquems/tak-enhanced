@@ -1,5 +1,6 @@
 #include "TAKEnhancedDll/Hooks/ShowHpHook.hpp"
 #include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
+#include "TAKEnhancedDll/Wrappers/GameWrapper.h"
 
 #include "TAKCore/Models/UnitInfo.h"
 

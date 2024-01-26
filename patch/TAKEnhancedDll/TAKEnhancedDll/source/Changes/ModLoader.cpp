@@ -5,6 +5,7 @@
 #include <TAKEnhancedDll/Wrappers/Defs.h>
 #include <TAKEnhancedDll/GlobalState.hpp>
 #include <TAKCore/Models/HapiFile.h>
+#include "Utils/HelperFunctions.hpp"
 
 extern "C" __declspec(dllexport) bool __stdcall HpiVerificationHook()
 {

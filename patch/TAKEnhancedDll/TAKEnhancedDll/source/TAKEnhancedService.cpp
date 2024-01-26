@@ -3,20 +3,22 @@
 #include "TAKEnhancedDll/Changes/RandomRace.hpp"
 #include "TAKEnhancedDll/Changes/OffscreenFix.hpp"
 #include "TAKEnhancedDll/Changes/SearchBox.hpp"
-#include "TAKEnhancedDll/Commands/Command.hpp"
 #include "TAKEnhancedDll/GlobalState.hpp"
 #include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
+#include "TAKEnhancedDll/Commands/ExecuteCommand.hpp"
 
 #include <iostream>
 #include <queue>
 #include "ddraw.h"
 #include <Utils/Window.hpp>
 #include <Utils/Keyboard.hpp>
+#include <Utils/HelperFunctions.hpp>
 #include <TAKCore/Commands.h>
 #include <TAKCore/Functions/Functions.h>
 #include <Utils/Timer.hpp>
 #include <thread>
+#include <TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommand.hpp>
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -98,7 +100,7 @@ void processInputSequence(std::queue<int>& sequence)
         }
 
         if (sequenceCopy.empty()) {
-            keyBinding.command.execute();
+            executeCommand(*keyBinding.command);
         }
     }
 
@@ -181,6 +183,31 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             executeCommand(userConfig->onDoubleClick);
             timer.start();
+
+            break;
+        }
+        case WM_MOUSEWHEEL: {
+            short keys = GET_KEYSTATE_WPARAM(wParam);
+            short delta = GET_WHEEL_DELTA_WPARAM(wParam);
+
+            auto& orientation = delta > 0 ? RotateOrientation::CounterClockwise : RotateOrientation::Clockwise;
+
+            if (keys & MK_CONTROL) {
+                executeCommand(RotateBuildingCommand(
+                    RotateBuildingCommandParams {
+                        .orientation = orientation,
+                        .step = 90
+                    }
+                ));
+            }
+            else {
+                executeCommand(RotateBuildingCommand(
+                    RotateBuildingCommandParams{
+                        .orientation = orientation,
+                        .step = 5
+                    }
+                ));
+            }
 
             break;
         }

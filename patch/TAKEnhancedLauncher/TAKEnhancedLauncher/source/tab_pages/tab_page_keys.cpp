@@ -162,7 +162,7 @@ void tab_page_keys::draw()
         <                                                                                    \
             <max=200 arrange=[15, 25, repeated] vert gap=[3, 10, repeated] clickOptions>     \
             <max=10>                                                                         \
-            <max=249 keyBindingsList>                                                        \
+            <keyBindingsList>                                                                \
             <max=10>                                                                         \
             <max=80 arrange=30 vert gap=5 actionButtons>                                     \
         >"
@@ -179,10 +179,10 @@ void tab_page_keys::load()
 
     for (KeyBinding entry : this->userConfig->keyBindings) {
         KeyCombination keyCombination = entry.keyCombination;
-        Command command = entry.command;
+        std::shared_ptr<Command> command = entry.command;
 
         KeyBindingListItem keyBindingListItem = {
-            this->commandStringParser->toString(command),
+            this->commandStringParser->toString(*command),
             this->keyCombinationStringParser->toString(keyCombination)
         };
 
@@ -192,6 +192,8 @@ void tab_page_keys::load()
     category.model<std::recursive_mutex>(std::move(keyBindingsListItems), value_translator, cell_translator);
 
     e_panel::load();
+
+    lb_keyBindings->column_at(0).fit_content();
 }
 
 void tab_page_keys::commit()
@@ -201,7 +203,7 @@ void tab_page_keys::commit()
     this->userConfig->keyBindings.clear();
 
     for (KeyBindingListItem keyBinding : keyBindings) {
-        Command command = this->commandStringParser->fromString(keyBinding.command);
+        std::shared_ptr<Command> command = this->commandStringParser->fromString(keyBinding.command);
         KeyCombination keyCombination = this->keyCombinationStringParser->fromString(keyBinding.keyBinding);
 
         this->userConfig->keyBindings.push_back(KeyBinding{ keyCombination, command });

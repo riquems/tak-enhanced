@@ -6,6 +6,7 @@
 #include "TAKEnhancedDll/Configs/LauncherConfig.hpp"
 #include "TAKEnhancedDll/Configs/UserConfig.hpp"
 #include "TAKEnhancedDll/Configs/GameConfig.hpp"
+#include "TAKEnhancedDll/Wrappers/GameWrapper.h"
 
 extern "C" __declspec(dllexport) DWORD setSelectedListItem_fcnAddr;
 extern "C" __declspec(dllexport) bool TAKisInitialized;

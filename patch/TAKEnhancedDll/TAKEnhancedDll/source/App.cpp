@@ -37,9 +37,6 @@ std::shared_ptr<LauncherConfig> launcherConfig;
 std::shared_ptr<GameConfig> currentGameConfig;
 std::shared_ptr<UserConfig> userConfig;
 
-Commands commands;
-CommandStringParser commandStringParser(commands);
-
 Keys keys;
 KeyCombinationStringParser keyCombinationStringParser(keys);
 

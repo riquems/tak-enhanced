@@ -15,6 +15,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utils", "Utils\Utils.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TAKEnhancedLauncher", "TAKEnhancedLauncher\TAKEnhancedLauncher.vcxproj", "{28AED807-D646-4CD9-9111-8809D66D9437}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests\Tests.vcxproj", "{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TAKEnhancedLibrary", "TAKEnhancedLibrary\TAKEnhancedLibrary.vcxproj", "{091A8847-10E0-475A-B5C8-95AFFC280661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +75,22 @@ Global
 		{28AED807-D646-4CD9-9111-8809D66D9437}.Release|x64.Build.0 = Release|x64
 		{28AED807-D646-4CD9-9111-8809D66D9437}.Release|x86.ActiveCfg = Release|Win32
 		{28AED807-D646-4CD9-9111-8809D66D9437}.Release|x86.Build.0 = Release|Win32
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Debug|x64.ActiveCfg = Debug|x64
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Debug|x64.Build.0 = Debug|x64
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Debug|x86.ActiveCfg = Debug|Win32
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Debug|x86.Build.0 = Debug|Win32
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Release|x64.ActiveCfg = Release|x64
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Release|x64.Build.0 = Release|x64
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Release|x86.ActiveCfg = Release|Win32
+		{FB09DA5B-A47B-4109-9572-A4EFD71CA04E}.Release|x86.Build.0 = Release|Win32
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Debug|x64.ActiveCfg = Debug|x64
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Debug|x64.Build.0 = Debug|x64
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Debug|x86.ActiveCfg = Debug|Win32
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Debug|x86.Build.0 = Debug|Win32
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Release|x64.ActiveCfg = Release|x64
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Release|x64.Build.0 = Release|x64
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Release|x86.ActiveCfg = Release|Win32
+		{091A8847-10E0-475A-B5C8-95AFFC280661}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
