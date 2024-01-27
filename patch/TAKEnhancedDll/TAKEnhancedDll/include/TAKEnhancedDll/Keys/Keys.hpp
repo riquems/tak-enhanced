@@ -10,6 +10,7 @@ class Keys
         Key { VK_CTRL, "CTRL" },
         Key { VK_SHIFT, "SHIFT" },
         Key { VK_BACKSPACE, "BACKSPACE" },
+        ENTER,
         Key { VK_1, "1" },
         Key { VK_2, "2" },
         Key { VK_3, "3" },
@@ -49,6 +50,8 @@ class Keys
     };
 
 public:
+    static Key ENTER;
+
     std::optional<Key> get(uint vk);
     std::optional<Key> find(std::function<bool(const Key&)> predicate);
 };
