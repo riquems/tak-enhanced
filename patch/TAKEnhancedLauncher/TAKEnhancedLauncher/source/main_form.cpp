@@ -77,6 +77,22 @@ void main_form::initialize()
             nana::exec();
         }
     );*/
+
+    this->events().key_press(
+        [&](nana::arg_keyboard args) {
+            auto key = this->keys->get(args.key);
+
+            if (key == Keys::ENTER) {
+                nana::API::emit_event(nana::event_code::click, *this->btn_play, nana::arg_click());
+            }
+        }
+    );
+
+    nana::API::enum_widgets(*this, true, [&](nana::widget& child_widget) {
+        nana::API::events(child_widget).key_press.connect([&](const nana::arg_keyboard& arg) {
+            nana::API::emit_event(nana::event_code::key_press, *this, arg);
+        });
+    });
 }
 
 void main_form::draw() {
@@ -114,6 +130,7 @@ void main_form::addTabs() {
     layout->field("content").fasten(*tp_main).fasten(*tp_patches).fasten(*tp_hp_bars).fasten(*tp_keys);
 
     tabs->activated(0);
+    tp_main->focus();
 }
 
 void main_form::addMainTab() {
@@ -174,7 +191,7 @@ void main_form::addPlayButton() {
 
             files::move(this->launcherConfig->modsPath, exePath, {
                 .filenames = &this->gameConfig->mods.selectedMods
-            });
+                });
 
             nana::API::exit_all();
         }
