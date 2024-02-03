@@ -3,6 +3,8 @@
 
 namespace FunctionsOffsets
 {
+    extern const uintptr_t addMission;
+
     extern const uintptr_t createNavGoalRing;
     extern const uintptr_t createNavGoalRect;
     extern const uintptr_t canAttack;
@@ -10,7 +12,9 @@ namespace FunctionsOffsets
     extern const uintptr_t getMouseHoveredUnitAddress;
 
     extern const uintptr_t oldGetWindow;
-    extern const uintptr_t getGadget;
+    extern const uintptr_t getChildWindow;
+
+    extern const uintptr_t onClickRadioButton;
 
     extern const uintptr_t buildButtonClick;
 

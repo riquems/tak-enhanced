@@ -7,7 +7,7 @@ GameInterface::GameInterface(uintptr_t baseAddress)
     _baseAddress = baseAddress;
 }
 
-Window* GameInterface::getWindow(const char* name)
+Window* GameInterface::getChildWindow(const char* name)
 {
     GameInterfaceHandler* gameInterfaceHandler = (GameInterfaceHandler*) (GlobalPointers::GameInterfaceHandler + _baseAddress);
         
@@ -35,7 +35,7 @@ Window* GameInterface::getWindow(const char* name)
     return window;
 }
 
-Gadget* GameInterface::getFocusedGadget()
+Window* GameInterface::getFocusedWindow()
 {
     GameInterfaceHandler* gameInterfaceHandler = (GameInterfaceHandler*) (GlobalPointers::GameInterfaceHandler + _baseAddress);
 
@@ -47,7 +47,5 @@ Gadget* GameInterface::getFocusedGadget()
     if (windowHandler == nullptr)
         return nullptr;
 
-    Gadget* focusedGadget = windowHandler->focusedGadget;
-    
-    return focusedGadget;
+    return windowHandler->focusedWindow;
 }

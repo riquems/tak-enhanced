@@ -6,7 +6,8 @@ enum CommandCode {
     INVALID,
     ATTACK,
     SELECT_BUILDING,
-    ROTATE_BUILDING
+    ROTATE_BUILDING,
+    SET_UNIT_STANCE,
 };
 
 NLOHMANN_JSON_SERIALIZE_ENUM(CommandCode, {
@@ -14,6 +15,7 @@ NLOHMANN_JSON_SERIALIZE_ENUM(CommandCode, {
     { ATTACK, "Attack" },
     { SELECT_BUILDING, "SelectBuilding" },
     { ROTATE_BUILDING, "RotateBuilding" },
+    { SET_UNIT_STANCE, "SetUnitStance" },
 });
 
 struct Command

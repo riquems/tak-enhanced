@@ -25,7 +25,7 @@ class GameWrapper
     uintptr_t _baseAddress;
 
 public:
-    std::shared_ptr<GameInterfaceManager> _gameInterfaceManager;
+    std::shared_ptr<GameInterfaceManager> gameInterfaceManager;
     std::vector<PlayerWrapper> players;
     std::shared_ptr<MatchWrapper> match;
 
@@ -61,9 +61,10 @@ public:
 
     void activateDeveloperMode();
 
-    void switchSelectedUnitHumor(int humorId);
     uintptr_t getMouseHoveredUnitAddress();
     std::shared_ptr<UnitWrapper> getMouseHoveredUnit();
+    std::vector<std::shared_ptr<UnitWrapper>> getSelectedUnits();
+    void setUnitStance(const UnitStance& stance);
 
     bool isMe(Player* player);
     bool isEnemy(Player* player);

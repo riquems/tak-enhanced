@@ -24,6 +24,9 @@
     <ClCompile Include="source\Commands\CommandStringParserTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Commands\SetUnitStanceCommandStringParserTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Tests\AssertExtensions.hpp">

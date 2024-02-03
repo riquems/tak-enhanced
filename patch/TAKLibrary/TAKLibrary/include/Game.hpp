@@ -14,7 +14,8 @@ public:
     Game(uintptr_t baseAddress);
 
     GameOptions* getGameOptions();
-    Unit* getSelectedUnit();
+    std::vector<Unit*> getSelectedUnits();
+    Player* getCurrentPlayer();
     Player* getPlayers();
 
     Side* getSides();

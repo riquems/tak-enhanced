@@ -3,8 +3,8 @@
 
 #include <conio.h>
 
-#include "TAKCore/ModelsExtensions/GadgetExtensions.h"
 #include "TAKCore/ModelsExtensions/WindowExtensions.h"
+#include "TAKCore/ModelsExtensions/GadgetExtensions.h"
 
 #include "TAKCore/Models/UI/BattleMenu.h"
 #include <TAKEnhancedDll/Wrappers/ChooseMapMenuWrapper.h>
@@ -200,18 +200,18 @@ void TryToInitializeSearchBox()
         return;
     }
 
-    Gadget* focusedGadget = windowHandler->focusedGadget;
+    Window* focusedWindow = windowHandler->focusedWindow;
 
-    if (focusedGadget == nullptr) {
+    if (focusedWindow == nullptr) {
         return;
     }
 
-    if (!GadgetExtensions::isListBox(focusedGadget, baseAddress)) {
+    if (!GadgetExtensions::isListBox(focusedWindow, baseAddress)) {
         return;
     }
 
-    listBoxAddr = (DWORD) focusedGadget;
-    Window* gadgetParent = focusedGadget->parent;
+    listBoxAddr = (DWORD) focusedWindow;
+    Window* gadgetParent = focusedWindow->parent;
 
     bool isAnyOfTheSupportedMenus = WindowExtensions::isChooseMapMenu(gadgetParent, baseAddress) ||
                                     WindowExtensions::isBattleMenu(gadgetParent, baseAddress);

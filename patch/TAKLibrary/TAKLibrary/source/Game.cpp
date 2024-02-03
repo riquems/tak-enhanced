@@ -3,6 +3,8 @@
 #include "TAKCore/Models/Options/DevelopmentOptions.h"
 #include "TAKCore/GlobalPointers/GlobalPointers.h"
 #include "TAKCore/Functions/FunctionsOffsets.h"
+#include "TAKCore/Functions/FunctionsSignatures.h"
+#include "TAKCore/Models/Unit.h"
 
 Game::Game() {}
 Game::Game(uintptr_t baseAddress)
@@ -15,6 +17,13 @@ GameOptions* Game::getGameOptions()
     return *(GameOptions**) (GlobalPointers::GameOptions + _baseAddress);
 }
 
+Player* Game::getCurrentPlayer()
+{
+    Player* players = this->getPlayers();
+
+    return &players[0];
+}
+
 Player* Game::getPlayers()
 {
     uintptr_t* gamePtr = (uintptr_t*) (GlobalPointers::ptr_22D55C + _baseAddress);
@@ -24,9 +33,25 @@ Player* Game::getPlayers()
     return players;
 }
 
-Unit* Game::getSelectedUnit()
+std::vector<Unit*> Game::getSelectedUnits()
 {
+    Player* currentPlayer = this->getCurrentPlayer();
 
+    std::vector<Unit*> selectedUnits;
+
+    Unit* firstUnit = currentPlayer->firstUnit;
+
+    Unit* nextUnit = firstUnit;
+    while (nextUnit != currentPlayer->lastUnit)
+    {
+        if (nextUnit->walking & 0b00010000) {
+            selectedUnits.push_back(nextUnit);
+        }
+
+        nextUnit++;
+    }
+
+    return selectedUnits;
 }
 
 Side* Game::getSides()

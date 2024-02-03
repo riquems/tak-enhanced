@@ -54,6 +54,12 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\CommandJsonParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SetUnitStance\SetUnitStanceCommand.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SetUnitStance\SetUnitStanceCommandStringParser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\Param.cpp">
@@ -84,6 +90,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\CommandJsonParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\SetUnitStance\SetUnitStanceCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\SetUnitStance\SetUnitStanceCommandStringParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

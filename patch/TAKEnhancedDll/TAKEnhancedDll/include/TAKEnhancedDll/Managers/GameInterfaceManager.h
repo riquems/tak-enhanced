@@ -10,12 +10,16 @@
 class GameInterfaceManager
 {
     uintptr_t baseAddress;
+    GameInterfaceHandler* gameInterfaceHandler;
     std::shared_ptr<GameInterface> _gameInterface;
     std::shared_ptr<WindowManager> _windowManager;
 
 public:
     GameInterfaceManager(GameInterfaceHandler* uiHandler, uintptr_t baseAddress);
 
-    std::shared_ptr<BuildMenu*> getBuildMenu();
+    void onClickRadioButton(Window* radioButton);
+    Window* getButton(const Window* parent, const std::string& button);
+    Window* getUnitMenu();
+    BuildMenu* getBuildMenu();
     bool isInWriteMode();
 };
