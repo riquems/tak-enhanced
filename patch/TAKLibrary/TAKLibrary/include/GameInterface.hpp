@@ -9,6 +9,6 @@ class GameInterface
 public:
     GameInterface(uintptr_t baseAddress);
 
-    Window* getWindow(const char* name);
-    Gadget* getFocusedGadget();
+    Window* getChildWindow(const char* name);
+    Window* getFocusedWindow();
 };

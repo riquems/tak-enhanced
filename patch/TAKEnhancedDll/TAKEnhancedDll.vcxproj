@@ -24,6 +24,7 @@
     <ClCompile Include="TAKEnhancedDll\source\Commands\ExecuteCommand.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\RotateBuildingCommandHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\SelectBuildingCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\SetUnitStanceCommandHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\DllMain.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombination.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\MemoryHandler.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\ExecuteCommand.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\RotateBuildingCommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SelectBuildingCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SetUnitStanceCommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\LauncherConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />

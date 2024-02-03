@@ -159,6 +159,8 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\RotateBuilding\RotateBuildingCommandStringParser.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SelectBuilding\SelectBuildingCommand.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SelectBuilding\SelectBuildingCommandStringParser.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SetUnitStance\SetUnitStanceCommand.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SetUnitStance\SetUnitStanceCommandStringParser.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\common.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +174,8 @@
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\RotateBuilding\RotateBuildingCommand.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\RotateBuilding\RotateBuildingCommandStringParser.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\SelectBuilding\SelectBuildingCommandStringParser.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\SetUnitStance\SetUnitStanceCommand.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\SetUnitStance\SetUnitStanceCommandStringParser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

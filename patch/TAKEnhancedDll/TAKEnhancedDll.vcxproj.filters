@@ -101,6 +101,7 @@
     <ClCompile Include="TAKEnhancedDll\source\Commands\SelectBuildingCommandHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\ExecuteCommand.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\CommandHandlers.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\SetUnitStanceCommandHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameFunctions.h">
@@ -245,6 +246,7 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\ExecuteCommand.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandlers.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SetUnitStanceCommandHandler.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />

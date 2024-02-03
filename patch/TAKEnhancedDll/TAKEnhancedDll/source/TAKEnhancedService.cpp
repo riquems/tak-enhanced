@@ -319,9 +319,28 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
         }*/
 
         if (isKeyDown(VK_CONTROL)) {
-            if (isKeyDown(VK_S)) {
+            if (isKeyDown(VK_H)) {
                 uintptr_t unitAddress = gameWrapper->getMouseHoveredUnitAddress();
                 std::cout << std::hex << unitAddress << std::endl;
+            }
+            else if (isKeyDown(VK_S)) {
+                auto selectedUnits = gameWrapper->getSelectedUnits();
+
+                if (!selectedUnits.empty()) {
+                    auto msg = std::accumulate(
+                        selectedUnits.begin(),
+                        selectedUnits.end(),
+                        std::string("Selected Units: "),
+                        [&](std::string prev, std::shared_ptr<UnitWrapper> next) {
+                            return prev + next->name() + (next != *(selectedUnits.end() - 1) ? ", " : ".");
+                        }
+                    );
+
+                    logger->debug("%s", msg.c_str());
+                }
+                else {
+                    logger->debug("There are no selected units");
+                }
             }
             else if (isKeyDown(VK_F)) {
                 TryToInitializeSearchBox();

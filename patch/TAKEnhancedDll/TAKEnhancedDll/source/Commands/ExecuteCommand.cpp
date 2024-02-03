@@ -6,6 +6,7 @@ CommandHandler& getCommandHandler(CommandCode commandCode) {
     {
         case CommandCode::SELECT_BUILDING: return CommandHandlers::SelectBuilding;
         case CommandCode::ROTATE_BUILDING: return CommandHandlers::RotateBuilding;
+        case CommandCode::SET_UNIT_STANCE: return CommandHandlers::SetUnitStance;
         default:
             throw "No command handler for this command type";
     }

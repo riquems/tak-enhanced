@@ -166,6 +166,7 @@
     <ClCompile Include="source\Commands\CommandStringParserTests.cpp" />
     <ClCompile Include="source\Commands\RotateBuildingCommandStringParserTests.cpp" />
     <ClCompile Include="source\Commands\SelectBuildingCommandStringParserTests.cpp" />
+    <ClCompile Include="source\Commands\SetUnitStanceCommandStringParserTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Tests\AssertExtensions.hpp" />

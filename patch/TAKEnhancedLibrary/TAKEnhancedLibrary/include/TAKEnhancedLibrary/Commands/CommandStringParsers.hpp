@@ -4,12 +4,14 @@
 #include "TAKEnhancedLibrary/Commands/Command.hpp"
 #include "TAKEnhancedLibrary/Commands/SelectBuilding/SelectBuildingCommandStringParser.hpp"
 #include "TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommandStringParser.hpp"
+#include "TAKEnhancedLibrary/Commands/SetUnitStance/SetUnitStanceCommandStringParser.hpp"
 
 class CommandStringParsers
 {
     std::vector<std::shared_ptr<ICommandStringParser>> parsers = {
         std::make_shared<SelectBuildingCommandStringParser>(),
-        std::make_shared<RotateBuildingCommandStringParser>()
+        std::make_shared<RotateBuildingCommandStringParser>(),
+        std::make_shared<SetUnitStanceCommandStringParser>(),
     };
 
 public:

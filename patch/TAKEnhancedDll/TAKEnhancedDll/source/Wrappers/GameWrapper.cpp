@@ -14,7 +14,7 @@ extern "C" __declspec(dllexport) uintptr_t __stdcall newCreateGraphicObjectFromJ
 GameWrapper::GameWrapper(GameInterfaceHandler* uiHandler, uintptr_t baseAddress)
 {
     _game = std::make_shared<Game>(baseAddress);
-    _gameInterfaceManager = std::make_shared<GameInterfaceManager>(uiHandler, baseAddress);
+    gameInterfaceManager = std::make_shared<GameInterfaceManager>(uiHandler, baseAddress);
 
     _baseAddress = baseAddress;
 
@@ -89,25 +89,25 @@ void GameWrapper::onFirstGameLoading()
 
 bool GameWrapper::isBuildMenuOpen()
 {
-    std::shared_ptr<BuildMenu*> build_menu = _gameInterfaceManager->getBuildMenu();
+    BuildMenu* build_menu = gameInterfaceManager->getBuildMenu();
 
-    if (build_menu == nullptr || build_menu.get() == nullptr) {
+    if (build_menu == nullptr) {
         return false;
     }
 
-    return (*build_menu.get())->visible;
+    return build_menu->visible;
 }
 
 bool GameWrapper::isInWriteMode()
 {
-    return _gameInterfaceManager->isInWriteMode();
+    return gameInterfaceManager->isInWriteMode();
 }
 
 void GameWrapper::selectBuilding(int pos)
 {
-    std::shared_ptr<BuildMenu*> build_menu = _gameInterfaceManager->getBuildMenu();
+    BuildMenu* build_menu = gameInterfaceManager->getBuildMenu();
 
-    if (build_menu == nullptr || build_menu.get() == nullptr)
+    if (build_menu == nullptr)
         return;
 
     BuildMenuWrapper build_menu_wrapper(build_menu, this->_baseAddress);
@@ -119,11 +119,6 @@ void GameWrapper::selectBuilding(int pos)
     BuildButtonWrapper build_button = build_menu_wrapper.buttons[pos - 1];
 
     build_button.click();
-}
-
-void GameWrapper::switchSelectedUnitHumor(int humorId)
-{
-
 }
 
 void GameWrapper::setHpBarColor(Player* player, CustomizableHpBarSetting hpColorOptions)
@@ -167,6 +162,38 @@ std::shared_ptr<UnitWrapper> GameWrapper::getMouseHoveredUnit()
         return nullptr;
 
     return std::make_shared<UnitWrapper>(unit);
+}
+
+std::vector<std::shared_ptr<UnitWrapper>> GameWrapper::getSelectedUnits()
+{
+    std::vector<Unit*> selectedUnits = _game->getSelectedUnits();
+
+    std::vector<std::shared_ptr<UnitWrapper>> selectedUnitsResult;
+
+    std::transform(
+        selectedUnits.begin(),
+        selectedUnits.end(),
+        std::back_inserter(selectedUnitsResult),
+        [&](Unit* unit) {
+            return std::make_shared<UnitWrapper>(unit);
+        }
+    );
+
+    return selectedUnitsResult;
+}
+
+void GameWrapper::setUnitStance(const UnitStance& stance) {
+    Window* unitMenu = this->gameInterfaceManager->getUnitMenu();
+
+    if (unitMenu == nullptr)
+        return;
+
+    Window* button = this->gameInterfaceManager->getButton(unitMenu, stance.name);
+
+    if (button == nullptr)
+        return;
+
+    this->gameInterfaceManager->onClickRadioButton(button);
 }
 
 void GameWrapper::activateDeveloperMode()

@@ -1,20 +1,20 @@
 #include "TAKEnhancedDll/Wrappers/BuildMenuWrapper.h"
 #include "TAKEnhancedDll/GlobalState.hpp"
 
-BuildMenuWrapper::BuildMenuWrapper(std::shared_ptr<BuildMenu*> buildMenu, uintptr_t baseAddress)
+BuildMenuWrapper::BuildMenuWrapper(BuildMenu* buildMenu, uintptr_t baseAddress)
 {
     this->baseAddress = baseAddress;
-    _buildMenu = std::make_shared<BuildMenu*>(*buildMenu);
+    _buildMenu = buildMenu;
 }
 
 void BuildMenuWrapper::initializeButtonsWrappers()
 {
     logger->debug("Loading Build Menu...");
-    logger->debug("First button ptr: %x", (*_buildMenu)->children);
-    logger->debug("Last button ptr: %x", (*_buildMenu)->last);
+    logger->debug("First button ptr: %x", _buildMenu->children);
+    logger->debug("Last button ptr: %x", _buildMenu->last);
 
-    uintptr_t* children = (*_buildMenu)->children;
-    uintptr_t* last = (*_buildMenu)->last;
+    Window** children = _buildMenu->children;
+    Window** last = _buildMenu->last;
 
     if (children == nullptr || last == nullptr) {
         return;
