@@ -9,7 +9,6 @@ main_form::main_form(
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
         std::shared_ptr<Presets> presets,
-        std::shared_ptr<PresetApplier> presetApplier,
         std::shared_ptr<Commands> commands,
         std::shared_ptr<Keys> keys,
         std::shared_ptr<CommandStringParser> commandStringParser,
@@ -21,7 +20,6 @@ main_form::main_form(
         gameConfig(gameConfig),
         userConfig(userConfig),
         presets(presets),
-        presetApplier(presetApplier),
         commands(commands),
         keys(keys),
         commandStringParser(commandStringParser),
@@ -261,12 +259,24 @@ void main_form::addPresetPicker()
                 btn_save->enabled(true);
             }
             else {
-                std::optional<Preset> preset = this->presets->get(preset_name);
+                std::optional<Preset> maybePreset = this->presets->get(preset_name);
 
-                if (!preset.has_value())
+                if (!maybePreset.has_value())
                     return;
 
-                this->presetApplier->applyPreset(preset.value(), *this->gameConfig);
+                auto& preset = maybePreset.value();
+
+                logger->debug("Loading %s preset...", preset.name.c_str());
+
+                *this->gameConfig = preset;
+
+                logger->debug("Preset loaded successfully: ");
+
+                json j = *this->gameConfig;
+
+                logger->debug("%s", j.dump(4).c_str());
+
+                logger->debug("Reloading the UI to reflect changes...", preset.name);
 
                 this->reload_all();
                 this->make_all_readonly();
@@ -325,6 +335,7 @@ void main_form::reload_all()
     tp_keys   ->reload();
     tp_patches->reload();
     tp_hp_bars->reload();
+    this->on_state_changed();
 }
 
 void main_form::make_all_editable()

@@ -58,7 +58,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\ShellCode.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\Memory.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Preset.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\PresetApplier.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Presets.hpp" />
     <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedService.cpp">
       <FileType>CppCode</FileType>
@@ -148,7 +147,6 @@
     <ClCompile Include="TAKEnhancedDll\source\Memory\Memory.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Presets\PresetApplier.cpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\TAKEnhancedService.hpp">
       <FileType>CppHeader</FileType>
     </ClInclude>

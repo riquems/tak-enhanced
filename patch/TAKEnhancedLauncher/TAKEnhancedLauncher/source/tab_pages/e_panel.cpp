@@ -2,7 +2,8 @@
 #include "Utils/TypeExtensions.hpp"
 
 e_panel::e_panel(nana::window parent) : nana::panel<false>(parent) {
-    layout = std::make_shared<nana::place>(*this);
+    this->is_loading = true;
+    this->layout = std::make_shared<nana::place>(*this);
 }
 
 void e_panel::add_widget(std::shared_ptr<nana::widget> widget, std::string field) {
@@ -63,9 +64,13 @@ void e_panel::draw()
 
 void e_panel::load()
 {
+    this->is_loading = true;
+
     for (auto& binding : this->bindings) {
         binding->reflect();
     }
+
+    this->is_loading = false;
 }
 
 void e_panel::reload()
@@ -82,6 +87,9 @@ void e_panel::commit()
 }
 
 void e_panel::on_state_changed() {
+    if (this->is_loading)
+        return;
+
     this->on_state_changed_callback();
 }
 
