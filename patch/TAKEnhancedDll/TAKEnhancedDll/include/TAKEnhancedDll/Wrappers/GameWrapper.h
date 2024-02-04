@@ -12,6 +12,7 @@
 #include "TAKCore/Functions/FunctionsSignatures.h"
 #include "RendererDevice.hpp"
 #include <TAKEnhancedDll/Managers/GameInterfaceManager.h>
+#include <TAKEnhancedLibrary/Commands/SetUnitStance/SetUnitStanceCommand.hpp>
 
 class MatchWrapper;
 
