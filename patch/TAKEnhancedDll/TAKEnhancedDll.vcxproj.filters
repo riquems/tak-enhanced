@@ -66,7 +66,6 @@
     <ClCompile Include="TAKEnhancedDll\source\Keys\Keys.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationJsonParser.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Presets\Presets.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Presets\PresetApplier.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\Memory.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -232,7 +231,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\App.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Presets.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Preset.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\PresetApplier.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\Memory.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\ShellCode.hpp" />

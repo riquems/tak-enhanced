@@ -215,7 +215,6 @@ void _init()
         currentGameConfig,
         userConfig,
         std::make_shared<Presets>(presets),
-        std::make_shared<PresetApplier>(),
         std::make_shared<Commands>(commands),
         std::make_shared<Keys>(keys),
         std::make_shared<CommandStringParser>(commandStringParser),

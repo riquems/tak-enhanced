@@ -6,6 +6,7 @@
 class e_panel : public nana::panel<false>
 {
 protected:
+    bool is_loading;
     std::shared_ptr<nana::place> layout;
     std::vector<std::shared_ptr<e_widget>> widgets;
     std::vector<std::shared_ptr<e_binding>> bindings;
