@@ -44,6 +44,8 @@ tab_page_keys::tab_page_keys(
 
 void tab_page_keys::initialize()
 {
+    this->bgcolor(default_bgcolor);
+
     addOnSpacebarOption();
     addOnDoubleClickOption();
     addOnTripleClickOption();

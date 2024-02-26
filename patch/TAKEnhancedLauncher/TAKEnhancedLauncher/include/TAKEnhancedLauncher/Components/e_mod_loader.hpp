@@ -1,5 +1,5 @@
 #pragma once
-#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
+#include "TAKEnhancedLauncher/components/e_panel.hpp"
 #include <TAKEnhancedDll/Configs/GameConfig.hpp>
 #include <TAKEnhancedDll/Configs/LauncherConfig.hpp>
 #include <Utils/Logger.h>

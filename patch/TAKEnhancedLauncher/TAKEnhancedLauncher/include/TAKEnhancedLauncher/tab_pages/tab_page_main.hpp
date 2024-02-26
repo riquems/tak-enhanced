@@ -1,6 +1,6 @@
 #pragma once
 #include "TAKEnhancedLauncher/nana_common.hpp"
-#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
+#include "TAKEnhancedLauncher/components/e_panel.hpp"
 #include "TAKEnhancedLauncher/Components/e_mod_loader.hpp"
 #include "TAKEnhancedDll/Configs/GameConfig.hpp"
 #include "TAKEnhancedDll/Configs/LauncherConfig.hpp"
@@ -18,6 +18,7 @@ class tab_page_main : public e_panel
 
     std::shared_ptr<nana::checkbox> cb_enableDevMode;
     std::shared_ptr<nana::checkbox> cb_enableMods;
+    std::shared_ptr<nana::checkbox> cb_noCD;
 
     std::shared_ptr<nana::checkbox> cb_testMultiScript;
     std::shared_ptr<nana::checkbox> cb_skipLogo;
@@ -28,7 +29,16 @@ class tab_page_main : public e_panel
     std::shared_ptr<nana::checkbox> cb_disableUiPreload;
     std::shared_ptr<nana::checkbox> cb_noSideCulling;
 
+    std::shared_ptr<nana::checkbox> cb_pauseWhenUnfocused;
+    std::shared_ptr<nana::checkbox> cb_offscreenFix;
+
     std::shared_ptr<e_mod_loader> mod_loader;
+
+    std::shared_ptr<nana::label> lbl_maxUnits;
+    std::shared_ptr<nana::spinbox> sb_maxUnits;
+
+    std::shared_ptr<nana::label> lbl_pathfindingCycles;
+    std::shared_ptr<nana::spinbox> sb_pathfindingCycles;
 
 public:
     const std::string name = "Main";

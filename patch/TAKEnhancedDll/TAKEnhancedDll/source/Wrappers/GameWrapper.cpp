@@ -237,3 +237,39 @@ bool GameWrapper::isAlly(Player* player)
 
     return false;
 }
+
+bool GameWrapper::areAllies(Player* p1, Player* p2)
+{
+    if (p1 == p2)
+        return false;
+
+    uint8_t p1TeamId = p1->playerViewModel->teamId;
+    uint8_t p2TeamId = p2->playerViewModel->teamId;
+
+    bool p1HasTeam = p1TeamId != 4;
+    bool p2HasTeam = p2TeamId != 4;
+
+    if (p1HasTeam && p2HasTeam && p1TeamId == p2TeamId) {
+        return true;
+    }
+
+    return false;
+}
+
+bool GameWrapper::areAllies(int p1, int p2)
+{
+    if (p1 == p2)
+        return false;
+
+    uint8_t p1TeamId = players[p1].getTeamId();
+    uint8_t p2TeamId = players[p2].getTeamId();
+
+    bool p1HasTeam = p1TeamId != 4;
+    bool p2HasTeam = p2TeamId != 4;
+
+    if (p1HasTeam && p2HasTeam && p1TeamId == p2TeamId) {
+        return true;
+    }
+
+    return false;
+}

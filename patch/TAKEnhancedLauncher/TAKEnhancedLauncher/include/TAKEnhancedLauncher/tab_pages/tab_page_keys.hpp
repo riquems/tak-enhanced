@@ -1,6 +1,6 @@
 #pragma once
 #include "TAKEnhancedLauncher/nana_common.hpp"
-#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
+#include "TAKEnhancedLauncher/components/e_panel.hpp"
 #include "Utils/VirtualKeys.h"
 #include "Utils/HelperFunctions.hpp"
 

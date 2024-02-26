@@ -101,6 +101,7 @@
     <ClCompile Include="TAKEnhancedDll\source\Commands\ExecuteCommand.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\CommandHandlers.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\SetUnitStanceCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\FriendlyFire.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameFunctions.h">
@@ -245,6 +246,8 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\ExecuteCommand.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandlers.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SetUnitStanceCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\FriendlyFire.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\FriendlyFireSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />

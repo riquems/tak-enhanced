@@ -1,10 +1,10 @@
 #pragma once
 #include "TAKEnhancedLauncher/nana_common.hpp"
-#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
+#include "TAKEnhancedLauncher/components/e_panel.hpp"
 #include "TAKEnhancedDll/Configs/GameConfig.hpp"
 #include "Utils/Logger.h"
 
-class tab_page_hp_bars : public e_panel
+class hp_bars_options_component : public e_panel
 {
     std::shared_ptr<GameConfig> gameConfig;
     std::shared_ptr<Logger> logger;
@@ -35,7 +35,7 @@ public:
     std::shared_ptr<nana::combox> cbb_enemyHpBarColorMode;
     std::shared_ptr<nana::combox> cbb_enemyHpBarColor;
 
-    tab_page_hp_bars(nana::window parent, std::shared_ptr<GameConfig> gameConfig, std::shared_ptr<Logger> logger);
+    hp_bars_options_component(nana::window parent, std::shared_ptr<GameConfig> gameConfig, std::shared_ptr<Logger> logger);
 
     void initialize();
 

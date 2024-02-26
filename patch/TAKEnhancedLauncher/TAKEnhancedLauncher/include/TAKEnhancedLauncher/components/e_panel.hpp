@@ -1,7 +1,7 @@
 #pragma once
 #include "TAKEnhancedLauncher/nana_common.hpp"
 #include <TAKEnhancedLauncher/binding.hpp>
-#include <TAKEnhancedLauncher/Components/e_widget.hpp>
+#include <TAKEnhancedLauncher/components/e_widget.hpp>
 
 class e_panel : public nana::panel<false>
 {
