@@ -1,7 +1,10 @@
-#include "TAKEnhancedLauncher/tab_pages/tab_page_hp_bars.hpp"
+#include "TAKEnhancedLauncher/components/hp_bars_options_component.hpp"
 
-tab_page_hp_bars::tab_page_hp_bars(nana::window parent, std::shared_ptr<GameConfig> gameConfig, std::shared_ptr<Logger> logger)
-    : e_panel(parent), gameConfig(gameConfig), logger(logger)
+hp_bars_options_component::hp_bars_options_component(
+    nana::window parent,
+    std::shared_ptr<GameConfig> gameConfig,
+    std::shared_ptr<Logger> logger
+) : e_panel(parent), gameConfig(gameConfig), logger(logger)
 {
     this->initialize();
     this->draw();
@@ -18,11 +21,12 @@ void addComboxOptions(
     }
 }
 
-void tab_page_hp_bars::initialize()
+void hp_bars_options_component::initialize()
 {
+    this->bgcolor(default_bgcolor);
+
     // Hp Bar Options Group Box
-    cb_enableHpBarOptions = std::make_shared<nana::checkbox>(*this, nana::rectangle(8, 26, 15, 15));
-    cb_enableHpBarOptions->bgcolor(default_bgcolor);
+    cb_enableHpBarOptions = std::make_shared<nana::checkbox>(*this, nana::rectangle(0, 6, 15, 15));
 
     cb_enableHpBarOptions->events().checked(
         [&](nana::arg_checkbox args) {
@@ -39,7 +43,7 @@ void tab_page_hp_bars::initialize()
     this->add_widget(cb_enableHpBarOptions);
     this->add_binding(create_checkbox_binding(cb_enableHpBarOptions, this->gameConfig->customizableHpBars.enabled));
 
-    lbl_hpBarOptions = std::make_shared<nana::label>(*this, nana::rectangle(30, 18, 75, 30));
+    lbl_hpBarOptions = std::make_shared<nana::label>(*this, nana::rectangle(20, 0, 75, 30));
     lbl_hpBarOptions->caption("<bold>Hp Bar Options</>");
     lbl_hpBarOptions->format(true);
     this->add_widget(lbl_hpBarOptions);
@@ -152,11 +156,11 @@ void tab_page_hp_bars::initialize()
     this->add_binding(create_combox_binding(cbb_enemyHpBarColor, this->gameConfig->customizableHpBars.enemy.color));
 }
 
-void tab_page_hp_bars::draw()
+void hp_bars_options_component::draw()
 {
-    this->layout->div("margin=[25, 5, 0, 30] vert                     \
+    this->layout->div("vert margin=[5]                     \
      <weight=30 <weight=75> topLabels arrange=[120, 130, 80]>                 \
-     <weight=100                                                              \
+     <weight=100                                                   \
         <weight=50 margin=[9] vert leftLabels gap=9>                          \
         <vert                                                                 \
             <margin=[5, 0, 5] myHpBarOptions    arrange=[120, 130, 80] gap=5> \
@@ -168,7 +172,7 @@ void tab_page_hp_bars::draw()
     e_panel::draw();
 }
 
-void tab_page_hp_bars::update()
+void hp_bars_options_component::update()
 {
     update_hpBarColorMode_combox(cbb_myShowHpMode, cbb_myHpBarColorMode);
     update_hpBarColorMode_combox(cbb_allyShowHpMode, cbb_allyHpBarColorMode);
@@ -179,7 +183,7 @@ void tab_page_hp_bars::update()
     update_hpBarColor_combox(cbb_enemyHpBarColorMode, cbb_enemyHpBarColor);
 }
 
-void tab_page_hp_bars::update_hpBarColorMode_combox(std::shared_ptr<nana::combox>& showMode, std::shared_ptr<nana::combox>& colorMode)
+void hp_bars_options_component::update_hpBarColorMode_combox(std::shared_ptr<nana::combox>& showMode, std::shared_ptr<nana::combox>& colorMode)
 {
     if ((showMode->option() + 1) == ShowMode::Never) {
         colorMode->enabled(false);
@@ -189,7 +193,7 @@ void tab_page_hp_bars::update_hpBarColorMode_combox(std::shared_ptr<nana::combox
     }
 }
 
-void tab_page_hp_bars::update_hpBarColor_combox(std::shared_ptr<nana::combox>& mode, std::shared_ptr<nana::combox>& color)
+void hp_bars_options_component::update_hpBarColor_combox(std::shared_ptr<nana::combox>& mode, std::shared_ptr<nana::combox>& color)
 {
     if ((mode->option() + 1) != ColorMode::Custom) {
         color->enabled(false);

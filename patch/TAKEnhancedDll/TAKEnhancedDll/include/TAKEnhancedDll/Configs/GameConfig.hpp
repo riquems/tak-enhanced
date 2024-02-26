@@ -2,6 +2,7 @@
 #include "TAKEnhancedDll/common.hpp"
 #include "GameSetting.hpp"
 #include "CustomizableHpBarsSettings.hpp"
+#include "TAKEnhancedDll/Configs/FriendlyFireSettings.hpp"
 
 struct ModsSettings : GameSetting
 {
@@ -32,6 +33,7 @@ struct GameConfig
     GameSetting pauseWhenUnfocused;
     MeleeStuckFixSettings meleeStuckFix;
     CustomizableHpBarsSettings customizableHpBars;
+    FriendlyFireSettings friendlyFire;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
@@ -62,5 +64,6 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
     offscreenFix,
     pauseWhenUnfocused,
     meleeStuckFix,
-    customizableHpBars
+    customizableHpBars,
+    friendlyFire
 )

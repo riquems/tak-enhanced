@@ -12,6 +12,7 @@
 #include "TAKEnhancedDll/Hooks/ShowHpHook.hpp"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
 #include "TAKCore/Config.h"
+#include <TAKEnhancedDll/Changes/FriendlyFire.hpp>
 
 __declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.2.0";
 
@@ -80,6 +81,8 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
         applyMeleeStuckFix();
         logger->info("Melee Stuck fix applied.");
     }
+
+    applyFriendlyFirePatch();
 
     applyUpdateGuiHook();
     logger->info("Added Hook when updating GUI.");

@@ -17,6 +17,8 @@ tab_page_main::tab_page_main(
 
 void tab_page_main::initialize()
 {
+    this->bgcolor(default_bgcolor);
+
     cb_enableDevMode = std::make_shared<nana::checkbox>(*this, "Enable Developer Mode");
     this->add_widget(cb_enableDevMode, "checkboxes");
     this->add_binding(create_checkbox_binding(cb_enableDevMode, this->gameConfig->developerMode.enabled));
@@ -24,6 +26,10 @@ void tab_page_main::initialize()
     cb_enableMods = std::make_shared<nana::checkbox>(*this, "Enable Mods");
     this->add_widget(cb_enableMods, "checkboxes");
     this->add_binding(create_checkbox_binding(cb_enableMods, this->gameConfig->mods.enabled));
+
+    cb_noCD = std::make_shared<nana::checkbox>(*this, "No CD");
+    this->add_widget(cb_noCD, "checkboxes");
+    this->add_binding(create_checkbox_binding(cb_noCD, this->gameConfig->noCD.enabled));
 
     cb_testMultiScript = std::make_shared<nana::checkbox>(*this, "Test Multi Script (Offline only)");
     cb_skipLogo = std::make_shared<nana::checkbox>(*this, "Skip Logo");
@@ -52,6 +58,14 @@ void tab_page_main::initialize()
     this->add_binding(create_checkbox_binding(cb_disableUiPreload, this->gameConfig->disableUiPreload.enabled));
     this->add_binding(create_checkbox_binding(cb_noSideCulling, this->gameConfig->noSideCulling.enabled));
 
+    cb_pauseWhenUnfocused = std::make_shared<nana::checkbox>(*this, "Pause when Unfocused");
+    this->add_widget(cb_pauseWhenUnfocused, "checkboxes");
+    this->add_binding(create_checkbox_binding(cb_pauseWhenUnfocused, this->gameConfig->pauseWhenUnfocused.enabled));
+
+    cb_offscreenFix = std::make_shared<nana::checkbox>(*this, "Offscreen Fix");
+    this->add_widget(cb_offscreenFix, "checkboxes");
+    this->add_binding(create_checkbox_binding(cb_offscreenFix, this->gameConfig->offscreenFix.enabled));
+
     this->mod_loader = std::make_shared<e_mod_loader>(
         *this,
         this->launcherConfig,
@@ -72,6 +86,21 @@ void tab_page_main::initialize()
             }
         }
     );
+
+    lbl_maxUnits = std::make_shared<nana::label>(*this, "Max Units:");
+    this->add_widget(lbl_maxUnits, "maxUnits");
+
+    sb_maxUnits = std::make_shared<nana::spinbox>(*this);
+    sb_maxUnits->range(20, INT_MAX, 1);
+    this->add_widget(sb_maxUnits, "maxUnits");
+    this->add_binding(create_spinbox_binding(sb_maxUnits, this->gameConfig->maxUnits));
+
+    lbl_pathfindingCycles = std::make_shared<nana::label>(*this, "Pathfinding Cycles:");
+    sb_pathfindingCycles = std::make_shared<nana::spinbox>(*this);
+    sb_pathfindingCycles->range(0, INT_MAX, 1);
+    this->add_widget(lbl_pathfindingCycles, "pathfindingCycles");
+    this->add_widget(sb_pathfindingCycles, "pathfindingCycles");
+    this->add_binding(create_spinbox_binding(sb_pathfindingCycles, this->gameConfig->pathfindingCycles));
 }
 
 void tab_page_main::commit()
@@ -85,9 +114,16 @@ void tab_page_main::draw()
     this->layout->div(
         "margin=15   \
         <horizontal \
-            <vert arrange=[30, repeated] vert weight=30% checkboxes>\
+            <vert weight=200 arrange=[30, repeated] checkboxes>\
             |                           \
-            <mod_loader>                \
+            <margin=[0, 15] mod_loader> \
+            |\
+            <vert weight=140                                  \
+                <vert weight=90 \
+                    <vert maxUnits arrange=[20, 25]>                                          \
+                    <vert margin=[5] pathfindingCycles arrange=[20, 25]>                      \
+                >\
+            >\
         >"
     );
 

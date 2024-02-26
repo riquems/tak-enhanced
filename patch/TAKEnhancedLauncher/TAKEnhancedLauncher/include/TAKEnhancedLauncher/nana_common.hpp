@@ -15,6 +15,7 @@
 #include "nana/gui/widgets/listbox.hpp"
 #include "nana/gui/widgets/spinbox.hpp"
 #include "nana/gui/widgets/combox.hpp"
+#include "nana/gui/widgets/group.hpp"
 #include "nana/gui/filebox.hpp"
 
 extern nana::color default_bgcolor;

@@ -1,4 +1,4 @@
-#include "TAKEnhancedLauncher/Components/e_widget.hpp"
+#include "TAKEnhancedLauncher/components/e_widget.hpp"
 #include "Utils/TypeExtensions.hpp"
 
 e_widget::e_widget(std::shared_ptr<nana::widget> widget, std::string field)

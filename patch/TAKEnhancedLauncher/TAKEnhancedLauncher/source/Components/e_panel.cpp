@@ -1,4 +1,5 @@
-#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
+#include "TAKEnhancedLauncher/components/e_panel.hpp"
+#include "TAKEnhancedLauncher/components/e_group.hpp"
 #include "Utils/TypeExtensions.hpp"
 
 e_panel::e_panel(nana::window parent) : nana::panel<false>(parent) {
@@ -7,15 +8,6 @@ e_panel::e_panel(nana::window parent) : nana::panel<false>(parent) {
 }
 
 void e_panel::add_widget(std::shared_ptr<nana::widget> widget, std::string field) {
-    if (
-        is_not<nana::combox>(*widget)
-     && is_not<nana::button>(*widget)
-     && is_not<nana::spinbox>(*widget)
-     && is_not<nana::listbox>(*widget)
-    ) {
-        widget->bgcolor(default_bgcolor);
-    }
-
     if (is<nana::combox>(*widget)) {
         auto combox = std::dynamic_pointer_cast<nana::combox>(widget);
 
@@ -41,6 +33,15 @@ void e_panel::add_widget(std::shared_ptr<nana::widget> widget, std::string field
         auto spinbox = std::dynamic_pointer_cast<nana::spinbox>(widget);
 
         spinbox->events().text_changed([&]() {
+            this->on_state_changed();
+        });
+    }
+    else if (is<e_group>(*widget)) {
+        auto group = std::dynamic_pointer_cast<e_group>(widget);
+
+        group->on_state_changed_callback = ([&]() {
+            std::cout << "abcd" << std::endl;
+
             this->on_state_changed();
         });
     }
@@ -77,7 +78,6 @@ void e_panel::reload()
 {
     this->load();
 }
-
 
 void e_panel::commit()
 {

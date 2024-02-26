@@ -70,6 +70,8 @@ public:
     bool isMe(Player* player);
     bool isEnemy(Player* player);
     bool isAlly(Player* player);
+    bool areAllies(Player* p1, Player* p2);
+    bool areAllies(int p1, int p2);
 
     std::shared_ptr<Game> getGame();
 };

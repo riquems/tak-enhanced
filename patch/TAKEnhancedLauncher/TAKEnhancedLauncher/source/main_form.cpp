@@ -42,8 +42,10 @@ void main_form::commit_all()
 {
     this->commit();
     tp_main->commit();
-    tp_patches->commit();
-    tp_hp_bars->commit();
+    tp_game_options->commit();
+    tp_game_options->hp_bars_options->commit();
+    tp_game_options->friendly_fire_options_group->commit();
+
     tp_keys->commit();
 }
 
@@ -120,12 +122,11 @@ void main_form::addTabs() {
     tabs->bgcolor(default_bgcolor);
 
     addMainTab();
-    addPatchesTab();
-    addHpBarsTab();
+    addGameOptionsTab();
     addKeysTab();
 
     layout->field("tabs") << *tabs;
-    layout->field("content").fasten(*tp_main).fasten(*tp_patches).fasten(*tp_hp_bars).fasten(*tp_keys);
+    layout->field("content").fasten(*tp_main).fasten(*tp_game_options).fasten(*tp_keys);
 
     tabs->activated(0);
     tp_main->focus();
@@ -146,22 +147,14 @@ void main_form::addMainTab() {
     tabs->append(tp_main->name, *tp_main);
 }
 
-void main_form::addPatchesTab() {
-    tp_patches = std::make_shared<tab_page_patches>(this->handle(), this->gameConfig);
-    tp_patches->on_state_changed_callback = [&]() {
+void main_form::addGameOptionsTab() {
+    tp_game_options = std::make_shared<tab_page_game_options>(this->handle(), this->gameConfig, this->logger);
+
+    tp_game_options->on_state_changed_callback = [&]() {
         this->on_state_changed();
     };
 
-    tabs->append(tp_patches->name, *tp_patches);
-}
-
-void main_form::addHpBarsTab() {
-    tp_hp_bars = std::make_shared<tab_page_hp_bars>(this->handle(), this->gameConfig, this->logger);
-    tp_hp_bars->on_state_changed_callback = [&]() {
-        this->on_state_changed();
-    };
-
-    tabs->append(tp_hp_bars->name, *tp_hp_bars);
+    tabs->append(tp_game_options->name, *tp_game_options);
 }
 
 void main_form::addKeysTab() {
@@ -173,6 +166,7 @@ void main_form::addKeysTab() {
         this->commandStringParser,
         this->keyCombinationStringParser
     );
+
     tp_keys->on_state_changed_callback = [&]() {
         this->on_state_changed();
     };
@@ -333,19 +327,20 @@ void main_form::reload_all()
 {
     tp_main   ->reload();
     tp_keys   ->reload();
-    tp_patches->reload();
-    tp_hp_bars->reload();
+    tp_game_options->reload();
+    tp_game_options->hp_bars_options->reload();
+
     this->on_state_changed();
 }
 
 void main_form::make_all_editable()
 {
     tp_main   ->make_editable();
-    tp_patches->make_editable();
+    tp_game_options->make_editable();
 }
 
 void main_form::make_all_readonly()
 {
     tp_main   ->make_readonly();
-    tp_patches->make_readonly();
+    tp_game_options->make_readonly();
 }

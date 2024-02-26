@@ -59,6 +59,7 @@ namespace MemoryHandler
 
     std::string BYTEtoStr(BYTE hex);
 
+    void writeJMP(DWORD at, DWORD jumpTo);
     void writeJMP(Memory at, DWORD jumpTo);
 
     void writeShortJMP(Memory at, DWORD jumpTo);
@@ -67,7 +68,8 @@ namespace MemoryHandler
 
     void insertOpCode(OpCode opCode, DWORD at);
 
-    void writeJZ(Memory at, DWORD jumpTo);
+    void writeJZ(DWORD at, DWORD jumpTo);
+    void writeShortJNZ(DWORD at, DWORD jumpTo);
 
     void fillWithNOPs(Memory memory);
     void fillWithNOPs(DWORD startAddress, DWORD endAddress);
