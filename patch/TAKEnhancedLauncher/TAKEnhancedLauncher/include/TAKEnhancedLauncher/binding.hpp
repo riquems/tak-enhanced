@@ -11,6 +11,7 @@ struct e_binding
 std::shared_ptr<e_binding> create_binding(const std::function<void()>& reflect, const std::function<void()>& commit);
 std::shared_ptr<e_binding> create_checkbox_binding(std::shared_ptr<nana::checkbox>& cb, bool& entity);
 std::shared_ptr<e_binding> create_spinbox_binding(std::shared_ptr<nana::spinbox>& sb, uint& entity);
+std::shared_ptr<e_binding> create_spinbox_binding(std::shared_ptr<nana::spinbox>& sb, float& entity);
 std::shared_ptr<e_binding> create_listbox_binding(std::shared_ptr<nana::listbox>& lb, std::vector<std::string>& entity);
 
 template<typename T>

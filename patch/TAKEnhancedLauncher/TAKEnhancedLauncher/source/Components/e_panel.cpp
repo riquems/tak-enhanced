@@ -40,8 +40,6 @@ void e_panel::add_widget(std::shared_ptr<nana::widget> widget, std::string field
         auto group = std::dynamic_pointer_cast<e_group>(widget);
 
         group->on_state_changed_callback = ([&]() {
-            std::cout << "abcd" << std::endl;
-
             this->on_state_changed();
         });
     }

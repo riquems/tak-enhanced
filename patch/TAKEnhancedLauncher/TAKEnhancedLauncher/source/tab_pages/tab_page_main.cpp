@@ -89,7 +89,6 @@ void tab_page_main::initialize()
 
     lbl_maxUnits = std::make_shared<nana::label>(*this, "Max Units:");
     this->add_widget(lbl_maxUnits, "maxUnits");
-
     sb_maxUnits = std::make_shared<nana::spinbox>(*this);
     sb_maxUnits->range(20, INT_MAX, 1);
     this->add_widget(sb_maxUnits, "maxUnits");
@@ -101,11 +100,68 @@ void tab_page_main::initialize()
     this->add_widget(lbl_pathfindingCycles, "pathfindingCycles");
     this->add_widget(sb_pathfindingCycles, "pathfindingCycles");
     this->add_binding(create_spinbox_binding(sb_pathfindingCycles, this->gameConfig->pathfindingCycles));
+
+    this->grp_modifiers = std::make_shared<e_group>(*this, "Modifiers");
+    this->grp_modifiers->bgcolor(default_bgcolor);
+    this->add_widget(this->grp_modifiers, "modifiers");
+
+    this->grp_modifiers->div("margin=[5, 10] vert modifiers gap=5 arrange=[15, 25, repeated]");
+
+    lbl_manaStorage = std::make_shared<nana::label>(*this->grp_modifiers, "Mana Storage:");
+
+    this->grp_modifiers->add_widget(this->lbl_manaStorage, "");
+    (*this->grp_modifiers)["modifiers"] << *this->lbl_manaStorage;
+
+    sb_manaStorage = std::make_shared<nana::spinbox>(*this->grp_modifiers);
+    sb_manaStorage->range(0.0, FLT_MAX, 0.1);
+
+    this->grp_modifiers->add_widget(this->sb_manaStorage, "");
+    this->grp_modifiers->add_binding(create_spinbox_binding(this->sb_manaStorage, this->gameConfig->modifiers.manaStorage));
+    (*this->grp_modifiers)["modifiers"] << *this->sb_manaStorage;
+
+    lbl_manaIncome = std::make_shared<nana::label>(*this->grp_modifiers, "Mana Income:");
+
+    this->grp_modifiers->add_widget(this->lbl_manaIncome, "");
+    (*this->grp_modifiers)["modifiers"] << *this->lbl_manaIncome;
+
+    sb_manaIncome = std::make_shared<nana::spinbox>(*this->grp_modifiers);
+    sb_manaIncome->range(0.0, FLT_MAX, 0.1);
+
+    this->grp_modifiers->add_widget(this->sb_manaIncome, "");
+    this->grp_modifiers->add_binding(create_spinbox_binding(this->sb_manaIncome, this->gameConfig->modifiers.manaIncome));
+    (*this->grp_modifiers)["modifiers"] << *this->sb_manaIncome;
+
+    lbl_unitSight = std::make_shared<nana::label>(*this->grp_modifiers, "Unit Sight:");
+
+    this->grp_modifiers->add_widget(this->lbl_unitSight, "");
+    (*this->grp_modifiers)["modifiers"] << *this->lbl_unitSight;
+
+    sb_unitSight = std::make_shared<nana::spinbox>(*this->grp_modifiers);
+    sb_unitSight->range(0.0, FLT_MAX, 0.1);
+
+    this->grp_modifiers->add_widget(this->sb_unitSight, "");
+    this->grp_modifiers->add_binding(create_spinbox_binding(this->sb_unitSight, this->gameConfig->modifiers.unitSight));
+    (*this->grp_modifiers)["modifiers"] << *this->sb_unitSight;
+
+    lbl_workerTime = std::make_shared<nana::label>(*this->grp_modifiers, "Worker Time:");
+
+    this->grp_modifiers->add_widget(this->lbl_workerTime, "");
+    (*this->grp_modifiers)["modifiers"] << *this->lbl_workerTime;
+
+    sb_workerTime = std::make_shared<nana::spinbox>(*this->grp_modifiers);
+    sb_workerTime->range(0.0, FLT_MAX, 0.1);
+
+    this->grp_modifiers->add_widget(this->sb_workerTime, "");
+    this->grp_modifiers->add_binding(create_spinbox_binding(this->sb_workerTime, this->gameConfig->modifiers.workerTime));
+    (*this->grp_modifiers)["modifiers"] << *this->sb_workerTime;
+
+    this->grp_modifiers->load();
 }
 
 void tab_page_main::commit()
 {
     e_panel::commit();
+    this->grp_modifiers->commit();
     this->mod_loader->commit();
 }
 
@@ -118,11 +174,12 @@ void tab_page_main::draw()
             |                           \
             <margin=[0, 15] mod_loader> \
             |\
-            <vert weight=140                                  \
+            <vert weight=140 gap=20                                \
                 <vert weight=90 \
                     <vert maxUnits arrange=[20, 25]>                                          \
                     <vert margin=[5] pathfindingCycles arrange=[20, 25]>                      \
                 >\
+                <vert margin=[20] modifiers>\
             >\
         >"
     );

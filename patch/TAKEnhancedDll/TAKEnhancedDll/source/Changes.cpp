@@ -6,6 +6,9 @@
 #include "TAKEnhancedDll/Changes/MaxUnits.hpp"
 #include "TAKEnhancedDll/Changes/ModLoader.hpp"
 #include "TAKEnhancedDll/Changes/ShowEveryoneHealthBars.hpp"
+#include "TAKEnhancedDll/Changes/SightDistanceModifier.hpp"
+#include "TAKEnhancedDll/Changes/WorkerTimeModifier.hpp"
+#include "TAKEnhancedDll/Changes/ManaModifier.hpp"
 #include "TAKEnhancedDll/Hooks/UpdateGuiHook.hpp"
 #include "TAKEnhancedDll/Hooks/ReadSideDataHook.hpp"
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
@@ -83,6 +86,10 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
     }
 
     applyFriendlyFirePatch();
+
+    applySightDistanceModifier();
+    applyWorkerTimeModifier();
+    applyManaModifier();
 
     applyUpdateGuiHook();
     logger->info("Added Hook when updating GUI.");
