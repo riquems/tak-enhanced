@@ -71,4 +71,6 @@ public:
     void draw();
     void reset();
     void reload();
+    void make_editable() override;
+    void make_readonly() override;
 };

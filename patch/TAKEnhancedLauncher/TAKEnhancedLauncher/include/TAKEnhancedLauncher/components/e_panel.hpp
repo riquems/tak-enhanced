@@ -23,6 +23,6 @@ public:
 
     std::function<void()> on_state_changed_callback = []() {};
     virtual void on_state_changed();
-    void make_editable();
-    void make_readonly();
+    virtual void make_editable();
+    virtual void make_readonly();
 };

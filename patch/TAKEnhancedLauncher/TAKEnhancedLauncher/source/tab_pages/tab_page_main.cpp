@@ -198,3 +198,17 @@ void tab_page_main::reload()
     this->load();
     this->mod_loader->load();
 }
+
+void tab_page_main::make_editable() {
+    this->mod_loader->make_editable();
+    this->grp_modifiers->make_editable();
+
+    e_panel::make_editable();
+}
+
+void tab_page_main::make_readonly() {
+    this->mod_loader->make_readonly();
+    this->grp_modifiers->make_readonly();
+
+    e_panel::make_readonly();
+}
