@@ -2,6 +2,7 @@
 #include "TAKEnhancedDll/common.hpp"
 #include "GameSetting.hpp"
 #include "CustomizableHpBarsSettings.hpp"
+#include "TAKEnhancedDll/Configs/ModifiersSettings.hpp"
 #include "TAKEnhancedDll/Configs/FriendlyFireSettings.hpp"
 
 struct ModsSettings : GameSetting
@@ -34,6 +35,7 @@ struct GameConfig
     MeleeStuckFixSettings meleeStuckFix;
     CustomizableHpBarsSettings customizableHpBars;
     FriendlyFireSettings friendlyFire;
+    ModifiersSettings modifiers;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
@@ -46,7 +48,7 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
     enabled,
     forcedMinRangeForMelees
 )
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(
     GameConfig,
     testMultiScript,
     skipLogo,
@@ -65,5 +67,6 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
     pauseWhenUnfocused,
     meleeStuckFix,
     customizableHpBars,
-    friendlyFire
+    friendlyFire,
+    modifiers
 )

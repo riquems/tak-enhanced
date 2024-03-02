@@ -7,6 +7,7 @@
 #include "TAKEnhancedDll/Utils.hpp"
 #include "Utils/Logger.h"
 #include "TAKEnhancedDll/Wrappers/Defs.h"
+#include "TAKEnhancedLauncher/components/e_group.hpp"
 
 class tab_page_main : public e_panel
 {
@@ -39,6 +40,20 @@ class tab_page_main : public e_panel
 
     std::shared_ptr<nana::label> lbl_pathfindingCycles;
     std::shared_ptr<nana::spinbox> sb_pathfindingCycles;
+
+    std::shared_ptr<e_group> grp_modifiers;
+
+    std::shared_ptr<nana::label> lbl_manaStorage;
+    std::shared_ptr<nana::spinbox> sb_manaStorage;
+
+    std::shared_ptr<nana::label> lbl_manaIncome;
+    std::shared_ptr<nana::spinbox> sb_manaIncome;
+
+    std::shared_ptr<nana::label> lbl_unitSight;
+    std::shared_ptr<nana::spinbox> sb_unitSight;
+
+    std::shared_ptr<nana::label> lbl_workerTime;
+    std::shared_ptr<nana::spinbox> sb_workerTime;
 
 public:
     const std::string name = "Main";

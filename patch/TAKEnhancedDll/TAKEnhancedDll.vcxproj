@@ -21,6 +21,9 @@
   <ItemGroup>
     <!-- <ClCompile Include="TAKEnhancedDll\source\mystd.cpp" /> -->
     <ClCompile Include="TAKEnhancedDll\source\Changes\FriendlyFire.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\ManaModifier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\SightDistanceModifier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\WorkerTimeModifier.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\CommandHandlers.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\ExecuteCommand.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\RotateBuildingCommandHandler.cpp" />
@@ -40,6 +43,9 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\App.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\FriendlyFire.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ManaModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\SightDistanceModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\WorkerTimeModifier.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandlers.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\ExecuteCommand.hpp" />
@@ -49,6 +55,7 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\FriendlyFireSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\LauncherConfig.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\ModifiersSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationJsonParser.hpp" />
