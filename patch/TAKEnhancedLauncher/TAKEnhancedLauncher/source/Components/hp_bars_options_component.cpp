@@ -32,6 +32,7 @@ void hp_bars_options_component::initialize()
         [&](nana::arg_checkbox args) {
             if (args.widget->checked()) {
                 this->make_editable();
+                this->update();
             }
             else {
                 this->make_readonly();
