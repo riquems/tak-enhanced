@@ -47,7 +47,14 @@
 #define VK_0 0x30
 
 #define VK_SHIFT 0x10
+#define VK_LSHIFT 0xA0
+#define VK_RSHIFT 0xA1
 #define VK_CTRL 0x11
+#define VK_LCTRL 0xA2
+#define VK_RCTRL 0xA3
+#define VK_ALT 0x12
+#define VK_LALT 0xA4
+#define VK_RALT 0xA5
 #define VK_BACKSPACE 0x08
 #define VK_RETURN 0x0D
 #define VK_CAPSLOCK 0x14

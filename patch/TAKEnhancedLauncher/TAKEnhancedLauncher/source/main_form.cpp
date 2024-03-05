@@ -82,7 +82,7 @@ void main_form::initialize()
         [&](nana::arg_keyboard args) {
             auto key = this->keys->get(args.key);
 
-            if (key == Keys::ENTER) {
+            if (key == Keys::Return) {
                 nana::API::emit_event(nana::event_code::click, *this->btn_play, nana::arg_click());
             }
         }

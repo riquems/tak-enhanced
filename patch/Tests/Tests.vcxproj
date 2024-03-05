@@ -109,7 +109,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories);C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\bin\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\package;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories);C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\bin\Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);TAKEnhancedLibrary.lib;Utils.lib;DKy.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -164,6 +164,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\Commands\CommandStringParserTests.cpp" />
+    <ClCompile Include="source\Commands\KeyCombinationStringParserTests.cpp" />
+    <ClCompile Include="source\Commands\KeysEqualityTests.cpp" />
     <ClCompile Include="source\Commands\RotateBuildingCommandStringParserTests.cpp" />
     <ClCompile Include="source\Commands\SelectBuildingCommandStringParserTests.cpp" />
     <ClCompile Include="source\Commands\SetUnitStanceCommandStringParserTests.cpp" />
