@@ -26,10 +26,12 @@
     <ClCompile Include="TAKEnhancedLauncher\source\binding.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_form.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_group.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\e_prompt.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_widget.cpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\binding.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_group.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_prompt.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_widget.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_panel.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\nana_common.hpp" />

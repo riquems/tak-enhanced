@@ -8,7 +8,6 @@
 #include "TAKEnhancedLibrary/Keys/Keys.hpp"
 #include <TAKEnhancedDll/Configs/UserConfig.hpp>
 #include <TAKEnhancedLibrary/Keys/KeyCombinationStringParser.hpp>
-#include "TAKEnhancedLauncher/Components/e_dialog.hpp"
 #include <TAKEnhancedLibrary/Commands/CommandStringParser.hpp>
 #include <TAKEnhancedLibrary/Commands/Commands.hpp>
 
@@ -62,6 +61,8 @@ public:
     );
 
     void initialize();
+
+    void edit_keybinding(nana::listbox::item_proxy& item);
 
     void addOnSpacebarOption();
     void addOnDoubleClickOption();

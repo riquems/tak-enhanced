@@ -31,3 +31,7 @@ bool KeyComparator::isLike(const Key& k1, const short& k2) {
 
     return false;
 }
+
+bool KeyComparator::isLike(const short& k1, const Key& k2) {
+    return isLike(k2, k1);
+}

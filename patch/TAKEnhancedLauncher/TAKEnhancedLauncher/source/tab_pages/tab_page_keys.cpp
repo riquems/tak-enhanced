@@ -1,4 +1,6 @@
 #include "TAKEnhancedLauncher/tab_pages/tab_page_keys.hpp"
+#include "TAKEnhancedLauncher/Components/e_prompt.hpp"
+
 #include <iostream>
 
 nana::listbox::iresolver& operator>>(nana::listbox::iresolver& irs, KeyBindingListItem& kb)
@@ -63,6 +65,17 @@ void tab_page_keys::initialize()
     btn_clear = std::make_shared<nana::button>(*this, "Clear");
     this->add_widget(btn_clear, "actionButtons");
 
+    lb_keyBindings->events().dbl_click([&]() {
+        nana::listbox::index_pairs items = lb_keyBindings->selected();
+
+        if (items.size() == 0)
+            return;
+
+        nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
+
+        this->edit_keybinding(item);
+    });
+
     btn_edit->events().click(
         [&]() {
             nana::listbox::index_pairs items = lb_keyBindings->selected();
@@ -72,28 +85,7 @@ void tab_page_keys::initialize()
 
             nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
 
-            KeyBindingListItem kb;
-            item.resolve_to(kb);
-
-            e_dialog keyBindingForm(
-                kb.command,
-                kb.keyBinding,
-                "Hit any Key...",
-                nana::API::make_center(160, 110)
-            );
-                
-            keyBindingForm.events().key_press(
-                [&](nana::arg_keyboard args) {
-                    int keyPressed = args.key;
-
-                    item.text(1, this->keys->get(keyPressed).value().name);
-
-                    keyBindingForm.close();
-                }
-            );
-
-            keyBindingForm.show();
-            nana::exec();
+            this->edit_keybinding(item);
         }
     );
 
@@ -104,11 +96,38 @@ void tab_page_keys::initialize()
             if (items.size() == 0)
                 return;
 
-            nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
+            for (int i = 0; i < items.size(); i++) {
+                nana::listbox::item_proxy item = lb_keyBindings->at(items.at(i));
 
-            item.text(1, keys->get(VK_NONE).value().name);
+                item.text(1, "None");
+            }
         }
     );
+}
+
+void tab_page_keys::edit_keybinding(nana::listbox::item_proxy& item) {
+    KeyBindingListItem kb;
+    item.resolve_to(kb);
+
+    e_prompt keyBindingPrompt(
+        "Edit Key Combination",
+        item.text(1),
+        nana::API::make_center(185, 100)
+    );
+
+    keyBindingPrompt.on_save = [&](std::string result) {
+        if (result.empty()) {
+            item.text(1, "None");
+        }
+        else {
+            item.text(1, result);
+        }
+
+        keyBindingPrompt.close();
+    };
+
+    keyBindingPrompt.show();
+    nana::exec();
 }
 
 void addComboxOptions(std::shared_ptr<nana::combox> cbb, std::vector<std::string> options) {

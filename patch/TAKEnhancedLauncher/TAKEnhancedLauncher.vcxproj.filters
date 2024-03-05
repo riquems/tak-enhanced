@@ -20,6 +20,7 @@
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_mod_loader.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_form.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_group.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_prompt.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLauncher\source\main.cpp" />
@@ -37,5 +38,6 @@
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_mod_loader.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_form.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_group.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\e_prompt.cpp" />
   </ItemGroup>
 </Project>
