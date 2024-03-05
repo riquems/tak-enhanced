@@ -5,9 +5,9 @@
 #include "Utils/HelperFunctions.hpp"
 
 #include "TAKCore/Commands.h"
-#include "TAKEnhancedDll/Keys/Keys.hpp"
+#include "TAKEnhancedLibrary/Keys/Keys.hpp"
 #include <TAKEnhancedDll/Configs/UserConfig.hpp>
-#include <TAKEnhancedDll/Keys/KeyCombinationStringParser.hpp>
+#include <TAKEnhancedLibrary/Keys/KeyCombinationStringParser.hpp>
 #include "TAKEnhancedLauncher/Components/e_dialog.hpp"
 #include <TAKEnhancedLibrary/Commands/CommandStringParser.hpp>
 #include <TAKEnhancedLibrary/Commands/Commands.hpp>

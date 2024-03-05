@@ -39,9 +39,6 @@
     <ClCompile Include="TAKEnhancedDll\source\DllMain.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombination.cpp">
-      <Filter>Sources\Models</Filter>
-    </ClCompile>
     <ClCompile Include="TAKEnhancedDll\source\Utils.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -58,13 +55,10 @@
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\PlayerWrapper.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Managers\WindowManager.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationStringParser.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Configs\CustomizableHpBarsSettings.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\App.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Keys\Keys.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationJsonParser.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Presets\Presets.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\Memory.cpp">
       <Filter>Sources</Filter>
@@ -206,12 +200,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp">
       <Filter>Headers\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\KeyBinding.hpp">
-      <Filter>Headers\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombination.hpp">
-      <Filter>Headers\Models</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -227,10 +215,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\LauncherConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\GlobalState.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationStringParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Keys.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Key.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationJsonParser.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\App.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Presets.hpp" />

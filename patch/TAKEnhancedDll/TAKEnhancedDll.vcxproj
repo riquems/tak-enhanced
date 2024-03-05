@@ -30,7 +30,6 @@
     <ClCompile Include="TAKEnhancedDll\source\Commands\SelectBuildingCommandHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Commands\SetUnitStanceCommandHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\DllMain.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombination.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\MemoryHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\ShellCode.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Presets\Presets.cpp" />
@@ -58,12 +57,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\ModifiersSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationJsonParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Key.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Keys.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationStringParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\KeyBinding.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombination.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\MemoryHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\ShellCode.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\Memory.hpp" />
@@ -105,13 +98,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\ReadSideDataHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\UpdateGuiHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\WeaponsHook.hpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationStringParser.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\Keys.cpp">
-      <FileType>CppCode</FileType>
-    </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationJsonParser.cpp">
-      <FileType>CppCode</FileType>
-    </ClCompile>
     <ClCompile Include="TAKEnhancedDll\source\Hooks\GameInitHook.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
@@ -317,7 +303,7 @@
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>DKy.lib;TAKEnhancedLibrary.lib;nana_v143_Release_x86_Zp1.lib;libcrypto32MT.lib;Utils.lib;TAKLibrary.lib;TAKEnhancedLauncher.lib;TAKCore.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkStatus>false</LinkStatus>
-      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Program Files (x86)\OpenSSL-Win32\lib\VC;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\bin\Release;..\package</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Program Files (x86)\OpenSSL-Win32\lib\VC;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\bin\Release;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\package</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

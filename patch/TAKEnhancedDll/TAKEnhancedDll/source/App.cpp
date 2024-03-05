@@ -26,7 +26,7 @@
 #include "TAKEnhancedLauncher/main_form.hpp"
 #include "TAKEnhancedDll/Changes.hpp"
 #include "TAKEnhancedDll/TAKEnhancedService.hpp"
-#include <TAKEnhancedDll/Keys/KeyCombination.hpp>
+#include <TAKEnhancedLibrary/Keys/KeyCombination.hpp>
 #include <Utils/Console.hpp>
 
 __declspec(dllexport) DWORD setSelectedListItem_fcnAddr;

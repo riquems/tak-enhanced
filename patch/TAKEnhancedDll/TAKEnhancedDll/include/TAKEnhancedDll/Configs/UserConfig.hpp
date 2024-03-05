@@ -1,6 +1,6 @@
 #pragma once
-#include "TAKEnhancedDll/common.hpp"
-#include <TAKEnhancedDll/KeyBinding.hpp>
+#include "TAKEnhancedLibrary/common.hpp"
+#include <TAKEnhancedLibrary/KeyBinding.hpp>
 
 struct UserConfig
 {
