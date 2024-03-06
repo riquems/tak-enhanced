@@ -118,8 +118,8 @@ void _init()
     auto maybeLoggerConfig = fromJson<LoggerConfig>(loggerConfigPath);
 
     if (!maybeLoggerConfig.has_value()) {
-        std::cout << "[Error] Logger config not found." << '\n';
-        return;
+        std::cout << "[Info] Logger config not found, using the default one." << '\n';
+        maybeLoggerConfig = LoggerConfig {};
     }
 
     auto loggerConfig = maybeLoggerConfig.value();
@@ -131,8 +131,8 @@ void _init()
     auto maybeLauncherConfig = fromJson<LauncherConfig>(launcherConfigPath);
 
     if (!maybeLauncherConfig.has_value()) {
-        logger->error("Launcher config not found.");
-        return;
+        logger->info("Launcher config not found, using the default one.");
+        maybeLauncherConfig = LauncherConfig {};
     }
 
     launcherConfig = std::make_shared<LauncherConfig>(maybeLauncherConfig.value());
@@ -152,11 +152,11 @@ void _init()
 
         auto currentGameConfigPath = "./TAKEnhanced/game.cfg.json";
         logger->info("Loading current game config from %s", currentGameConfigPath);
-        std::optional<GameConfig> maybeCurrentGameConfig = fromJson<GameConfig>(currentGameConfigPath);
+        auto maybeCurrentGameConfig = fromJson<GameConfig>(currentGameConfigPath);
 
-        if (!maybeLauncherConfig.has_value()) {
-            logger->error("Current game config not found.");
-            return;
+        if (!maybeCurrentGameConfig.has_value()) {
+            logger->info("Current game config not found, using the default one.");
+            maybeCurrentGameConfig = GameConfig {};
         }
 
         auto currentGameConfigValue = maybeCurrentGameConfig.value();
@@ -185,11 +185,23 @@ void _init()
     auto maybeUserConfig = fromJson<UserConfig>(userConfigPath);
 
     if (!maybeUserConfig.has_value()) {
-        logger->error("User config not found.");
-        return;
+        logger->info("User config not found, using the default one.");
+        maybeUserConfig = UserConfig {};
     }
 
     userConfig = std::make_shared<UserConfig>(maybeUserConfig.value());
+
+    UserConfig defaultUserConfig;
+
+    for (const auto& defaultKeyBinding : defaultUserConfig.keyBindings) {
+        bool containsCommand = dky::contains(userConfig->keyBindings, [&](const KeyBinding& keyBinding) {
+            return commandStringParser.toString(*keyBinding.command) == commandStringParser.toString(*defaultKeyBinding.command);
+        });
+
+        if (!containsCommand) {
+            userConfig->keyBindings.push_back(defaultKeyBinding);
+        }
+    }
 
     exePath = std::filesystem::current_path();
     baseAddress = getProcessBaseAddress("Kingdoms.icd");
@@ -227,6 +239,7 @@ void _init()
         toJson(*launcherConfig, "./TAKEnhanced/launcher.cfg.json");
         toJson(*currentGameConfig, "./TAKEnhanced/game.cfg.json");
         toJson(*userConfig, "./TAKEnhanced/user.cfg.json");
+        toJson(loggerConfig, "./TAKEnhanced/logger.cfg.json");
     };
 
     launcher.show();

@@ -56,10 +56,26 @@ struct CustomizableHpBarSetting
 
 struct CustomizableHpBarsSettings : GameSetting
 {
-    CustomizableHpBarSetting mine;
-    CustomizableHpBarSetting ally;
-    CustomizableHpBarSetting enemy;
+    bool enabled = true;
+
+    CustomizableHpBarSetting mine = CustomizableHpBarSetting {
+        .showMode = ShowMode::OnlyIfDamaged,
+        .colorMode = ColorMode::MatchPlayerColor,
+        .color = Color::Blue
+    };
+
+    CustomizableHpBarSetting ally = CustomizableHpBarSetting {
+        .showMode = ShowMode::OnlyIfDamaged,
+        .colorMode = ColorMode::MatchPlayerColor,
+        .color = Color::LightBlue
+    };
+
+    CustomizableHpBarSetting enemy = CustomizableHpBarSetting {
+        .showMode = ShowMode::OnlyIfDamaged,
+        .colorMode = ColorMode::MatchPlayerColor,
+        .color = Color::Red
+    };
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(CustomizableHpBarSetting, showMode, colorMode, color)
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(CustomizableHpBarsSettings, enabled, mine, ally, enemy)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(CustomizableHpBarsSettings, enabled, mine, ally, enemy)

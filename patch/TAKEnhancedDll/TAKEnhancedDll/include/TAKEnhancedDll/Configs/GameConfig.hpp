@@ -7,12 +7,27 @@
 
 struct ModsSettings : GameSetting
 {
-    std::vector<std::string> selectedMods;
+    bool enabled = true;
+    std::vector<std::string> selectedMods = {
+        "TAK Enhanced.hpi",
+        "Aimtolerance Fix.hpi",
+        "Colorful HP Bars.hpi",
+        "Elsin Fix.hpi",
+        "Fire Mage Fix.hpi",
+        "Guided Weapons Fix.hpi",
+        "Kirenna Fix.hpi",
+        "Melees Stuck Fix.hpi",
+        "Misspellings Fix.hpi",
+        "Paralyze Fix.hpi",
+        "Weapons Swap Tweak.hpi",
+        "Wisp Fix.hpi"
+    };
 };
 
 struct MeleeStuckFixSettings : GameSetting
 {
-    uint forcedMinRangeForMelees;
+    bool enabled = true;
+    uint forcedMinRangeForMelees = 40;
 };
 
 struct GameConfig
@@ -25,12 +40,12 @@ struct GameConfig
     GameSetting fixCursor;
     GameSetting disableUiPreload;
     GameSetting noSideCulling;
-    uint maxUnits;
-    uint pathfindingCycles;
-    GameSetting developerMode;
+    uint maxUnits = 5000;
+    uint pathfindingCycles = 100000;
+    GameSetting developerMode = GameSetting { .enabled = true };
     ModsSettings mods;
-    GameSetting noCD;
-    GameSetting offscreenFix;
+    GameSetting noCD = GameSetting { .enabled = true };
+    GameSetting offscreenFix = GameSetting { .enabled = true };
     GameSetting pauseWhenUnfocused;
     MeleeStuckFixSettings meleeStuckFix;
     CustomizableHpBarsSettings customizableHpBars;
@@ -38,12 +53,12 @@ struct GameConfig
     ModifiersSettings modifiers;
 };
 
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(
     ModsSettings,
     enabled,
     selectedMods
 )
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(
     MeleeStuckFixSettings,
     enabled,
     forcedMinRangeForMelees
