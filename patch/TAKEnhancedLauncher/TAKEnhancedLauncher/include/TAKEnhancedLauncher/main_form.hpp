@@ -4,15 +4,16 @@
 #include "Utils/CRC.h"
 #include "Utils/CopyToClipboard.hpp"
 #include "TAKEnhancedLauncher/nana_common.hpp"
-#include "TAKEnhancedLauncher/Components/e_form.hpp"
-#include "TAKEnhancedLauncher/tab_pages/tab_page_hp_bars.hpp"
+#include "TAKEnhancedLauncher/components/e_form.hpp"
+#include "TAKEnhancedLauncher/components/hp_bars_options_component.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_keys.hpp"
 #include "TAKEnhancedLauncher/tab_pages/tab_page_main.hpp"
-#include "TAKEnhancedLauncher/tab_pages/tab_page_patches.hpp"
-#include "TAKEnhancedLauncher/Components/modal_save_as_preset.hpp"
+#include "TAKEnhancedLauncher/tab_pages/tab_page_game_options.hpp"
+#include "TAKEnhancedLauncher/components/modal_save_as_preset.hpp"
 #include <TAKEnhancedDll/Presets/Presets.hpp>
 #include "TAKEnhancedDll/Configs/LauncherConfig.hpp"
-#include <TAKEnhancedDll/Presets/PresetApplier.hpp>
+#include "TAKEnhancedLibrary/Commands/Commands.hpp"
+#include "TAKEnhancedLibrary/Commands/CommandStringParser.hpp"
 
 class main_form : public e_form
 {
@@ -20,7 +21,6 @@ class main_form : public e_form
     std::shared_ptr<GameConfig> gameConfig;
     std::shared_ptr<UserConfig> userConfig;
     std::shared_ptr<Presets> presets;
-    std::shared_ptr<PresetApplier> presetApplier;
     std::shared_ptr<Commands> commands;
     std::shared_ptr<Keys> keys;
     std::shared_ptr<CommandStringParser> commandStringParser;
@@ -31,8 +31,7 @@ class main_form : public e_form
 
     // Tab Pages
     std::shared_ptr<tab_page_main> tp_main;
-    std::shared_ptr<tab_page_patches> tp_patches;
-    std::shared_ptr<tab_page_hp_bars> tp_hp_bars;
+    std::shared_ptr<tab_page_game_options> tp_game_options;
     std::shared_ptr<tab_page_keys> tp_keys;
     
     // Buttons
@@ -58,7 +57,6 @@ public:
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
         std::shared_ptr<Presets> presets,
-        std::shared_ptr<PresetApplier> presetApplier,
         std::shared_ptr<Commands> commands,
         std::shared_ptr<Keys> keys,
         std::shared_ptr<CommandStringParser> commandStringParser,
@@ -77,8 +75,7 @@ private:
 
     void addTabs();
     void addMainTab();
-    void addPatchesTab();
-    void addHpBarsTab();
+    void addGameOptionsTab();
     void addKeysTab();
     void addPlayButton();
     void addExitButton();

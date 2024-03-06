@@ -57,21 +57,43 @@ int EnableCommandLineParams(std::string target)
 
 using json = nlohmann::json;
 
-BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
+template<typename T>
+std::optional<T> fromJson(std::string path)
 {
-    StartConsole();
-
-    std::string fileName = "Kingdoms.cfg.json";
-    std::fstream fileStream(fileName);
+    std::ifstream fileStream(path);
 
     if (!fileStream.is_open()) {
-        std::cout << "Couldn't open file " << fileName << "\n";
+        return std::optional<T>();
     }
 
     json json;
     fileStream >> json;
-    
-    auto config = json.get<AppConfig>();
+
+    auto config = json.get<T>();
+
+    return config;
+}
+
+void toJson(json j, std::string path)
+{
+    std::ofstream fileStream(path);
+
+    fileStream << std::setw(2) << j;
+}
+
+BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
+{
+    StartConsole();
+
+    std::string configPath = "Kingdoms.cfg.json";
+    auto maybeConfig = fromJson<AppConfig>(configPath);
+
+    if (!maybeConfig.has_value()) {
+        std::cout << "[Info] Injector config not found, using the default one.";
+        maybeConfig = AppConfig {};
+    }
+
+    AppConfig config = maybeConfig.value();
 
     Logger logger(config.logger, "w");
 
@@ -228,6 +250,8 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     logger.info("Created remote thread successfully.\n");
     
     logger.stop();
+    toJson(config, configPath);
+
     if (config.debugMode) {
         std::cout << "Press any key to continue...\n";
         std::cin.get();

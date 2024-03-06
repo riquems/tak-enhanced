@@ -1,4 +1,4 @@
-#include "TAKEnhancedLauncher/Components/e_form.hpp"
+#include "TAKEnhancedLauncher/components/e_form.hpp"
 #include "Utils/TypeExtensions.hpp"
 
 e_form::e_form(nana::rectangle rect, nana::appearance appearance) : nana::form(rect, appearance) {
@@ -6,15 +6,6 @@ e_form::e_form(nana::rectangle rect, nana::appearance appearance) : nana::form(r
 }
 
 void e_form::add_widget(std::shared_ptr<nana::widget> widget, std::string field) {
-    if (
-        is_not<nana::combox>(*widget)
-     && is_not<nana::button>(*widget)
-     && is_not<nana::spinbox>(*widget)
-     && is_not<nana::listbox>(*widget)
-    ) {
-        widget->bgcolor(default_bgcolor);
-    }
-
     if (is<nana::combox>(*widget)) {
         ((nana::combox)*widget).events().text_changed([&]() {
             this->on_state_changed();

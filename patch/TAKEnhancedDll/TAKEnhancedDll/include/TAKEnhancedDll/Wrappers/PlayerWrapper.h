@@ -1,9 +1,10 @@
 #pragma once
 #include "TAKEnhancedDll/common.hpp"
 
-#include "UnitWrapper.h"
 #include "TAKCore/Models/Player.h"
 #include "TAKCore/Models/PlayerViewModel.h"
+#include "TAKEnhancedDll/Wrappers/UnitWrapper.h"
+
 
 class PlayerWrapper
 {

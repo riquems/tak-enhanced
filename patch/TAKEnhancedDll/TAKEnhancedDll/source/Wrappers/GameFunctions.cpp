@@ -1,4 +1,5 @@
 #include "TAKEnhancedDll/Wrappers/GameFunctions.h"
+#include "TAKEnhancedDll/GlobalState.hpp"
 
 std::vector<HapiFile*> GameFunctionsExtensions::GetLoadedHapiFiles()
 {
@@ -14,7 +15,7 @@ std::vector<HapiFile*> GameFunctionsExtensions::GetLoadedHapiFiles()
 
     while (*nextHapiFile != nullptr && (*nextHapiFile)->vTable != 0) {
         hapiFiles.push_back(*nextHapiFile);
-        std::cout << (*nextHapiFile)->filename << std::endl;
+        logger->debug((*nextHapiFile)->filename);
         nextHapiFile++;
     }
 

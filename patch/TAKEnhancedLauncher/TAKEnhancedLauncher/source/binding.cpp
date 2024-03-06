@@ -32,6 +32,18 @@ std::shared_ptr<e_binding> create_spinbox_binding(std::shared_ptr<nana::spinbox>
     return create_binding(reflect, commit);
 }
 
+std::shared_ptr<e_binding> create_spinbox_binding(std::shared_ptr<nana::spinbox>& sb, float& entity) {
+    auto reflect = [&]() -> void {
+        sb->value(std::to_string(entity));
+    };
+
+    auto commit = [&]() -> void {
+        entity = (float) sb->to_double();
+    };
+
+    return create_binding(reflect, commit);
+}
+
 std::shared_ptr<e_binding> create_listbox_binding(std::shared_ptr<nana::listbox>& lb, std::vector<std::string>& entity) {
     auto reflect = [&]() -> void {
         nana::listbox::cat_proxy default_category = lb->at(0);

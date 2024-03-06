@@ -39,17 +39,9 @@
     <ClCompile Include="TAKEnhancedDll\source\DllMain.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombination.cpp">
-      <Filter>Sources\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Command.cpp">
-      <Filter>Sources\Models</Filter>
-    </ClCompile>
     <ClCompile Include="TAKEnhancedDll\source\Utils.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandStringParser.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Commands.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\UnitWrapper.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\BattleMenuWrapper.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\BuildButtonWrapper.cpp" />
@@ -63,18 +55,11 @@
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\PlayerWrapper.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Managers\WindowManager.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationStringParser.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Configs\CustomizableHpBarsSettings.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Params.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Param.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\App.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Keys\Keys.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandJsonParser.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationJsonParser.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Presets\Presets.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Presets\PresetApplier.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\Memory.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -105,6 +90,15 @@
     <ClCompile Include="TAKEnhancedDll\source\Changes\SearchBox.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\RotateBuildingCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\SelectBuildingCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\ExecuteCommand.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandHandlers.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\SetUnitStanceCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\FriendlyFire.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\SightDistanceModifier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\WorkerTimeModifier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\ManaModifier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameFunctions.h">
@@ -206,15 +200,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp">
       <Filter>Headers\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Command.hpp">
-      <Filter>Headers\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\KeyBinding.hpp">
-      <Filter>Headers\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombination.hpp">
-      <Filter>Headers\Models</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -230,20 +215,10 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\LauncherConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\GlobalState.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Commands.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Params.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandStringParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Param.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationStringParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Keys.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Key.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandJsonParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationJsonParser.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\App.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Presets.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Preset.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\PresetApplier.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\Memory.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\ShellCode.hpp" />
@@ -252,6 +227,18 @@
       <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\RotateBuildingCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SelectBuildingCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\ExecuteCommand.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandlers.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SetUnitStanceCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\FriendlyFire.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\FriendlyFireSettings.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\SightDistanceModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ManaModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\WorkerTimeModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\ModifiersSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />

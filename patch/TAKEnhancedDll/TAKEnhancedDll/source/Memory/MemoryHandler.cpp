@@ -18,7 +18,7 @@ void MemoryHandler::writeShellCode(ShellCode shellCode)
 
     WriteProcessMemory(hProcess, (LPVOID)shellCode.startAddress(), shellCode.data(), shellCode.size(), NULL);
 
-    VirtualProtectEx(hProcess, (LPVOID)shellCode.startAddress(), shellCode.placeLength(), oldProtect, nullptr);
+    VirtualProtectEx(hProcess, (LPVOID)shellCode.startAddress(), shellCode.placeLength(), oldProtect, &oldProtect);
 }
 
 unsigned int MemoryHandler::toLittleEndian(unsigned int hex)
@@ -43,6 +43,14 @@ std::string MemoryHandler::BYTEtoStr(BYTE hex)
     ss << std::hex << std::setfill('0') << std::setw(2) << (DWORD)hex;
 
     return ss.str();
+}
+
+void MemoryHandler::writeJMP(DWORD at, DWORD jumpTo)
+{
+    std::string relativeAddressStr = DWORDtoStr(getRelativeAddress<DWORD>(at + baseAddress, jumpTo));
+
+    ShellCode JMP_ShellCode("E9" + relativeAddressStr, at);
+    writeShellCode(JMP_ShellCode);
 }
 
 void MemoryHandler::writeJMP(Memory at, DWORD jumpTo)
@@ -78,12 +86,21 @@ void MemoryHandler::insertOpCode(OpCode opCode, DWORD at)
     writeShellCode(shellCode);
 }
 
-void MemoryHandler::writeJZ(Memory at, DWORD jumpTo)
+void MemoryHandler::writeJZ(DWORD at, DWORD jumpTo)
 {
     jumpTo += baseAddress;
-    std::string relativeAddressStr = DWORDtoStr(getRelativeAddress<DWORD>(at.startAddress, jumpTo, 2));
+    std::string relativeAddressStr = DWORDtoStr(getRelativeAddress<DWORD>(at, jumpTo, 2));
 
     ShellCode JMP_ShellCode("0F84" + relativeAddressStr, at);
+    writeShellCode(JMP_ShellCode);
+}
+
+void MemoryHandler::writeShortJNZ(DWORD at, DWORD jumpTo)
+{
+    jumpTo += baseAddress;
+    std::string relativeAddressStr = BYTEtoStr(getRelativeAddress<BYTE>(at, jumpTo));
+
+    ShellCode JMP_ShellCode("75" + relativeAddressStr, at);
     writeShellCode(JMP_ShellCode);
 }
 

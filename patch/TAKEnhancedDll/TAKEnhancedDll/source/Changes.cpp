@@ -6,14 +6,18 @@
 #include "TAKEnhancedDll/Changes/MaxUnits.hpp"
 #include "TAKEnhancedDll/Changes/ModLoader.hpp"
 #include "TAKEnhancedDll/Changes/ShowEveryoneHealthBars.hpp"
+#include "TAKEnhancedDll/Changes/SightDistanceModifier.hpp"
+#include "TAKEnhancedDll/Changes/WorkerTimeModifier.hpp"
+#include "TAKEnhancedDll/Changes/ManaModifier.hpp"
 #include "TAKEnhancedDll/Hooks/UpdateGuiHook.hpp"
 #include "TAKEnhancedDll/Hooks/ReadSideDataHook.hpp"
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
 #include "TAKEnhancedDll/Hooks/ShowHpHook.hpp"
 #include "TAKEnhancedDll/Hooks/KeyboardInputHook.hpp"
 #include "TAKCore/Config.h"
+#include <TAKEnhancedDll/Changes/FriendlyFire.hpp>
 
-__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.2.0";
+__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.3.0";
 
 void applyTakEnhancedVersion()
 {
@@ -81,14 +85,20 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
         logger->info("Melee Stuck fix applied.");
     }
 
+    applyFriendlyFirePatch();
+
+    applySightDistanceModifier();
+    applyWorkerTimeModifier();
+    applyManaModifier();
+
     applyUpdateGuiHook();
     logger->info("Added Hook when updating GUI.");
 
     // Hooks
-    /*
+    
     applyReadSideDataHooks();
     logger->info("Added Hook on reading SideData.tdf.");
-    */
+
     applyLoadingScreenHooks();
     logger->info("Added Loading Screen Extension.");
     // ProcessCodesExtension
@@ -116,6 +126,6 @@ void applyChanges(std::shared_ptr<GameConfig> config, std::shared_ptr<Logger> lo
     // ResolutionFix();
     // MakePlayAnOpponentSearchForGamesSomewhereElse()
     // Why watching in multiplayer causes so much lag
-    
+
     logger->info("Endded applying changes. Enjoy!");
 }

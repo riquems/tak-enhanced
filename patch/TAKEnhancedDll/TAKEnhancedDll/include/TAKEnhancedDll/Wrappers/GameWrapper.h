@@ -12,6 +12,7 @@
 #include "TAKCore/Functions/FunctionsSignatures.h"
 #include "RendererDevice.hpp"
 #include <TAKEnhancedDll/Managers/GameInterfaceManager.h>
+#include <TAKEnhancedLibrary/Commands/SetUnitStance/SetUnitStanceCommand.hpp>
 
 class MatchWrapper;
 
@@ -25,7 +26,7 @@ class GameWrapper
     uintptr_t _baseAddress;
 
 public:
-    std::shared_ptr<GameInterfaceManager> _gameInterfaceManager;
+    std::shared_ptr<GameInterfaceManager> gameInterfaceManager;
     std::vector<PlayerWrapper> players;
     std::shared_ptr<MatchWrapper> match;
 
@@ -61,12 +62,16 @@ public:
 
     void activateDeveloperMode();
 
-    void switchSelectedUnitHumor(int humorId);
     uintptr_t getMouseHoveredUnitAddress();
+    std::shared_ptr<UnitWrapper> getMouseHoveredUnit();
+    std::vector<std::shared_ptr<UnitWrapper>> getSelectedUnits();
+    void setUnitStance(const UnitStance& stance);
 
     bool isMe(Player* player);
     bool isEnemy(Player* player);
     bool isAlly(Player* player);
+    bool areAllies(Player* p1, Player* p2);
+    bool areAllies(int p1, int p2);
 
     std::shared_ptr<Game> getGame();
 };

@@ -22,33 +22,37 @@
     <None Include="TAKEnhancedLauncher.aps" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_form.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_form.hpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\binding.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_form.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\e_group.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\e_prompt.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_widget.cpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\binding.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_widget.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\e_panel.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_group.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_prompt.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_widget.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_panel.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\nana_common.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_dialog.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\modal_save_as_preset.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\success_modal.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_dialog.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\modal_save_as_preset.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\success_modal.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\main_form.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\Components\e_mod_loader.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_hp_bars.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\e_mod_loader.hpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\components\hp_bars_options_component.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_keys.hpp" />
     <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_main.hpp" />
-    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_patches.hpp" />
-    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\e_panel.cpp" />
+    <ClInclude Include="TAKEnhancedLauncher\include\TAKEnhancedLauncher\tab_pages\tab_page_game_options.hpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\e_panel.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\main_form.cpp" />
-    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_hp_bars.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\Components\hp_bars_options_component.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_keys.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_dialog.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\modal_save_as_preset.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\success_modal.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_main.cpp" />
-    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_patches.cpp" />
+    <ClCompile Include="TAKEnhancedLauncher\source\tab_pages\tab_page_game_options.cpp" />
     <ClCompile Include="TAKEnhancedLauncher\source\Components\e_mod_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +175,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include; ..\TAKEnhancedLauncher\TAKEnhancedLauncher\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include;..\TAKEnhancedLauncher\TAKEnhancedLauncher\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\TAKEnhancedLibrary\TAKEnhancedLibrary\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>

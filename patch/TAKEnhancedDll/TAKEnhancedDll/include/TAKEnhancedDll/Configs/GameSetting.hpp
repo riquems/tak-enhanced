@@ -3,7 +3,7 @@
 
 struct GameSetting
 {
-    bool enabled;
+    bool enabled = false;
 };
 
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(GameSetting, enabled)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(GameSetting, enabled)

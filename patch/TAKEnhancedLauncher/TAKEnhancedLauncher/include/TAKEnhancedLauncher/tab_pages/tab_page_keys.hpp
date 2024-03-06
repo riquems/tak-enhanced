@@ -1,16 +1,15 @@
 #pragma once
 #include "TAKEnhancedLauncher/nana_common.hpp"
-#include "TAKEnhancedLauncher/tab_pages/e_panel.hpp"
+#include "TAKEnhancedLauncher/components/e_panel.hpp"
 #include "Utils/VirtualKeys.h"
 #include "Utils/HelperFunctions.hpp"
 
 #include "TAKCore/Commands.h"
-#include "TAKEnhancedDll/Commands/Command.hpp"
-#include "TAKEnhancedDll/Keys/Keys.hpp"
+#include "TAKEnhancedLibrary/Keys/Keys.hpp"
 #include <TAKEnhancedDll/Configs/UserConfig.hpp>
-#include <TAKEnhancedDll/Commands/CommandStringParser.hpp>
-#include <TAKEnhancedDll/Keys/KeyCombinationStringParser.hpp>
-#include "TAKEnhancedLauncher/Components/e_dialog.hpp"
+#include <TAKEnhancedLibrary/Keys/KeyCombinationStringParser.hpp>
+#include <TAKEnhancedLibrary/Commands/CommandStringParser.hpp>
+#include <TAKEnhancedLibrary/Commands/Commands.hpp>
 
 struct KeyBindingListItem
 {
@@ -62,6 +61,8 @@ public:
     );
 
     void initialize();
+
+    void edit_keybinding(nana::listbox::item_proxy& item);
 
     void addOnSpacebarOption();
     void addOnDoubleClickOption();

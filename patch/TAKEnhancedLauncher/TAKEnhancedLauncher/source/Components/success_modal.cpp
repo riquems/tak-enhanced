@@ -1,4 +1,4 @@
-#include "TAKEnhancedLauncher/Components/success_modal.hpp"
+#include "TAKEnhancedLauncher/components/success_modal.hpp"
 
 success_modal::success_modal(uint width, uint height, std::string message)
     : nana::form(nana::API::make_center(width, height), nana::appearance(1, 1, 1, 0, 0, 0, 0))
@@ -31,8 +31,7 @@ void success_modal::load()
     lbl_successMessage->text_align(nana::align::center);
     btn_ok->caption("Ok");
 
-    this              ->bgcolor(default_bgcolor);
-    lbl_successMessage->bgcolor(default_bgcolor);
+    this->bgcolor(default_bgcolor);
 }
 
 void success_modal::draw()

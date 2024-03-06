@@ -2,8 +2,9 @@
 #include "TAKEnhancedDll/Configs/GameConfig.hpp"
 
 #include <iostream>
-#include <queue>
+#include <deque>
 #include "ddraw.h"
+#include "Utils/Keyboard.hpp"
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -15,7 +16,7 @@
 
 **********************************************************/
 
-void processInputSequence(std::queue<int>& sequence);
+void handleInputs(KeyboardState& keyboardState);
 
 void guaranteeFocus();
 

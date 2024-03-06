@@ -121,6 +121,7 @@
     <ClInclude Include="TAKCore\include\TAKCore\Models\UI\BuildMenu.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Models\UI\ChooseMapMenu.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Models\UI\CursorHandler.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\Models\UI\Events\LButtonUpClickArgs.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Models\UI\FontHandler.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Models\UI\Gadget.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Models\UI\GameInterfaceHandler.h" />

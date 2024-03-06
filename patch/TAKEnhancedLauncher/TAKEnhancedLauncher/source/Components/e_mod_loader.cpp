@@ -1,5 +1,5 @@
 #pragma once
-#include "TAKEnhancedLauncher/Components/e_mod_loader.hpp"
+#include "TAKEnhancedLauncher/components/e_mod_loader.hpp"
 #include <TAKEnhancedDll/Utils.hpp>
 #include <TAKEnhancedDll/Wrappers/Defs.h>
 #include <DKy/files.hpp>
@@ -46,6 +46,8 @@ void e_mod_loader::move_items(
 }
 
 void e_mod_loader::initialize() {
+    this->bgcolor(default_bgcolor);
+
     this->lbl_listbox1 = std::make_shared<nana::label>(*this, "Available Mods:");
     this->add_widget(this->lbl_listbox1, "listbox1");
 

@@ -1,4 +1,4 @@
-#include "TAKEnhancedLauncher/Components/e_dialog.hpp"
+#include "TAKEnhancedLauncher/components/e_dialog.hpp"
 
 e_dialog::e_dialog(std::string title, std::string text, std::string helpText, nana::rectangle rect)
     : nana::form(rect, nana::appearance(1, 1, 1, 0, 0, 0, 1))

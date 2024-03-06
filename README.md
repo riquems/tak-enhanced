@@ -11,11 +11,19 @@ It's totally compatible with other 4.1bb versions.</p>
 <img src="imgs/colorful-hpbars.png"><br/>
 <b>Colorful HP Bars</b></div>
 <br/>
+<br/>
+
+<div align="center"> 
+<img src="imgs/rotate-buildings.gif" width="50%" height="60%"/><br/>
+<b>Rotate Buildings</b></div>
+<br/>
+<br/>
 
 <div align="center">
 <img src="imgs/before-melee-fix.gif" width="40%" height="40%"/>&nbsp<img src="imgs/after-melee-fix.gif" width="40%" height="40%"/><br>
 Melee Stuck Fix
 </div>
+<br/>
 <br/>
 
 <div align="center"> 
@@ -55,7 +63,7 @@ New badass icon</div>
 <div align="center">
   <img src="imgs/main.png"/><br>
   The main tab<br>
-  It contains general changes of interest for gameplay.
+  It contains general tweaks of interest for gameplay.
 </div>
 
 <br>
@@ -69,8 +77,8 @@ New badass icon</div>
 <br>
 
 <div align="center">
-  <img src="imgs/hp-bars.png" /><br/>
-  Many HP Bar Options... Allows you to see your enemy's HP!
+  <img src="imgs/game-options.png" /><br/>
+  Game Options<br> Allows you to see your enemy's HP and tweak friendly fire options!
 </div>
 
 <br>
@@ -78,7 +86,7 @@ New badass icon</div>
 <div align="center">
   <img src="imgs/keybindings.png"/><br>
   Keybindings<br>
-  Currently allows selecting buildings from the building menu using the keyboard.
+  Allows tweaking shortcuts for new commands introduced, such as SelectBuilding, RotateBuilding and SetUnitStance.
 </div>
 
 <br>

@@ -175,7 +175,7 @@ void applyMeleeStuckFix()
     MemoryHandler::insertFunctionCall((DWORD) &createNavGoalRingAdjusted, 0x004BAA);
 
     // 3rd point
-    MemoryHandler::writeJZ(Memory(0x04A5A, 0x04A60), 0x04B46);
+    MemoryHandler::writeJZ(0x04A5A, 0x04B46);
 
     MemoryHandler::fillWithNOPs(0x004B46, 0x004B4F);
 

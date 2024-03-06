@@ -3,20 +3,22 @@
 #include "TAKEnhancedDll/Changes/RandomRace.hpp"
 #include "TAKEnhancedDll/Changes/OffscreenFix.hpp"
 #include "TAKEnhancedDll/Changes/SearchBox.hpp"
-#include "TAKEnhancedDll/Commands/Command.hpp"
 #include "TAKEnhancedDll/GlobalState.hpp"
 #include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
+#include "TAKEnhancedDll/Commands/ExecuteCommand.hpp"
 
 #include <iostream>
-#include <queue>
 #include "ddraw.h"
 #include <Utils/Window.hpp>
 #include <Utils/Keyboard.hpp>
+#include <Utils/HelperFunctions.hpp>
 #include <TAKCore/Commands.h>
 #include <TAKCore/Functions/Functions.h>
 #include <Utils/Timer.hpp>
 #include <thread>
+#include <TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommand.hpp>
+#include <TAKEnhancedLibrary/Keys/KeyComparator.hpp>
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -76,34 +78,61 @@ std::vector<int> singleShotKeys = {
 
 std::vector<int> specialKeys = { VK_CTRL };
 
-void processInputSequence(std::queue<int>& sequence)
-{
-    for (KeyBinding keyBinding : userConfig->keyBindings) {
-        if (keyBinding.keyCombination.keys.empty())
-            continue;
+bool keybindingMatch(const KeyBinding& keyBinding, std::vector<short> pressedKeys) {
+    if (keyBinding.keyCombination.keys.empty())
+        return false;
 
-        int i = 0;
-
-        std::queue<int> sequenceCopy = sequence;
-        while (!sequenceCopy.empty()) {
-            int key = sequenceCopy.front();
-
-            if (keyBinding.keyCombination.keys[i] != key) {
-                break;
+    for (auto& pressedKey : pressedKeys) {
+        bool contains = dky::contains(keyBinding.keyCombination.keys,
+            [&](const Key& key) {
+                return KeyComparator::isLike(key, pressedKey);
             }
+        );
 
-            sequenceCopy.pop();
-
-            i++;
-        }
-
-        if (sequenceCopy.empty()) {
-            keyBinding.command.execute();
-        }
+        if (!contains)
+            return false;
     }
 
-    while (!sequence.empty()) {
-        sequence.pop();
+    for (auto& key : keyBinding.keyCombination.keys) {
+        bool contains = dky::contains(pressedKeys,
+            [&](const short& pressedKey) {
+                return KeyComparator::isLike(key, pressedKey);
+            }
+        );
+
+        if (!contains)
+            return false;
+    }
+
+    return true;
+}
+
+void handleInputs(KeyboardState& keyboardState)
+{
+    auto pressedKeysMap = dky::unordered_map::filter(keyboardState.keys,
+        [](std::pair<short, KeyState> entry)->bool {
+            return entry.second == KeyState::JustPressed || entry.second == KeyState::Pressed;
+        }
+    );
+
+    auto pressedKeys = dky::map(
+        std::vector<std::pair<short, KeyState>>(pressedKeysMap.begin(), pressedKeysMap.end()),
+        [](const std::pair<short, KeyState>& elem) {
+            return elem.first;
+        }
+    );
+
+    if (pressedKeys.empty())
+        return;
+
+    /*json j = pressedKeys;
+    logger->debug("Pressed keys: %s", j.dump().c_str());*/
+
+    for (const KeyBinding& keyBinding : userConfig->keyBindings) {
+        if (!keybindingMatch(keyBinding, pressedKeys))
+            continue;
+
+        executeCommand(*keyBinding.command);
     }
 }
 
@@ -184,6 +213,31 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             break;
         }
+        case WM_MOUSEWHEEL: {
+            short keys = GET_KEYSTATE_WPARAM(wParam);
+            short delta = GET_WHEEL_DELTA_WPARAM(wParam);
+
+            auto& orientation = delta > 0 ? RotateOrientation::CounterClockwise : RotateOrientation::Clockwise;
+
+            if (keys & MK_CONTROL) {
+                executeCommand(RotateBuildingCommand(
+                    RotateBuildingCommandParams {
+                        .orientation = orientation,
+                        .step = 90
+                    }
+                ));
+            }
+            else {
+                executeCommand(RotateBuildingCommand(
+                    RotateBuildingCommandParams{
+                        .orientation = orientation,
+                        .step = 5
+                    }
+                ));
+            }
+
+            break;
+        }
         case WM_STYLECHANGED:
             logger->debug("[Windows] WM_STYLECHANGED");
 
@@ -252,7 +306,6 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
     bool hasTriggeredOnFirstGameLoading = false;
     bool hasTriggeredOnInitialize = false;
 
-    int keyCode;
     while (true) {
         if (!hasTriggeredOnFirstGameLoading && firstLoad) {
             hasTriggeredOnFirstGameLoading = true;
@@ -273,7 +326,6 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
         
         // if (!game->typing_state())
 
-        std::queue<int> sequence;
 
         /*auto specialKeysHit = [&]()->std::pair<bool, int> {
             for (int specialKey : specialKeys) {
@@ -292,9 +344,28 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
         }*/
 
         if (isKeyDown(VK_CONTROL)) {
-            if (isKeyDown(VK_S)) {
+            if (isKeyDown(VK_H)) {
                 uintptr_t unitAddress = gameWrapper->getMouseHoveredUnitAddress();
                 std::cout << std::hex << unitAddress << std::endl;
+            }
+            else if (isKeyDown(VK_S)) {
+                auto selectedUnits = gameWrapper->getSelectedUnits();
+
+                if (!selectedUnits.empty()) {
+                    auto msg = std::accumulate(
+                        selectedUnits.begin(),
+                        selectedUnits.end(),
+                        std::string("Selected Units: "),
+                        [&](std::string prev, std::shared_ptr<UnitWrapper> next) {
+                            return prev + next->name() + (next != *(selectedUnits.end() - 1) ? ", " : ".");
+                        }
+                    );
+
+                    logger->debug("%s", msg.c_str());
+                }
+                else {
+                    logger->debug("There are no selected units");
+                }
             }
             else if (isKeyDown(VK_F)) {
                 TryToInitializeSearchBox();
@@ -317,16 +388,9 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
             Sleep(10);
         }
 
-        keyCode = _mykbhit();
-        
-        if (!keyCode) {
-            Sleep(10);
-            continue;
-        }
+        auto kbState = MyGetKeyboardState();
 
-        sequence.push(keyCode);
-
-        processInputSequence(sequence);
+        handleInputs(*kbState);
 
 
         /*if (isKeyDown(VK_J)) {

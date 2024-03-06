@@ -19,13 +19,13 @@ enum class LogLevel
 
 struct LogToConfig
 {
-    bool console;
-    std::string file;
+    bool console = true;
+    std::string file = "TAKEnhancedLog.txt";
 };
 
 struct LoggerConfig
 {
-    LogLevel minimumLevel;
+    LogLevel minimumLevel = LogLevel::Information;
     LogToConfig logTo;
 };
 
@@ -39,11 +39,11 @@ NLOHMANN_JSON_SERIALIZE_ENUM(LogLevel, {
     { LogLevel::Fatal, "Fatal" }
 });
 
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(
     LogToConfig, console, file
 )
 
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(
     LoggerConfig, minimumLevel, logTo
 )
 

@@ -1,4 +1,5 @@
 #include "TAKEnhancedDll/Changes/OffscreenFix.hpp"
+#include "TAKEnhancedDll/GlobalState.hpp"
 #include "Utils/Windows.hpp"
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
 #include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
@@ -27,7 +28,7 @@ void startOffscreenMonitor()
                 PlayerWrapper player = gameWrapper->players[i];
                 
                 if (!gameWrapper->match->isRunning()) {
-                    std::cout << "Stopping OffScreen Monitor..." << std::endl;
+                    logger->info("Stopping OffScreen Monitor...");
                     is_offscreen_monitor_thread_running = false;
                     return;
                 }
@@ -50,7 +51,7 @@ void startOffscreenMonitorThread()
 {
     gameWrapper->refreshPlayersWrappers();
 
-    std::cout << "Starting OffScreen Monitor..." << std::endl;
+    logger->info("Starting OffScreen Monitor...");
     std::thread offscreen_monitor_thread(startOffscreenMonitor);
     offscreen_monitor_thread.detach();
 

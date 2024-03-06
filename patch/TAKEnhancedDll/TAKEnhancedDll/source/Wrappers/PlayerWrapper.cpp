@@ -1,4 +1,5 @@
 #include "TAKEnhancedDll/Wrappers/PlayerWrapper.h"
+#include "TAKEnhancedDll/Wrappers/UnitWrapper.h"
 
 PlayerWrapper::PlayerWrapper(Player* player)
 {

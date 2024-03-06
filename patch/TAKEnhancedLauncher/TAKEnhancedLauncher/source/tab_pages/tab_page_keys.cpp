@@ -1,4 +1,6 @@
 #include "TAKEnhancedLauncher/tab_pages/tab_page_keys.hpp"
+#include "TAKEnhancedLauncher/Components/e_prompt.hpp"
+
 #include <iostream>
 
 nana::listbox::iresolver& operator>>(nana::listbox::iresolver& irs, KeyBindingListItem& kb)
@@ -44,6 +46,8 @@ tab_page_keys::tab_page_keys(
 
 void tab_page_keys::initialize()
 {
+    this->bgcolor(default_bgcolor);
+
     addOnSpacebarOption();
     addOnDoubleClickOption();
     addOnTripleClickOption();
@@ -61,6 +65,17 @@ void tab_page_keys::initialize()
     btn_clear = std::make_shared<nana::button>(*this, "Clear");
     this->add_widget(btn_clear, "actionButtons");
 
+    lb_keyBindings->events().dbl_click([&]() {
+        nana::listbox::index_pairs items = lb_keyBindings->selected();
+
+        if (items.size() == 0)
+            return;
+
+        nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
+
+        this->edit_keybinding(item);
+    });
+
     btn_edit->events().click(
         [&]() {
             nana::listbox::index_pairs items = lb_keyBindings->selected();
@@ -70,28 +85,7 @@ void tab_page_keys::initialize()
 
             nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
 
-            KeyBindingListItem kb;
-            item.resolve_to(kb);
-
-            e_dialog keyBindingForm(
-                kb.command,
-                kb.keyBinding,
-                "Hit any Key...",
-                nana::API::make_center(160, 110)
-            );
-                
-            keyBindingForm.events().key_press(
-                [&](nana::arg_keyboard args) {
-                    int keyPressed = args.key;
-
-                    item.text(1, this->keys->get(keyPressed).value().name);
-
-                    keyBindingForm.close();
-                }
-            );
-
-            keyBindingForm.show();
-            nana::exec();
+            this->edit_keybinding(item);
         }
     );
 
@@ -102,11 +96,38 @@ void tab_page_keys::initialize()
             if (items.size() == 0)
                 return;
 
-            nana::listbox::item_proxy item = lb_keyBindings->at(items.at(0));
+            for (int i = 0; i < items.size(); i++) {
+                nana::listbox::item_proxy item = lb_keyBindings->at(items.at(i));
 
-            item.text(1, keys->get(VK_NONE).value().name);
+                item.text(1, "None");
+            }
         }
     );
+}
+
+void tab_page_keys::edit_keybinding(nana::listbox::item_proxy& item) {
+    KeyBindingListItem kb;
+    item.resolve_to(kb);
+
+    e_prompt keyBindingPrompt(
+        "Edit Key Combination",
+        item.text(1),
+        nana::API::make_center(185, 100)
+    );
+
+    keyBindingPrompt.on_save = [&](std::string result) {
+        if (result.empty()) {
+            item.text(1, "None");
+        }
+        else {
+            item.text(1, result);
+        }
+
+        keyBindingPrompt.close();
+    };
+
+    keyBindingPrompt.show();
+    nana::exec();
 }
 
 void addComboxOptions(std::shared_ptr<nana::combox> cbb, std::vector<std::string> options) {
@@ -162,7 +183,7 @@ void tab_page_keys::draw()
         <                                                                                    \
             <max=200 arrange=[15, 25, repeated] vert gap=[3, 10, repeated] clickOptions>     \
             <max=10>                                                                         \
-            <max=249 keyBindingsList>                                                        \
+            <keyBindingsList>                                                                \
             <max=10>                                                                         \
             <max=80 arrange=30 vert gap=5 actionButtons>                                     \
         >"
@@ -179,10 +200,10 @@ void tab_page_keys::load()
 
     for (KeyBinding entry : this->userConfig->keyBindings) {
         KeyCombination keyCombination = entry.keyCombination;
-        Command command = entry.command;
+        std::shared_ptr<Command> command = entry.command;
 
         KeyBindingListItem keyBindingListItem = {
-            this->commandStringParser->toString(command),
+            this->commandStringParser->toString(*command),
             this->keyCombinationStringParser->toString(keyCombination)
         };
 
@@ -192,6 +213,8 @@ void tab_page_keys::load()
     category.model<std::recursive_mutex>(std::move(keyBindingsListItems), value_translator, cell_translator);
 
     e_panel::load();
+
+    lb_keyBindings->column_at(0).fit_content();
 }
 
 void tab_page_keys::commit()
@@ -201,7 +224,7 @@ void tab_page_keys::commit()
     this->userConfig->keyBindings.clear();
 
     for (KeyBindingListItem keyBinding : keyBindings) {
-        Command command = this->commandStringParser->fromString(keyBinding.command);
+        std::shared_ptr<Command> command = this->commandStringParser->fromString(keyBinding.command);
         KeyCombination keyCombination = this->keyCombinationStringParser->fromString(keyBinding.keyBinding);
 
         this->userConfig->keyBindings.push_back(KeyBinding{ keyCombination, command });

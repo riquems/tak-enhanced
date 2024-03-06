@@ -9,7 +9,6 @@ main_form::main_form(
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
         std::shared_ptr<Presets> presets,
-        std::shared_ptr<PresetApplier> presetApplier,
         std::shared_ptr<Commands> commands,
         std::shared_ptr<Keys> keys,
         std::shared_ptr<CommandStringParser> commandStringParser,
@@ -21,7 +20,6 @@ main_form::main_form(
         gameConfig(gameConfig),
         userConfig(userConfig),
         presets(presets),
-        presetApplier(presetApplier),
         commands(commands),
         keys(keys),
         commandStringParser(commandStringParser),
@@ -44,8 +42,10 @@ void main_form::commit_all()
 {
     this->commit();
     tp_main->commit();
-    tp_patches->commit();
-    tp_hp_bars->commit();
+    tp_game_options->commit();
+    tp_game_options->hp_bars_options->commit();
+    tp_game_options->friendly_fire_options_group->commit();
+
     tp_keys->commit();
 }
 
@@ -77,6 +77,22 @@ void main_form::initialize()
             nana::exec();
         }
     );*/
+
+    this->events().key_press(
+        [&](nana::arg_keyboard args) {
+            auto key = this->keys->get(args.key);
+
+            if (key == Keys::Return) {
+                nana::API::emit_event(nana::event_code::click, *this->btn_play, nana::arg_click());
+            }
+        }
+    );
+
+    nana::API::enum_widgets(*this, true, [&](nana::widget& child_widget) {
+        nana::API::events(child_widget).key_press.connect([&](const nana::arg_keyboard& arg) {
+            nana::API::emit_event(nana::event_code::key_press, *this, arg);
+        });
+    });
 }
 
 void main_form::draw() {
@@ -106,14 +122,14 @@ void main_form::addTabs() {
     tabs->bgcolor(default_bgcolor);
 
     addMainTab();
-    addPatchesTab();
-    addHpBarsTab();
+    addGameOptionsTab();
     addKeysTab();
 
     layout->field("tabs") << *tabs;
-    layout->field("content").fasten(*tp_main).fasten(*tp_patches).fasten(*tp_hp_bars).fasten(*tp_keys);
+    layout->field("content").fasten(*tp_main).fasten(*tp_game_options).fasten(*tp_keys);
 
     tabs->activated(0);
+    tp_main->focus();
 }
 
 void main_form::addMainTab() {
@@ -131,22 +147,14 @@ void main_form::addMainTab() {
     tabs->append(tp_main->name, *tp_main);
 }
 
-void main_form::addPatchesTab() {
-    tp_patches = std::make_shared<tab_page_patches>(this->handle(), this->gameConfig);
-    tp_patches->on_state_changed_callback = [&]() {
+void main_form::addGameOptionsTab() {
+    tp_game_options = std::make_shared<tab_page_game_options>(this->handle(), this->gameConfig, this->logger);
+
+    tp_game_options->on_state_changed_callback = [&]() {
         this->on_state_changed();
     };
 
-    tabs->append(tp_patches->name, *tp_patches);
-}
-
-void main_form::addHpBarsTab() {
-    tp_hp_bars = std::make_shared<tab_page_hp_bars>(this->handle(), this->gameConfig, this->logger);
-    tp_hp_bars->on_state_changed_callback = [&]() {
-        this->on_state_changed();
-    };
-
-    tabs->append(tp_hp_bars->name, *tp_hp_bars);
+    tabs->append(tp_game_options->name, *tp_game_options);
 }
 
 void main_form::addKeysTab() {
@@ -158,6 +166,7 @@ void main_form::addKeysTab() {
         this->commandStringParser,
         this->keyCombinationStringParser
     );
+
     tp_keys->on_state_changed_callback = [&]() {
         this->on_state_changed();
     };
@@ -174,7 +183,7 @@ void main_form::addPlayButton() {
 
             files::move(this->launcherConfig->modsPath, exePath, {
                 .filenames = &this->gameConfig->mods.selectedMods
-            });
+                });
 
             nana::API::exit_all();
         }
@@ -244,12 +253,24 @@ void main_form::addPresetPicker()
                 btn_save->enabled(true);
             }
             else {
-                std::optional<Preset> preset = this->presets->get(preset_name);
+                std::optional<Preset> maybePreset = this->presets->get(preset_name);
 
-                if (!preset.has_value())
+                if (!maybePreset.has_value())
                     return;
 
-                this->presetApplier->applyPreset(preset.value(), *this->gameConfig);
+                auto& preset = maybePreset.value();
+
+                logger->debug("Loading %s preset...", preset.name.c_str());
+
+                *this->gameConfig = preset;
+
+                logger->debug("Preset loaded successfully: ");
+
+                json j = *this->gameConfig;
+
+                logger->debug("%s", j.dump(4).c_str());
+
+                logger->debug("Reloading the UI to reflect changes...", preset.name);
 
                 this->reload_all();
                 this->make_all_readonly();
@@ -306,18 +327,20 @@ void main_form::reload_all()
 {
     tp_main   ->reload();
     tp_keys   ->reload();
-    tp_patches->reload();
-    tp_hp_bars->reload();
+    tp_game_options->reload();
+    tp_game_options->hp_bars_options->reload();
+
+    this->on_state_changed();
 }
 
 void main_form::make_all_editable()
 {
     tp_main   ->make_editable();
-    tp_patches->make_editable();
+    tp_game_options->make_editable();
 }
 
 void main_form::make_all_readonly()
 {
     tp_main   ->make_readonly();
-    tp_patches->make_readonly();
+    tp_game_options->make_readonly();
 }

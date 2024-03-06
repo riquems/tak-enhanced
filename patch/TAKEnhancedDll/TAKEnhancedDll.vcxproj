@@ -20,11 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClCompile Include="TAKEnhancedDll\source\mystd.cpp" /> -->
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Commands.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandStringParser.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\FriendlyFire.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\ManaModifier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\SightDistanceModifier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Changes\WorkerTimeModifier.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandHandlers.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\ExecuteCommand.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\RotateBuildingCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\SelectBuildingCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\SetUnitStanceCommandHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\DllMain.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Command.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombination.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\MemoryHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\ShellCode.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Presets\Presets.cpp" />
@@ -36,27 +41,26 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\App.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandJsonParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Commands.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandStringParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Param.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Params.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\FriendlyFire.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ManaModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\SightDistanceModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\WorkerTimeModifier.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CommandHandlers.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\ExecuteCommand.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\RotateBuildingCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SelectBuildingCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SetUnitStanceCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\FriendlyFireSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\LauncherConfig.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\ModifiersSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\KeyboardInputHook.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\Command.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationJsonParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Key.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\Keys.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombinationStringParser.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\KeyBinding.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Keys\KeyCombination.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\MemoryHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\ShellCode.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Memory\Memory.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Preset.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\PresetApplier.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Presets\Presets.hpp" />
     <ClCompile Include="TAKEnhancedDll\source\TAKEnhancedService.cpp">
       <FileType>CppCode</FileType>
@@ -80,12 +84,7 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ShowEveryoneHealthBars.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\GlobalState.hpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Param.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\Params.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Configs\CustomizableHpBarsSettings.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Commands\CommandJsonParser.cpp">
-      <FileType>CppCode</FileType>
-    </ClCompile>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\ShowHpHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ToggleUnitsAuras.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp" />
@@ -99,13 +98,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\ReadSideDataHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\UpdateGuiHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\WeaponsHook.hpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationStringParser.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Keys\Keys.cpp">
-      <FileType>CppCode</FileType>
-    </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Keys\KeyCombinationJsonParser.cpp">
-      <FileType>CppCode</FileType>
-    </ClCompile>
     <ClCompile Include="TAKEnhancedDll\source\Hooks\GameInitHook.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
@@ -151,7 +143,6 @@
     <ClCompile Include="TAKEnhancedDll\source\Memory\Memory.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
-    <ClCompile Include="TAKEnhancedDll\source\Presets\PresetApplier.cpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\TAKEnhancedService.hpp">
       <FileType>CppHeader</FileType>
     </ClInclude>
@@ -246,7 +237,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>TAKEnhanced</TargetName>
-    <OutDir>C:\Cavedog\Kingdoms\TAKEnhanced\</OutDir>
+    <OutDir>C:\Cavedog\Kingdoms\TAKEnhanced</OutDir>
     <IntDir>.vs\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -299,7 +290,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\TAKEnhancedDll\TAKEnhancedDll\include;..\TAKEnhancedLauncher\TAKEnhancedLauncher\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\TAKEnhancedLibrary\TAKEnhancedLibrary\include;..\TAKEnhancedDll\TAKEnhancedDll\include;..\TAKEnhancedLauncher\TAKEnhancedLauncher\include;..\TAKLibrary\TAKLibrary\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\include;..\Utils\include;..\TAKCore\TAKCore\include;C:\Program Files %28x86%29\OpenSSL-Win32\include;C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include</AdditionalIncludeDirectories>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
@@ -310,9 +301,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>DKy.lib;nana_v143_Release_x86_Zp1.lib;libcrypto32MT.lib;Utils.lib;TAKLibrary.lib;TAKEnhancedLauncher.lib;TAKCore.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DKy.lib;TAKEnhancedLibrary.lib;nana_v143_Release_x86_Zp1.lib;libcrypto32MT.lib;Utils.lib;TAKLibrary.lib;TAKEnhancedLauncher.lib;TAKCore.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkStatus>false</LinkStatus>
-      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Program Files (x86)\OpenSSL-Win32\lib\VC;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\bin\Release;..\package</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\nana\build\bin;C:\Program Files (x86)\OpenSSL-Win32\lib\VC;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\bin\Release;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\package</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

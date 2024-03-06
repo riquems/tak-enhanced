@@ -1,5 +1,6 @@
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
 #include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
+#include <TAKEnhancedDll/GlobalState.hpp>
 
 std::shared_ptr<GameWrapper> gameWrapper;
 
@@ -13,7 +14,7 @@ extern "C" __declspec(dllexport) uintptr_t __stdcall newCreateGraphicObjectFromJ
 GameWrapper::GameWrapper(GameInterfaceHandler* uiHandler, uintptr_t baseAddress)
 {
     _game = std::make_shared<Game>(baseAddress);
-    _gameInterfaceManager = std::make_shared<GameInterfaceManager>(uiHandler, baseAddress);
+    gameInterfaceManager = std::make_shared<GameInterfaceManager>(uiHandler, baseAddress);
 
     _baseAddress = baseAddress;
 
@@ -42,12 +43,12 @@ void GameWrapper::refreshPlayersWrappers()
 
 void GameWrapper::onInitialize()
 {
-    std::cout << "[Event] OnInitialize" << std::endl;
+    logger->info("[Event] OnInitialize");
 }
 
 void GameWrapper::onFirstGameLoading()
 {
-    std::cout << "[Event] OnFirstGameLoading" << std::endl;
+    logger->info("[Event] OnFirstGameLoading");
 
     oldCreateGraphicObjectFromJPG = (createGraphicObjectFromJPG_t)(this->_baseAddress + FunctionsOffsets::createGraphicObjectFromJPG);
 
@@ -88,26 +89,26 @@ void GameWrapper::onFirstGameLoading()
 
 bool GameWrapper::isBuildMenuOpen()
 {
-    std::shared_ptr<BuildMenu*> build_menu = _gameInterfaceManager->getBuildMenu();
+    BuildMenu* build_menu = gameInterfaceManager->getBuildMenu();
 
-    if (build_menu == nullptr || build_menu.get() == nullptr) {
+    if (build_menu == nullptr) {
         return false;
     }
 
-    return (*build_menu.get())->visible;
+    return build_menu->visible;
 }
 
 bool GameWrapper::isInWriteMode()
 {
-    return _gameInterfaceManager->isInWriteMode();
+    return gameInterfaceManager->isInWriteMode();
 }
 
 void GameWrapper::selectBuilding(int pos)
 {
-    std::shared_ptr<BuildMenu*> build_menu = _gameInterfaceManager->getBuildMenu();
+    BuildMenu* build_menu = gameInterfaceManager->getBuildMenu();
 
-    if (build_menu == nullptr || build_menu.get() == nullptr)
-        return;  
+    if (build_menu == nullptr)
+        return;
 
     BuildMenuWrapper build_menu_wrapper(build_menu, this->_baseAddress);
     build_menu_wrapper.reinitializeButtonsWrappers();
@@ -115,14 +116,9 @@ void GameWrapper::selectBuilding(int pos)
     if (pos > build_menu_wrapper.buttons.size())
         return;
 
-    BuildButtonWrapper* build_button = &build_menu_wrapper.buttons[pos - 1];
+    BuildButtonWrapper build_button = build_menu_wrapper.buttons[pos - 1];
 
-    build_button->click();
-}
-
-void GameWrapper::switchSelectedUnitHumor(int humorId)
-{
-
+    build_button.click();
 }
 
 void GameWrapper::setHpBarColor(Player* player, CustomizableHpBarSetting hpColorOptions)
@@ -156,6 +152,48 @@ void GameWrapper::setHpBarColor(Player* player, CustomizableHpBarSetting hpColor
 uintptr_t GameWrapper::getMouseHoveredUnitAddress()
 {
     return _game->getMouseHoveredUnitAddress();
+}
+
+std::shared_ptr<UnitWrapper> GameWrapper::getMouseHoveredUnit()
+{
+    Unit* unit = (Unit*) this->getMouseHoveredUnitAddress();
+
+    if (unit == nullptr)
+        return nullptr;
+
+    return std::make_shared<UnitWrapper>(unit);
+}
+
+std::vector<std::shared_ptr<UnitWrapper>> GameWrapper::getSelectedUnits()
+{
+    std::vector<Unit*> selectedUnits = _game->getSelectedUnits();
+
+    std::vector<std::shared_ptr<UnitWrapper>> selectedUnitsResult;
+
+    std::transform(
+        selectedUnits.begin(),
+        selectedUnits.end(),
+        std::back_inserter(selectedUnitsResult),
+        [&](Unit* unit) {
+            return std::make_shared<UnitWrapper>(unit);
+        }
+    );
+
+    return selectedUnitsResult;
+}
+
+void GameWrapper::setUnitStance(const UnitStance& stance) {
+    Window* unitMenu = this->gameInterfaceManager->getUnitMenu();
+
+    if (unitMenu == nullptr)
+        return;
+
+    Window* button = this->gameInterfaceManager->getButton(unitMenu, stance.name);
+
+    if (button == nullptr)
+        return;
+
+    this->gameInterfaceManager->onClickRadioButton(button);
 }
 
 void GameWrapper::activateDeveloperMode()
@@ -194,6 +232,42 @@ bool GameWrapper::isAlly(Player* player)
     uint8_t unitPlayerTeamId = player->playerViewModel->teamId;
 
     if (!isMe(player) && myTeamId == unitPlayerTeamId && unitPlayerTeamId != 4) { // 4 = No team
+        return true;
+    }
+
+    return false;
+}
+
+bool GameWrapper::areAllies(Player* p1, Player* p2)
+{
+    if (p1 == p2)
+        return false;
+
+    uint8_t p1TeamId = p1->playerViewModel->teamId;
+    uint8_t p2TeamId = p2->playerViewModel->teamId;
+
+    bool p1HasTeam = p1TeamId != 4;
+    bool p2HasTeam = p2TeamId != 4;
+
+    if (p1HasTeam && p2HasTeam && p1TeamId == p2TeamId) {
+        return true;
+    }
+
+    return false;
+}
+
+bool GameWrapper::areAllies(int p1, int p2)
+{
+    if (p1 == p2)
+        return false;
+
+    uint8_t p1TeamId = players[p1].getTeamId();
+    uint8_t p2TeamId = players[p2].getTeamId();
+
+    bool p1HasTeam = p1TeamId != 4;
+    bool p2HasTeam = p2TeamId != 4;
+
+    if (p1HasTeam && p2HasTeam && p1TeamId == p2TeamId) {
         return true;
     }
 
