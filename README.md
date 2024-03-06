@@ -12,6 +12,11 @@ It's totally compatible with other 4.1bb versions.</p>
 <b>Colorful HP Bars</b></div>
 <br/>
 
+<div align="center"> 
+<img src="imgs/rotate-buildings.gif" width="30%" height="40%"/><br/>
+<b>Rotate Buildings</b></div>
+<br/>
+
 <div align="center">
 <img src="imgs/before-melee-fix.gif" width="40%" height="40%"/>&nbsp<img src="imgs/after-melee-fix.gif" width="40%" height="40%"/><br>
 Melee Stuck Fix
