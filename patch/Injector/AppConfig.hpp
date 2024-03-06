@@ -4,9 +4,9 @@
 
 struct AppConfig
 {
-    std::string dll;
-    std::string target;
-    bool debugMode;
+    std::string dll = "TAKEnhanced/TAKEnhanced.dll";
+    std::string target = "Kingdoms.icd";
+    bool debugMode = false;
     LoggerConfig logger;
 };
 
