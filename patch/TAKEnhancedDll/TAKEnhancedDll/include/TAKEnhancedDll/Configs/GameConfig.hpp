@@ -10,6 +10,7 @@ struct ModsSettings : GameSetting
     bool enabled = true;
     std::vector<std::string> selectedMods = {
         "TAK Enhanced.hpi",
+        "3D Models Fix.hpi",
         "Aimtolerance Fix.hpi",
         "Colorful HP Bars.hpi",
         "Elsin Fix.hpi",
