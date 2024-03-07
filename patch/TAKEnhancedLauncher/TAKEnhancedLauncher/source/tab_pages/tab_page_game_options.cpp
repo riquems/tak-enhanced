@@ -63,8 +63,6 @@ void tab_page_game_options::initialize()
     this->friendly_fire_options_group->add_widget(this->cb_allyProjectileCollision, "");
     this->friendly_fire_options_group->add_binding(create_checkbox_binding(this->cb_allyProjectileCollision, this->gameConfig->friendlyFire.allyProjectileCollision));
     (*this->friendly_fire_options_group)["friendly_fire_options"] << *this->cb_allyProjectileCollision;
-
-    this->friendly_fire_options_group->load();
 }
 
 void tab_page_game_options::draw()
@@ -88,4 +86,28 @@ void tab_page_game_options::update()
     else {
         sb_forcedMinRangeForMelees->enabled(false);
     }
+}
+
+void tab_page_game_options::load() {
+    this->friendly_fire_options_group->load();
+
+    e_panel::load();
+}
+
+void tab_page_game_options::reload() {
+    this->friendly_fire_options_group->reload();
+
+    e_panel::reload();
+}
+
+void tab_page_game_options::make_readonly() {
+    this->friendly_fire_options_group->make_readonly();
+
+    e_panel::make_readonly();
+}
+
+void tab_page_game_options::make_editable() {
+    this->friendly_fire_options_group->make_editable();
+
+    e_panel::make_editable();
 }

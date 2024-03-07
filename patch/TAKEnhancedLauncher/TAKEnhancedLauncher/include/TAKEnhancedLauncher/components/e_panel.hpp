@@ -17,8 +17,8 @@ public:
     void add_widget(std::shared_ptr<nana::widget> widget, std::string field = "");
     void add_binding(std::shared_ptr<e_binding> binding);
     void draw();
-    void load();
-    void reload();
+    virtual void load();
+    virtual void reload();
     void commit();
 
     std::function<void()> on_state_changed_callback = []() {};

@@ -70,11 +70,11 @@ public:
     void addOnCtrlDoubleClickOption();
 
     void draw();
-    void load();
 
     void commit();
 
-    void reload();
+    void load() override;
+    void reload() override;
 
     std::vector<KeyBindingListItem> get_keyBindings();
 };

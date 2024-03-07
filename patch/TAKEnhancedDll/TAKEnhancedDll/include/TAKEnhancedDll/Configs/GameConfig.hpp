@@ -10,6 +10,7 @@ struct ModsSettings : GameSetting
     bool enabled = true;
     std::vector<std::string> selectedMods = {
         "TAK Enhanced.hpi",
+        "3D Models Fix.hpi",
         "Aimtolerance Fix.hpi",
         "Colorful HP Bars.hpi",
         "Elsin Fix.hpi",
@@ -42,7 +43,7 @@ struct GameConfig
     GameSetting noSideCulling;
     uint maxUnits = 5000;
     uint pathfindingCycles = 100000;
-    GameSetting developerMode = GameSetting { .enabled = true };
+    GameSetting developerMode;
     ModsSettings mods;
     GameSetting noCD = GameSetting { .enabled = true };
     GameSetting offscreenFix = GameSetting { .enabled = true };

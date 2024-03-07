@@ -31,23 +31,35 @@ extern "C" __declspec(dllexport) bool __stdcall weaponShouldPassThrough()
     return shouldPassThrough;
 }
 
-extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
+struct DamageUnitArgs
 {
+    char padding1[0x08];
+    uint8_t weaponType;
+    char padding2[0x0B];
     Unit* subject;
     Unit* target;
-    uint8_t weaponType;
+};
+
+extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
+{
+    DamageUnitArgs* args = nullptr;
 
     __asm {
-        mov subject, ebx
-        mov target, esi
-        mov dl, byte ptr [edi + 0x08]
-        mov weaponType, dl
+        mov args, edi
     }
+
+    uint8_t weaponType = args->weaponType;
+    Unit* subject = args->subject;
+    Unit* target = args->target;
 
     if (weaponType == 0x0C)
     {
         // default heal handling
         __asm {
+            pop edi
+            pop esi
+            pop ecx
+
             mov	esp, ebp
             pop	ebp
 
@@ -68,6 +80,10 @@ extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
         {
             // do nothing
             __asm {
+                pop edi
+                pop esi
+                pop ecx
+
                 mov	esp, ebp
                 pop	ebp
 
@@ -84,6 +100,10 @@ extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
         {
             // do nothing
             __asm {
+                pop edi
+                pop esi
+                pop ecx
+
                 mov	esp, ebp
                 pop	ebp
 
@@ -99,6 +119,10 @@ extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
 
     // default damage handling
     __asm {
+        pop edi
+        pop esi
+        pop ecx
+
         mov	esp, ebp
         pop	ebp
 

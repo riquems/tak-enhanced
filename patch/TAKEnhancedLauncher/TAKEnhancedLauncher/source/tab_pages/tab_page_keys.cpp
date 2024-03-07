@@ -236,7 +236,7 @@ void tab_page_keys::commit()
 void tab_page_keys::reload()
 {
     lb_keyBindings->clear();
-    load();
+    e_panel::reload();
 }
 
 std::vector<KeyBindingListItem> tab_page_keys::get_keyBindings() {

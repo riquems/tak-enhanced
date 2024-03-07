@@ -38,4 +38,10 @@ public:
     void initialize();
     void draw();
     void update();
+
+    void load() override;
+    void reload() override;
+
+    void make_editable() override;
+    void make_readonly() override;
 };
