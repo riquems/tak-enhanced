@@ -70,7 +70,8 @@ public:
     void commit();
     void draw();
     void reset();
-    void reload();
+
+    void reload() override;
     void make_editable() override;
     void make_readonly() override;
 };

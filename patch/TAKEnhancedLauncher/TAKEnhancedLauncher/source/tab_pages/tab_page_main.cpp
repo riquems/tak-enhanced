@@ -195,8 +195,10 @@ void tab_page_main::reset()
 void tab_page_main::reload()
 {
     this->reset();
-    this->load();
-    this->mod_loader->load();
+    this->mod_loader->reload();
+    this->grp_modifiers->reload();
+
+    e_panel::reload();
 }
 
 void tab_page_main::make_editable() {

@@ -38,4 +38,6 @@ public:
     void initialize();
     void draw();
     void update();
+    void load() override;
+    void reload() override;
 };
