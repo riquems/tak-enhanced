@@ -42,7 +42,7 @@ struct GameConfig
     GameSetting noSideCulling;
     uint maxUnits = 5000;
     uint pathfindingCycles = 100000;
-    GameSetting developerMode = GameSetting { .enabled = true };
+    GameSetting developerMode;
     ModsSettings mods;
     GameSetting noCD = GameSetting { .enabled = true };
     GameSetting offscreenFix = GameSetting { .enabled = true };
