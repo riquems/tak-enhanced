@@ -268,13 +268,17 @@ void executeCommand(std::string command) {
     );
 
     if (isTargetCommand) {
-        if (gameWrapper->getMouseHoveredUnitAddress() == NULL) {
+        if (!gameWrapper->match->isRunning() || gameWrapper->getMouseHoveredUnitAddress() == NULL) {
             logger->debug("Command is a target command and no unit is targetted at the moment. Skipping.");
             return;
         }
     }
     
     logger->debug("Executing command %s", command.c_str());
+
+    if (command == TAK::Commands::DoNothing)
+        return;
+
     TAK::Functions::executeCommand(command.c_str(), false);
 }
 
