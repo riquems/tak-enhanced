@@ -10,7 +10,8 @@
     "enabled": true,
     "selectedMods": [
       "TAK Enhanced.hpi",
-      "Colorful HP Bars.hpi"
+      "Colorful HP Bars.hpi",
+      "3D Models Fix.hpi"
     ]
   },
   "noCD": {
@@ -44,7 +45,7 @@
     "enabled": false,
     "forcedMinRangeForMelees": 40
   },
-  "useMapScript": {
+  "testMultiScript": {
     "enabled": false
   },
   "skipLogo": {
@@ -67,5 +68,16 @@
   },
   "noSideCulling": {
     "enabled": false
+  },
+  "friendlyFire": {
+    "allyDamage": true,
+    "allyProjectileCollision": true,
+    "selfDamage": true
+  },
+  "modifiers": {
+    "manaIncome": 1.0,
+    "manaStorage": 1.0,
+    "unitSight": 1.0,
+    "workerTime": 1.0
   }
 }
