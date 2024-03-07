@@ -89,7 +89,7 @@ void MemoryHandler::insertOpCode(OpCode opCode, DWORD at)
 void MemoryHandler::writeJZ(DWORD at, DWORD jumpTo)
 {
     jumpTo += baseAddress;
-    std::string relativeAddressStr = DWORDtoStr(getRelativeAddress<DWORD>(at, jumpTo, 2));
+    std::string relativeAddressStr = DWORDtoStr(getRelativeAddress<DWORD>(at + baseAddress, jumpTo, 2));
 
     ShellCode JMP_ShellCode("0F84" + relativeAddressStr, at);
     writeShellCode(JMP_ShellCode);
