@@ -99,3 +99,15 @@ void tab_page_game_options::reload() {
 
     e_panel::reload();
 }
+
+void tab_page_game_options::make_readonly() {
+    this->friendly_fire_options_group->make_readonly();
+
+    e_panel::make_readonly();
+}
+
+void tab_page_game_options::make_editable() {
+    this->friendly_fire_options_group->make_editable();
+
+    e_panel::make_editable();
+}
