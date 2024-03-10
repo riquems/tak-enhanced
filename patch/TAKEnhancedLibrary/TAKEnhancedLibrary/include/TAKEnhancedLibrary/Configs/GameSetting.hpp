@@ -1,5 +1,5 @@
 #pragma once
-#include "TAKEnhancedDll/Common.hpp"
+#include "TAKEnhancedLibrary/common.hpp"
 
 struct GameSetting
 {

@@ -1,5 +1,5 @@
 #pragma once
-#include "TAKEnhancedDll/Configs/GameSetting.hpp"
+#include "TAKEnhancedLibrary/Configs/GameSetting.hpp"
 
 namespace ShowMode {
     enum Enum { Invalid, Always, OnlyIfDamaged, Never };

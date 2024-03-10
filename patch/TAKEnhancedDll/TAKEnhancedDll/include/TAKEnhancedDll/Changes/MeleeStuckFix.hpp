@@ -5,10 +5,10 @@
 
 extern "C" __declspec(dllexport) void __stdcall createNavGoalRectAdjusted(DWORD mission, DWORD target);
 
-extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(Mission * mission);
+extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(TAKCore::Mission* mission);
 
-extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingMinDistance(Mission * mission);
+extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingMinDistance(TAKCore::Mission* mission);
 
-extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(Unit * unit, Unit * target, Weapon * weapon);
+extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(TAKCore::Unit* unit, TAKCore::Unit* target, TAKCore::Weapon* weapon);
 
 void applyMeleeStuckFix();

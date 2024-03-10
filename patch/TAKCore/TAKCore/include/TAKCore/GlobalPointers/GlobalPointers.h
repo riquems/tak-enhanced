@@ -3,7 +3,8 @@
 
 namespace GlobalPointers
 {
-    const uintptr_t ptr_22D55C = 0x22D55C;
+    const uintptr_t ptr_22D55C_Offset = 0x22D55C;
+    extern uintptr_t* ptr_22D55C;
 
     // 65DF00
     const uintptr_t RendererDevice = 0x25DF00;

@@ -5,65 +5,67 @@
 #include "Weapon.h"
 #include "Aura.h"
 
-class UnitInfo
+namespace TAKCore
 {
-public:
-    char name[32];
-    char shortName[32];
+    struct UnitInfo
+    {
+        char name[32];
+        char shortName[32];
 
-    char padding1[230];
+        char padding1[230];
 
-    uint16_t footprintX;
-    uint16_t footprintZ;
+        uint16_t footprintX;
+        uint16_t footprintZ;
 
-    char padding2[100];
+        char padding2[100];
 
-    uint16_t turnrate;
-    uint16_t turninplacerate;
+        uint16_t turnrate;
+        uint16_t turninplacerate;
 
-    char padding3[24];
+        char padding3[24];
 
-    Weapon* weapon1;
-    Weapon* weapon2;
-    Weapon* weapon3;
+        Weapon* weapon1;
+        Weapon* weapon2;
+        Weapon* weapon3;
 
-    char padding4[8];
+        char padding4[8];
 
-    uint32_t maxDamage;
-    uint16_t experiencePoints;
+        uint32_t maxDamage;
+        uint16_t experiencePoints;
 
-    char padding5[6];
+        char padding5[6];
 
-    Aura armorAura;
+        Aura armorAura;
 
-    char padding6[7];
+        char padding6[7];
 
-    Aura attackAura;
+        Aura attackAura;
 
-    char padding7[7];
+        char padding7[7];
 
-    Aura joyAura;
+        Aura joyAura;
 
-    char padding8[52];
+        char padding8[52];
 
-    float buildcost;
-    float buildtime;
+        float buildcost;
+        float buildtime;
 
-    char padding9[8];
+        char padding9[8];
 
-    float healtime;
+        float healtime;
 
-    char padding10[4];
+        char padding10[4];
 
-    uint32_t sightdistance;
+        uint32_t sightdistance;
 
-    char padding11[8];
+        char padding11[8];
 
-    uint32_t maneuverleashlength;
+        uint32_t maneuverleashlength;
 
-    char padding12[68];
+        char padding12[68];
 
-    char bodytype[6];
+        char bodytype[6];
 
-    char padding13[38];
-};
+        char padding13[38];
+    };
+}

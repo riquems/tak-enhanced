@@ -8,7 +8,7 @@
 
 *******************************************************************/
 
-extern bool is_offscreen_monitor_thread_running;
+extern bool offscreenMonitorThreadRunning;
 
 void startOffscreenMonitor();
 

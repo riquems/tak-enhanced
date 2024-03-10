@@ -4,6 +4,8 @@
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
 #include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 #include <thread>
+#include "TAKEnhancedLibrary/Units/Unit.hpp"
+#include "TAKEnhancedLibrary/Players/Players.hpp"
 
 /******************************************************************
 
@@ -13,31 +15,26 @@
 
 *******************************************************************/
 
-bool is_offscreen_monitor_thread_running = false;
+bool offscreenMonitorThreadRunning = false;
 
 void startOffscreenMonitor()
 {
-    if (gameWrapper->players.empty()) {
-        throw std::exception("Players Wrappers array is empty.                                   \
-                              It must be initialized in order to use the offscreen functionality!");
-    }
-
     while (true) {
-        for (int i = 0; i < gameWrapper->players.size(); i++) {
-            for (int j = 0; j < gameWrapper->players[i].units.size(); j++) {
-                PlayerWrapper player = gameWrapper->players[i];
-                
-                if (!gameWrapper->match->isRunning()) {
-                    logger->info("Stopping OffScreen Monitor...");
-                    is_offscreen_monitor_thread_running = false;
-                    return;
-                }
+        if (!gameWrapper->match->isRunning()) {
+            logger->info("Stopping OffScreen Monitor...");
+            offscreenMonitorThreadRunning = false;
+            return;
+        }
 
-                UnitWrapper unit = player.units[j];
+        auto players = TAKEnhancedLibrary::GetPlayers();
 
-                if (unit.isInitialized()) {
-                    if (unit.isFlying() && unit.getZpos() < unit.getYpos() * 0.55) {
-                        unit.setZpos(50 + unit.getYpos() * 0.55);
+        for (auto& player : players) {
+            auto units = player->units();
+
+            for (auto& unit : units) {
+                if (unit->isInitialized()) {
+                    if (unit->isFlying() && unit->getZpos() < unit->getYpos() * 0.55) {
+                        unit->setZpos(50 + unit->getYpos() * 0.55);
                     }
                 }
             }
@@ -49,11 +46,9 @@ void startOffscreenMonitor()
 
 void startOffscreenMonitorThread()
 {
-    gameWrapper->refreshPlayersWrappers();
-
     logger->info("Starting OffScreen Monitor...");
     std::thread offscreen_monitor_thread(startOffscreenMonitor);
     offscreen_monitor_thread.detach();
 
-    is_offscreen_monitor_thread_running = true;
+    offscreenMonitorThreadRunning = true;
 }

@@ -243,6 +243,8 @@
     <ClInclude Include="TAKCore\include\TAKCore\TAKCore.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Config.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Models\UI\Events\LButtonUpClickArgs.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\Players\Players.hpp" />
+    <ClInclude Include="TAKCore\include\TAKCore\Graphics\Graphics.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKCore\source\ModelsExtensions\WindowExtensions.cpp" />
@@ -256,5 +258,8 @@
     <ClCompile Include="TAKCore\source\Functions\Functions.cpp" />
     <ClCompile Include="TAKCore\source\Commands.cpp" />
     <ClCompile Include="TAKCore\source\Config.cpp" />
+    <ClCompile Include="TAKCore\source\Graphics\Graphics.cpp" />
+    <ClCompile Include="TAKCore\source\Players\Players.cpp" />
+    <ClCompile Include="TAKCore\source\GlobalPointers\GlobalPointers.cpp" />
   </ItemGroup>
 </Project>

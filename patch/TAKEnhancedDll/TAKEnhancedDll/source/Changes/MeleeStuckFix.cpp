@@ -9,6 +9,7 @@
 #include "TAKCore/Models/GameMath.h"
 #include "TAKCore/Models/Weapon.h"
 #include "TAKCore/Models/MovementHandler.h"
+#include "TAKCore/Models/PathNavigator.h"
 
 extern "C" __declspec(dllexport) void __stdcall createNavGoalRectAdjusted(DWORD mission, DWORD target)
 {
@@ -27,11 +28,11 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRectAdjusted(DWORD 
     }
 }
 
-extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(Mission* mission)
+extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(TAKCore::Mission* mission)
 {
     DWORD createNavGoalRingFunctionAddress = FunctionsOffsets::createNavGoalRing + baseAddress;
 
-    Unit* unit = mission->unit;
+    TAKCore::Unit* unit = mission->unit;
 
     uint8_t selectedWeaponId = (unit->encodedSelectedWeaponId >> 6) % 3;
 
@@ -39,11 +40,11 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(Missio
 
     uint32_t weapon1Addr = (uint32_t) &(unit->weapon1);
 
-    Weapon* weapon = *(Weapon**) (weapon1Addr + offset);
+    TAKCore::Weapon* weapon = *(TAKCore::Weapon**) (weapon1Addr + offset);
 
     uint32_t range = weapon->range;
     uint32_t minRange = currentGameConfig->meleeStuckFix.forcedMinRangeForMelees;
-    MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
+    TAKCore::MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
     __asm {
         push minRange        // minRange
@@ -54,13 +55,13 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingAdjusted(Missio
     }
 }
 
-extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingMinDistance(Mission* mission)
+extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingMinDistance(TAKCore::Mission* mission)
 {
     DWORD canAttackFunctionAddress = FunctionsOffsets::canAttack + baseAddress;
     DWORD createNavGoalRingFunctionAddress = FunctionsOffsets::createNavGoalRing + baseAddress;
 
-    Unit* unit = mission->unit;
-    Unit* target = mission->targetUnit;
+    TAKCore::Unit* unit = mission->unit;
+    TAKCore::Unit* target = mission->targetUnit;
 
     uint8_t selectedWeaponId = (unit->encodedSelectedWeaponId >> 6) % 3;
 
@@ -68,7 +69,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingM
 
     uint32_t weapon1Addr = (uint32_t) & (unit->weapon1);
 
-    Weapon* weapon = *(Weapon**) (weapon1Addr + offset);
+    TAKCore::Weapon* weapon = *(TAKCore::Weapon**) (weapon1Addr + offset);
 
     int cannotAttack = 0;
     __asm {
@@ -79,13 +80,13 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingM
         mov cannotAttack, eax   // 0 = can attack, 1 = cannot attack
     }
 
-    NavGoal* lastNavGoal = unit->movementHandler->pathNavigator->navGoal;
+    TAKCore::NavGoal* lastNavGoal = unit->movementHandler->pathNavigator->navGoal;
 
     if (cannotAttack && lastNavGoal == nullptr)
     {
         uint32_t range = weapon->range + 30;
         uint32_t minRange = currentGameConfig->meleeStuckFix.forcedMinRangeForMelees + 30;
-        MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
+        TAKCore::MapPosition* xDestination = &(mission->targetUnit->xMapPosition);
 
         __asm {
             push minRange        // minRange
@@ -97,7 +98,7 @@ extern "C" __declspec(dllexport) void __stdcall createNavGoalRingWithIncreasingM
     }
 }
 
-extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(Unit* unit, Unit* target, Weapon* weapon)
+extern "C" __declspec(dllexport) bool __stdcall new_MeleeCanAttack(TAKCore::Unit* unit, TAKCore::Unit* target, TAKCore::Weapon* weapon)
 {
     Point unitPosition(unit->xMapPosition.mapPosition, unit->zMapPosition.mapPosition);
     Point targetPosition(target->xMapPosition.mapPosition, target->zMapPosition.mapPosition);

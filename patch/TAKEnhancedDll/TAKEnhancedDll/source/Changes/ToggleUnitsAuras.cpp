@@ -4,7 +4,7 @@
 #include <TAKCore/Models/Unit.h>
 #include <TAKEnhancedDll/Wrappers/GameWrapper.h>
 
-std::unordered_map<Unit*, UnitInfo*> unitsWithDisabledAura;
+//std::unordered_map<Unit*, UnitInfo*> unitsWithDisabledAura;
 
 void ToggleSelectedUnitAura()
 {

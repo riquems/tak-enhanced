@@ -1,7 +1,7 @@
 #pragma once
 #include "TAKEnhancedDll/common.hpp"
-#include "GameSetting.hpp"
-#include "CustomizableHpBarsSettings.hpp"
+#include "TAKEnhancedLibrary/Configs/GameSetting.hpp"
+#include "TAKEnhancedLibrary/Configs/CustomizableHpBarsSettings.hpp"
 #include "TAKEnhancedDll/Configs/ModifiersSettings.hpp"
 #include "TAKEnhancedDll/Configs/FriendlyFireSettings.hpp"
 

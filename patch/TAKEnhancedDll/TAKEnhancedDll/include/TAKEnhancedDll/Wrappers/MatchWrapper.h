@@ -1,7 +1,6 @@
 #pragma once
 
 #include "TAKEnhancedDll/common.hpp"
-#include "PlayerWrapper.h"
 
 class GameWrapper;
 

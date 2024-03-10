@@ -1,6 +1,9 @@
 #pragma once
 
-class WeaponType
+namespace TAKCore
 {
+    struct WeaponType
+    {
 
-};
+    };
+}

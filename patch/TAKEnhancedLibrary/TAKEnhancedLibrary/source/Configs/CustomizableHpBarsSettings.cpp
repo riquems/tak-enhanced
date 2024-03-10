@@ -1,4 +1,4 @@
-#include "TAKEnhancedDll/Configs/CustomizableHpBarsSettings.hpp"
+#include "TAKEnhancedLibrary/Configs/CustomizableHpBarsSettings.hpp"
 
 std::unordered_map<ShowMode::Enum, std::string> showModeToString = {
     std::pair(ShowMode::Always, "Always"),

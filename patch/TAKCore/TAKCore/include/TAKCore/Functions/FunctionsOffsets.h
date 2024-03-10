@@ -9,7 +9,7 @@ namespace FunctionsOffsets
     extern const uintptr_t createNavGoalRect;
     extern const uintptr_t canAttack;
     extern const uintptr_t changeSelectedItem;
-    extern const uintptr_t getMouseHoveredUnitAddress;
+    extern const uintptr_t getMouseHoveredUnit;
 
     extern const uintptr_t oldGetWindow;
     extern const uintptr_t getChildWindow;
@@ -17,8 +17,6 @@ namespace FunctionsOffsets
     extern const uintptr_t onClickRadioButton;
 
     extern const uintptr_t buildButtonClick;
-
-    extern const uintptr_t createGraphicObjectFromJPG;
 
     extern const uintptr_t executeCommand;
 }

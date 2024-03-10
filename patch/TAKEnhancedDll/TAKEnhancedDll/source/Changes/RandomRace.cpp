@@ -36,7 +36,7 @@ void TryToChooseRandomRace()
     if (WindowExtensions::isBattleMenu(currentWindow, baseAddress))
     {
         DWORD* gamePtr = (DWORD*) (0x22D55C + baseAddress);
-        Player* players = (Player*) (*gamePtr + 0x2404);
+        TAKCore::Player* players = (TAKCore::Player*) (*gamePtr + 0x2404);
 
         srand(HelperFunctions::GetMilliseconds());
 

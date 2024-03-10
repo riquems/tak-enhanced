@@ -52,7 +52,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SelectBuildingCommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\SetUnitStanceCommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\FriendlyFireSettings.hpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameSetting.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\LauncherConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\ModifiersSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\UserConfig.hpp" />
@@ -84,7 +83,6 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ShowEveryoneHealthBars.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\GameConfig.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\GlobalState.hpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Configs\CustomizableHpBarsSettings.cpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\ShowHpHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\ToggleUnitsAuras.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\common.hpp" />
@@ -135,7 +133,6 @@
     <ClCompile Include="TAKEnhancedDll\source\Changes\SearchBox.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.cpp" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Configs\CustomizableHpBarsSettings.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Managers\GameInterfaceManager.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Managers\WindowManager.h" />
     <ClCompile Include="TAKEnhancedDll\source\Managers\GameInterfaceManager.cpp" />
@@ -152,10 +149,7 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\ChooseMapMenuWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\Defs.h" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\MapPositionWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\MatchWrapper.h" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\PlayerWrapper.h" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\UnitWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\WeaponWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Utils.hpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\BattleMenuWrapper.cpp" />
@@ -165,10 +159,7 @@
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\Defs.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\GameFunctions.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\GameWrapper.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Wrappers\MapPositionWrapper.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\MatchWrapper.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Wrappers\PlayerWrapper.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Wrappers\UnitWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />

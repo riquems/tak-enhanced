@@ -3,7 +3,7 @@
 #include <TAKCore/Models/Unit.h>
 #include <TAKEnhancedDll/Wrappers/WeaponWrapper.h>
 
-std::unordered_map<Weapon*, WeaponExtension> weaponsMap;
+//std::unordered_map<Weapon*, WeaponExtension> weaponsMap;
 
 __declspec(dllexport) void __stdcall WeaponOnHitPropertiesHook()
 {    

@@ -1,10 +1,10 @@
 #pragma once
 #include "PathNavigator.h"
 
-class MovementHandler
+namespace TAKCore
 {
-public:
-    PathNavigator* pathNavigator;
-};
-
-
+    struct MovementHandler
+    {
+        PathNavigator* pathNavigator;
+    };
+}

@@ -22,13 +22,11 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TAKLibrary\source\Game.cpp" />
     <ClCompile Include="TAKLibrary\source\GameInterface.cpp" />
-    <ClCompile Include="TAKLibrary\source\RendererDevice.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAKLibrary\include\Common.hpp" />
     <ClInclude Include="TAKLibrary\include\Game.hpp" />
     <ClInclude Include="TAKLibrary\include\GameInterface.hpp" />
-    <ClInclude Include="TAKLibrary\include\RendererDevice.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

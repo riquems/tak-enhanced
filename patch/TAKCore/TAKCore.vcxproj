@@ -22,6 +22,9 @@
     <ClCompile Include="TAKCore\source\Commands.cpp" />
     <ClCompile Include="TAKCore\source\Config.cpp" />
     <ClCompile Include="TAKCore\source\Functions\Functions.cpp" />
+    <ClCompile Include="TAKCore\source\GlobalPointers\GlobalPointers.cpp" />
+    <ClCompile Include="TAKCore\source\Graphics\Graphics.cpp" />
+    <ClCompile Include="TAKCore\source\Players\Players.cpp" />
     <ClCompile Include="TAKCore\source\TAKCore.cpp" />
     <ClInclude Include="TAKCore\include\common.h" />
     <ClInclude Include="TAKCore\include\Functions\FunctionsOffsets.h" />
@@ -89,6 +92,7 @@
     <ClInclude Include="TAKCore\include\TAKCore\GameDefs.h" />
     <ClInclude Include="TAKCore\include\TAKCore\GlobalPointers\GlobalPointers.h" />
     <ClInclude Include="TAKCore\include\TAKCore\Commands.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\Graphics\Graphics.hpp" />
     <ClInclude Include="TAKCore\include\TAKCore\ModelsExtensions\BattleMenuExtensions.h" />
     <ClInclude Include="TAKCore\include\TAKCore\ModelsExtensions\ChooseMapMenuExtensions.h" />
     <ClInclude Include="TAKCore\include\TAKCore\ModelsExtensions\GadgetExtensions.h" />
@@ -148,6 +152,7 @@
     <ClCompile Include="TAKCore\source\ModelsExtensions\GadgetExtensions.cpp" />
     <ClCompile Include="TAKCore\source\ModelsExtensions\InGameDesktopExtensions.cpp" />
     <ClCompile Include="TAKCore\source\ModelsExtensions\WindowExtensions.cpp" />
+    <ClInclude Include="TAKCore\include\TAKCore\Players\Players.hpp" />
     <ClInclude Include="TAKCore\include\TAKCore\TAKCore.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

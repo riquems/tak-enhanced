@@ -102,7 +102,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
-      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\Utils\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\TAKEnhancedLibrary\TAKEnhancedLibrary\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\HenriqueMS\Desktop\DK\Programming\cpp\libs\DKy\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\Utils\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\TAKEnhancedLibrary\TAKEnhancedLibrary\include;C:\Users\HenriqueMS\Desktop\DK\TAK\My Projects\TAK Enhanced\patch\TAKCore\TAKCore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -162,6 +162,10 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SetUnitStance\SetUnitStanceCommand.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\SetUnitStance\SetUnitStanceCommandStringParser.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\common.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Configs\CustomizableHpBarsSettings.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Configs\GameSetting.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Graphics\Graphics.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Graphics\HpBarRenderer.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\KeyBinding.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Keys\Key.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Keys\KeyCombination.hpp" />
@@ -169,6 +173,10 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Keys\KeyCombinationStringParser.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Keys\KeyComparator.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Keys\Keys.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\Player.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\Players.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Units\Unit.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Units\Units.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\CommandJsonParser.cpp" />
@@ -183,11 +191,18 @@
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\SelectBuilding\SelectBuildingCommandStringParser.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\SetUnitStance\SetUnitStanceCommand.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\SetUnitStance\SetUnitStanceCommandStringParser.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Configs\CustomizableHpBarsSettings.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Graphics\Graphics.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Graphics\HpBarRenderer.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyCombination.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyCombinationJsonParser.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyCombinationStringParser.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyComparator.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\Keys.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Players\Player.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Players\Players.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Units\Unit.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Units\Units.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

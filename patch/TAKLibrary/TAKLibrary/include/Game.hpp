@@ -14,12 +14,7 @@ public:
     Game(uintptr_t baseAddress);
 
     GameOptions* getGameOptions();
-    std::vector<Unit*> getSelectedUnits();
-    Player* getCurrentPlayer();
-    Player* getPlayers();
 
     Side* getSides();
     int getNumberOfSides();
-
-    uintptr_t getMouseHoveredUnitAddress();
 };

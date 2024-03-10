@@ -1,5 +1,8 @@
 #include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
+#include "TAKEnhancedLibrary/Players/Players.hpp"
+
+using namespace TAKEnhancedLibrary;
 
 MatchWrapper::MatchWrapper() {}
 MatchWrapper::MatchWrapper(GameWrapper* game) : _game(game) {}
@@ -9,13 +12,11 @@ bool MatchWrapper::isRunning() {
 }
 
 bool MatchWrapper::anyPlayerHaveAtLeastOneUnit() {
-    std::vector<PlayerWrapper>* players_wrappers = &_game->players;
+    auto players = TAKEnhancedLibrary::GetPlayers();
 
-    std::vector<PlayerWrapper>::iterator player_iterator = std::find_if(players_wrappers->begin(),
-        players_wrappers->end(),
-        [&](PlayerWrapper player) {
-            return player.getUnitsCount() > 0;
-        });
-
-    return player_iterator != players_wrappers->end();
+    return dky::contains(players,
+        [](const std::shared_ptr<Player>& player) {
+            return player->unitsCount() > 0;
+        }
+    );
 }
