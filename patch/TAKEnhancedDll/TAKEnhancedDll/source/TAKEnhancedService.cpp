@@ -19,6 +19,10 @@
 #include <thread>
 #include <TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommand.hpp>
 #include <TAKEnhancedLibrary/Keys/KeyComparator.hpp>
+#include "TAKEnhancedLibrary/Units/Units.hpp"
+#include "TAKEnhancedLibrary/Graphics/Graphics.hpp"
+
+using namespace TAKEnhancedLibrary;
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -268,7 +272,7 @@ void executeCommand(std::string command) {
     );
 
     if (isTargetCommand) {
-        if (!gameWrapper->match->isRunning() || gameWrapper->getMouseHoveredUnitAddress() == NULL) {
+        if (!gameWrapper->match->isRunning() || TAKEnhancedLibrary::GetMouseHoveredUnit() == nullptr) {
             logger->debug("Command is a target command and no unit is targetted at the moment. Skipping.");
             return;
         }
@@ -296,6 +300,8 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
 
     bindWndProc();
 
+    TAK::init(baseAddress);
+
     logger->context("TA:K Enhanced Service");
     logger->info("TA:K Enhanced Service started!");
 
@@ -305,16 +311,33 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
 
     HookVTable(&DirectDrawVTable, 5, (uintptr_t) &newBlt, oldBlt);*/
 
-    bool offscreenMonitorThreadRunning = false;
+    bool onFirstGameLoading = false;
+
+    bool matchIsRunning = false;
+    bool previousMatchIsRunning = false;
+    bool previousInLoadingScreen = false;
 
     bool hasTriggeredOnFirstGameLoading = false;
     bool hasTriggeredOnInitialize = false;
 
     while (true) {
-        if (!hasTriggeredOnFirstGameLoading && firstLoad) {
-            hasTriggeredOnFirstGameLoading = true;
-            gameWrapper->onFirstGameLoading();
+        if (!onFirstGameLoading && inLoadingScreen) {
+            onFirstGameLoading = true;
+            logger->info("[Event] OnFirstGameLoading");
+
+            if (currentGameConfig->developerMode.enabled) {
+                logger->info("Activating developer mode");
+                gameWrapper->activateDeveloperMode();
+            }
+
+            TAKEnhancedLibrary::hpBarRenderer->init();
         }
+        
+        if (!previousInLoadingScreen && inLoadingScreen) {
+            logger->info("[Event] Match has started!");
+        }
+
+        previousInLoadingScreen = inLoadingScreen;
 
         if (!hasTriggeredOnInitialize && TAKisInitialized) {
             hasTriggeredOnInitialize = true;
@@ -324,43 +347,23 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
         if (gameConfig->offscreenFix.enabled) {
             if (!offscreenMonitorThreadRunning && gameWrapper->match->isRunning()) {
                 startOffscreenMonitorThread();
-                offscreenMonitorThreadRunning = true;
             }
         }
-        
-        // if (!game->typing_state())
-
-
-        /*auto specialKeysHit = [&]()->std::pair<bool, int> {
-            for (int specialKey : specialKeys) {
-                if (GetAsyncKeyState(specialKey) & 0x8000) {
-                    return std::pair<bool, int>(true, specialKey);
-                }
-            }
-            
-            return std::pair<bool, int>(false, -1);
-        }();
-
-        bool specialKeyWasHit = specialKeysHit.first;
-
-        if (specialKeyWasHit) {
-            sequence.push(specialKeysHit.second);
-        }*/
 
         if (isKeyDown(VK_CONTROL)) {
             if (isKeyDown(VK_H)) {
-                uintptr_t unitAddress = gameWrapper->getMouseHoveredUnitAddress();
+                uintptr_t unitAddress = *(uintptr_t*) TAKEnhancedLibrary::GetMouseHoveredUnit()->raw;
                 std::cout << std::hex << unitAddress << std::endl;
             }
             else if (isKeyDown(VK_S)) {
-                auto selectedUnits = gameWrapper->getSelectedUnits();
+                auto selectedUnits = TAKEnhancedLibrary::GetSelectedUnits();
 
                 if (!selectedUnits.empty()) {
                     auto msg = std::accumulate(
                         selectedUnits.begin(),
                         selectedUnits.end(),
                         std::string("Selected Units: "),
-                        [&](std::string prev, std::shared_ptr<UnitWrapper> next) {
+                        [&](std::string prev, std::shared_ptr<Unit> next) {
                             return prev + next->name() + (next != *(selectedUnits.end() - 1) ? ", " : ".");
                         }
                     );
@@ -395,16 +398,6 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
         auto kbState = MyGetKeyboardState();
 
         handleInputs(*kbState);
-
-
-        /*if (isKeyDown(VK_J)) {
-            if (i > 2) {
-                i = 0;
-            }
-
-            gameWrapper->switchSelectedUnitHumor(i);
-            i++;
-        }*/
 
         Sleep(10);
     }

@@ -81,6 +81,30 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Keys\KeyComparator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\Player.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Units\Unit.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\Players.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Units\Units.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Graphics\Graphics.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Configs\CustomizableHpBarsSettings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Configs\GameSetting.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Graphics\HpBarRenderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\Param.cpp">
@@ -132,6 +156,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyComparator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Units\Unit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Players\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Units\Units.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Players\Players.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Graphics\HpBarRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Graphics\Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Configs\CustomizableHpBarsSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

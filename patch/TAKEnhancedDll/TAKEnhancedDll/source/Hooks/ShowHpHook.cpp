@@ -1,23 +1,30 @@
 #include "TAKEnhancedDll/Hooks/ShowHpHook.hpp"
 #include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
+#include "TAKEnhancedLibrary/Players/Players.hpp"
+#include "TAKEnhancedLibrary/Units/Unit.hpp"
+#include "TAKEnhancedLibrary/Graphics/Graphics.hpp"
 
 #include "TAKCore/Models/UnitInfo.h"
 
-typedef void (__stdcall *origShowHpFcn_t)(Unit*, unsigned int, unsigned int);
+using namespace TAKEnhancedLibrary;
+
+typedef void (__stdcall *origShowHpFcn_t)(TAKCore::Unit*, unsigned int, unsigned int);
 
 __declspec(dllexport) origShowHpFcn_t origShowHpFcn;
 
-extern "C" __declspec(dllexport) void __stdcall newShowHpFcn(Unit * unit, unsigned int posX, unsigned int posY)
+extern "C" __declspec(dllexport) void __stdcall newShowHpFcn(TAKCore::Unit* rawUnit, unsigned int posX, unsigned int posY)
 {
+    auto unit = std::make_shared<Unit>(rawUnit);
+
     std::string message;
     CustomizableHpBarSetting hpBarSetting;
 
-    if (gameWrapper->isMe(unit->player)) {
+    if (TAKEnhancedLibrary::IsMe(unit->player())) {
         message = "%s is mine.";
         hpBarSetting = currentGameConfig->customizableHpBars.mine;
     }
-    else if (gameWrapper->isAlly(unit->player)) {
+    else if (TAKEnhancedLibrary::IsAlly(unit->player())) {
         message = "%s is ally.";
         hpBarSetting = currentGameConfig->customizableHpBars.ally;
     }
@@ -33,15 +40,15 @@ extern "C" __declspec(dllexport) void __stdcall newShowHpFcn(Unit * unit, unsign
     }
     
     if (hpBarSetting.showMode == ShowMode::OnlyIfDamaged) {
-        if (unit->currentHealth > unit->unitInfo->maxDamage * 0.99) {
+        if (unit->hp() > unit->maxHp() * 0.99) {
             //logger->debug("%s => Unit is full hp, not going to show.");
             return;
         }
     }
 
-    gameWrapper->setHpBarColor(unit->player, hpBarSetting);
+    TAKEnhancedLibrary::hpBarRenderer->setNextHpBarColor(unit->player(), hpBarSetting);
 
-    origShowHpFcn(unit, posX, posY);
+    origShowHpFcn(unit->raw, posX, posY);
 }
 
 void installShowHpHook()

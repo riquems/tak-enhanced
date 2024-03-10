@@ -1,31 +1,23 @@
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
 #include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
-#include "TAKEnhancedDll/GlobalState.hpp"
 
-__declspec(dllexport) bool firstLoad = false;
+__declspec(dllexport) bool inLoadingScreen = false;
 
 // replaces the call to this empty function: 004FABC0
 // loading start
-__declspec(dllexport) void __stdcall LoadingScreenHook()
+__declspec(dllexport) void __stdcall LoadingScreenStartHook()
 {
-    if (!firstLoad) {
-        firstLoad = true;
-    }
+    inLoadingScreen = true;
 }
 
 __declspec(dllexport) void __stdcall LoadingScreenEndHook()
 {
-    if (currentGameConfig->developerMode.enabled) {
-        logger->info("Activating developer mode");
-        gameWrapper->activateDeveloperMode();
-    }
-
-    gameWrapper->initializePlayersWrappers();
+    inLoadingScreen = false;
 }
 
 void applyLoadingScreenHooks()
 {
-    MemoryHandler::insertFunctionCall((DWORD) &LoadingScreenHook, 0x1258E0);
+    MemoryHandler::insertFunctionCall((DWORD) &LoadingScreenStartHook, 0x1258E0);
 
     MemoryHandler::fillWithNOPs(Memory(0x125AC1, 0x125AC2));
 

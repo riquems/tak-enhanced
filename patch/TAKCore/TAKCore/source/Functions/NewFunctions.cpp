@@ -1,11 +1,13 @@
 #include "TAKCore/Functions/NewFunctions.h"
 
-uint8_t decodeWeaponId(uint8_t encodedWeaponId)
+using namespace TAKCore;
+
+uint8_t TAKCore::decodeWeaponId(uint8_t encodedWeaponId)
 {
     return (encodedWeaponId >> 6) % 3;
 }
 
-Weapon* getSelectedWeapon(Unit* unit)
+Weapon* TAKCore::getSelectedWeapon(Unit* unit)
 {
     uint8_t selectedWeaponId = decodeWeaponId(unit->encodedSelectedWeaponId);
 

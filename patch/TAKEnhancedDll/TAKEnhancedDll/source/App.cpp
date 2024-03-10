@@ -205,7 +205,6 @@ void _init()
 
     exePath = std::filesystem::current_path();
     baseAddress = getProcessBaseAddress("Kingdoms.icd");
-    TAK::init(baseAddress);
     logger->debug("Process base address loaded successfully.");
 
     hProcess = GetCurrentProcess();

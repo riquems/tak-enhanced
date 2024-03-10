@@ -1,12 +1,15 @@
 #pragma once
+#include "TAKCore/common.h"
 
-class PlayerViewModel
+namespace TAKCore
 {
-public:
-    char padding[133];
-    uint8_t sideId;
-    uint8_t colorId;
-    char padding2[3];
-    uint8_t teamId;
-    char padding3[5];
-};
+    struct PlayerViewModel
+    {
+        char padding[133];
+        uint8_t sideId;
+        uint8_t colorId;
+        char padding2[3];
+        uint8_t teamId;
+        char padding3[5];
+    };
+}

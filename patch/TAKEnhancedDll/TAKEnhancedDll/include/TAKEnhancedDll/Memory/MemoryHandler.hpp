@@ -16,6 +16,7 @@ namespace MemoryHandler
         PUSH_EBP = 0x55,
         PUSH_ESI = 0x56,
         PUSH_EDI = 0x57,
+        POP_EAX = 0x58,
         POP_EBX = 0x5B,
         POP_EBP = 0x5D,
         POP_ESI = 0x5E,

@@ -1,3 +1,5 @@
+#include "TAKEnhancedLibrary/Units/Units.hpp"
+#include "TAKEnhancedLibrary/Players/Players.hpp"
 #include "TAKEnhancedDll/Commands/RotateBuildingCommandHandler.hpp"
 #include "TAKEnhancedDll/GlobalState.hpp"
 
@@ -16,13 +18,13 @@ void RotateBuildingCommandHandler::handle(const RotateBuildingCommand& command) 
     auto& step = command.params.step;
     auto& orientation = command.params.orientation;
 
-    auto unit = gameWrapper->getMouseHoveredUnit();
+    auto unit = TAKEnhancedLibrary::GetMouseHoveredUnit();
 
     if (unit == nullptr)
         return;
 
     if (!currentGameConfig->developerMode.enabled) {
-        if (!gameWrapper->isMe(unit->player())) {
+        if (!TAKEnhancedLibrary::IsMe(unit->player())) {
             return;
         }
 

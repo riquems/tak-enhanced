@@ -1,10 +1,11 @@
 #pragma once
 #include "TAKCore/common.h"
 
-struct MapPosition
+namespace TAKCore
 {
-    char padding[2];
-    int16_t mapPosition;
-};
-
-
+    struct MapPosition
+    {
+        char padding[2];
+        int16_t mapPosition;
+    };
+}

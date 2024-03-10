@@ -2,6 +2,10 @@
 #include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
 #include "TAKCore/Models/Unit.h"
 #include "TAKEnhancedDll/GlobalState.hpp"
+#include "TAKEnhancedLibrary/Units/Unit.hpp"
+#include "TAKEnhancedLibrary/Players/Players.hpp"
+
+using namespace TAKEnhancedLibrary;
 
 extern "C" __declspec(dllexport) bool __stdcall weaponShouldPassThrough()
 {
@@ -11,21 +15,21 @@ extern "C" __declspec(dllexport) bool __stdcall weaponShouldPassThrough()
     }
 
     uint8_t weaponPlayerNumber = 0;
-    Unit* unitHit = nullptr;
+    TAKCore::Unit* unitHit = nullptr;
 
     __asm {
+        mov unitHit, edx
         mov al, byte ptr [ebx + 0x92]
         mov weaponPlayerNumber, al
-        mov unitHit, esi
     }
 
     bool shouldPassThrough =
-        weaponPlayerNumber == unitHit->player->playerId
-     || (!currentGameConfig->friendlyFire.allyProjectileCollision && gameWrapper->areAllies(weaponPlayerNumber, unitHit->player->playerId));
+        weaponPlayerNumber == unitHit->playerNumber
+     || (!currentGameConfig->friendlyFire.allyProjectileCollision && TAKEnhancedLibrary::AreAllies(weaponPlayerNumber, unitHit->playerNumber));
 
     __asm {
-        pop ecx
         pop edx
+        pop ecx
     }
 
     return shouldPassThrough;
@@ -36,8 +40,8 @@ struct DamageUnitArgs
     char padding1[0x08];
     uint8_t weaponType;
     char padding2[0x0B];
-    Unit* subject;
-    Unit* target;
+    TAKCore::Unit* subject;
+    TAKCore::Unit* target;
 };
 
 extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
@@ -45,72 +49,85 @@ extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
     DamageUnitArgs* args = nullptr;
 
     __asm {
+        push eax
+        push ecx
+        push edx
         mov args, edi
     }
 
     uint8_t weaponType = args->weaponType;
-    Unit* subject = args->subject;
-    Unit* target = args->target;
+    auto subject = std::make_shared<Unit>(args->subject);
+    auto target = std::make_shared<Unit>(args->target);
 
     if (weaponType == 0x0C)
     {
         // default heal handling
         __asm {
+            mov eax, baseAddress
+            mov dword ptr[ebp + 0x4], eax
+            add dword ptr[ebp + 0x4], 0x11A2F8
+
+            pop edx
+            pop ecx
+            pop eax
+
             pop edi
             pop esi
-            pop ecx
+            pop ebx
 
-            mov	esp, ebp
-            pop	ebp
-
-            add esp, 0x4
-            mov edx, baseAddress
-            add edx, 0x11A2F8
-            push edx
+            mov esp, ebp
+            pop ebp
 
             ret
         }
     }
+
     // is not Ctrl + D and is not buildings fading away
     if (weaponType != 0x5 && weaponType != 0xB)
     {
         if (!currentGameConfig->friendlyFire.selfDamage
-            && gameWrapper->isMe(subject->player)
-            && target->player == subject->player)
+            && TAKEnhancedLibrary::IsMe(subject->player())
+            && target->player() == subject->player())
         {
             // do nothing
             __asm {
+                mov eax, baseAddress
+                mov dword ptr[ebp + 0x4], eax
+                add dword ptr[ebp + 0x4], 0x11A648
+
+                pop edx
+                pop ecx
+                pop eax
+
                 pop edi
                 pop esi
-                pop ecx
+                pop ebx
 
-                mov	esp, ebp
-                pop	ebp
-
-                add esp, 0x4
-                mov edx, baseAddress
-                add edx, 0x11A648
-                push edx
+                mov esp, ebp
+                pop ebp
 
                 ret
             }
         }
 
-        if (!currentGameConfig->friendlyFire.allyDamage && gameWrapper->areAllies(subject->player, target->player))
+        if (!currentGameConfig->friendlyFire.allyDamage && TAKEnhancedLibrary::AreAllies(subject->player(), target->player()))
         {
             // do nothing
             __asm {
+                mov eax, baseAddress
+                mov dword ptr[ebp + 0x4], eax
+                add dword ptr[ebp + 0x4], 0x11A648
+
+                pop edx
+                pop ecx
+                pop eax
+
                 pop edi
                 pop esi
-                pop ecx
+                pop ebx
 
-                mov	esp, ebp
-                pop	ebp
-
-                add esp, 0x4
-                mov edx, baseAddress
-                add edx, 0x11A648
-                push edx
+                mov esp, ebp
+                pop ebp
 
                 ret
             }
@@ -119,17 +136,20 @@ extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
 
     // default damage handling
     __asm {
+        mov eax, baseAddress
+        mov dword ptr[ebp + 0x4], eax
+        add dword ptr[ebp + 0x4], 0x11A329
+
+        pop edx
+        pop ecx
+        pop eax
+
         pop edi
         pop esi
-        pop ecx
+        pop ebx
 
-        mov	esp, ebp
-        pop	ebp
-
-        add esp, 0x4
-        mov edx, baseAddress
-        add edx, 0x11A329
-        push edx
+        mov esp, ebp
+        pop ebp
 
         ret
     }
@@ -141,12 +161,36 @@ void applyFriendlyFirePatch() {
     MemoryHandler::insertFunctionCall((DWORD)&shouldDamageExt, 0x11A2F2);
 
     // patch for weapon passing through
+    // ground units
     MemoryHandler::fillWithNOPs(Memory(0x12A608, 0x12A618));
 
-    MemoryHandler::insertFunctionCall((DWORD) &weaponShouldPassThrough, 0x12A608);
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::PUSH_EAX, 0x12A608);
+    auto movEdxEsi = ShellCode("89F2", 0x12A609);
+    MemoryHandler::writeShellCode(movEdxEsi);
 
-    auto testAlAl = ShellCode("84C0", 0x12A60D);
+    MemoryHandler::insertFunctionCall((DWORD) &weaponShouldPassThrough, 0x12A60B);
+
+    auto testAlAl = ShellCode("84C0", 0x12A610);
     MemoryHandler::writeShellCode(testAlAl);
 
-    MemoryHandler::writeShortJNZ(0x12A60F, 0x12A64F);
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::POP_EAX, 0x12A612);
+
+    MemoryHandler::writeShortJNZ(0x12A613, 0x12A64F);
+
+    // for flying units
+    MemoryHandler::fillWithNOPs(Memory(0x12A6A1, 0x12A6AF));
+
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::PUSH_EAX, 0x12A6A1);
+
+    auto movEdxEax = ShellCode("89C2", 0x12A6A2);
+    MemoryHandler::writeShellCode(movEdxEax);
+
+    MemoryHandler::insertFunctionCall((DWORD) &weaponShouldPassThrough, 0x12A6A4);
+
+    auto testAlAl2 = ShellCode("84C0", 0x12A6A9);
+    MemoryHandler::writeShellCode(testAlAl2);
+
+    MemoryHandler::insertOpCode(MemoryHandler::OpCode::POP_EAX, 0x12A6AB);
+
+    MemoryHandler::writeShortJNZ(0x12A6AC, 0x12A6F3);
 }
