@@ -352,8 +352,11 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
 
         if (isKeyDown(VK_CONTROL)) {
             if (isKeyDown(VK_H)) {
-                uintptr_t unitAddress = *(uintptr_t*) TAKEnhancedLibrary::GetMouseHoveredUnit()->raw;
-                std::cout << std::hex << unitAddress << std::endl;
+                auto unit = TAKEnhancedLibrary::GetMouseHoveredUnit();
+                
+                if (unit) {
+                    std::cout << std::hex << unit->raw << std::endl;
+                }
             }
             else if (isKeyDown(VK_S)) {
                 auto selectedUnits = TAKEnhancedLibrary::GetSelectedUnits();
