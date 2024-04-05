@@ -87,7 +87,7 @@ extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
     {
         if (!currentGameConfig->friendlyFire.selfDamage
             && TAKEnhancedLibrary::IsMe(subject->player())
-            && target->player() == subject->player())
+            && *target->player() == *subject->player())
         {
             // do nothing
             __asm {
