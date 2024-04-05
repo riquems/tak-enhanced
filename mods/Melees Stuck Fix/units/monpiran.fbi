@@ -1,0 +1,67 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 202.5;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbefrozen = 1;
+	cantbetransported = 1;
+	category = MON BOAT ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = Monpiran_dead;
+	damagecategory = Monster;
+	defaultmissiontype = Standby_wander;
+	description = MON;
+	experiencepoints = 3;
+	floater = 1;
+	healtime = 0.84375;
+	maneuverleashlength = 500;
+	maxdamage = 100;
+	maxvelocity = 4;
+	movementclass = WATER2;
+	name = Piranha;
+	noshadow = 1;
+	noveteran = 1;
+	objectname = Monpiran;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = MON;
+	sightdistance = 170;
+	sonardistance = 500;
+	soundcategory = Monpiran;
+	soundclass = Monpiran;
+	standingunitorder = 2;
+	stone = monpiran_stone;
+	tedclass = Monster;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = Monpiran;
+	unitnumber = 181;
+	version = 1;
+	waterline = 1;
+}
+
+[WEAPON1]
+{
+	areaofeffect = 64;
+	name = Teeth;
+	range = 50;
+	reloadtime = 1;
+	soundhitclass = fist;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 800;
+	}
+}

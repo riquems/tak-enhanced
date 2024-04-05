@@ -1,0 +1,64 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	admultiplier = 1;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 825;
+	canattack = 1;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = LIF MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = lifsaber_dead;
+	defaultmissiontype = Standby_wander;
+	description = Animal;
+	experiencepoints = 4;
+	frozen = lifsaber_frozen;
+	healtime = 3.4375;
+	maneuverleashlength = 500;
+	maxdamage = 569;
+	maxvelocity = 2;
+	movementclass = GROUND3;
+	name = Saber Tooth Tiger;
+	noveteran = 1;
+	objectname = LIFSABER;
+	shadowart = shadow04;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = LIF;
+	sightdistance = 200;
+	soundcategory = LIFSABER;
+	soundclass = LIFSABER;
+	standingmoveorder = 2;
+	stone = lifsaber_stone;
+	tedclass = Animal;
+	turninplacerate = 2500;
+	turnrate = 2500;
+	unitname = LIFSABER;
+	unitnumber = 51;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	name = Claws;
+	range = 50;
+	reloadtime = 1.5;
+	soundhitclass = fist;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 105;
+	}
+}

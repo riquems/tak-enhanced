@@ -1,0 +1,100 @@
+[UNITINFO]
+{
+	acceleration = .5;
+	bloodcolor1 = 140 30 4;
+	bloodcolor2 = 150 30 50;
+	bloodcolor3 = 260 30 65;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = .3;
+	buildcost = 360000;
+	buildtime = 36000;
+	canattack = 1;
+	canhover = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = VER MELEE ATTACK MAGIC GOD;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	damagecategory = god;
+	defaultmissiontype = Standby;
+	description = Veruna;
+	experiencepoints = 1000;
+	healtime = 600;
+	maneuverleashlength = 2000;
+	maxdamage = 29999;
+	maxvelocity = 1.9;
+	movementclass = HOVER2;
+	name = Angel of Lihr;
+	noveteran = 1;
+	objectname = VERGOD;
+	radardistance = 25000;
+	roadmultiplier = 1.0;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = VER;
+	sightdistance = 2500;
+	soundcategory = VERGOD;
+	soundclass = VERGOD;
+	standingunitorder = 2;
+	tedclass = Veruna;
+	totalallowed = 1;
+	turninplacerate = 1200;
+	turnrate = 450;
+	unitname = VERGOD;
+	unitnumber = 500;
+	upright = 1;
+	version = 1;
+	waterline = 34;
+	watermultiplier = 1.5;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 8000;
+	areaofeffect = 110;
+	edgeeffectiveness = 0.8;
+	explosionclass = tsunamiexp;
+	name = Trident of the Angel;
+	range = 50;
+	reloadtime = 2.7;
+	soundhitclass = sword;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 13500;
+		monarch = 0.01;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 33000;
+	areaofeffect = 180;
+	builduptime = 1.2;
+	decaytime = 2.0;
+	duration = 9;
+	maxvariation = 4;
+	name = Water Vortex;
+	nimbus = 1;
+	range = 500;
+	reloadtime = 1.2;
+	soundhit = crestormlaunch5;
+	type = wandering;
+	variationtime = 1.5;
+	wanderendart = seaspoutend;
+	wanderloopart = seaspoutloop;
+	wanderstartart = seaspoutstart;
+	weaponvelocity = 45;
+
+	[DAMAGE]
+	{
+		default = 15000;
+		monarch = 0.01;
+	}
+}
