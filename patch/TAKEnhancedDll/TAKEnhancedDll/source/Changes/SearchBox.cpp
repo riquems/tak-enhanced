@@ -10,6 +10,7 @@
 #include <TAKEnhancedDll/Wrappers/ChooseMapMenuWrapper.h>
 #include <TAKEnhancedDll/Wrappers/BattleMenuWrapper.h>
 #include <Utils/Console.hpp>
+#include <Utils/Window.hpp>
 
 #define VK_BACKSPACE VK_BACK
 
@@ -135,7 +136,7 @@ void StartSearchBox(std::vector<std::string> maps)
 
         c = _getch();
 
-        HWND consoleWnd;
+        HWND wnd;
 
         switch (c)
         {
@@ -149,9 +150,10 @@ void StartSearchBox(std::vector<std::string> maps)
                 break;
             case VK_RETURN:
             case VK_ESCAPE:
-                consoleWnd = GetConsoleWindow();
-                FreeConsole();
-                PostMessage(consoleWnd, WM_CLOSE, NULL, NULL);
+                std::cout << std::endl << std::endl;
+                ConfigureConsole(600, 300, HWND_TOP, false);
+                wnd = GetThisWindow("Kingdoms");
+                SetForegroundWindow(wnd);
                 end = true;
                 break;
             case 0:
@@ -225,10 +227,15 @@ void TryToInitializeSearchBox()
 
 void InitializeSearchBox(Window* window)
 {
-    CloseConsole();
-    int numberOfLines = 5;
-    StartConsole(620, numberOfLines * 20, HWND_TOPMOST, false);
+    HWND kingdoms = FindWindow(NULL, "Kingdoms");
+    SetWindowPos(kingdoms, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
+    HWND console = FindWindow(NULL, "Kingdoms.icd");
+    SetForegroundWindow(console);
+
+    ConfigureConsole(600, 300, HWND_TOPMOST, true);
+
+    std::cout << std::endl;
     std::cout << "Start typing the name of the map to search for it." << std::endl;
     std::cout << "Press Esc or Enter after you're done." << std::endl;
     std::cout << "F3 goes to the next occurrence." << std::endl;

@@ -50,6 +50,9 @@ void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
         SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_POPUPWINDOW);
         consoleHeight -= titleBarHeight;
     }
+    else {
+        SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_SYSMENU);
+    }
 
     // SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_NOACTIVATE | SWP_NOOWNERZORDER);
     SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_SHOWWINDOW);

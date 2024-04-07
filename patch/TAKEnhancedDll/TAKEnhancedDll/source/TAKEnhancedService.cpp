@@ -73,22 +73,12 @@ using namespace TAKEnhancedLibrary;
 //    (*vTable)[targetFcnIndex] = newFunction;
 //}
 
-// Keys that should fire once only
-std::vector<int> singleShotKeys = {
-    VK_RETURN,
-    VK_R,
-    VK_S,
-    VK_K
-};
-
-std::vector<int> specialKeys = { VK_CTRL };
-
-bool keybindingMatch(const KeyBinding& keyBinding, std::vector<short> pressedKeys) {
-    if (keyBinding.keyCombination.keys.empty())
+bool keyCombinationMatch(const KeyCombination& keyCombination, std::vector<short> pressedKeys) {
+    if (keyCombination.keys.empty())
         return false;
 
     for (auto& pressedKey : pressedKeys) {
-        bool contains = dky::contains(keyBinding.keyCombination.keys,
+        bool contains = dky::contains(keyCombination.keys,
             [&](const Key& key) {
                 return KeyComparator::isLike(key, pressedKey);
             }
@@ -98,7 +88,7 @@ bool keybindingMatch(const KeyBinding& keyBinding, std::vector<short> pressedKey
             return false;
     }
 
-    for (auto& key : keyBinding.keyCombination.keys) {
+    for (auto& key : keyCombination.keys) {
         bool contains = dky::contains(pressedKeys,
             [&](const short& pressedKey) {
                 return KeyComparator::isLike(key, pressedKey);
@@ -130,26 +120,77 @@ void handleInputs(KeyboardState& keyboardState)
     if (pressedKeys.empty())
         return;
 
-    /*json j = pressedKeys;
-    logger->debug("Pressed keys: %s", j.dump().c_str());*/
+    json j = pressedKeys;
+    logger->debug("Pressed keys: %s", j.dump().c_str());
 
     for (const KeyBinding& keyBinding : userConfig->keyBindings) {
-        if (!keybindingMatch(keyBinding, pressedKeys))
+        if (!keyCombinationMatch(keyBinding.keyCombination, pressedKeys))
             continue;
 
         executeCommand(*keyBinding.command);
     }
-}
 
-auto singleShotKeysStillBeingHold = [&]()->bool {
-    for (int key : singleShotKeys) {
-        if (isKeyDown(key)) {
-            return true;
+    // todo: map all of them as commands
+
+    if (keyCombinationMatch({ Keys::Ctrl, Keys::H }, pressedKeys)) {
+        if (!TAKEnhancedLibrary::MatchIsRunning()) {
+            logger->debug("Not executing, Match is not running.");
+            return;
+        }
+
+        auto unit = TAKEnhancedLibrary::GetMouseHoveredUnit();
+
+        if (unit) {
+            std::cout << std::hex << unit->raw << std::endl;
         }
     }
 
-    return false;
-};
+    if (keyCombinationMatch({ Keys::Ctrl, Keys::S }, pressedKeys)) {
+        if (!TAKEnhancedLibrary::MatchIsRunning()) {
+            logger->debug("Not executing, Match is not running.");
+            return;
+        }
+
+        auto selectedUnits = TAKEnhancedLibrary::GetSelectedUnits();
+
+        if (!selectedUnits.empty()) {
+            auto msg = std::accumulate(
+                selectedUnits.begin(),
+                selectedUnits.end(),
+                std::string("Selected Units: "),
+                [&](std::string prev, std::shared_ptr<Unit> next) {
+                    return prev + next->name() + (next != *(selectedUnits.end() - 1) ? ", " : ".");
+                }
+            );
+
+            logger->debug("%s", msg.c_str());
+        }
+        else {
+            logger->debug("There are no selected units");
+        }
+    }
+
+    if (keyCombinationMatch({ Keys::Ctrl, Keys::F }, pressedKeys)) {
+        std::thread t([&]() {
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+            TryToInitializeSearchBox();
+        });
+        t.detach();
+    }
+
+    if (keyCombinationMatch({ Keys::Ctrl, Keys::R }, pressedKeys)) {
+        TryToChooseRandomRace();
+    }
+
+    if (keyCombinationMatch({ Keys::Ctrl, Keys::K }, pressedKeys)) {
+        // ToggleSelectedUnitAura();
+    }
+
+    if (keyCombinationMatch({ Keys::Alt, Keys::Return }, pressedKeys)) {
+        ToggleFullscreen();
+    }
+}
 
 void waitForTheGameToLaunch()
 {
@@ -179,17 +220,64 @@ typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM
 wndProc_t oldWndProc;
 bool bindingScheduled = false;
 Timer timer;
+KeyboardState state;
 
 LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
+        // https://learn.microsoft.com/en-us/windows/win32/inputdev/about-keyboard-input#keystroke-message-flags
         case WM_KEYDOWN:
-            if (wParam == VK_SPACE) {
+        case WM_KEYUP:
+        case WM_SYSKEYDOWN:
+        case WM_SYSKEYUP:
+        {
+            WORD vkCode = LOWORD(wParam);                                 // virtual-key code
+
+            WORD keyFlags = HIWORD(lParam);
+
+            WORD scanCode = LOBYTE(keyFlags);                             // scan code
+            BOOL isExtendedKey = (keyFlags & KF_EXTENDED) == KF_EXTENDED; // extended-key flag, 1 if scancode has 0xE0 prefix
+
+            if (isExtendedKey)
+                scanCode = MAKEWORD(scanCode, 0xE0);
+
+            BOOL wasKeyDown = (keyFlags & KF_REPEAT) == KF_REPEAT;        // previous key-state flag, 1 on autorepeat
+            WORD repeatCount = LOWORD(lParam);                            // repeat count, > 0 if several keydown messages was combined into one message
+
+            BOOL isKeyReleased = (keyFlags & KF_UP) == KF_UP;             // transition-state flag, 1 on keyup
+
+            // if we want to distinguish these keys:
+            switch (vkCode)
+            {
+            case VK_SHIFT:   // converts to VK_LSHIFT or VK_RSHIFT
+            case VK_CONTROL: // converts to VK_LCONTROL or VK_RCONTROL
+            case VK_MENU:    // converts to VK_LMENU or VK_RMENU
+                vkCode = LOWORD(MapVirtualKeyW(scanCode, MAPVK_VSC_TO_VK_EX));
+                break;
+            }
+
+            if (vkCode == VK_SPACE) {
                 logger->debug("Spacebar pressed");
                 TAKEnhancedLibrary::ExecuteCommand(userConfig->onSpacebar);
             }
-        break;
+
+            if (!isKeyReleased) {
+                if (wasKeyDown) {
+                    state.keys[vkCode] = KeyState::Pressed;
+                }
+                else {
+                    state.keys[vkCode] = KeyState::JustPressed;
+                }
+            }
+            else {
+                state.keys[vkCode] = KeyState::Released;
+            }
+
+            handleInputs(state);
+
+            break;
+        }
         case WM_LBUTTONDOWN: {
             auto doubleClickTimeInMilliseconds = timer.timeInMilliseconds();
 
@@ -326,58 +414,6 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
                 startOffscreenMonitorThread();
             }
         }
-
-        if (isKeyDown(VK_CONTROL)) {
-            if (isKeyDown(VK_H)) {
-                auto unit = TAKEnhancedLibrary::GetMouseHoveredUnit();
-                
-                if (unit) {
-                    std::cout << std::hex << unit->raw << std::endl;
-                }
-            }
-            else if (isKeyDown(VK_S)) {
-                auto selectedUnits = TAKEnhancedLibrary::GetSelectedUnits();
-
-                if (!selectedUnits.empty()) {
-                    auto msg = std::accumulate(
-                        selectedUnits.begin(),
-                        selectedUnits.end(),
-                        std::string("Selected Units: "),
-                        [&](std::string prev, std::shared_ptr<Unit> next) {
-                            return prev + next->name() + (next != *(selectedUnits.end() - 1) ? ", " : ".");
-                        }
-                    );
-
-                    logger->debug("%s", msg.c_str());
-                }
-                else {
-                    logger->debug("There are no selected units");
-                }
-            }
-            else if (isKeyDown(VK_F)) {
-                TryToInitializeSearchBox();
-            }
-            else if (isKeyDown(VK_R)) {
-                TryToChooseRandomRace();
-            }
-            else if (isKeyDown(VK_K)) {
-                // ToggleSelectedUnitAura();
-            }
-        }
-
-        if (isKeyDown(VK_MENU)) {
-            if (isKeyDown(VK_RETURN)) {
-                ToggleFullscreen();
-            }
-        }
-
-        while (singleShotKeysStillBeingHold()) {
-            Sleep(10);
-        }
-
-        auto kbState = MyGetKeyboardState();
-
-        handleInputs(*kbState);
 
         Sleep(10);
     }
