@@ -4,7 +4,14 @@
 #include "TAKEnhancedDll/GlobalState.hpp"
 
 RotateBuildingCommandHandler::RotateBuildingCommandHandler() {
-    this->disabledUnits = { "Gate", "Lodestone", "Divine Lodestone", "Mana Refinery", "Mana Amplifier" };
+    this->disabledUnits = {
+        "Gate",
+        "Lodestone",
+        "Divine Lodestone",
+        "Mana Refinery",
+        "Mana Amplifier",
+        "Death Totem"
+    };
 }
 
 void RotateBuildingCommandHandler::_handle(const Command& command) {
