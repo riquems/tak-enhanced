@@ -27,14 +27,12 @@ auto cell_translator = [](const KeyBindingListItem& kb)
 tab_page_keys::tab_page_keys(
     nana::window parent,
     std::shared_ptr<UserConfig> userConfig,
-    std::shared_ptr<Commands> commands,
     std::shared_ptr<Keys> keys,
     std::shared_ptr<CommandStringParser> commandStringParser,
     std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser
 ) :
     e_panel(parent),
     userConfig(userConfig),
-    commands(commands),
     keys(keys),
     commandStringParser(commandStringParser),
     keyCombinationStringParser(keyCombinationStringParser)

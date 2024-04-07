@@ -8,6 +8,9 @@ void applyNoCD()
 
     MemoryHandler::writeJMP(Memory(0x0A7DDA, 0x0A7DE0), 0x0A7EF0);
 
+    // Load Campaign
+    MemoryHandler::writeJMP(0x0BB817, 0x0BB92F);
+
     MemoryHandler::writeShortJMP(Memory(0x0A7E7A, 0x0A7E7C), 0x0A7EF0);
     MemoryHandler::writeShortJMP(Memory(0x09BA35, 0x09BA37), 0x09BA49);
 }

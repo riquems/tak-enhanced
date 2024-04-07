@@ -45,9 +45,6 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\CommandStringParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\Commands.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\CommandStringParsers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -105,15 +102,36 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Graphics\HpBarRenderer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\RetrieveSquad\RetrieveSquadCommand.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\RetrieveSquad\RetrieveSquadCommandStringParser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\Commands.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Match\Match.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\RetrieveSquadAdd\RetrieveSquadAddCommandStringParser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\RetrieveSquadAdd\RetrieveSquadAddCommand.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\CreateSquad\CreateSquadCommandStringParser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\CreateSquad\CreateSquadCommand.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\Param.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\Params.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TAKEnhancedLibrary\source\Commands\Command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\SelectBuilding\SelectBuildingCommandStringParser.cpp">
@@ -126,9 +144,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\CommandStringParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TAKEnhancedLibrary\source\Commands\Commands.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\CommandStringParsers.cpp">
@@ -177,6 +192,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Configs\CustomizableHpBarsSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\RetrieveSquad\RetrieveSquadCommandStringParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\Command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\Commands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Match\Match.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\RetrieveSquadAdd\RetrieveSquadAddCommandStringParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Commands\CreateSquad\CreateSquadCommandStringParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

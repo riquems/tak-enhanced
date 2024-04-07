@@ -47,7 +47,7 @@ std::string MemoryHandler::BYTEtoStr(BYTE hex)
 
 void MemoryHandler::writeJMP(DWORD at, DWORD jumpTo)
 {
-    std::string relativeAddressStr = DWORDtoStr(getRelativeAddress<DWORD>(at + baseAddress, jumpTo));
+    std::string relativeAddressStr = DWORDtoStr(getRelativeAddress<DWORD>(at + baseAddress, jumpTo + baseAddress));
 
     ShellCode JMP_ShellCode("E9" + relativeAddressStr, at);
     writeShellCode(JMP_ShellCode);

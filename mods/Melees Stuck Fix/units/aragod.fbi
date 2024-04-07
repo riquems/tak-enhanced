@@ -1,0 +1,105 @@
+[UNITINFO]
+{
+	acceleration = .5;
+	bloodcolor1 = 255 255 0;
+	bloodcolor2 = 235 215 0;
+	bloodcolor3 = 215 235 0;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = .3;
+	buildcost = 360000;
+	buildtime = 36000;
+	canattack = 1;
+	canhover = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	cantbecaptured = 1;
+	cantbefrozen = 1;
+	cantbestoned = 1;
+	cantbetransported = 1;
+	category = ARA MELEE ATTACK MAGIC GOD;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	damagecategory = god;
+	defaultmissiontype = Standby;
+	description = Aramon;
+	experiencepoints = 1000;
+	healtime = 600;
+	maneuverleashlength = 2000;
+	maxdamage = 29999;
+	maxvelocity = 1.55;
+	movementclass = HOVER2;
+	name = Avatar of Anu;
+	noveteran = 1;
+	objectname = ARAGOD;
+	radardistance = 25000;
+	roadmultiplier = 1.0;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = ARA;
+	sightdistance = 2500;
+	soundcategory = ARAGOD;
+	soundclass = ARAGOD;
+	standingunitorder = 2;
+	tedclass = Aramon;
+	totalallowed = 1;
+	turninplacerate = 1500;
+	turnrate = 500;
+	unitname = ARAGOD;
+	unitnumber = 193;
+	upright = 1;
+	version = 1;
+	waterline = 40;
+	watermultiplier = 1.0;
+}
+
+[WEAPON1]
+{
+	aimtolerance = 8000;
+	areaofeffect = 100;
+	edgeeffectiveness = 0.7;
+	name = Magical Sword;
+	range = 50;
+	reloadtime = 3.6;
+	soundhitclass = sword;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 16000;
+		monarch = 0.01;
+	}
+}
+
+[WEAPON2]
+{
+	aimtolerance = 33000;
+	areaofeffect = 500;
+	builduptime = 1.5;
+	decaytime = 1.5;
+	edgeeffectiveness = 0.4;
+	name = Earthquake;
+	nimbus = 1;
+	radiusart0 = ring_fx_redA;
+	radiusart1 = ring_fx_redB;
+	radiusart2 = ring_fx_redC;
+	range = 500;
+	reloadtime = 3.0;
+	ringcount = 2;
+	ringdelay = 0.45;
+	ringduration = 1.2;
+	shakeduration = 1;
+	shakemagnitude = 4;
+	showeffect = 0;
+	soundhit = Explode6;
+	spritecount = 8;
+	subtype = Earthquake;
+	type = Remote Effect;
+	weaponvelocity = 2000;
+
+	[DAMAGE]
+	{
+		default = 15000;
+		monarch = 0.01;
+	}
+}

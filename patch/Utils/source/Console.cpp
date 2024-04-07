@@ -19,6 +19,7 @@ void CloseConsole()
 }
 
 int titleBarHeight = 40;
+long defaultStyle = 0;
 
 void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
 {
@@ -46,9 +47,16 @@ void ConfigureConsole(uint width, uint height, HWND zOrder, bool borderless)
 
     HWND consoleWindow = GetConsoleWindow();
 
+    if (defaultStyle == 0) {
+        defaultStyle = GetWindowLongPtr(consoleWindow, GWL_STYLE);
+    }
+
     if (borderless) {
         SetWindowLongPtr(consoleWindow, GWL_STYLE, WS_POPUPWINDOW);
         consoleHeight -= titleBarHeight;
+    }
+    else {
+        SetWindowLongPtr(consoleWindow, GWL_STYLE, defaultStyle);
     }
 
     // SetWindowPos(consoleWindow, zOrder, xConsolePosition, yConsolePosition, consoleWidth, consoleHeight, SWP_NOACTIVATE | SWP_NOOWNERZORDER);

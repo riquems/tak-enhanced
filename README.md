@@ -6,22 +6,22 @@ It's totally compatible with other 4.1bb versions.</p>
 <p align="center">Please refer to the last release here: <a href="https://github.com/riquems/tak-enhanced/releases">https://github.com/riquems/tak-enhanced/releases</a></p>
 
 <h2 align="center"><b>Why TA:K Enhanced?</b></h1>
-<br/>
-<div align="center"> 
+<div align="center">
+<h3>Colorful HP Bars</h3>
 <img src="imgs/colorful-hpbars.png"><br/>
-<b>Colorful HP Bars</b></div>
-<br/>
-<br/>
-
-<div align="center"> 
-<img src="imgs/rotate-buildings.gif" width="50%" height="60%"/><br/>
-<b>Rotate Buildings</b></div>
-<br/>
+Enjoy colorful HP Bars matching your team color!</div>
 <br/>
 
 <div align="center">
+<h3>Building Rotation</h3>
+<img src="imgs/rotate-buildings.gif" width="50%" height="60%"/><br/>
+Use your mouse wheel to rotate buildings clockwise or counterclockwise! <br> Be aware you can only rotate them while they are being built.</div>
+<br/>
+
+<div align="center">
+<h3>Melee Stuck Fix</h3>
 <img src="imgs/before-melee-fix.gif" width="40%" height="40%"/>&nbsp<img src="imgs/after-melee-fix.gif" width="40%" height="40%"/><br>
-Melee Stuck Fix
+Never have your melee units stuck again with the Melee Stuck Fix!
 </div>
 <br/>
 <br/>
@@ -42,8 +42,7 @@ New badass icon</div>
 * Configurable PathFinding (default 100,000 path cycles).
 
 * Game doesn't pause anymore when minimizing during SinglePlayer games.
-
-* Adds Extreme AI.
+* Uses Extreme AI.
 
 ## Game Changing Tweaks
 

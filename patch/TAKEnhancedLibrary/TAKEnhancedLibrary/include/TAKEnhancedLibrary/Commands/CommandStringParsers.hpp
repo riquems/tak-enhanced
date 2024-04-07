@@ -5,6 +5,9 @@
 #include "TAKEnhancedLibrary/Commands/SelectBuilding/SelectBuildingCommandStringParser.hpp"
 #include "TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommandStringParser.hpp"
 #include "TAKEnhancedLibrary/Commands/SetUnitStance/SetUnitStanceCommandStringParser.hpp"
+#include "TAKEnhancedLibrary/Commands/CreateSquad/CreateSquadCommandStringParser.hpp"
+#include "TAKEnhancedLibrary/Commands/RetrieveSquad/RetrieveSquadCommandStringParser.hpp"
+#include "TAKEnhancedLibrary/Commands/RetrieveSquadAdd/RetrieveSquadAddCommandStringParser.hpp"
 
 class CommandStringParsers
 {
@@ -12,6 +15,9 @@ class CommandStringParsers
         std::make_shared<SelectBuildingCommandStringParser>(),
         std::make_shared<RotateBuildingCommandStringParser>(),
         std::make_shared<SetUnitStanceCommandStringParser>(),
+        std::make_shared<CreateSquadCommandStringParser>(),
+        std::make_shared<RetrieveSquadCommandStringParser>(),
+        std::make_shared<RetrieveSquadAddCommandStringParser>()
     };
 
 public:

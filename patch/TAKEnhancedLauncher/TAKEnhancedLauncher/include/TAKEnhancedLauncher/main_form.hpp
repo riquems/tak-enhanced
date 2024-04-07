@@ -12,7 +12,6 @@
 #include "TAKEnhancedLauncher/components/modal_save_as_preset.hpp"
 #include <TAKEnhancedDll/Presets/Presets.hpp>
 #include "TAKEnhancedDll/Configs/LauncherConfig.hpp"
-#include "TAKEnhancedLibrary/Commands/Commands.hpp"
 #include "TAKEnhancedLibrary/Commands/CommandStringParser.hpp"
 
 class main_form : public e_form
@@ -21,7 +20,6 @@ class main_form : public e_form
     std::shared_ptr<GameConfig> gameConfig;
     std::shared_ptr<UserConfig> userConfig;
     std::shared_ptr<Presets> presets;
-    std::shared_ptr<Commands> commands;
     std::shared_ptr<Keys> keys;
     std::shared_ptr<CommandStringParser> commandStringParser;
     std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser;
@@ -57,7 +55,6 @@ public:
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
         std::shared_ptr<Presets> presets,
-        std::shared_ptr<Commands> commands,
         std::shared_ptr<Keys> keys,
         std::shared_ptr<CommandStringParser> commandStringParser,
         std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser,

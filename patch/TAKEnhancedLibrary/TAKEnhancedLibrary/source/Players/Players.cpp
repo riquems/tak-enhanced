@@ -54,10 +54,22 @@ bool TAKEnhancedLibrary::AreAllies(std::shared_ptr<Player> p1, std::shared_ptr<P
     return true;
 }
 
-bool TAKEnhancedLibrary::AreAllies(int p1, int p2) {
+bool TAKEnhancedLibrary::AreAllies(int p1Id, int p2Id) {
     auto players = GetPlayers();
 
-    return AreAllies(players[p1], players[p2]);
+    auto p1 = dky::find(players,
+        [&](const std::shared_ptr<Player>& player) {
+            return player->id() == p1Id;
+        }
+    );
+
+    auto p2 = dky::find(players,
+        [&](const std::shared_ptr<Player>& player) {
+            return player->id() == p2Id;
+        }
+    );
+
+    return AreAllies(p1.value(), p2.value());
 }
 
 bool TAKEnhancedLibrary::AreEnemies(std::shared_ptr<Player> p1, std::shared_ptr<Player> p2) {
@@ -80,9 +92,20 @@ bool TAKEnhancedLibrary::AreEnemies(std::shared_ptr<Player> p1, std::shared_ptr<
     return true;
 }
 
-bool TAKEnhancedLibrary::AreEnemies(int p1, int p2) {
+bool TAKEnhancedLibrary::AreEnemies(int p1Id, int p2Id) {
     auto players = GetPlayers();
 
-    return AreAllies(players[p1], players[p2]);
-}
+    auto p1 = dky::find(players,
+        [&](const std::shared_ptr<Player>& player) {
+            return player->id() == p1Id;
+        }
+    );
 
+    auto p2 = dky::find(players,
+        [&](const std::shared_ptr<Player>& player) {
+            return player->id() == p2Id;
+        }
+    );
+
+    return AreEnemies(p1.value(), p2.value());
+}

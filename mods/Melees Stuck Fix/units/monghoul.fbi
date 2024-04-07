@@ -1,0 +1,63 @@
+[UNITINFO]
+{
+	acceleration = 10;
+	bloodcolor1 = 160 35 0;
+	bloodcolor2 = 170 40 0;
+	bloodcolor3 = 180 30 5;
+	bmcode = 1;
+	bodytype = flesh;
+	brakerate = 10;
+	buildcost = 10;
+	buildtime = 300;
+	canguard = 1;
+	canmove = 1;
+	canpatrol = 1;
+	canstop = 1;
+	category = MON MELEE ATTACK;
+	copyright = Copyright 1999 Humongous Entertainment. All rights reserved.;
+	corpse = monghoul_dead;
+	defaultmissiontype = Standby_wander;
+	description = Monster;
+	experiencepoints = 7;
+	frozen = monghoul_frozen;
+	healtime = 1.25;
+	maneuverleashlength = 500;
+	maxdamage = 3000;
+	maxvelocity = 1.19;
+	maxwaterdepth = 10;
+	movementclass = GROUND2;
+	name = Ghoul;
+	noveteran = 1;
+	objectname = MONGHOUL;
+	roadmultiplier = 1.21;
+	shadowgaf = shadows;
+	shootme = 1;
+	side = MON;
+	sightdistance = 200;
+	soundcategory = MONGHOUL;
+	soundclass = MONGHOUL;
+	standingunitorder = 2;
+	stone = monghoul_stone;
+	tedclass = Monster;
+	turninplacerate = 1500;
+	turnrate = 1500;
+	unitname = MONGHOUL;
+	unitnumber = 59;
+	upright = 1;
+	version = 1;
+	watermultiplier = 0.81;
+}
+
+[WEAPON1]
+{
+	name = Claws;
+	range = 50;
+	reloadtime = 2;
+	soundhitclass = fist;
+	type = Melee;
+
+	[DAMAGE]
+	{
+		default = 284;
+	}
+}
