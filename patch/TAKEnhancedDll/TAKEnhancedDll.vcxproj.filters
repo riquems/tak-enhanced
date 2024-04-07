@@ -81,7 +81,6 @@
     <ClCompile Include="TAKEnhancedDll\source\Changes\OffscreenFix.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\PathFindingChanger.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\RandomRace.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Changes\RotatingBuildings.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\SearchBox.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ShowEveryoneHealthBars.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Changes\ToggleUnitsAuras.cpp" />
@@ -124,9 +123,6 @@
       <Filter>Sources\Changes</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\RandomRace.hpp">
-      <Filter>Sources\Changes</Filter>
-    </ClInclude>
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\RotatingBuildings.hpp">
       <Filter>Sources\Changes</Filter>
     </ClInclude>
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Changes\SearchBox.hpp">
