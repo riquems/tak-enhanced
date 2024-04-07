@@ -9,7 +9,6 @@
 #include <TAKEnhancedDll/Configs/UserConfig.hpp>
 #include <TAKEnhancedLibrary/Keys/KeyCombinationStringParser.hpp>
 #include <TAKEnhancedLibrary/Commands/CommandStringParser.hpp>
-#include <TAKEnhancedLibrary/Commands/Commands.hpp>
 
 struct KeyBindingListItem
 {
@@ -25,7 +24,6 @@ struct KeyBindingListItem
 class tab_page_keys : public e_panel
 {
     std::shared_ptr<UserConfig> userConfig;
-    std::shared_ptr<Commands> commands;
     std::shared_ptr<Keys> keys;
     std::shared_ptr<CommandStringParser> commandStringParser;
     std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser;
@@ -54,7 +52,6 @@ public:
     tab_page_keys(
         nana::window parent,
         std::shared_ptr<UserConfig> userConfig,
-        std::shared_ptr<Commands> commands,
         std::shared_ptr<Keys> keys,
         std::shared_ptr<CommandStringParser> commandStringParser,
         std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser

@@ -1,14 +1,30 @@
 #include "TAKEnhancedLibrary/Commands/Commands.hpp"
-#include "dky/std.hpp"
+#include "TAKEnhancedLibrary/Units/Units.hpp"
+#include "TAKEnhancedLibrary/Match/Match.hpp"
+#include "TAKCore/Commands.h"
+#include "TAKCore/Functions/Functions.h"
 
-Commands commands;
+using namespace TAKEnhancedLibrary;
 
-std::optional<Command> Commands::get(CommandCode code) {
-    return dky::find(this->commands, [&](const Command& command) {
-        return command.code == code;
-    });
-}
+void TAKEnhancedLibrary::ExecuteCommand(const std::string& command) {
+    bool isTargetCommand = dky::contains(
+        TAKCore::Commands::targetCommands,
+        [&](const std::string& cmd) {
+            return cmd == command;
+        }
+    );
 
-std::optional<Command> Commands::find(std::function<bool(const Command&)> predicate) {
-    return dky::find(this->commands, predicate);
+    if (isTargetCommand) {
+        if (!TAKEnhancedLibrary::MatchIsRunning() || TAKEnhancedLibrary::GetMouseHoveredUnit() == nullptr) {
+            //logger->debug("Command is a target command and no unit is targetted at the moment. Skipping.");
+            return;
+        }
+    }
+
+    //logger->debug("Executing command %s", command.c_str());
+
+    if (command == TAKCore::Commands::DoNothing)
+        return;
+
+    TAKCore::Functions::executeCommand(command.c_str(), false);
 }

@@ -2,10 +2,10 @@
 #include "TAKEnhancedDll/GlobalState.hpp"
 #include "Utils/Windows.hpp"
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
-#include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 #include <thread>
 #include "TAKEnhancedLibrary/Units/Unit.hpp"
 #include "TAKEnhancedLibrary/Players/Players.hpp"
+#include "TAKEnhancedLibrary/Match/Match.hpp"
 
 /******************************************************************
 
@@ -20,7 +20,7 @@ bool offscreenMonitorThreadRunning = false;
 void startOffscreenMonitor()
 {
     while (true) {
-        if (!gameWrapper->match->isRunning()) {
+        if (!TAKEnhancedLibrary::MatchIsRunning()) {
             logger->info("Stopping OffScreen Monitor...");
             offscreenMonitorThreadRunning = false;
             return;

@@ -3,9 +3,7 @@
 #include "TAKCore/Commands.h"
 #include <TAKEnhancedLibrary/KeyBinding.hpp>
 #include <TAKEnhancedLibrary/Keys/Keys.hpp>
-#include <TAKEnhancedLibrary/Commands/SelectBuilding/SelectBuildingCommand.hpp>
-#include <TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommand.hpp>
-#include <TAKEnhancedLibrary/Commands/SetUnitStance/SetUnitStanceCommand.hpp>
+#include <TAKEnhancedLibrary/Commands/Commands.hpp>
 
 struct UserConfig
 {
@@ -24,35 +22,235 @@ struct UserConfig
         },
         KeyBinding {
             .keyCombination = { Keys::Key_3 },
-            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams {.building = 3 })
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 3 })
         },
         KeyBinding {
             .keyCombination = { Keys::Key_4 },
-            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams {.building = 4 })
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 4 })
         },
         KeyBinding {
             .keyCombination = { Keys::Key_5 },
-            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams {.building = 5 })
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 5 })
         },
         KeyBinding {
             .keyCombination = { Keys::Key_6 },
-            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams {.building = 6 })
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 6 })
         },
         KeyBinding {
             .keyCombination = { Keys::Key_7 },
-            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams {.building = 7 })
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 7 })
         },
         KeyBinding {
             .keyCombination = { Keys::Key_8 },
-            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams {.building = 8 })
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 8 })
         },
         KeyBinding {
             .keyCombination = { Keys::Key_9 },
-            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams {.building = 9 })
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 9 })
         },
         KeyBinding {
             .keyCombination = { Keys::Key_0 },
             .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 10 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_1 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 1 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_2 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 2 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_3 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 3 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_4 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 4 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_5 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 5 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_6 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 6 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_7 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 7 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_8 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 8 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_9 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 9 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_0 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 10 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_1 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 1 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_2 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 2 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_3 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 3 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_4 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 4 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_5 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 5 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_6 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 6 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_7 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 7 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_8 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 8 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_9 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 9 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Shift, Keys::Key_0 },
+            .command = std::make_shared<SelectBuildingCommand>(SelectBuildingCommandParams { .building = 10 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_1 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 1 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_2 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 2 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_3 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 3 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_4 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 4 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_5 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 5 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_6 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 6 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_7 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 7 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_8 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 8 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_9 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 9 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Key_0 },
+            .command = std::make_shared<RetrieveSquadCommand>(RetrieveSquadCommandParams { .squad = 10 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_1 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 1 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_2 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 2 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_3 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 3 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_4 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 4 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_5 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 5 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_6 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 6 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_7 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 7 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_8 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 8 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_9 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 9 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Shift, Keys::Key_0 },
+            .command = std::make_shared<RetrieveSquadAddCommand>(RetrieveSquadAddCommandParams { .squad = 10 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_1 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 1 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_2 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 2 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_3 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 3 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_4 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 4 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_5 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 5 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_6 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 6 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_7 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 7 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_8 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 8 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_9 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 9 })
+        },
+        KeyBinding {
+            .keyCombination = { Keys::Ctrl, Keys::Key_0 },
+            .command = std::make_shared<CreateSquadCommand>(CreateSquadCommandParams { .squad = 10 })
         },
         KeyBinding {
             .keyCombination = { Keys::None },
