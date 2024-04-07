@@ -4,7 +4,6 @@
 #include "TAKEnhancedDll/Changes/OffscreenFix.hpp"
 #include "TAKEnhancedDll/Changes/SearchBox.hpp"
 #include "TAKEnhancedDll/GlobalState.hpp"
-#include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 #include "TAKEnhancedDll/Hooks/LoadingScreenHook.hpp"
 #include "TAKEnhancedDll/Commands/ExecuteCommand.hpp"
 
@@ -18,8 +17,10 @@
 #include <Utils/Timer.hpp>
 #include <thread>
 #include <TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommand.hpp>
+#include <TAKEnhancedLibrary/Commands/Commands.hpp>
 #include <TAKEnhancedLibrary/Keys/KeyComparator.hpp>
 #include "TAKEnhancedLibrary/Units/Units.hpp"
+#include "TAKEnhancedLibrary/Match/Match.hpp"
 #include "TAKEnhancedLibrary/Graphics/Graphics.hpp"
 
 using namespace TAKEnhancedLibrary;
@@ -173,7 +174,6 @@ void guaranteeFocus() {
 }
 
 void bindWndProc();
-void executeCommand(std::string command);
 
 typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 wndProc_t oldWndProc;
@@ -187,7 +187,7 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_KEYDOWN:
             if (wParam == VK_SPACE) {
                 logger->debug("Spacebar pressed");
-                executeCommand(userConfig->onSpacebar);
+                TAKEnhancedLibrary::ExecuteCommand(userConfig->onSpacebar);
             }
         break;
         case WM_LBUTTONDOWN: {
@@ -197,7 +197,7 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 timer.stop();
                 logger->debug("A Triple Click has occured.");
                 
-                executeCommand(userConfig->onTripleClick);
+                TAKEnhancedLibrary::ExecuteCommand(userConfig->onTripleClick);
             }
 
             break;
@@ -206,13 +206,13 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             if (wParam & MK_CONTROL) {
                 logger->debug("A CTRL + Double Click has occured.");
 
-                executeCommand(userConfig->onCtrlDoubleClick);
+                TAKEnhancedLibrary::ExecuteCommand(userConfig->onCtrlDoubleClick);
                 break;
             }
 
             logger->debug("A Double Click has occured.");
 
-            executeCommand(userConfig->onDoubleClick);
+            TAKEnhancedLibrary::ExecuteCommand(userConfig->onDoubleClick);
             timer.start();
 
             break;
@@ -261,29 +261,6 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
 
     return oldWndProc(hwnd, msg, wParam, lParam);
-}
-
-void executeCommand(std::string command) {
-    bool isTargetCommand = dky::contains(
-        TAK::Commands::targetCommands,
-        [&](const std::string& cmd) {
-            return cmd == command;
-        }
-    );
-
-    if (isTargetCommand) {
-        if (!gameWrapper->match->isRunning() || TAKEnhancedLibrary::GetMouseHoveredUnit() == nullptr) {
-            logger->debug("Command is a target command and no unit is targetted at the moment. Skipping.");
-            return;
-        }
-    }
-    
-    logger->debug("Executing command %s", command.c_str());
-
-    if (command == TAK::Commands::DoNothing)
-        return;
-
-    TAK::Functions::executeCommand(command.c_str(), false);
 }
 
 void bindWndProc() {
@@ -345,7 +322,7 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
         }
 
         if (gameConfig->offscreenFix.enabled) {
-            if (!offscreenMonitorThreadRunning && gameWrapper->match->isRunning()) {
+            if (!offscreenMonitorThreadRunning && TAKEnhancedLibrary::MatchIsRunning()) {
                 startOffscreenMonitorThread();
             }
         }

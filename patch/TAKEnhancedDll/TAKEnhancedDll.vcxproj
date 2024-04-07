@@ -33,6 +33,9 @@
     <ClCompile Include="TAKEnhancedDll\source\Memory\MemoryHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Memory\ShellCode.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Presets\Presets.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\RetrieveSquadCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\CreateSquadCommandHandler.cpp" />
+    <ClCompile Include="TAKEnhancedDll\source\Commands\RetrieveSquadAddCommandHandler.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +92,7 @@
     <ClCompile Include="TAKEnhancedDll\source\App.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\RetrieveSquadCommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameFunctions.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\GameInitHook.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Hooks\GameUpdateLoopHook.hpp" />
@@ -149,7 +153,8 @@
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\ChooseMapMenuWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\GameWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\Defs.h" />
-    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\MatchWrapper.h" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\CreateSquadCommandHandler.hpp" />
+    <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Commands\RetrieveSquadAddCommandHandler.hpp" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Wrappers\WeaponWrapper.h" />
     <ClInclude Include="TAKEnhancedDll\include\TAKEnhancedDll\Utils.hpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\BattleMenuWrapper.cpp" />
@@ -159,7 +164,6 @@
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\Defs.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\GameFunctions.cpp" />
     <ClCompile Include="TAKEnhancedDll\source\Wrappers\GameWrapper.cpp" />
-    <ClCompile Include="TAKEnhancedDll\source\Wrappers\MatchWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\TAKEnhanced.dll.rc" />

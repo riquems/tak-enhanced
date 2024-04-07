@@ -9,7 +9,6 @@ main_form::main_form(
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
         std::shared_ptr<Presets> presets,
-        std::shared_ptr<Commands> commands,
         std::shared_ptr<Keys> keys,
         std::shared_ptr<CommandStringParser> commandStringParser,
         std::shared_ptr<KeyCombinationStringParser> keyCombinationStringParser,
@@ -20,7 +19,6 @@ main_form::main_form(
         gameConfig(gameConfig),
         userConfig(userConfig),
         presets(presets),
-        commands(commands),
         keys(keys),
         commandStringParser(commandStringParser),
         keyCombinationStringParser(keyCombinationStringParser),
@@ -161,7 +159,6 @@ void main_form::addKeysTab() {
     tp_keys = std::make_shared<tab_page_keys>(
         this->handle(),
         this->userConfig,
-        this->commands,
         this->keys,
         this->commandStringParser,
         this->keyCombinationStringParser

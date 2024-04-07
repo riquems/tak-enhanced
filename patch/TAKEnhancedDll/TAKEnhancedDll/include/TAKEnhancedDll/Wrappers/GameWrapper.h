@@ -11,8 +11,6 @@
 #include <TAKEnhancedDll/Managers/GameInterfaceManager.h>
 #include <TAKEnhancedLibrary/Commands/SetUnitStance/SetUnitStanceCommand.hpp>
 
-class MatchWrapper;
-
 class GameWrapper
 {
     std::shared_ptr<Game> game;
@@ -20,7 +18,6 @@ class GameWrapper
 
 public:
     std::shared_ptr<GameInterfaceManager> gameInterfaceManager;
-    std::shared_ptr<MatchWrapper> match;
 
     GameWrapper(GameInterfaceHandler* uiHandler, uintptr_t baseAddress);
 

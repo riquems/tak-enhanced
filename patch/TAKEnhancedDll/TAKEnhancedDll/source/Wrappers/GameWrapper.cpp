@@ -1,5 +1,4 @@
 #include "TAKEnhancedDll/Wrappers/GameWrapper.h"
-#include "TAKEnhancedDll/Wrappers/MatchWrapper.h"
 #include <TAKEnhancedDll/GlobalState.hpp>
 
 using namespace TAKEnhancedLibrary;
@@ -12,8 +11,6 @@ GameWrapper::GameWrapper(GameInterfaceHandler* uiHandler, uintptr_t baseAddress)
     gameInterfaceManager = std::make_shared<GameInterfaceManager>(uiHandler, baseAddress);
 
     this->baseAddress = baseAddress;
-
-    match = std::make_shared<MatchWrapper>(this);
 }
 
 void GameWrapper::onInitialize()
