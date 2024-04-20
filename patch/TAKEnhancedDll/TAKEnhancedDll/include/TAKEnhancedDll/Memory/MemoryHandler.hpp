@@ -64,6 +64,7 @@ namespace MemoryHandler
     void writeJMP(Memory at, DWORD jumpTo);
 
     void writeShortJMP(Memory at, DWORD jumpTo);
+    void writeShortJMP(DWORD at, DWORD jumpTo);
 
     void insertFunctionCall(DWORD functionAddress, DWORD startAddressOffSet);
 
