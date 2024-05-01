@@ -55,7 +55,7 @@ void main_form::save()
 
 void main_form::initialize()
 {
-    this->caption("TA:K Enhanced Launcher");
+    this->caption("TA:K Enhanced Launcher v1.3.4");
     this->bgcolor(default_bgcolor);
 
     addTabs();
