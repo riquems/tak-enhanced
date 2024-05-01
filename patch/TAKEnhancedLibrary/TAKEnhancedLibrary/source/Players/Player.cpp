@@ -6,7 +6,7 @@
 
 using namespace TAKEnhancedLibrary;
 
-Player::Player(TAKCore::Player* raw) : raw(raw) { }
+Player::Player(const TAKCore::Player* raw) : raw(raw) { }
 
 std::vector<std::shared_ptr<Unit>> Player::units() {
     std::vector<std::shared_ptr<Unit>> units;

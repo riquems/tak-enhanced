@@ -2,6 +2,7 @@
 #include "TAKEnhancedLibrary/common.hpp"
 #include "TAKCore/Models/Unit.h"
 #include "TAKEnhancedLibrary/Players/Player.hpp"
+#include "TAKEnhancedLibrary/Players/Players.hpp"
 
 namespace TAKEnhancedLibrary
 {
@@ -28,7 +29,7 @@ namespace TAKEnhancedLibrary
         }
 
         inline std::shared_ptr<Player> player() {
-            return std::make_shared<Player>(this->raw->player);
+            return TAKEnhancedLibrary::NewPlayer(this->raw->player);
         }
 
         inline bool selected() {

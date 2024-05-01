@@ -16,14 +16,13 @@
 #include <TAKCore/Functions/Functions.h>
 #include <Utils/Timer.hpp>
 #include <thread>
+#include <TAKEnhancedLibrary/State.hpp>
 #include <TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommand.hpp>
 #include <TAKEnhancedLibrary/Commands/Commands.hpp>
 #include <TAKEnhancedLibrary/Keys/KeyComparator.hpp>
 #include "TAKEnhancedLibrary/Units/Units.hpp"
 #include "TAKEnhancedLibrary/Match/Match.hpp"
 #include "TAKEnhancedLibrary/Graphics/Graphics.hpp"
-
-using namespace TAKEnhancedLibrary;
 
 #pragma comment(lib,"ddraw.lib") 
 
@@ -158,7 +157,7 @@ void handleInputs(KeyboardState& keyboardState)
                 selectedUnits.begin(),
                 selectedUnits.end(),
                 std::string("Selected Units: "),
-                [&](std::string prev, std::shared_ptr<Unit> next) {
+                [&](std::string prev, std::shared_ptr<TAKEnhancedLibrary::Unit> next) {
                     return prev + next->name() + (next != *(selectedUnits.end() - 1) ? ", " : ".");
                 }
             );
@@ -366,6 +365,7 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
     bindWndProc();
 
     TAK::init(baseAddress);
+    TAKEnhancedLibrary::init(logger);
 
     logger->context("TA:K Enhanced Service");
     logger->info("TA:K Enhanced Service started!");
