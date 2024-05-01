@@ -8,9 +8,9 @@ namespace TAKEnhancedLibrary
 
     struct Player
     {
-        TAKCore::Player* raw;
+        const TAKCore::Player* raw;
 
-        Player(TAKCore::Player*);
+        Player(const TAKCore::Player*);
 
         uint8_t color();
         uint16_t unitsCount();

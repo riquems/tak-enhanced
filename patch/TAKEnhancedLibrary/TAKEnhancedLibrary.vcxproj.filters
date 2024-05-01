@@ -126,6 +126,12 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Commands\CreateSquad\CreateSquadCommand.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\State.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\PlayerPool.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\Param.cpp">
@@ -210,6 +216,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\CreateSquad\CreateSquadCommandStringParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAKEnhancedLibrary\source\Players\PlayerPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

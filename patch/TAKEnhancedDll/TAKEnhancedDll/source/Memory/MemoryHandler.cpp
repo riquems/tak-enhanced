@@ -71,6 +71,15 @@ void MemoryHandler::writeShortJMP(Memory at, DWORD jumpTo)
     writeShellCode(ShortJMP_ShellCode);
 }
 
+void MemoryHandler::writeShortJMP(DWORD at, DWORD jumpTo)
+{
+    jumpTo += baseAddress;
+    std::string relativeAddressStr = BYTEtoStr(getRelativeAddress<BYTE>(at, jumpTo));
+
+    ShellCode ShortJMP_ShellCode("EB" + relativeAddressStr, at);
+    writeShellCode(ShortJMP_ShellCode);
+}
+
 void MemoryHandler::insertFunctionCall(DWORD functionAddress, DWORD startAddressOffSet)
 {
     DWORD relativeAddress = getRelativeAddress<DWORD>(startAddressOffSet + baseAddress, functionAddress);

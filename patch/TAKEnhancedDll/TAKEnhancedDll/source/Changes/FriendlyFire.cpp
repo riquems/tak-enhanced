@@ -14,18 +14,23 @@ extern "C" __declspec(dllexport) bool __stdcall weaponShouldPassThrough()
         push edx
     }
 
-    uint8_t weaponPlayerNumber = 0;
-    TAKCore::Unit* unitHit = nullptr;
+    TAKCore::Unit* rawSubject = nullptr;
+    TAKCore::Unit* rawUnitInTheWay = nullptr;
 
     __asm {
-        mov unitHit, edx
-        mov al, byte ptr [ebx + 0x92]
-        mov weaponPlayerNumber, al
+        mov eax, dword ptr[ebx + 0x7C]
+        mov rawSubject, eax
+        mov rawUnitInTheWay, edx
     }
 
-    bool shouldPassThrough =
-        weaponPlayerNumber == unitHit->playerNumber
-     || (!currentGameConfig->friendlyFire.allyProjectileCollision && TAKEnhancedLibrary::AreAllies(weaponPlayerNumber, unitHit->playerNumber));
+    Unit subject(rawSubject);
+    Unit unitInTheWay(rawUnitInTheWay);
+
+    bool playersAreTheSame = *subject.player() == *unitInTheWay.player();
+    bool allyProjectileCollisionEnabled = currentGameConfig->friendlyFire.allyProjectileCollision;
+    bool playersAreAllies = TAKEnhancedLibrary::AreAllies(subject.player(), unitInTheWay.player());
+
+    bool shouldPassThrough = playersAreTheSame || (!allyProjectileCollisionEnabled && playersAreAllies);
 
     __asm {
         pop edx

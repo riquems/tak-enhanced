@@ -181,7 +181,9 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Keys\Keys.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Match\Match.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\Player.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\PlayerPool.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\Players.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\State.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Units\Unit.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Units\Units.hpp" />
   </ItemGroup>
@@ -204,6 +206,8 @@
     <ClCompile Include="TAKEnhancedLibrary\source\Configs\CustomizableHpBarsSettings.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Graphics\Graphics.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Graphics\HpBarRenderer.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\Players\PlayerPool.cpp" />
+    <ClCompile Include="TAKEnhancedLibrary\source\State.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyCombination.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyCombinationJsonParser.cpp" />
     <ClCompile Include="TAKEnhancedLibrary\source\Keys\KeyCombinationStringParser.cpp" />
