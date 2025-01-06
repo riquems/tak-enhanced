@@ -15,7 +15,9 @@ namespace TAKCore
 
     struct Unit
     {                                        // offset
-        char padding[8];                     // 0x000
+        char padding[2];                     // 0x000
+        uint16_t id;                         // 0x002
+        char* altname;                       // 0x004
         MovementHandler* movementHandler;    // 0x008
         Weapon* weapon1;                     // 0x00C
         char padding2[24];                   // 0x010
@@ -50,7 +52,7 @@ namespace TAKCore
         float maxMana;                       // 0x0DC
         char padding13[4 * 7];               // 0x0E0
         char padding14[1];                   // 0x0FC
-        uint8_t playerNumber;                // 0x0FD
+        uint8_t playerIndex;                 // 0x0FD
         char padding15[2];                   // 0x0FE
         char padding16[4 * 2];               // 0x100
         float buildTimeLeft;                 // 0x108

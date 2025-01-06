@@ -1,9 +1,9 @@
 #include "TAKEnhancedDll/Changes/FriendlyFire.hpp"
 #include "TAKEnhancedDll/Memory/MemoryHandler.hpp"
-#include "TAKCore/Models/Unit.h"
 #include "TAKEnhancedDll/GlobalState.hpp"
 #include "TAKEnhancedLibrary/Units/Unit.hpp"
 #include "TAKEnhancedLibrary/Players/Players.hpp"
+#include "TAKEnhancedLibrary/DamageTypes.hpp"
 
 using namespace TAKEnhancedLibrary;
 
@@ -40,130 +40,151 @@ extern "C" __declspec(dllexport) bool __stdcall weaponShouldPassThrough()
     return shouldPassThrough;
 }
 
-struct DamageUnitArgs
+struct DamageUnitArgs2
 {
-    char padding1[0x08];
-    uint8_t weaponType;
-    char padding2[0x0B];
-    TAKCore::Unit* subject;
-    TAKCore::Unit* target;
+    TAKCore::Weapon* weapon;    // 0x00
+    char padding1[0x8E];        // 0x04
+    uint8_t subjectPlayerIndex; // 0x92
 };
 
-extern "C" __declspec(dllexport) void __stdcall shouldDamageExt()
+// Obsolete
+struct DamageUnitArgs
 {
-    DamageUnitArgs* args = nullptr;
+    char padding1[0x01];        // 0x00
+    uint16_t targetUnitId;      // 0x01
+    uint16_t subjectUnitId;     // 0x03
+    char padding2[0x03];        // 0x05
+    uint8_t damageType;         // 0x08
+    char padding3[0x0B];        // 0x09
+    TAKCore::Unit* subject;     // 0x14
+    TAKCore::Unit* target;      // 0x18
+    char padding4[0x0C];        // 0x1C
+    DamageUnitArgs2* otherArgs; // 0x28
+};
 
-    __asm {
-        push eax
-        push ecx
-        push edx
-        mov args, edi
+extern "C" __declspec(dllexport) bool __stdcall shouldDamageExt(DamageUnitArgs2* args, TAKCore::Unit* target) {
+    logger->debug("[FriendlyFire] Friendly Fire Handler Started!");
+
+    logger->debug("[FriendlyFire] Weapon: %s (damageType: %d)", args->weapon->name, args->weapon->damageType);
+
+    if (args->weapon->damageType == DamageType::ExplodeAs) {
+        logger->debug("[FriendlyFire] Damage type not eligible, skipping.");
+        return true;
     }
 
-    uint8_t weaponType = args->weaponType;
-    auto subject = std::make_shared<Unit>(args->subject);
-    auto target = std::make_shared<Unit>(args->target);
+    logger->debug("[FriendlyFire] Subject Player Index: %d", args->subjectPlayerIndex);
+    logger->debug("[FriendlyFire] Target Player Index: %d", target->playerIndex);
 
-    if (weaponType == 0x0C)
+    auto players = TAKEnhancedLibrary::GetPlayers();
+
+    auto maybeSubjectPlayer = dky::find(players, [&](const std::shared_ptr<Player>& player) -> bool {
+        return player->raw->index == args->subjectPlayerIndex;
+    });
+
+    if (!maybeSubjectPlayer.has_value()) {
+        logger->debug("[FriendlyFire] Couldn't find the player responsible for causing the damage when looking for player with index %d.", args->subjectPlayerIndex);
+        return false;
+    }
+
+    auto maybeTargetPlayer = dky::find(players, [&](const std::shared_ptr<Player>& player) -> bool {
+        return player->raw->index == target->playerIndex;
+    });
+
+    if (!maybeTargetPlayer.has_value()) {
+        logger->debug("[FriendlyFire] Couldn't find the player that took the damage when looking for player with index %d.", target->playerIndex);
+        return false;
+    }
+
+    auto subjectPlayer = maybeSubjectPlayer.value();
+    auto targetPlayer = maybeTargetPlayer.value();
+
+    logger->debug("[FriendlyFire] Subject Player: %s", subjectPlayer->raw->name);
+    logger->debug("[FriendlyFire] Target Player: %s", targetPlayer->raw->name);
+
+    if (!currentGameConfig->friendlyFire.selfDamage
+        && TAKEnhancedLibrary::IsMe(subjectPlayer)
+        && targetPlayer->id() == subjectPlayer->id())
     {
-        // default heal handling
-        __asm {
-            mov eax, baseAddress
-            mov dword ptr[ebp + 0x4], eax
-            add dword ptr[ebp + 0x4], 0x11A2F8
-
-            pop edx
-            pop ecx
-            pop eax
-
-            pop edi
-            pop esi
-            pop ebx
-
-            mov esp, ebp
-            pop ebp
-
-            ret
-        }
+        logger->debug("[FriendlyFire] Not dealing damage because self damage is off and the unit is attacking your own units!");
+        return false;
     }
 
-    // is not Ctrl + D and is not buildings fading away
-    if (weaponType != 0x5 && weaponType != 0xB)
+    if (!currentGameConfig->friendlyFire.allyDamage
+        && TAKEnhancedLibrary::AreAllies(subjectPlayer, targetPlayer))
     {
-        if (!currentGameConfig->friendlyFire.selfDamage
-            && TAKEnhancedLibrary::IsMe(subject->player())
-            && *target->player() == *subject->player())
-        {
-            // do nothing
-            __asm {
-                mov eax, baseAddress
-                mov dword ptr[ebp + 0x4], eax
-                add dword ptr[ebp + 0x4], 0x11A648
-
-                pop edx
-                pop ecx
-                pop eax
-
-                pop edi
-                pop esi
-                pop ebx
-
-                mov esp, ebp
-                pop ebp
-
-                ret
-            }
-        }
-
-        if (!currentGameConfig->friendlyFire.allyDamage && TAKEnhancedLibrary::AreAllies(subject->player(), target->player()))
-        {
-            // do nothing
-            __asm {
-                mov eax, baseAddress
-                mov dword ptr[ebp + 0x4], eax
-                add dword ptr[ebp + 0x4], 0x11A648
-
-                pop edx
-                pop ecx
-                pop eax
-
-                pop edi
-                pop esi
-                pop ebx
-
-                mov esp, ebp
-                pop ebp
-
-                ret
-            }
-        }
+        logger->debug("[FriendlyFire] Not dealing damage because ally damage is off and the units are allies.");
+        return false;
     }
 
-    // default damage handling
+    logger->debug("[FriendlyFire] Friendly Fire Handler Finished!");
+    return true;
+}
+
+namespace shouldDamageSingleTrampolineNs {
+    extern DWORD skip = 0;
+    extern DWORD goBack = 0;
+}
+
+extern "C" __declspec(naked, dllexport) void __stdcall shouldDamageSingleTrampoline() {
     __asm {
-        mov eax, baseAddress
-        mov dword ptr[ebp + 0x4], eax
-        add dword ptr[ebp + 0x4], 0x11A329
+        pushad
 
-        pop edx
-        pop ecx
-        pop eax
+        push edi
+        push esi
 
-        pop edi
-        pop esi
-        pop ebx
+        call shouldDamageExt
+        test eax, eax
 
-        mov esp, ebp
-        pop ebp
+        popad
 
-        ret
+        jnz goBack
+        jmp shouldDamageSingleTrampolineNs::skip
+
+     goBack:
+        push 0x3F800000
+
+        jmp shouldDamageSingleTrampolineNs::goBack
+    }
+}
+
+namespace shouldDamageAoeTrampolineNs {
+    extern DWORD skip = 0;
+    extern DWORD goBack = 0;
+}
+
+extern "C" __declspec(naked, dllexport) void __stdcall shouldDamageAoeTrampoline() {
+    __asm {
+        pushad
+
+        push esi
+        push edi
+
+        call shouldDamageExt
+        test eax, eax
+
+        popad
+
+        jnz goBack
+        jmp shouldDamageAoeTrampolineNs::skip
+
+    goBack:
+        mov eax, dword ptr[ebp + 0x0C]
+        test eax, eax
+
+        jmp shouldDamageAoeTrampolineNs::goBack
     }
 }
 
 void applyFriendlyFirePatch() {
-    // patch for damage handling
-    MemoryHandler::fillWithNOPs(Memory(0x11A2F2, 0x11A2F8));
-    MemoryHandler::insertFunctionCall((DWORD)&shouldDamageExt, 0x11A2F2);
+    // patch for single damage handling
+    MemoryHandler::writeJMP(0x12A46E, (DWORD)&shouldDamageSingleTrampoline - baseAddress);
+    shouldDamageSingleTrampolineNs::goBack = baseAddress + 0x12A473;
+    shouldDamageSingleTrampolineNs::skip = baseAddress + 0x12A4C9;
+
+    // patch for aoe damage handling
+    MemoryHandler::writeJMP(0x12A0B0, (DWORD)&shouldDamageAoeTrampoline - baseAddress);
+    shouldDamageAoeTrampolineNs::goBack = baseAddress + 0x12A0B5;
+    shouldDamageAoeTrampolineNs::skip = baseAddress + 0x12A0CC;
 
     // patch for weapon passing through
     // ground units

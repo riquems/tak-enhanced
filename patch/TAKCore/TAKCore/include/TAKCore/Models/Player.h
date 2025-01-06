@@ -22,7 +22,7 @@ namespace TAKCore
         char padding5[64];
         uint16_t unitsCount;              // 0xE8
         char padding6[1];                 // 0xEA
-        uint8_t byte_004E4F7B;            // 0xEB
+        uint8_t index;                    // 0xEB
         char padding7[36];
     };
 }
