@@ -26,6 +26,7 @@
     <ClCompile Include="TAKCore\source\Graphics\Graphics.cpp" />
     <ClCompile Include="TAKCore\source\Players\Players.cpp" />
     <ClCompile Include="TAKCore\source\TAKCore.cpp" />
+    <ClCompile Include="TAKCore\source\Units\Units.cpp" />
     <ClInclude Include="TAKCore\include\common.h" />
     <ClInclude Include="TAKCore\include\Functions\FunctionsOffsets.h" />
     <ClInclude Include="TAKCore\include\Functions\FunctionsSignatures.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="TAKCore\source\ModelsExtensions\WindowExtensions.cpp" />
     <ClInclude Include="TAKCore\include\TAKCore\Players\Players.hpp" />
     <ClInclude Include="TAKCore\include\TAKCore\TAKCore.h" />
+    <ClInclude Include="TAKCore\include\TAKCore\Units\Units.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

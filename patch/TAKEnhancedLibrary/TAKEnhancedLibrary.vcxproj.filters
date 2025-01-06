@@ -132,6 +132,9 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Players\PlayerPool.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\DamageTypes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TAKEnhancedLibrary\source\Commands\Param.cpp">

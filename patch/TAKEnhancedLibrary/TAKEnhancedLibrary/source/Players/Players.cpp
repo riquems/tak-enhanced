@@ -40,6 +40,10 @@ std::shared_ptr<Player> TAKEnhancedLibrary::GetCurrentPlayer() {
     return GetPlayers()[0];
 }
 
+bool TAKEnhancedLibrary::IsMe(int playerIndex) {
+    return playerIndex == GetCurrentPlayer()->raw->index;
+}
+
 bool TAKEnhancedLibrary::IsMe(std::shared_ptr<Player> player) {
     return *player == *GetCurrentPlayer();
 }

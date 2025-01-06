@@ -170,6 +170,7 @@
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\common.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Configs\CustomizableHpBarsSettings.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Configs\GameSetting.hpp" />
+    <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\DamageTypes.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Graphics\Graphics.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\Graphics\HpBarRenderer.hpp" />
     <ClInclude Include="TAKEnhancedLibrary\include\TAKEnhancedLibrary\KeyBinding.hpp" />
