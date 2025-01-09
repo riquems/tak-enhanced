@@ -38,6 +38,9 @@ class main_form : public e_form
     //std::shared_ptr<nana::button> btn_save_as_preset;
     std::shared_ptr<nana::button> btn_exit;
 
+    std::shared_ptr<nana::label> lbl_tak_version;
+    std::shared_ptr<nana::label> lbl_tak_version_value;
+
     std::shared_ptr<nana::label> lbl_preset_picker;
     std::shared_ptr<nana::combox> cbb_preset_picker;
     std::shared_ptr<nana::label> lbl_preset_hash;
@@ -51,6 +54,7 @@ public:
 
     main_form(
         nana::rectangle rect,
+        std::optional<std::string> maybeTakVersion,
         std::shared_ptr<LauncherConfig> launcherConfig,
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
@@ -67,7 +71,7 @@ public:
     void save();
 
 private:
-    void initialize();
+    void initialize(std::optional<std::string> maybeTakVersion);
     void draw();
 
     void addTabs();

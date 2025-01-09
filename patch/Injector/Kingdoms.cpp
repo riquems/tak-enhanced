@@ -5,6 +5,7 @@
 
 #include "Utils/Logger.h"
 #include "Utils/JunkCode.h"
+#include <Utils/file.hpp>
 #include <Utils/json.hpp>
 #include "AppConfig.hpp"
 #include <Utils/Console.hpp>
@@ -115,6 +116,16 @@ BOOL WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     std::string targetFileName(config.target);
 
     logger.context("EXE");
+    
+    std::optional<std::string> maybeVersion = file::readString(config.target, 0x212850);
+
+    if (maybeVersion.has_value()) {
+        auto version = maybeVersion.value();
+        logger.info("TA:K Version: %s", version.c_str());
+    }
+    else {
+        logger.info("Couldn't get TA:K Version when looking in file %s", config.target.c_str());
+    }
 
     quaxkru junkcode;
     STARTUPINFOA startupInfo = {};

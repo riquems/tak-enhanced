@@ -32,6 +32,7 @@
     <ClInclude Include="include\Utils\Keyboard.hpp" />
     <ClInclude Include="include\Utils\Timer.hpp" />
     <ClInclude Include="include\Utils\TypeExtensions.hpp" />
+    <ClInclude Include="include\Utils\file.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">

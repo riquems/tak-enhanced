@@ -28,6 +28,7 @@
 #include "TAKEnhancedDll/TAKEnhancedService.hpp"
 #include <TAKEnhancedLibrary/Keys/KeyCombination.hpp>
 #include <Utils/Console.hpp>
+#include "Utils/file.hpp"
 
 __declspec(dllexport) DWORD setSelectedListItem_fcnAddr;
 __declspec(dllexport) bool TAKisInitialized;
@@ -126,6 +127,18 @@ void _init()
 
     logger = std::make_shared<Logger>(loggerConfig, "a");
 
+    std::string target = "Kingdoms.icd";
+
+    std::optional<std::string> maybeTakVersion = file::readString(target, 0x212850);
+
+    if (maybeTakVersion.has_value()) {
+        auto version = maybeTakVersion.value();
+        logger->info("TA:K Version: %s", version.c_str());
+    }
+    else {
+        logger->info("Couldn't get TA:K Version when looking in file %s", target.c_str());
+    }
+
     auto launcherConfigPath = "./TAKEnhanced/launcher.cfg.json";
     logger->info("Loading launcher config from %s", launcherConfigPath);
     auto maybeLauncherConfig = fromJson<LauncherConfig>(launcherConfigPath);
@@ -222,6 +235,7 @@ void _init()
 
     main_form launcher(
         fm_rect,
+        maybeTakVersion,
         launcherConfig,
         currentGameConfig,
         userConfig,
