@@ -17,7 +17,7 @@
 #include "TAKCore/Config.h"
 #include <TAKEnhancedDll/Changes/FriendlyFire.hpp>
 
-__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.3.4";
+__declspec(dllexport) const char* TAK_Enhanced_Label = "TA:K Enhanced v1.3.5";
 
 void applyTakEnhancedVersion()
 {
