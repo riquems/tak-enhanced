@@ -8,6 +8,7 @@ namespace TAKEnhancedLibrary
     std::vector<std::shared_ptr<Player>> GetPlayers();
     std::shared_ptr<Player> GetCurrentPlayer();
 
+    bool IsMe(int playerIndex);
     bool IsMe(std::shared_ptr<Player> player);
     bool IsEnemy(std::shared_ptr<Player> player);
     bool IsAlly(std::shared_ptr<Player> player);

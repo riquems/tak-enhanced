@@ -213,7 +213,7 @@ void guaranteeFocus() {
     }
 }
 
-void bindWndProc();
+void hookWndProc();
 
 typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 wndProc_t oldWndProc;
@@ -329,32 +329,44 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             break;
         }
-        case WM_STYLECHANGED:
-            logger->debug("[Windows] WM_STYLECHANGED");
+        case WM_WINDOWPOSCHANGING:
+        case WM_WINDOWPOSCHANGED:
+            logger->debug("[Windows] WM_WINDOWPOSCHANGING | WM_WINDOWPOSCHANGED");
 
             if (!bindingScheduled) {
                 bindingScheduled = true;
                 std::thread t([&]() {
                     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-                    // we need to rebind these because DXWnd overwrites it when this event occurs
-                    bindWndProc();
+                    // we need to rehook these because DXWnd overwrites it when this event occurs
+                    hookWndProc();
 
                     bindingScheduled = false;
                 });
                 t.detach();
             }
             break;
+        default:
+            // logger->debug("[Windows] WndProc Message Code %d", msg);
+            break;
     }
 
     return oldWndProc(hwnd, msg, wParam, lParam);
 }
 
-void bindWndProc() {
-    logger->debug("Binding WndProc...");
+void hookWndProc() {
+    logger->debug("Hooking WndProc...");
+
     auto wnd = GetThisWindow("Kingdoms");
-    oldWndProc = (wndProc_t)GetWindowLongPtr(wnd, GWLP_WNDPROC);
-    SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);
+
+    auto currentWndProc = (wndProc_t) GetWindowLongPtr(wnd, GWLP_WNDPROC);
+
+    if (currentWndProc == MyWndProc) {
+        logger->debug("WndProc is already hooked, skipping.");
+        return;
+    }
+
+    oldWndProc = (wndProc_t) SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR) MyWndProc);
 }
 
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
@@ -362,7 +374,7 @@ void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
     waitForTheGameToLaunch();
     guaranteeFocus();
 
-    bindWndProc();
+    hookWndProc();
 
     TAK::init(baseAddress);
     TAKEnhancedLibrary::init(logger);

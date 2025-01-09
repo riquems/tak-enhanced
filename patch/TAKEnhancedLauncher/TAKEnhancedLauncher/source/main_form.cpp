@@ -5,6 +5,7 @@
 
 main_form::main_form(
         nana::rectangle rect,
+        std::optional<std::string> maybeTakVersion,
         std::shared_ptr<LauncherConfig> launcherConfig,
         std::shared_ptr<GameConfig> gameConfig,
         std::shared_ptr<UserConfig> userConfig,
@@ -24,7 +25,7 @@ main_form::main_form(
         keyCombinationStringParser(keyCombinationStringParser),
         logger(logger)
     {
-        this->initialize();
+        this->initialize(maybeTakVersion);
         this->load();
         this->draw();
         this->on_state_changed();
@@ -53,12 +54,18 @@ void main_form::save()
     this->on_save();
 }
 
-void main_form::initialize()
+void main_form::initialize(std::optional<std::string> maybeTakVersion)
 {
-    this->caption("TA:K Enhanced Launcher v1.3.4");
+    this->caption("TA:K Enhanced Launcher v1.3.5");
     this->bgcolor(default_bgcolor);
 
     addTabs();
+
+    this->lbl_tak_version = std::make_shared<nana::label>(this->handle(), "TA:K Version: ");
+
+    this->lbl_tak_version_value = std::make_shared<nana::label>(this->handle(), (maybeTakVersion.has_value() ? maybeTakVersion.value() : "<Error>"));
+    this->add_widget(this->lbl_tak_version, "takVersion");
+    this->add_widget(this->lbl_tak_version_value, "takVersionValue");
 
     addPlayButton();
     addExitButton();
@@ -94,22 +101,34 @@ void main_form::initialize()
 }
 
 void main_form::draw() {
-    layout->div("                                                                           \
-        margin=[1] vert                                                                             \
-        <weight=25 tabs>                                                                            \
-        <content>                                                                                   \
-        <margin=25 weight=100                                                                       \
-            <vert weight=60 <weight=40 saveBtn>>                                                    \
-            <>                                                                                      \
-            <vert                                                                                   \
-                <weight=25 margin=[0, 0, 0, 5]                                                      \
-                    <weight=43 margin=[4] presetPickerLabel><weight=110 presetPicker>               \
-                >                                                                                   \
-                <                                                                                   \
-                    <weight=36 margin=[5, 0, 0, 9] presetHashLabel><margin=[5, 0, 0, 7] presetHash> \
-                >                                                                                   \
-            >                                                                                       \
-            <vert weight=120 <weight=40 buttons gap=5 arrange=[60, 60]>>                            \
+    layout->div("                                                  \
+        margin=[1] vert                                            \
+        <weight=25 tabs>                                           \
+        <content>                                                  \
+        <margin=[0, 25, 10, 25] weight=90                          \
+            <vert weight=60                                        \
+                <>                                                 \
+                <weight=40 saveBtn>                                \
+                <>                                                 \
+            >                                                      \
+            <>                                                     \
+            <vert weight=180                                       \
+                <weight=25                                         \
+                    <weight=39 presetPickerLabel><presetPicker>    \
+                >                                                  \
+                <margin=[7]                                        \
+                    <weight=72 takVersion><takVersionValue>        \
+                >                                                  \
+                <margin=[4]                                        \
+                    <weight=28 presetHashLabel><presetHash>        \
+                >                                                  \
+            >                                                      \
+            <weight=30>                                            \
+            <vert weight=120                                       \
+              <>                                                   \
+              <weight=40 buttons gap=5 arrange=[60, 60]>           \
+              <>                                                   \
+            >                                                      \
         >");
 
     e_form::draw();
@@ -226,6 +245,8 @@ void main_form::commit()
 void main_form::addPresetPicker()
 {
     lbl_preset_picker = std::make_shared<nana::label>(this->handle(), "Preset: ");
+    lbl_preset_picker->text_align(nana::align::left, nana::align_v::center);
+
     cbb_preset_picker = std::make_shared<nana::combox>(this->handle());
     lbl_lbl_preset_hash = std::make_shared<nana::label>(this->handle(), "CRC: ");
     lbl_preset_hash = std::make_shared<nana::label>(this->handle());

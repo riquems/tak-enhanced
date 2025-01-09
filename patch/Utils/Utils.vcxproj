@@ -24,6 +24,7 @@
     <ClCompile Include="source\Window.cpp" />
     <ClInclude Include="include\Utils\common.h" />
     <ClInclude Include="include\Utils\CRC.h" />
+    <ClInclude Include="include\Utils\file.hpp" />
     <ClInclude Include="include\Utils\Keyboard.hpp" />
     <ClInclude Include="include\Utils\Timer.hpp" />
     <ClInclude Include="include\Utils\TypeExtensions.hpp" />
