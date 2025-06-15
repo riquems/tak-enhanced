@@ -12,6 +12,7 @@
 #include <Utils/Window.hpp>
 #include <Utils/Keyboard.hpp>
 #include <Utils/HelperFunctions.hpp>
+#include <Utils/async.h>
 #include <TAKCore/Commands.h>
 #include <TAKCore/Functions/Functions.h>
 #include <Utils/Timer.hpp>
@@ -213,11 +214,42 @@ void guaranteeFocus() {
     }
 }
 
-void hookWndProc();
+LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-typedef LRESULT(__stdcall *wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+typedef LRESULT(__stdcall* wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 wndProc_t oldWndProc;
-bool bindingScheduled = false;
+
+void hookWndProc() {
+    logger->debug("Hooking WndProc...");
+
+    auto wnd = GetThisWindow("Kingdoms");
+
+    auto currentWndProc = (wndProc_t) GetWindowLongPtr(wnd, GWLP_WNDPROC);
+
+    if (currentWndProc == MyWndProc) {
+        logger->debug("WndProc is already hooked, skipping.");
+        return;
+    }
+
+    oldWndProc = (wndProc_t) SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR) MyWndProc);
+}
+
+bool hookWndProcRunning = false;
+
+void runHookWndProc() {
+    if (hookWndProcRunning) {
+        return;
+    }
+
+    hookWndProcRunning = true;
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+    hookWndProc();
+
+    hookWndProcRunning = false;
+}
+
 Timer timer;
 KeyboardState state;
 
@@ -333,18 +365,9 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_WINDOWPOSCHANGED:
             logger->debug("[Windows] WM_WINDOWPOSCHANGING | WM_WINDOWPOSCHANGED");
 
-            if (!bindingScheduled) {
-                bindingScheduled = true;
-                std::thread t([&]() {
-                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            // we need to rehook these because DXWnd overwrites it when this event occurs
+            runAsync((LPTHREAD_START_ROUTINE) &runHookWndProc);
 
-                    // we need to rehook these because DXWnd overwrites it when this event occurs
-                    hookWndProc();
-
-                    bindingScheduled = false;
-                });
-                t.detach();
-            }
             break;
         default:
             // logger->debug("[Windows] WndProc Message Code %d", msg);
@@ -352,21 +375,6 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
 
     return oldWndProc(hwnd, msg, wParam, lParam);
-}
-
-void hookWndProc() {
-    logger->debug("Hooking WndProc...");
-
-    auto wnd = GetThisWindow("Kingdoms");
-
-    auto currentWndProc = (wndProc_t) GetWindowLongPtr(wnd, GWLP_WNDPROC);
-
-    if (currentWndProc == MyWndProc) {
-        logger->debug("WndProc is already hooked, skipping.");
-        return;
-    }
-
-    oldWndProc = (wndProc_t) SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR) MyWndProc);
 }
 
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
