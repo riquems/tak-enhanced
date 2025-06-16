@@ -33,6 +33,7 @@
     <ClInclude Include="include\Utils\Timer.hpp" />
     <ClInclude Include="include\Utils\TypeExtensions.hpp" />
     <ClInclude Include="include\Utils\file.hpp" />
+    <ClInclude Include="include\Utils\async.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
