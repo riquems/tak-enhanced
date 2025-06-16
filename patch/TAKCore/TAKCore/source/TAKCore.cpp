@@ -18,14 +18,13 @@ void TAKCore::init(unsigned int baseAddress) {
     TAKCore::Config::fixCursor = (bool*)(TAKCore::Config::fixCursorAddress + baseAddress);
     TAKCore::Config::disableUiPreload = (bool*)(TAKCore::Config::disableUiPreloadAddress + baseAddress);
     TAKCore::Config::noSideCulling = (bool*)(TAKCore::Config::noSideCullingAddress + baseAddress);
+}
 
+void TAKCore::initGameState(unsigned int baseAddress) {
     GlobalPointers::ptr_22D55C = (uintptr_t*)(baseAddress + GlobalPointers::ptr_22D55C_Offset);
 
     TAKCore::Players = (Player*)(*GlobalPointers::ptr_22D55C + TAKCore::PlayersOffset);
-
     TAKCore::CreateGraphicObjectFromJPG = (CreateGraphicObjectFromJPG_t)(TAKCore::CreateGraphicObjectFromJPG_Offset + baseAddress);
-
     TAKCore::HpBarGraphicObj = (uintptr_t*)(*GlobalPointers::ptr_22D55C + TAKCore::HpBarGraphicObj_Offset);
-
     TAKCore::RendererDevice = (uintptr_t*)(GlobalPointers::RendererDevice + baseAddress);
 }

@@ -17,7 +17,6 @@
 #include <TAKCore/Functions/Functions.h>
 #include <Utils/Timer.hpp>
 #include <thread>
-#include <TAKEnhancedLibrary/State.hpp>
 #include <TAKEnhancedLibrary/Commands/RotateBuilding/RotateBuildingCommand.hpp>
 #include <TAKEnhancedLibrary/Commands/Commands.hpp>
 #include <TAKEnhancedLibrary/Keys/KeyComparator.hpp>
@@ -192,28 +191,6 @@ void handleInputs(KeyboardState& keyboardState)
     }
 }
 
-void waitForTheGameToLaunch()
-{
-    HWND takWindow = nullptr;
-    while (takWindow == nullptr) {
-        logger->info("Waiting for the game to launch...");
-        takWindow = GetThisWindow("Kingdoms");
-
-        Sleep(100);
-    }
-
-    logger->info("Game has launched!");
-}
-
-void guaranteeFocus() {
-    HWND takWindow = GetThisWindow("Kingdoms");
-
-    for (int i = 0; i < 5; i++) {
-        SwitchToThisWindow(takWindow, true);
-        SetWindowPos(takWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
-    }
-}
-
 LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 typedef LRESULT(__stdcall* wndProc_t)(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -377,15 +354,36 @@ LRESULT CALLBACK MyWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return oldWndProc(hwnd, msg, wParam, lParam);
 }
 
+void waitForTheGameToLaunch()
+{
+    HWND takWindow = nullptr;
+    while (takWindow == nullptr) {
+        logger->info("Waiting for the game to launch...");
+        takWindow = GetThisWindow("Kingdoms");
+
+        Sleep(100);
+    }
+
+    logger->info("Game has launched!");
+}
+
+void guaranteeFocus() {
+    HWND takWindow = GetThisWindow("Kingdoms");
+
+    for (int i = 0; i < 5; i++) {
+        SwitchToThisWindow(takWindow, true);
+        SetWindowPos(takWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+    }
+}
+
 void startTAKEnhancedService(std::shared_ptr<GameConfig> gameConfig)
 {
     waitForTheGameToLaunch();
     guaranteeFocus();
 
-    hookWndProc();
+    TAK::initGameState(baseAddress);
 
-    TAK::init(baseAddress);
-    TAKEnhancedLibrary::init(logger);
+    hookWndProc();
 
     logger->context("TA:K Enhanced Service");
     logger->info("TA:K Enhanced Service started!");
