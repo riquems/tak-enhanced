@@ -26,6 +26,7 @@
 #include "TAKEnhancedLauncher/main_form.hpp"
 #include "TAKEnhancedDll/Changes.hpp"
 #include "TAKEnhancedDll/TAKEnhancedService.hpp"
+#include <TAKEnhancedLibrary/State.hpp>
 #include <TAKEnhancedLibrary/Keys/KeyCombination.hpp>
 #include <Utils/Console.hpp>
 #include "Utils/file.hpp"
@@ -255,6 +256,9 @@ void _init()
     };
 
     launcher.show();
+
+    TAK::init(baseAddress);
+    TAKEnhancedLibrary::init(logger);
 
     logger->section("CHANGES");
     applyChanges(currentGameConfig, logger);
