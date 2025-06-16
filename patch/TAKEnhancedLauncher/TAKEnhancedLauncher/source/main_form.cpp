@@ -56,7 +56,7 @@ void main_form::save()
 
 void main_form::initialize(std::optional<std::string> maybeTakVersion)
 {
-    this->caption("TA:K Enhanced Launcher v1.3.5");
+    this->caption("TA:K Enhanced Launcher v1.3.6");
     this->bgcolor(default_bgcolor);
 
     addTabs();
